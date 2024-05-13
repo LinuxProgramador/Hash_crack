@@ -17,3 +17,5 @@ NOTA:si quiere romper la contraseña de un zip asegurate que el archivo zip este
 NOTA:si quiere importar su propio diccionario tiene que llamarse wordlist.txt y estar dentro del directorio Hash_crack
 
 NOTA:si quiere romper la contraseña de un rar asegurate que el archivo rar este dentro del directorio Hash_crack
+
+Para salir del programa presione CTRL C
