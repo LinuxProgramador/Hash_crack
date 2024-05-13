@@ -54,7 +54,7 @@ class Hash_crack:
              print("NOTA:¡Este proceso puede tardar y solo funciona dependiendo de la app que se uso para crear el rar!")
              sleep(4)
              system("clear")
-             system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja-RAR-Password-Cracking-Utility/RARNinja.py")
+             system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
              sys.exit(2)
 
        return
