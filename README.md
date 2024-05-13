@@ -3,7 +3,7 @@ Descargo de Responsabilidad:Esta herramienta fue creada con fines educativos, no
 
 cd ~
 
-git clone 
+git clone https://github.com/LinuxProgramador/Hash_crack
 
 cd Hash_crack
 
