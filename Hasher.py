@@ -106,7 +106,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                    maximo=input("ingrese el maximo de la contraseña: ")
                    valores=input("ingrese los datos a generar el diccionario: ")
                    system("clear")
-                   print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar hash.py")
+                   print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar Hasher.py")
                    print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
                    sys.exit(2)
 
@@ -117,7 +117,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                   valores=input("ingrese los datos a probar en la contraseña: ")
                   longitud=input("ingrese la longitud total de la contraseña: ")
                   system("clear")
-                  print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar hash.py")
+                  print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar Hasher.py")
                   print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
                   sys.exit(2)
 
@@ -324,7 +324,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
      for self.arg in sys.argv:
          if self.arg == "-h" or self.arg == "--help":
               print("""
-usage: python3 hash.py
+usage: python3 Hasher.py
 -h  --help  imprime el menu de ayuda
 
  -----------------------------
