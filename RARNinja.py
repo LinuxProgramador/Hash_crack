@@ -80,9 +80,9 @@ if __name__ == "__main__":
     try:
 
         while (True):
-            terere="/data/data/com.termux/files/home/Hash_crack/"
-            RAR = input("\nEnter RAR file name here: ")
-            RAR = terere + RAR
+      
+            RAR = input("\nEnter Rute RAR file here: ")
+            
             dictionary ="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
 
             if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
