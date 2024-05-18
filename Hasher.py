@@ -148,7 +148,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
   def crack(self):
 
     self.rute_dictionary="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
-    self.read_dictionary=open(self.rute_dictionary,'r',encoding='utf-8')
+    self.read_dictionary=open(self.rute_dictionary,'r',encoding='latin-1')
     self.lista=self.read_dictionary.readlines()
 
 
