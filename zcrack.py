@@ -45,9 +45,7 @@ elif platform.system().startswith("Linux"):
 def linuxpdf():
     os.system("clear")
     header()
-    terere="/data/data/com.termux/files/home/Hash_crack/"
-    zip_filename = input(termcolor.colored("[*] Enter Your name zip file:- ", 'cyan'))
-    zip_filename=terere + zip_filename
+    zip_filename = input(termcolor.colored("[*] Enter Your Rute zip file:- ", 'cyan'))
     if not os.path.exists(zip_filename):
         print(termcolor.colored("\n[ X ] File " + zip_filename + " was not found, Provide Valid FileName And Path!",
                                 'red'))
