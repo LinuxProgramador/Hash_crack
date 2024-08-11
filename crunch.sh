@@ -1,5 +1,5 @@
 echo $(clear)
-echo "enter your three words for the concatenated dictionary"
+echo "Enter your three words for the concatenated dictionary"
 
 read -p "Enter your first word: " palabra1
 
@@ -12,3 +12,4 @@ echo $(clear)
 crunch 1 1 -o ~/Hash_crack/wordlist.txt -p $palabra1 $palabra2 $palabra3
 sleep 2
 echo $(clear)
+echo "Now run the Hasher.py program again"
