@@ -42,27 +42,19 @@ class Hash_crack:
 
 
 
-  def zcrack(self):
+  def call_modules(self):
 
-       self.confirm=input("Desea usar zcrack para adivinar la contraseña de un zip (si/no): ").strip()
-       if self.confirm.lower() == "si":
-             print("NOTA:¡Este proceso puede tardar y solo funciona dependiendo de la app que se uso para crear el zip!")
-             sleep(4)
-             system("python3 /data/data/com.termux/files/home/Hash_crack/zcrack.py")
+    self.confirm=input("Desea usar zcrack o rarninja: ").strip() 
+    if self.confirm == "zcrack": 
+      print("NOTA:¡Este proceso puede tardar!") 
+      sleep(3) 
+      system("python3 /data/data/com.termux/files/home/Hash_crack/zcrack.py")
              
-
-       
-
-
-  def rar(self):
-
-       self.confirm2=input("Desea usar RARNinja para adivinar la contraseña de un rar (si/no): ").strip()
-       if self.confirm2.lower() == "si":
-             print("NOTA:¡Este proceso puede tardar y solo funciona dependiendo de la app que se uso para crear el rar!")
-             sleep(4)
-             system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
+    else:
+      print("NOTA:¡Este proceso puede tardar!") 
+      sleep(3) 
+      system("python3 /data/data/com.termux/files/home/Hash_crack/RARninja.py")
              
-
        
 
 
