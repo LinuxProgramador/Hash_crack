@@ -102,7 +102,6 @@ NOTA:tener cuidado con la cantidad de contraseñas que
      el telefono.
                   """)
            self.comand=input("opcion: ")
-           self.counter=0
            if self.comand == "1":
                 system("bash /data/data/com.termux/files/home/Hash_crack/crunch.sh")
 
@@ -129,14 +128,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
 
            else:
                  print("¡Opcion no valida!")
-                 sleep(1)
-                 system("clear")
-                 self.counter += 1
-                 if self.counter >= 1:
-                       pass
-
-                 else:
-                     self.crunch()
+                
 
 
 
