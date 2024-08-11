@@ -46,12 +46,12 @@ class Hash_crack:
 
     confirm=input("Do you want to use (zcrack/RARNinja): ").strip().lower()
     if confirm == "zcrack": 
-      print("NOTA:¡Este proceso puede tardar!") 
+      print("NOTE:This process may take time!") 
       sleep(3) 
       system("python3 /data/data/com.termux/files/home/Hash_crack/zcrack.py")
              
     elif confirm == "rarninja":
-      print("NOTA:¡Este proceso puede tardar!") 
+      print("NOTE:This process may take time!") 
       sleep(3) 
       system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
              
