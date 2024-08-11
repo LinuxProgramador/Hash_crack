@@ -111,7 +111,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                    maximo=input("ingrese el maximo de la contraseña: ")
                    valores=input("ingrese los datos a generar el diccionario: ")
                    system("clear")
-                   print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar Hasher.py")
+                   print("A continuacion copie y pegue en la consola ese comando que se le dara y vuelva a ejecutar Hasher.py")
                    print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
                    
 
@@ -122,7 +122,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                   valores=input("ingrese los datos a probar en la contraseña: ")
                   longitud=input("ingrese la longitud total de la contraseña: ")
                   system("clear")
-                  print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar Hasher.py")
+                  print("A continuacion copie y pegue en la consola ese comando que se le dara y vuelva a ejecutar Hasher.py")
                   print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
                   
 
