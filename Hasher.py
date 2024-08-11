@@ -44,7 +44,7 @@ class Hash_crack:
 
   def call_modules(self):
 
-    confirm=input("Desea usar (zcrack/RARNinja): ").strip().lower()
+    confirm=input("Do you want to use (zcrack/RARNinja): ").strip().lower()
     if confirm == "zcrack": 
       print("NOTA:¡Este proceso puede tardar!") 
       sleep(3) 
