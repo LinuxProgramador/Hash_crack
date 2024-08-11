@@ -255,42 +255,42 @@ Help Menu:
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
-             self.crack()
+             self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha1:
              hash_verification="sha1"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
-             self.crack()
+             self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha224:
              hash_verification="sha224"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
-             self.crack()
+             self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha384:
              hash_verification="sha384"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
-             self.crack()
+             self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha256:
              hash_verification="sha256"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
-             self.crack()
+             self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha512:
              hash_verification="sha512"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
-             self.crack()
+             self.crack(hash_input,hash_verification)
 
 
     else:
