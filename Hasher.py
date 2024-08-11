@@ -284,6 +284,9 @@ Help Menu:
 
    except KeyboardInterrupt:
         print("BYE!!")
+
+   except FileNotFoundError as e:
+            print(f"Wordlist.txt does not exist in the path => {e}")
     
 
 if __name__ == "__main__":
