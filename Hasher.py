@@ -137,7 +137,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
 
-  def crack(self,hash_input):
+  def crack(self,hash_input,hash_verification):
 
     
     with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
@@ -251,42 +251,42 @@ Help Menu:
     self.call_modules()
     hash_input=input("ingrese el hash a decifrar: ")
     if len(hash_input) == self.md5:
-             self.hash_verification="md5"
+             hash_verification="md5"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
     elif len(hash_input) == self.sha1:
-             self.hash_verification="sha1"
+             hash_verification="sha1"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
     elif len(hash_input) == self.sha224:
-             self.hash_verification="sha224"
+             hash_verification="sha224"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
     elif len(hash_input) == self.sha384:
-             self.hash_verification="sha384"
+             hash_verification="sha384"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
     elif len(hash_input) == self.sha256:
-             self.hash_verification="sha256"
+             hash_verification="sha256"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
     elif len(hash_input) == self.sha512:
-             self.hash_verification="sha512"
+             hash_verification="sha512"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
