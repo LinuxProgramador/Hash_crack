@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 
 system=$( uname -m  | cut -f1)
