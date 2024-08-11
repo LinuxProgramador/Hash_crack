@@ -53,7 +53,7 @@ class Hash_crack:
     else:
       print("NOTA:¡Este proceso puede tardar!") 
       sleep(3) 
-      system("python3 /data/data/com.termux/files/home/Hash_crack/RARninja.py")
+      system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
              
        
 
