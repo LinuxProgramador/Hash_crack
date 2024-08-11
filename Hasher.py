@@ -131,8 +131,8 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
       if self.encryption == self.hash_input:
                print(f"su contraseña es {password}")
-      else:
-        print("¡La contraseña no esta en el diccionario!")
+      
+        
 
 
 
@@ -151,13 +151,13 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
              if self.hash_verification == "md5":
                self.encryption=md5(password.encode('utf8')).hexdigest()
                self.validation(password)
-
+              
 
 
              elif self.hash_verification == "sha1":
                self.encryption=sha1(password.encode('utf8')).hexdigest()
                self.validation(password)
-
+               
 
 
 
@@ -205,9 +205,11 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                if self.encryption_sha3 == self.hash_input:
                   print(f"su contraseña es {password}")
                   
+                  
 
 
-
+       print("¡La contraseña no esta en el diccionario!")
+    
    
 
     
