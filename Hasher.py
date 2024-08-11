@@ -205,7 +205,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                   print(f"su contraseña es {password}")
                exit(2) 
                   
-      print("¡La contraseña no esta en el diccionario!")
+    print("¡La contraseña no esta en el diccionario!")
 
          
        
