@@ -137,7 +137,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
 
-  def crack(self):
+  def crack(self,hash_input):
 
     
     with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
@@ -165,7 +165,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                self.encryption=sha224(password.encode('utf8')).hexdigest()
                self.encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
                self.validation(password)
-               if self.encryption_sha3 == self.hash_input:
+               if self.encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
                  
 
@@ -175,7 +175,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                self.encryption=sha384(password.encode('utf8')).hexdigest()
                self.encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
                self.validation(password)
-               if self.encryption_sha3 == self.hash_input:
+               if self.encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
                  
 
@@ -186,13 +186,13 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                self.encryption=sha256(password.encode('utf8')).hexdigest()
                self.encryption_sha3=sha3_256(password.encode('utf8')).hexdigest()
                self.validation(password)
-               if self.encryption_sha3 == self.hash_input:
+               if self.encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
                  
 
                else:
                  blas2=blake2s(data).hexdigest()
-                 if blas2 == self.hash_input:
+                 if blas2 == hash_input:
                      print(f"su contraseña es {password}")
                      
 
@@ -202,13 +202,13 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                self.encryption=sha512(password.encode('utf8')).hexdigest()
                self.encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
                self.validation(password)
-               if self.encryption_sha3 == self.hash_input:
+               if self.encryption_sha3 == hash_input:
                   print(f"su contraseña es {password}")
                   
                   
 
 
-       print("¡La contraseña no esta en el diccionario!")
+       
     
    
 
@@ -249,43 +249,43 @@ Help Menu:
     self.banner()
     self.crunch()
     self.call_modules()
-    self.hash_input=input("ingrese el hash a decifrar: ")
-    if len(self.hash_input) == self.md5:
+    hash_input=input("ingrese el hash a decifrar: ")
+    if len(hash_input) == self.md5:
              self.hash_verification="md5"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
-    elif len(self.hash_input) == self.sha1:
+    elif len(hash_input) == self.sha1:
              self.hash_verification="sha1"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
-    elif len(self.hash_input) == self.sha224:
+    elif len(hash_input) == self.sha224:
              self.hash_verification="sha224"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
-    elif len(self.hash_input) == self.sha384:
+    elif len(hash_input) == self.sha384:
              self.hash_verification="sha384"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
-    elif len(self.hash_input) == self.sha256:
+    elif len(hash_input) == self.sha256:
              self.hash_verification="sha256"
              system("clear")
              sleep(1)
              print("espera esto puede tardar un poco")
              self.crack()
 
-    elif len(self.hash_input) == self.sha512:
+    elif len(hash_input) == self.sha512:
              self.hash_verification="sha512"
              system("clear")
              sleep(1)
