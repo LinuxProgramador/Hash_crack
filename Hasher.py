@@ -127,7 +127,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
 
-  def validation(self,password,hash_input):
+  def validation(self,password,hash_input,encryption):
 
       if encryption == hash_input:
                print(f"su contraseña es {password}")
@@ -149,33 +149,33 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
              data=password.encode()
 
              if self.hash_verification == "md5":
-               self.encryption=md5(password.encode('utf8')).hexdigest()
+               encryption=md5(password.encode('utf8')).hexdigest()
                self.validation(password)
               
 
 
              elif self.hash_verification == "sha1":
-               self.encryption=sha1(password.encode('utf8')).hexdigest()
+               encryption=sha1(password.encode('utf8')).hexdigest()
                self.validation(password)
                
 
 
 
              elif self.hash_verification == "sha224":
-               self.encryption=sha224(password.encode('utf8')).hexdigest()
-               self.encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
+               encryption=sha224(password.encode('utf8')).hexdigest()
+               encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
                self.validation(password)
-               if self.encryption_sha3 == hash_input:
+               if encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
                  
 
 
 
              elif self.hash_verification == "sha384":
-               self.encryption=sha384(password.encode('utf8')).hexdigest()
-               self.encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
+               encryption=sha384(password.encode('utf8')).hexdigest()
+               encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
                self.validation(password)
-               if self.encryption_sha3 == hash_input:
+               if encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
                  
 
@@ -183,10 +183,10 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
              elif self.hash_verification == "sha256":
-               self.encryption=sha256(password.encode('utf8')).hexdigest()
-               self.encryption_sha3=sha3_256(password.encode('utf8')).hexdigest()
+               encryption=sha256(password.encode('utf8')).hexdigest()
+               encryption_sha3=sha3_256(password.encode('utf8')).hexdigest()
                self.validation(password)
-               if self.encryption_sha3 == hash_input:
+               if encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
                  
 
@@ -199,10 +199,10 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
              elif self.hash_verification == "sha512":
-               self.encryption=sha512(password.encode('utf8')).hexdigest()
-               self.encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
+               encryption=sha512(password.encode('utf8')).hexdigest()
+               encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
                self.validation(password)
-               if self.encryption_sha3 == hash_input:
+               if encryption_sha3 == hash_input:
                   print(f"su contraseña es {password}")
                   
                   
