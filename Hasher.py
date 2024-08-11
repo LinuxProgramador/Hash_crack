@@ -14,7 +14,7 @@
 
 
 from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s
-from sys import argv,exit
+from sys import argv
 from os import system
 from time import sleep
 
@@ -30,7 +30,7 @@ class Hash_crack:
         print ('  888888  dP__Yb  o.`Y8b 888888 88""  88"Yb  ')
         print ('  88  88 dP""""Yb 8bodP  88  88 88888 88  Yb ')
         print ('  ------------------------------------------')
-        return
+        
 
 
 
@@ -42,9 +42,9 @@ class Hash_crack:
              print("NOTA:¡Este proceso puede tardar y solo funciona dependiendo de la app que se uso para crear el zip!")
              sleep(4)
              system("python3 /data/data/com.termux/files/home/Hash_crack/zcrack.py")
-             exit(2)
+             
 
-       return
+       
 
 
   def rar(self):
@@ -55,9 +55,9 @@ class Hash_crack:
              sleep(4)
              system("clear")
              system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
-             exit(2)
+             
 
-       return
+       
 
 
   def crunch(self):
@@ -108,7 +108,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                    system("clear")
                    print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar Hasher.py")
                    print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
-                   exit(2)
+                   
 
 
            elif self.comand == "3":
@@ -119,7 +119,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                   system("clear")
                   print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar Hasher.py")
                   print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
-                  exit(2)
+                  
 
            else:
                  print("¡Opcion no valida!")
@@ -127,7 +127,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                  system("clear")
                  self.counter += 1
                  if self.counter >= 1:
-                       exit(2)
+                       pass
 
                  else:
                      self.crunch()
@@ -140,7 +140,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
 
       if self.encryption == self.hash_input:
                print(f"su contraseña es {self.password}")
-               exit(2)
+               
 
 
 
@@ -175,7 +175,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                self.validation()
                if self.encryption_sha3 == self.hash_input:
                  print(f"su contraseña es {self.password}")
-                 exit(2)
+                 
 
 
 
@@ -185,7 +185,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                self.validation()
                if self.encryption_sha3 == self.hash_input:
                  print(f"su contraseña es {self.password}")
-                 exit(2)
+                 
 
 
 
@@ -196,13 +196,13 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                self.validation()
                if self.encryption_sha3 == self.hash_input:
                  print(f"su contraseña es {self.password}")
-                 exit(2)
+                 
 
                else:
                  blas2=blake2s(data).hexdigest()
                  if blas2 == self.hash_input:
                      print(f"su contraseña es {self.password}")
-                     exit(2)
+                     
 
 
 
@@ -212,7 +212,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                self.validation()
                if self.encryption_sha3 == self.hash_input:
                   print(f"su contraseña es {self.password}")
-                  exit(2)
+                  
 
 
 
@@ -304,16 +304,16 @@ NOTA:tener cuidado con la cantidad de contraseñas que
 |blake2s |
  --------
            """)
-      exit(2)
+      
 
-    return
+    
 
 
 
    except KeyboardInterrupt:
        system("clear")
        print("bye")
-       exit(2)
+       
 
 
 
@@ -343,7 +343,7 @@ usage: python3 Hasher.py
 |blake2s |
  --------
                     """)
-              exit(2)
+              
 
 
 
