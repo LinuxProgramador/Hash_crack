@@ -49,12 +49,12 @@ class Hash_crack:
       print("NOTE:This process may take time!") 
       sleep(3) 
       system("python3 /data/data/com.termux/files/home/Hash_crack/zcrack.py")
-             
+      exit(2)       
     elif confirm == "rarninja":
       print("NOTE:This process may take time!") 
       sleep(3) 
       system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
-             
+      exit(2)      
     
       
 
@@ -82,7 +82,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
            comand=input("option: ")
            if comand == "1":
                 system("bash /data/data/com.termux/files/home/Hash_crack/crunch.sh")
-
+                exit(2)
            elif comand == "2":
                    system("clear")
                    minimo=input("Enter the minimum password: ")
@@ -91,7 +91,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                    system("clear")
                    print("Then copy and paste the command that will be given to you into the console and run Hasher.py again.")
                    print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
-                   
+                   exit(2)
 
 
            elif comand == "3":
@@ -102,11 +102,11 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                   system("clear")
                   print("Next, copy and paste the command that will be given to you into the console and run Hasher.py again.")
                   print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
-                  
+                  exit(2)
 
            else:
                  print("Invalid option!")
-                
+                 exit(2)
 
 
 
