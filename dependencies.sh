@@ -11,13 +11,7 @@ function main {
     echo -e "\033[1;37m"
     sleep 2
     apt install python3 python-pip -y
-    pip install pyfiglet
-    pip install requests
-    pip install termcolor
-    pip install rarfile
-    pip install colorama
-
-
+    pip install pyfiglet requests termcolor rarfile colorama
     echo $(clear)
 
     if [ "$system" != 'aarch64' ] ; then
