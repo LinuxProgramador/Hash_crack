@@ -12,7 +12,7 @@
 
 
 from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s
-from sys import argv
+from sys import argv,exit
 from os import system
 from time import sleep
 
@@ -241,7 +241,8 @@ Help Menu:
    try:
     if "-h" in argv or "--help" in argv:
                self.show_help()
-      
+               exit(2)
+     
     self.banner()
     self.crunch()
     self.call_modules()
@@ -294,7 +295,7 @@ Help Menu:
       
 
    except KeyboardInterrupt:
-        print("\nBYE!!")
+        print("BYE!!")
     
 
 if __name__ == "__main__":
