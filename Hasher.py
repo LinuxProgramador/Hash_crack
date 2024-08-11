@@ -87,25 +87,25 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                    system("clear")
                    minimo=input("Enter the minimum password: ")
                    maximo=input("Enter the maximum password: ")
-                   valores=input("ingrese los datos a generar el diccionario: ")
+                   valores=input("Enter the data to generate the dictionary: ")
                    system("clear")
-                   print("A continuacion copie y pegue en la consola ese comando que se le dara y vuelva a ejecutar Hasher.py")
+                   print("Then copy and paste the command that will be given to you into the console and run Hasher.py again.")
                    print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
                    
 
 
            elif comand == "3":
                   system("clear")
-                  password=input("ingrese lo que conoce de la contraseña y lo que no como simbolo @: ")
-                  valores=input("ingrese los datos a probar en la contraseña: ")
-                  longitud=input("ingrese la longitud total de la contraseña: ")
+                  password=input("Enter what you know of the password and what you don't as the @ symbol: ")
+                  valores=input("Enter the data to be tested in the password: ")
+                  longitud=input("Please enter the total length of the password: ")
                   system("clear")
-                  print("A continuacion copie y pegue en la consola ese comando que se le dara y vuelva a ejecutar Hasher.py")
+                  print("Next, copy and paste the command that will be given to you into the console and run Hasher.py again.")
                   print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
                   
 
            else:
-                 print("¡Opcion no valida!")
+                 print("Invalid option!")
                 
 
 
@@ -115,7 +115,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
   def validation(self,password,hash_input,encryption):
 
       if encryption == hash_input:
-               print(f"su contraseña es {password}")
+               print(f"Your password is {password}")
                exit(2)
         
 
@@ -151,7 +151,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
-                 print(f"su contraseña es {password}")
+                 print(f"Your password is {password}")
                  exit(2) 
                 
 
@@ -161,7 +161,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
-                 print(f"su contraseña es {password}")
+                 print(f"Your password is {password}")
                  exit(2)
 
 
@@ -171,13 +171,13 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption_sha3=sha3_256(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
-                 print(f"su contraseña es {password}")
+                 print(f"Your password is {password}")
                  exit(2)
 
                else:
                  blas2=blake2s(data).hexdigest()
                  if blas2 == hash_input:
-                     print(f"su contraseña es {password}")
+                     print(f"Your password is {password}")
                      exit(2)
                
 
@@ -187,10 +187,10 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
-                  print(f"su contraseña es {password}")
+                  print(f"Your password is {password}")
                   exit(2) 
                   
-    print("¡La contraseña no esta en el diccionario!")
+    print("The password is not in the dictionary!")
 
          
        
@@ -234,47 +234,47 @@ Help Menu:
     self.banner()
     self.crunch()
     self.call_modules()
-    hash_input=input("ingrese el hash a decifrar: ")
+    hash_input=input("Enter the hash to decrypt: ")
     if len(hash_input) == self.md5:
              hash_verification="md5"
              system("clear")
              sleep(1)
-             print("espera esto puede tardar un poco")
+             print("Wait, this may take a while")
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha1:
              hash_verification="sha1"
              system("clear")
              sleep(1)
-             print("espera esto puede tardar un poco")
+             print("Wait, this may take a while")
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha224:
              hash_verification="sha224"
              system("clear")
              sleep(1)
-             print("espera esto puede tardar un poco")
+             print("Wait, this may take a while")
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha384:
              hash_verification="sha384"
              system("clear")
              sleep(1)
-             print("espera esto puede tardar un poco")
+             print("Wait, this may take a while")
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha256:
              hash_verification="sha256"
              system("clear")
              sleep(1)
-             print("espera esto puede tardar un poco")
+             print("Wait, this may take a while")
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha512:
              hash_verification="sha512"
              system("clear")
              sleep(1)
-             print("espera esto puede tardar un poco")
+             print("Wait, this may take a while")
              self.crack(hash_input,hash_verification)
 
 
