@@ -27,7 +27,7 @@ class Hash_crack:
     self.sha256=len("23a7b87d4d4e69bbf44b07558b12f39dff5452a80eb60097f1e91ae237583fc9")
     self.sha384=len("c6bafe2a4bdcb52b1f994861f663fa9cf739e84ea53fcce96a5131585b22d6dbb7330825146d38edc7122d64ecc1c534")
     self.sha512=len("eda2d415e59c909a7db89b3e2cd4f44b72c37c79d47e31d37e8e64e3e954ccd182649aa08c2ad3da8a8834abc5d1fbe9297e1833bd2e499c85a85dd97b407e15")
-
+    self.rute_dictionary="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
 
   def banner(self):
         print ('\n              Hasher 1.0')
@@ -138,14 +138,14 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
   def crack(self):
 
-    self.rute_dictionary="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
-    self.read_dictionary=open(self.rute_dictionary,'r',encoding='latin-1')
-    self.lista=self.read_dictionary.readlines()
+    
+    with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
+    list_words=keywords_read.readlines()
 
 
-    for self.keywords in self.lista:
-             self.password=self.keywords.strip()
-             data=self.password.encode()
+    for keywords in list_words:
+             password=keywords.strip()
+             data=password.encode()
 
              if self.hash_verification == "md5":
                self.encryption=md5(self.password.encode('utf8')).hexdigest()
