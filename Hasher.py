@@ -143,7 +143,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
     list_words=keywords_read.readlines()
 
 
-    for keywords in list_words:
+    for keywords in set(list_words):
              password=keywords.strip()
              data=password.encode()
 
