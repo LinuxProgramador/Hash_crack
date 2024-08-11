@@ -298,8 +298,8 @@ Help Menu:
     
 
 if __name__ == "__main__":
-  result=Hash_crack()
-  result.main()
+  crack=Hash_crack()
+  crack.main()
 
 
 
