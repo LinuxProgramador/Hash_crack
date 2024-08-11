@@ -44,7 +44,7 @@ class Hash_crack:
 
   def zcrack(self):
 
-       self.confirm=input("desea usar zcrack para adivinar la contraseña de un zip (si/no): ").strip()
+       self.confirm=input("Desea usar zcrack para adivinar la contraseña de un zip (si/no): ").strip()
        if self.confirm.lower() == "si":
              print("NOTA:¡Este proceso puede tardar y solo funciona dependiendo de la app que se uso para crear el zip!")
              sleep(4)
@@ -56,7 +56,7 @@ class Hash_crack:
 
   def rar(self):
 
-       self.confirm2=input("desea usar RARNinja para adivinar la contraseña de un rar (si/no): ").strip()
+       self.confirm2=input("Desea usar RARNinja para adivinar la contraseña de un rar (si/no): ").strip()
        if self.confirm2.lower() == "si":
              print("NOTA:¡Este proceso puede tardar y solo funciona dependiendo de la app que se uso para crear el rar!")
              sleep(4)
@@ -68,7 +68,7 @@ class Hash_crack:
 
   def crunch(self):
 
-     self.verificate=input("desea usar el diccionario existente (si/no): ").strip()
+     self.verificate=input("Desea usar el diccionario existente (si/no): ").strip()
      if self.verificate.lower() == "no":
            system("rm -f /data/data/com.termux/files/home/Hash_crack/wordlist.txt")
            print("¡Usaremos Crunch para generar un nuevo diccionario!")
@@ -97,7 +97,7 @@ class Hash_crack:
 
 
 
-NOTA:tener cuidado con la cantidad de contraseñas que
+NOTA:Tener cuidado con la cantidad de contraseñas que
      se pueden generar, puede llegar hasta gigas y bloquear
      el telefono.
                   """)
@@ -214,7 +214,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
 
 
 
-    print("¡la contraseña no esta en el diccionario!")
+    print("¡La contraseña no esta en el diccionario!")
 
     return
 
