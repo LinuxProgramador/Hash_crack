@@ -144,65 +144,65 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
     for keywords in set(list_words):
-             data=password=keywords.strip().encode()
-             
+             password=keywords.strip()
+             data=password.encode()
 
              if self.hash_verification == "md5":
-               self.encryption=md5(self.password.encode('utf8')).hexdigest()
+               self.encryption=md5(password.encode('utf8')).hexdigest()
                self.validation()
 
 
 
              elif self.hash_verification == "sha1":
-               self.encryption=sha1(self.password.encode('utf8')).hexdigest()
+               self.encryption=sha1(password.encode('utf8')).hexdigest()
                self.validation()
 
 
 
 
              elif self.hash_verification == "sha224":
-               self.encryption=sha224(self.password.encode('utf8')).hexdigest()
-               self.encryption_sha3=sha3_224(self.password.encode('utf8')).hexdigest()
+               self.encryption=sha224(password.encode('utf8')).hexdigest()
+               self.encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
                self.validation()
                if self.encryption_sha3 == self.hash_input:
-                 print(f"su contraseña es {self.password}")
+                 print(f"su contraseña es {password}")
                  
 
 
 
              elif self.hash_verification == "sha384":
-               self.encryption=sha384(self.password.encode('utf8')).hexdigest()
-               self.encryption_sha3=sha3_384(self.password.encode('utf8')).hexdigest()
+               self.encryption=sha384(password.encode('utf8')).hexdigest()
+               self.encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
                self.validation()
                if self.encryption_sha3 == self.hash_input:
-                 print(f"su contraseña es {self.password}")
+                 print(f"su contraseña es {password}")
                  
 
 
 
 
              elif self.hash_verification == "sha256":
-               self.encryption=sha256(self.password.encode('utf8')).hexdigest()
-               self.encryption_sha3=sha3_256(self.password.encode('utf8')).hexdigest()
+               self.encryption=sha256(password.encode('utf8')).hexdigest()
+               self.encryption_sha3=sha3_256(password.encode('utf8')).hexdigest()
                self.validation()
                if self.encryption_sha3 == self.hash_input:
-                 print(f"su contraseña es {self.password}")
+                 print(f"su contraseña es {password}")
                  
 
                else:
                  blas2=blake2s(data).hexdigest()
                  if blas2 == self.hash_input:
-                     print(f"su contraseña es {self.password}")
+                     print(f"su contraseña es {password}")
                      
 
 
 
              elif self.hash_verification == "sha512":
-               self.encryption=sha512(self.password.encode('utf8')).hexdigest()
-               self.encryption_sha3=sha3_512(self.password.encode('utf8')).hexdigest()
+               self.encryption=sha512(password.encode('utf8')).hexdigest()
+               self.encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
                self.validation()
                if self.encryption_sha3 == self.hash_input:
-                  print(f"su contraseña es {self.password}")
+                  print(f"su contraseña es {password}")
                   
 
 
