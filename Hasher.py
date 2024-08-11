@@ -148,20 +148,20 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
              password=keywords.strip()
              data=password.encode()
 
-             if self.hash_verification == "md5":
+             if hash_verification == "md5":
                encryption=md5(password.encode('utf8')).hexdigest()
                self.validation(password)
               
 
 
-             elif self.hash_verification == "sha1":
+             elif hash_verification == "sha1":
                encryption=sha1(password.encode('utf8')).hexdigest()
                self.validation(password)
                
 
 
 
-             elif self.hash_verification == "sha224":
+             elif hash_verification == "sha224":
                encryption=sha224(password.encode('utf8')).hexdigest()
                encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
                self.validation(password)
@@ -171,7 +171,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
 
-             elif self.hash_verification == "sha384":
+             elif hash_verification == "sha384":
                encryption=sha384(password.encode('utf8')).hexdigest()
                encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
                self.validation(password)
@@ -182,7 +182,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
 
-             elif self.hash_verification == "sha256":
+             elif hash_verification == "sha256":
                encryption=sha256(password.encode('utf8')).hexdigest()
                encryption_sha3=sha3_256(password.encode('utf8')).hexdigest()
                self.validation(password)
@@ -198,7 +198,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
 
-             elif self.hash_verification == "sha512":
+             elif hash_verification == "sha512":
                encryption=sha512(password.encode('utf8')).hexdigest()
                encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
                self.validation(password)
