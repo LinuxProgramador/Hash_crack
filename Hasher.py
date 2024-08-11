@@ -144,8 +144,8 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
     for keywords in set(list_words):
-             password=keywords.strip()
-             data=password.encode()
+             data=password=keywords.strip().encode()
+             
 
              if self.hash_verification == "md5":
                self.encryption=md5(self.password.encode('utf8')).hexdigest()
