@@ -140,7 +140,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
     
     with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
-    list_words=keywords_read.readlines()
+        list_words=keywords_read.readlines()
 
 
     for keywords in set(list_words):
