@@ -61,8 +61,8 @@ class Hash_crack:
 
   def crunch(self):
 
-     self.verificate=input("Desea usar el diccionario existente (si/no): ").strip()
-     if self.verificate.lower() == "no":
+     verificate=input("Desea usar el diccionario existente (si/no): ").strip().lower()
+     if verificate == "no":
            system("rm -f /data/data/com.termux/files/home/Hash_crack/wordlist.txt")
            print("¡Usaremos Crunch para generar un nuevo diccionario!")
            sleep(3)
@@ -94,11 +94,11 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
      se pueden generar, puede llegar hasta gigas y bloquear
      el telefono.
                   """)
-           self.comand=input("opcion: ")
-           if self.comand == "1":
+           comand=input("opcion: ")
+           if comand == "1":
                 system("bash /data/data/com.termux/files/home/Hash_crack/crunch.sh")
 
-           elif self.comand == "2":
+           elif comand == "2":
                    system("clear")
                    minimo=input("ingrese el minimo de la contrasena: ")
                    maximo=input("ingrese el maximo de la contraseña: ")
@@ -109,7 +109,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                    
 
 
-           elif self.comand == "3":
+           elif comand == "3":
                   system("clear")
                   password=input("ingrese lo que conoce de la contraseña y lo que no como simbolo @: ")
                   valores=input("ingrese los datos a probar en la contraseña: ")
