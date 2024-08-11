@@ -14,7 +14,7 @@
 
 
 from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s
-import sys
+from sys import argv,exit
 from os import system
 from time import sleep
 
@@ -42,7 +42,7 @@ class Hash_crack:
              print("NOTA:¡Este proceso puede tardar y solo funciona dependiendo de la app que se uso para crear el zip!")
              sleep(4)
              system("python3 /data/data/com.termux/files/home/Hash_crack/zcrack.py")
-             sys.exit(2)
+             exit(2)
 
        return
 
@@ -55,7 +55,7 @@ class Hash_crack:
              sleep(4)
              system("clear")
              system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
-             sys.exit(2)
+             exit(2)
 
        return
 
@@ -108,7 +108,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                    system("clear")
                    print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar Hasher.py")
                    print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
-                   sys.exit(2)
+                   exit(2)
 
 
            elif self.comand == "3":
@@ -119,7 +119,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                   system("clear")
                   print("a continuacion copie y pegue ese comando que se le dara y vuelva a ejecutar Hasher.py")
                   print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
-                  sys.exit(2)
+                  exit(2)
 
            else:
                  print("¡Opcion no valida!")
@@ -127,7 +127,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                  system("clear")
                  self.counter += 1
                  if self.counter >= 1:
-                       sys.exit(2)
+                       exit(2)
 
                  else:
                      self.crunch()
@@ -140,7 +140,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
 
       if self.encryption == self.hash_input:
                print(f"su contraseña es {self.password}")
-               sys.exit(2)
+               exit(2)
 
 
 
@@ -175,7 +175,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                self.validation()
                if self.encryption_sha3 == self.hash_input:
                  print(f"su contraseña es {self.password}")
-                 sys.exit(2)
+                 exit(2)
 
 
 
@@ -185,7 +185,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                self.validation()
                if self.encryption_sha3 == self.hash_input:
                  print(f"su contraseña es {self.password}")
-                 sys.exit(2)
+                 exit(2)
 
 
 
@@ -196,13 +196,13 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                self.validation()
                if self.encryption_sha3 == self.hash_input:
                  print(f"su contraseña es {self.password}")
-                 sys.exit(2)
+                 exit(2)
 
                else:
                  blas2=blake2s(data).hexdigest()
                  if blas2 == self.hash_input:
                      print(f"su contraseña es {self.password}")
-                     sys.exit(2)
+                     exit(2)
 
 
 
@@ -212,7 +212,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
                self.validation()
                if self.encryption_sha3 == self.hash_input:
                   print(f"su contraseña es {self.password}")
-                  sys.exit(2)
+                  exit(2)
 
 
 
@@ -304,7 +304,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
 |blake2s |
  --------
            """)
-      sys.exit(2)
+      exit(2)
 
     return
 
@@ -313,7 +313,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
    except KeyboardInterrupt:
        system("clear")
        print("bye")
-       sys.exit(2)
+       exit(2)
 
 
 
@@ -321,7 +321,7 @@ NOTA:tener cuidado con la cantidad de contraseñas que
 
   def arguments(self):
 
-     for self.arg in sys.argv:
+     for self.arg in argv:
          if self.arg == "-h" or self.arg == "--help":
               print("""
 usage: python3 Hasher.py
@@ -343,7 +343,7 @@ usage: python3 Hasher.py
 |blake2s |
  --------
                     """)
-              sys.exit(2)
+              exit(2)
 
 
 
