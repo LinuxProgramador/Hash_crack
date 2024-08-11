@@ -64,7 +64,7 @@ class Hash_crack:
      verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
      if verificate == "no":
            system("rm -f /data/data/com.termux/files/home/Hash_crack/wordlist.txt")
-           print("¡Usaremos Crunch para generar un nuevo diccionario!")
+           print("We'll use Crunch to generate a new dictionary!")
            sleep(3)
            system("clear")
            print("""
