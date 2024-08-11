@@ -13,6 +13,6 @@ python3 Hasher.py
 
 
 NOTA:si quiere importar su propio diccionario tiene que llamarse wordlist.txt y estar dentro del directorio Hash_crack
-
+Opcional:borrar RARNinja (Multithreaded).py ya que no es necesario en el programa 
 
 Para salir del programa presione CTRL C
