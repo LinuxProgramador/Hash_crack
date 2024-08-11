@@ -1,11 +1,11 @@
 echo $(clear)
-echo "ingrese sus tres palabras para el diccionario concatenado"
+echo "enter your three words for the concatenated dictionary"
 
-read -p "ingrese su primera palabra: " palabra1
+read -p "Enter your first word: " palabra1
 
-read -p "ingrese su segunda palabra: " palabra2
+read -p "Please enter your second word: " palabra2
 
-read -p "ingrese su tercera palabra: " palabra3
+read -p "Please enter your third word: " palabra3
 echo $(clear)
 
 
