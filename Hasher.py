@@ -218,12 +218,37 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
     return
 
-
+  def show_help(self):
+    
+                  print("""
+Usage: 
+     python3 Hasher.py
+Help Menu:
+     -h  --help  print the help menu
+ ----------------------------
+|  list of available hashes  |
+ ----------------------------
+|md5     |
+|sha1    |
+|sha224  |
+|sha256  |
+|sha384  |
+|sha512  |
+|sha3_256|
+|sha3_224|
+|sha3_384|
+|sha3_512|
+|blake2s |
+ --------
+                    """)
+    
+    
   def main(self):
 
    try:
-    system("clear")
-    self.arguments()
+    if "-h" in argv or "--help" in argv:
+               self.show_help()
+      
     self.banner()
     self.crunch()
     self.zcrack()
@@ -273,69 +298,12 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
     else:
-      system("clear")
-      print("¡Hash invalido!")
-      print("""
- -----------------------------
-| Lista de hashes disponibles |
- -----------------------------
-|md5     |
-|sha1    |
-|sha224  |
-|sha256  |
-|sha384  |
-|sha512  |
-|sha3_256|
-|sha3_224|
-|sha3_384|
-|sha3_512|
-|blake2s |
- --------
-           """)
+      self.show_help()
       
 
-    
-
-
-
    except KeyboardInterrupt:
-       system("clear")
-       print("bye")
-       
-
-
-
-
-
-  def arguments(self):
-
-     for self.arg in argv:
-         if self.arg == "-h" or self.arg == "--help":
-              print("""
-usage: python3 Hasher.py
--h  --help  imprime el menu de ayuda
-
- -----------------------------
-| Lista de hashes disponibles |
- -----------------------------
-|md5     |
-|sha1    |
-|sha224  |
-|sha256  |
-|sha384  |
-|sha512  |
-|sha3_256|
-|sha3_224|
-|sha3_384|
-|sha3_512|
-|blake2s |
- --------
-                    """)
-              
-
-
-
-
+        print("\nBYE!!")
+    
 
 if __name__ == "__main__":
   result=Hash_crack()
