@@ -76,6 +76,7 @@ class Hash_crack:
    
 3) create a dictionary with the initial of a password and the rest trying combinations for example:
    qwerty (12345) 
+   Note: It is important to emphasize that if the password is hello123 and the initials that you do not know are 123, then put them in @ for example hello@@@ and the exact length for example in this case would be 7
    
 NOTE:Be careful with the number of passwords you use. can be generated, it can reach up to gigabytes and block the phone
                   """)
