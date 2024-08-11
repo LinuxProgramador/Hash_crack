@@ -151,13 +151,13 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
              if hash_verification == "md5":
                encryption=md5(password.encode('utf8')).hexdigest()
                self.validation(password)
-              
+               exit(2)
 
 
              elif hash_verification == "sha1":
                encryption=sha1(password.encode('utf8')).hexdigest()
                self.validation(password)
-               
+               exit(2)
 
 
 
@@ -167,8 +167,8 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                self.validation(password)
                if encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
-                 
-
+               exit(2) 
+                
 
 
              elif hash_verification == "sha384":
@@ -177,8 +177,7 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                self.validation(password)
                if encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
-                 
-
+               exit(2)
 
 
 
@@ -188,14 +187,14 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                self.validation(password)
                if encryption_sha3 == hash_input:
                  print(f"su contraseña es {password}")
-                 
+               
 
                else:
                  blas2=blake2s(data).hexdigest()
                  if blas2 == hash_input:
                      print(f"su contraseña es {password}")
                      
-
+               exit(2)
 
 
              elif hash_verification == "sha512":
@@ -204,10 +203,11 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
                self.validation(password)
                if encryption_sha3 == hash_input:
                   print(f"su contraseña es {password}")
+               exit(2) 
                   
-                  
+      print("¡La contraseña no esta en el diccionario!")
 
-
+         
        
     
    
