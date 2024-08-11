@@ -127,10 +127,10 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
 
-  def validation(self):
+  def validation(self,password):
 
       if self.encryption == self.hash_input:
-               print(f"su contraseña es {self.password}")
+               print(f"su contraseña es {password}")
                
 
 
