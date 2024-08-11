@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 
-#Herramienta para romper el hash por fuerza bruta en termux
+#Herramienta para romper hashes por fuerza bruta en termux
 
 #La herramienta zcrack fue brindada por maquina1337 visita su pagina en github
 #https://github.com/machine1337/zipcrack
-
 #El banner fue brindado por CiKu370 visita su pagina en github
 #https://github.com/CiKu370/hasher
-
-##La herramienta RARNinja fue brindado por SHUR1K-N visita su pagina en github
+#La herramienta RARNinja fue brindado por SHUR1K-N visita su pagina en github
 #https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
 
 
