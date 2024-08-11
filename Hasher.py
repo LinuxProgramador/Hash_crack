@@ -60,7 +60,6 @@ class Hash_crack:
        if self.confirm2.lower() == "si":
              print("NOTA:¡Este proceso puede tardar y solo funciona dependiendo de la app que se uso para crear el rar!")
              sleep(4)
-             system("clear")
              system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
              
 
