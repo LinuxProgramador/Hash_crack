@@ -44,13 +44,13 @@ class Hash_crack:
 
   def call_modules(self):
 
-    self.confirm=input("Desea usar zcrack para zip o RARNinja para rar: ").strip().lower()
-    if self.confirm == "zcrack": 
+    confirm=input("Desea usar zcrack para zip o RARNinja para rar: ").strip().lower()
+    if confirm == "zcrack": 
       print("NOTA:¡Este proceso puede tardar!") 
       sleep(3) 
       system("python3 /data/data/com.termux/files/home/Hash_crack/zcrack.py")
              
-    elif self.confirm == "rarninja":
+    elif confirm == "rarninja":
       print("NOTA:¡Este proceso puede tardar!") 
       sleep(3) 
       system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
