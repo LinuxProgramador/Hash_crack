@@ -68,31 +68,16 @@ class Hash_crack:
            sleep(3)
            system("clear")
            print("""
-1) crear diccionario concatenando palabras por ejemplo:
-   sin concatenar (Harry  Hermallony  Ron)
-   con concatenar (HarryHermallonyRon)
-
-
-
-2) crear diccionario especificando un minimo y un maximo
-   de caracteres a utilizar por ejemplo: (crunch 4 8 abcdef)
-
-   ¡Aqui me generara un minimo de 4 y un maximo de 8
-   caracteres usando todas las combinaciones posibles
-   de la abcdef o cualquier otro dato que se le asigne.!
-
-
-
-
-3) crear un diccionario con la inicial de una contraseña
-   y el resto probando combinaciones por ejemplo:
-   qwerty (12345)
-
-
-
-NOTA:Tener cuidado con la cantidad de contraseñas que
-     se pueden generar, puede llegar hasta gigas y bloquear
-     el telefono.
+1) create dictionary by concatenating words for example:
+   unconcatenated (Harry Hermallony Ron) with concatenate (HarryHermallonyRon) 
+   
+2) create dictionary specifying a minimum and maximum of characters to use for example:
+   (crunch 4 8 abcdef) Here it will generate a minimum of 4 and a maximum of 8 characters using all possible combinations of the abcdef or any other data assigned to it.! 
+   
+3) create a dictionary with the initial of a password and the rest trying combinations for example:
+   qwerty (12345) 
+   
+NOTE:Be careful with the number of passwords you use. can be generated, it can reach up to gigabytes and block the phone
                   """)
            comand=input("opcion: ")
            if comand == "1":
