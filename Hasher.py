@@ -131,7 +131,8 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
       if self.encryption == self.hash_input:
                print(f"su contraseña es {password}")
-               
+      else:
+        print("¡La contraseña no esta en el diccionario!")
 
 
 
@@ -207,9 +208,9 @@ NOTA:Tener cuidado con la cantidad de contraseñas que
 
 
 
-    print("¡La contraseña no esta en el diccionario!")
+   
 
-    return
+    
 
   def show_help(self):
     
