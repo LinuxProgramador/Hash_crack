@@ -79,14 +79,14 @@ class Hash_crack:
    
 NOTE:Be careful with the number of passwords you use. can be generated, it can reach up to gigabytes and block the phone
                   """)
-           comand=input("opcion: ")
+           comand=input("option: ")
            if comand == "1":
                 system("bash /data/data/com.termux/files/home/Hash_crack/crunch.sh")
 
            elif comand == "2":
                    system("clear")
-                   minimo=input("ingrese el minimo de la contrasena: ")
-                   maximo=input("ingrese el maximo de la contraseña: ")
+                   minimo=input("Enter the minimum password: ")
+                   maximo=input("Enter the maximum password: ")
                    valores=input("ingrese los datos a generar el diccionario: ")
                    system("clear")
                    print("A continuacion copie y pegue en la consola ese comando que se le dara y vuelva a ejecutar Hasher.py")
