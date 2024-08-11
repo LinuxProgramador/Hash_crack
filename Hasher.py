@@ -244,8 +244,7 @@ Help Menu:
       
     self.banner()
     self.crunch()
-    self.zcrack()
-    self.rar()
+    self.call_modules()
     self.hash_input=input("ingrese el hash a decifrar: ")
     if len(self.hash_input) == self.md5:
              self.hash_verification="md5"
