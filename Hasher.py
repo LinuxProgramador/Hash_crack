@@ -29,6 +29,7 @@ class Hash_crack:
     self.sha512=len("eda2d415e59c909a7db89b3e2cd4f44b72c37c79d47e31d37e8e64e3e954ccd182649aa08c2ad3da8a8834abc5d1fbe9297e1833bd2e499c85a85dd97b407e15")
     self.rute_dictionary="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
 
+
   def banner(self):
         print ('\n              Hasher 1.0')
         print ('  ------------------------------------------')
@@ -39,11 +40,7 @@ class Hash_crack:
         print ('  ------------------------------------------')
         
 
-
-
-
   def call_modules(self):
-
     confirm=input("Do you want to use (zcrack/rarninja/or \"no\" for none ): ").strip().lower()
     if confirm == "zcrack": 
       print("NOTE:This process may take time!") 
@@ -57,11 +54,7 @@ class Hash_crack:
       system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
       exit(2)      
     
-      
-
-
-  def crunch(self):
-
+ def crunch(self):
      verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
      if verificate == "no":
            system("rm -f /data/data/com.termux/files/home/Hash_crack/wordlist.txt")
@@ -94,8 +87,6 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                    print("Then copy and paste the command that will be given to you into the console and run Hasher.py again.")
                    print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
                    exit(2)
-
-
            elif comand == "3":
                   system("clear")
                   password=input("Enter what you know of the password and what you don't as the @ symbol: ")
@@ -105,17 +96,12 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                   print("Next, copy and paste the command that will be given to you into the console and run Hasher.py again.")
                   print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
                   exit(2)
-
            else:
                  print("Invalid option!")
                  exit(2)
 
 
-
-
-
   def validation(self,password,hash_input,encryption):
-
       if encryption == hash_input:
                print("\n{***********************SUCCESS***********************}")
                print(f"[ ✔ ] Password Found:- {password}")
@@ -127,29 +113,20 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
 
 
   def crack(self,hash_input,hash_verification):
-
-    
     with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
         list_words=keywords_read.readlines()
-
 
     for keywords in set(list_words):
              password=keywords.strip()
              data=password.encode()
-
              if hash_verification == "md5":
                encryption=md5(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                
-
-
              elif hash_verification == "sha1":
                encryption=sha1(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                
-
-
-
              elif hash_verification == "sha224":
                encryption=sha224(password.encode('utf8')).hexdigest()
                encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
@@ -161,7 +138,6 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                else:
                  print(f"[*] Trying password:- {password}")
 
-
              elif hash_verification == "sha384":
                encryption=sha384(password.encode('utf8')).hexdigest()
                encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
@@ -172,7 +148,6 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                  exit(2)
                else:
                  print(f"[*] Trying password:- {password}")
-
 
              elif hash_verification == "sha256":
                encryption=sha256(password.encode('utf8')).hexdigest()
@@ -193,7 +168,6 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                else:
                    print(f"[*] Trying password:- {password}")
 
-
              elif hash_verification == "sha512":
                encryption=sha512(password.encode('utf8')).hexdigest()
                encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
@@ -208,15 +182,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
     print("[x] The password is not in the dictionary!")
 
          
-       
-    
-   
-
-    
-
-  def show_help(self):
-    
-                  print("""
+ def show_help(self):
+             print("""
 Usage: 
      python3 Hasher.py
 Help Menu:
@@ -240,7 +207,6 @@ Help Menu:
     
     
   def main(self):
-
    try:
     if "-h" in argv or "--help" in argv:
                self.show_help()
@@ -256,59 +222,48 @@ Help Menu:
              print("Wait, this may take a while")
              sleep(2)
              self.crack(hash_input,hash_verification)
-
     elif len(hash_input) == self.sha1:
              hash_verification="sha1"
              system("clear")
              print("Wait, this may take a while")
              sleep(2)
              self.crack(hash_input,hash_verification)
-
     elif len(hash_input) == self.sha224:
              hash_verification="sha224"
              system("clear")
              print("Wait, this may take a while")
              sleep(2)
              self.crack(hash_input,hash_verification)
-
     elif len(hash_input) == self.sha384:
              hash_verification="sha384"
              system("clear")
              print("Wait, this may take a while")
              sleep(2)
              self.crack(hash_input,hash_verification)
-
     elif len(hash_input) == self.sha256:
              hash_verification="sha256"
              system("clear")
              print("Wait, this may take a while")
              sleep(2)
              self.crack(hash_input,hash_verification)
-
     elif len(hash_input) == self.sha512:
              hash_verification="sha512"
              system("clear")
              print("Wait, this may take a while")
              sleep(2)
              self.crack(hash_input,hash_verification)
-
-
     else:
       self.show_help()
       
-
    except KeyboardInterrupt:
         print("BYE!!")
 
    except FileNotFoundError as e:
             print(f"Wordlist.txt does not exist in the path => {e}")
     
-
 if __name__ == "__main__":
   crack=Hash_crack()
   crack.main()
-
-
 
 
 __name__="Hasher"
