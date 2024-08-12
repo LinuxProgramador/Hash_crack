@@ -182,7 +182,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
     print("[x] The password is not in the dictionary!")
 
          
- def show_help(self):
+  def show_help(self):
              print("""
 Usage: 
      python3 Hasher.py
