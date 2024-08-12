@@ -126,6 +126,14 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              elif hash_verification == "sha1":
                encryption=sha1(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
+               RIPEMD = RIPEMD160.new()
+               RIPEMD.update(data)
+               if RIPEMD.hexdigest() == hash_input:
+                   print("\n{***********************SUCCESS***********************}")
+                   print(f"[ ✔ ] Password Found:- {password}")
+                   exit(2)
+               else:
+                   print(f"[*] Trying password:- {password}")
                
              elif hash_verification == "sha224":
                encryption=sha224(password.encode('utf8')).hexdigest()
