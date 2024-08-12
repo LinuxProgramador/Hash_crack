@@ -299,5 +299,5 @@ if __name__ == "__main__":
 __name__="Hasher"
 __version__="1.0"
 __license__="GPL"
-__status__="alpha"
+__status__="Finished"
 __author__="WhiteHack"
