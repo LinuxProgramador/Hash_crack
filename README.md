@@ -17,6 +17,10 @@ NOTA:si quiere importar su propio diccionario tiene que llamarse wordlist.txt y 
 
 Nota: Descifrar la contraseña en archivos zip y rar depende mucho del programa que los comprimió, es más factible descifrarlos si se comprimieron con zip o rar de consola
 
+zcrack :- crack zip
+
+RARNinja :- crack rar
+
 Opcional:borrar RARNinja (Multithreaded).py ya que no es necesario en el programa 
 
 Para salir del programa presione CTRL C
