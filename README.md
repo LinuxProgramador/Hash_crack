@@ -11,6 +11,7 @@ bash dependencies.sh
 
 python3 Hasher.py
 
+python3 Hasher.py [-h,--help]  muestra el menu de ayuda 
 
 NOTA:si quiere importar su propio diccionario tiene que llamarse wordlist.txt y estar dentro del directorio Hash_crack
 
