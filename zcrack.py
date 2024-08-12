@@ -72,6 +72,8 @@ def linuxpdf():
                 print(colored("\n{***********************SUCCESS***********************}", 'green'))
                 print(colored("[ ✔ ] ZIP FILE Password Found:- ", 'cyan'), password.decode().strip())
                 break
+            except KeyboardInterrupt:
+                print()
             except:
                 helo = round((index / total_passwords) * 100, 2)
                 if helo == '100%':
