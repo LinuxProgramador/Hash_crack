@@ -15,11 +15,14 @@ python3 Hasher.py [-h,--help]  muestra el menu de ayuda
 
 NOTA:si quiere importar su propio diccionario tiene que llamarse wordlist.txt y estar dentro del directorio Hash_crack
 
-Nota: Descifrar la contraseña en archivos zip y rar depende mucho del programa que los comprimió, es más factible descifrarlos si se comprimieron con zip o rar de consola
+Nota:descifrar la contraseña en archivos zip y rar depende mucho del programa que los comprimió, es más factible descifrarlos si se comprimieron con zip o rar de consola
 
 zcrack :- crack zip
 
 RARNinja :- crack rar
+
+Nota:en teléfonos de baja gama, recomendado dividir un diccionario personalizado como el rockyou en tamaños de 10 mb cada uno para evitar el lag en termux,
+con éste comando se divide split -b 10M wordlist.txt key_
 
 Opcional:borrar RARNinja (Multithreaded).py ya que no es necesario en el programa 
 
