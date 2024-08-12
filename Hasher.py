@@ -120,11 +120,11 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              password=keywords.strip()
              data=password.encode()
              if hash_verification == "md5":
-               encryption=md5(password.encode('utf8')).hexdigest()
+               encryption=md5(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
                
              elif hash_verification == "sha1":
-               encryption=sha1(password.encode('utf8')).hexdigest()
+               encryption=sha1(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
                RIPEMD = RIPEMD160.new()
                RIPEMD.update(data)
@@ -136,8 +136,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                    print(f"[*] Trying password:- {password}")
                
              elif hash_verification == "sha224":
-               encryption=sha224(password.encode('utf8')).hexdigest()
-               encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
+               encryption=sha224(password.encode('latin-1')).hexdigest()
+               encryption_sha3=sha3_224(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
                  print("\n{***********************SUCCESS***********************}")
@@ -147,8 +147,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                  print(f"[*] Trying password:- {password}")
 
              elif hash_verification == "sha384":
-               encryption=sha384(password.encode('utf8')).hexdigest()
-               encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
+               encryption=sha384(password.encode('latin-1')).hexdigest()
+               encryption_sha3=sha3_384(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
                  print("\n{***********************SUCCESS***********************}")
@@ -158,8 +158,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                  print(f"[*] Trying password:- {password}")
 
              elif hash_verification == "sha256":
-               encryption=sha256(password.encode('utf8')).hexdigest()
-               encryption_sha3=sha3_256(password.encode('utf8')).hexdigest()
+               encryption=sha256(password.encode('latin-1')).hexdigest()
+               encryption_sha3=sha3_256(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
                  print("\n{***********************SUCCESS***********************}")
@@ -177,8 +177,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                    print(f"[*] Trying password:- {password}")
 
              elif hash_verification == "sha512":
-               encryption=sha512(password.encode('utf8')).hexdigest()
-               encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
+               encryption=sha512(password.encode('latin-1')).hexdigest()
+               encryption_sha3=sha3_512(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
                   print("\n{***********************SUCCESS***********************}")
