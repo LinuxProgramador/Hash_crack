@@ -21,12 +21,12 @@ class Hash_crack:
 
 
   def __init__(self):
-    self.md5=len("7e4b64eb65e34fdfad79e623c44abd94")
-    self.sha1=len("fb350a3339434d66a5d41d5b4ec073e1f25891c6")
-    self.sha224=len("07aa9272511b124aa03950a8324fbbaecd9cb4a534ccd8ad6a033e9d")
-    self.sha256=len("23a7b87d4d4e69bbf44b07558b12f39dff5452a80eb60097f1e91ae237583fc9")
-    self.sha384=len("c6bafe2a4bdcb52b1f994861f663fa9cf739e84ea53fcce96a5131585b22d6dbb7330825146d38edc7122d64ecc1c534")
-    self.sha512=len("eda2d415e59c909a7db89b3e2cd4f44b72c37c79d47e31d37e8e64e3e954ccd182649aa08c2ad3da8a8834abc5d1fbe9297e1833bd2e499c85a85dd97b407e15")
+    self.md5=32
+    self.sha1=40
+    self.sha224=56
+    self.sha256=64
+    self.sha384=96
+    self.sha512=128
     self.rute_dictionary="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
 
 
