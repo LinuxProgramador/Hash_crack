@@ -11,7 +11,7 @@
 
 
 
-from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s
+from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s,blake2b
 from sys import argv,exit
 from os import system
 from time import sleep
@@ -178,6 +178,14 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                   exit(2) 
                else:
                   print(f"[*] Trying password:- {password}")
+
+               blas2=blake2b(data).hexdigest() 
+               if blas2 == hash_input: 
+                    
+                    print(f"[ ✔ ] Password Found:- {password}") 
+                    exit(2) 
+               else: 
+                    print(f"[*] Trying password:- {password}")
                   
     print("[x] The password is not in the dictionary!")
 
@@ -202,6 +210,7 @@ Help Menu:
 |sha3_384|
 |sha3_512|
 |blake2s |
+|blake2b |
  --------
                     """)
     
