@@ -117,6 +117,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
   def validation(self,password,hash_input,encryption):
 
       if encryption == hash_input:
+               print("\n{***********************SUCCESS***********************}")
                print(f"[ ✔ ] Password Found:- {password}")
                exit(2)
       else:
@@ -154,6 +155,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption_sha3=sha3_224(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
+                 print("\n{***********************SUCCESS***********************}")
                  print(f"[ ✔ ] Password Found:- {password}")
                  exit(2) 
                else:
@@ -165,6 +167,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption_sha3=sha3_384(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
+                 print("\n{***********************SUCCESS***********************}")
                  print(f"[ ✔ ] Password Found:- {password}")
                  exit(2)
                else:
@@ -176,6 +179,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption_sha3=sha3_256(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
+                 print("\n{***********************SUCCESS***********************}")
                  print(f"[ ✔ ] Password Found:- {password}")
                  exit(2)
                else:
@@ -183,6 +187,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                
                blas2=blake2s(data).hexdigest()
                if blas2 == hash_input:
+                   print("\n{***********************SUCCESS***********************}")
                    print(f"[ ✔ ] Password Found:- {password}")
                    exit(2)
                else:
@@ -194,6 +199,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption_sha3=sha3_512(password.encode('utf8')).hexdigest()
                self.validation(password,hash_input,encryption)
                if encryption_sha3 == hash_input:
+                  print("\n{***********************SUCCESS***********************}")
                   print(f"[ ✔ ] Password Found:- {password}")
                   exit(2) 
                else:
