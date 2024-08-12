@@ -234,7 +234,9 @@ Help Menu:
     hash_input=input("Enter the hash to decrypt: ")
     if len(hash_input) == self.md5:
              hash_verification="md5"
-             print(f"Type hash: {hash_verification}")
+             print(f"""
+             Type hash: {hash_verification}
+                   """)
              sleep(3)
              system("clear")
              print("*****************************")
