@@ -114,9 +114,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
 
   def crack(self,hash_input,hash_verification):
     with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
-        list_words=keywords_read.readlines()
-
-    for keywords in set(list_words):
+        for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()
              if hash_verification == "md5":
@@ -195,7 +193,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                else: 
                     print(f"[*] Trying password:- {password}")
                   
-    print("[x] The password is not in the dictionary!")
+        print("[x] The password is not in the dictionary!")
 
          
   def show_help(self):
