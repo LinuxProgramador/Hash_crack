@@ -181,7 +181,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
 
                blas2=blake2b(data).hexdigest() 
                if blas2 == hash_input: 
-                    
+                    print("\n{***********************SUCCESS***********************}")
                     print(f"[ ✔ ] Password Found:- {password}") 
                     exit(2) 
                else: 
