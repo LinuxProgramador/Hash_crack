@@ -44,7 +44,7 @@ class Hash_crack:
 
   def call_modules(self):
 
-    confirm=input("Do you want to use (zcrack/RARNinja/or \"no\" for none ): ").strip().lower()
+    confirm=input("Do you want to use (zcrack/rarninja/or \"no\" for none ): ").strip().lower()
     if confirm == "zcrack": 
       print("NOTE:This process may take time!") 
       sleep(3) 
@@ -53,6 +53,7 @@ class Hash_crack:
     elif confirm == "rarninja":
       print("NOTE:This process may take time!") 
       sleep(3) 
+      system("clear")
       system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
       exit(2)      
     
