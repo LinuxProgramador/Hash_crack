@@ -221,36 +221,47 @@ Help Menu:
              system("clear")
              print("*****************************")
              print(" Wait, this may take a while ")
+             print("*****************************")
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha1:
              hash_verification="sha1"
              system("clear")
-             print("Wait, this may take a while")
+             print("*****************************")
+             print(" Wait, this may take a while ")
+             print("*****************************")
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha224:
              hash_verification="sha224"
              system("clear")
-             print("Wait, this may take a while")
+             print("*****************************")
+             print(" Wait, this may take a while ")
+             print("*****************************")
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha384:
              hash_verification="sha384"
              system("clear")
-             print("Wait, this may take a while")
+             print("*****************************")
+             print(" Wait, this may take a while ")
+             print("*****************************")
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha256:
              hash_verification="sha256"
              system("clear")
-             print("Wait, this may take a while")
+             print("*****************************")
+             print(" Wait, this may take a while ")
+             print("*****************************")
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha512:
              hash_verification="sha512"
              system("clear")
-             print("Wait, this may take a while")
+             print("*****************************")
+             print(" Wait, this may take a while ")
+             print("*****************************")
              sleep(2)
              self.crack(hash_input,hash_verification)
     else:
