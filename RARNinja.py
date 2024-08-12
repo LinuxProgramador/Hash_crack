@@ -89,7 +89,7 @@ if __name__ == "__main__":
                 break
             else:
                 clrscr()
-                print("\nEither file does not exist or invalid path entered. Try again.\n")
+                print("\nWrong route or non-existent wordlist . Try again.\n")
                 continue
 
         while (True):
