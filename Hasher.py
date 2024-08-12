@@ -219,7 +219,8 @@ Help Menu:
     if len(hash_input) == self.md5:
              hash_verification="md5"
              system("clear")
-             print("Wait, this may take a while")
+             print("*****************************")
+             print(" Wait, this may take a while ")
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha1:
