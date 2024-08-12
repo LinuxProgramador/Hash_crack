@@ -54,7 +54,7 @@ class Hash_crack:
       system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
       exit(2)      
     
- def crunch(self):
+  def crunch(self):
      verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
      if verificate == "no":
            system("rm -f /data/data/com.termux/files/home/Hash_crack/wordlist.txt")
