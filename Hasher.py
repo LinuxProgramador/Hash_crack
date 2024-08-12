@@ -118,7 +118,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
       if encryption == hash_input:
                print(f"Your password is {password}")
                exit(2)
-        
+      else:
+           print(f"[*] Trying password:- {password}")
 
 
 
@@ -154,7 +155,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                if encryption_sha3 == hash_input:
                  print(f"Your password is {password}")
                  exit(2) 
-                
+               else:
+                 print(f"[*] Trying password:- {password}")
 
 
              elif hash_verification == "sha384":
@@ -164,7 +166,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                if encryption_sha3 == hash_input:
                  print(f"Your password is {password}")
                  exit(2)
-
+               else:
+                 print(f"[*] Trying password:- {password}")
 
 
              elif hash_verification == "sha256":
@@ -174,13 +177,15 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                if encryption_sha3 == hash_input:
                  print(f"Your password is {password}")
                  exit(2)
-
                else:
-                 blas2=blake2s(data).hexdigest()
-                 if blas2 == hash_input:
-                     print(f"Your password is {password}")
-                     exit(2)
+                 print(f"[*] Trying password:- {password}")
                
+               blas2=blake2s(data).hexdigest()
+               if blas2 == hash_input:
+                   print(f"Your password is {password}")
+                   exit(2)
+               else:
+                   print(f"[*] Trying password:- {password}")
 
 
              elif hash_verification == "sha512":
@@ -190,6 +195,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                if encryption_sha3 == hash_input:
                   print(f"Your password is {password}")
                   exit(2) 
+               else:
+                  print(f"[*] Trying password:- {password}")
                   
     print("The password is not in the dictionary!")
 
@@ -239,43 +246,43 @@ Help Menu:
     if len(hash_input) == self.md5:
              hash_verification="md5"
              system("clear")
-             sleep(1)
              print("Wait, this may take a while")
+             sleep(2)
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha1:
              hash_verification="sha1"
              system("clear")
-             sleep(1)
              print("Wait, this may take a while")
+             sleep(2)
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha224:
              hash_verification="sha224"
              system("clear")
-             sleep(1)
              print("Wait, this may take a while")
+             sleep(2)
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha384:
              hash_verification="sha384"
              system("clear")
-             sleep(1)
              print("Wait, this may take a while")
+             sleep(2)
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha256:
              hash_verification="sha256"
              system("clear")
-             sleep(1)
              print("Wait, this may take a while")
+             sleep(2)
              self.crack(hash_input,hash_verification)
 
     elif len(hash_input) == self.sha512:
              hash_verification="sha512"
              system("clear")
-             sleep(1)
              print("Wait, this may take a while")
+             sleep(2)
              self.crack(hash_input,hash_verification)
 
 
