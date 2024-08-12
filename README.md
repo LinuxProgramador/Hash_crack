@@ -15,6 +15,8 @@ python3 Hasher.py [-h,--help]  muestra el menu de ayuda
 
 NOTA:si quiere importar su propio diccionario tiene que llamarse wordlist.txt y estar dentro del directorio Hash_crack
 
+Nota: Descifrar la contraseña en archivos zip y rar depende mucho del programa que los comprimió, es más factible descifrarlos si se comprimieron con zip o rar de consola
+
 Opcional:borrar RARNinja (Multithreaded).py ya que no es necesario en el programa 
 
 Para salir del programa presione CTRL C
