@@ -10,7 +10,7 @@
 #https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
 
 
-
+from Crypto.Hash import RIPEMD160
 from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s,blake2b
 from sys import argv,exit
 from os import system
