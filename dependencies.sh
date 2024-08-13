@@ -10,10 +10,15 @@ function main {
     sleep 2
     if [ "$os" = 'Android' ] ; then
        apt install python3 python-pip -y
-       pip install pyfiglet requests termcolor rarfile colorama pycryptodome
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
        echo $(clear)
     elif [ "$os" = 'GNU/Linux' ] ; then
-       
+       sudo apt install python3 python-pip -y
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
+       echo $(clear)
+    else
+      echo "system does not support"
+    fi
          
     if [ "$arch" != 'aarch64' ] ; then
            apt install crunch -y
