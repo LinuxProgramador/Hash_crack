@@ -29,7 +29,7 @@ class Hash_crack:
     self.sha512=128
     self.user=getuser()
     self.rute_dictionary_termux="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
-    self.rute_dictionary_linux=f"/home/{self.user}/Hash_crack/wordlist.txt'
+    self.rute_dictionary_linux=f"/home/{self.user}/Hash_crack/wordlist.txt"
     
   def banner(self):
         print ('''\n
