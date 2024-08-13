@@ -239,9 +239,11 @@ Help Menu:
              print(f"Type hash => {hash_verification}")
              sleep(4)
              system("clear")
-             print("*****************************")
-             print(" Wait, this may take a while ")
-             print("*****************************")
+             print("""
+*****************************
+Wait, this may take a while
+*****************************
+                   """)
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha1:
@@ -249,9 +251,11 @@ Help Menu:
              print("Type hash => (sha1/rypemd-160)")
              sleep(4)
              system("clear")
-             print("*****************************")
-             print(" Wait, this may take a while ")
-             print("*****************************")
+             print("""
+*****************************
+Wait, this may take a while
+*****************************
+                   """)
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha224:
@@ -259,9 +263,11 @@ Help Menu:
              print("Type hash => (sha224/sha3_224)")
              sleep(4)
              system("clear")
-             print("*****************************")
-             print(" Wait, this may take a while ")
-             print("*****************************")
+             print("""
+*****************************
+Wait, this may take a while
+*****************************
+                   """)
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha384:
@@ -269,9 +275,11 @@ Help Menu:
              print("Type hash => (sha384/sha3_384)")
              sleep(4)
              system("clear")
-             print("*****************************")
-             print(" Wait, this may take a while ")
-             print("*****************************")
+             print("""
+*****************************
+Wait, this may take a while
+*****************************
+                   """)
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha256:
@@ -279,9 +287,11 @@ Help Menu:
              print("Type hash => (sha256/sha3_256/blake2s)")
              sleep(4)
              system("clear")
-             print("*****************************")
-             print(" Wait, this may take a while ")
-             print("*****************************")
+             print("""
+*****************************
+Wait, this may take a while
+*****************************
+                   """)
              sleep(2)
              self.crack(hash_input,hash_verification)
     elif len(hash_input) == self.sha512:
@@ -289,9 +299,11 @@ Help Menu:
              print("Type hash => (sha512/sha3_512/blake2b)")
              sleep(4)
              system("clear")
-             print("*****************************")
-             print(" Wait, this may take a while ")
-             print("*****************************")
+             print("""
+*****************************
+Wait, this may take a while
+*****************************
+                   """)
              sleep(2)
              self.crack(hash_input,hash_verification)
     else:
