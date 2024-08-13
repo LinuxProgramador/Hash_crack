@@ -34,9 +34,15 @@ function main {
            echo -e "\033[1;37m"
          fi 
     else
-        cp -f ~/Hash_crack/crunch  $PATH/
-        echo -e "\033[1;34mThe system supports the Hash_crack directory crunch"
-        echo -e "\033[1;37m"
+        if [ "$os" = 'Android' ] ; then
+           cp -f ~/Hash_crack/crunch  $PATH/
+           echo -e "\033[1;34mThe system supports the Hash_crack directory crunch"
+           echo -e "\033[1;37m"
+         else
+           cp -f ~/Hash_crack/crunch  /usr/bin
+           echo -e "\033[1;34mThe system supports the Hash_crack directory crunch"
+           echo -e "\033[1;37m"
+         fi
     fi
 
 }
