@@ -47,13 +47,13 @@ class Hash_crack:
     if confirm == "zcrack": 
       print("NOTE:This process may take time!") 
       sleep(3) 
-      system("python3 /data/data/com.termux/files/home/Hash_crack/zcrack.py")
+      system("python3 ~/Hash_crack/zcrack.py")
       exit(2)       
     elif confirm == "rarninja":
       print("NOTE:This process may take time!") 
       sleep(3) 
       system("clear")
-      system("python3 /data/data/com.termux/files/home/Hash_crack/RARNinja.py")
+      system("python3 ~/Hash_crack/RARNinja.py")
       exit(2)      
     
   def crunch(self):
