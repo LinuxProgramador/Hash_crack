@@ -113,7 +113,6 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
 
 
 
-
   def crack(self,hash_input,hash_verification):
     with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
         for keywords in keywords_read:
@@ -122,7 +121,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              if hash_verification == "md5":
                encryption=md5(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
-               
+
              elif hash_verification == "sha1":
                encryption=sha1(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
@@ -134,79 +133,46 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                    exit(2)
                else:
                    print(f"[*] Trying password:- {password}")
-               
+
              elif hash_verification == "sha224":
                encryption=sha224(password.encode('latin-1')).hexdigest()
                encryption_sha3=sha3_224(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
-               if encryption_sha3 == hash_input:
-                 print("\n{***********************SUCCESS***********************}")
-                 print(f"[ ✔ ] Password Found:- {password}")
-                 exit(2) 
-               else:
-                 print(f"[*] Trying password:- {password}")
+               self.validation_sha3(encryption_sha3,hash_input,password)
 
              elif hash_verification == "sha384":
                encryption=sha384(password.encode('latin-1')).hexdigest()
                encryption_sha3=sha3_384(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
-               if encryption_sha3 == hash_input:
-                 print("\n{***********************SUCCESS***********************}")
-                 print(f"[ ✔ ] Password Found:- {password}")
-                 exit(2)
-               else:
-                 print(f"[*] Trying password:- {password}")
+               self.validation_sha3(encryption_sha3,hash_input,password)
 
              elif hash_verification == "sha256":
                encryption=sha256(password.encode('latin-1')).hexdigest()
                encryption_sha3=sha3_256(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
-               if encryption_sha3 == hash_input:
-                 print("\n{***********************SUCCESS***********************}")
-                 print(f"[ ✔ ] Password Found:- {password}")
-                 exit(2)
-               else:
-                 print(f"[*] Trying password:- {password}")
-               
+               self.validation_sha3(encryption_sha3,hash_input,password)
                blas2=blake2s(data).hexdigest()
-               if blas2 == hash_input:
-                   print("\n{***********************SUCCESS***********************}")
-                   print(f"[ ✔ ] Password Found:- {password}")
-                   exit(2)
-               else:
-                   print(f"[*] Trying password:- {password}")
+               self.validation_blake2(blas2,hash_input,password)
 
              elif hash_verification == "sha512":
                encryption=sha512(password.encode('latin-1')).hexdigest()
                encryption_sha3=sha3_512(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
-               if encryption_sha3 == hash_input:
-                  print("\n{***********************SUCCESS***********************}")
-                  print(f"[ ✔ ] Password Found:- {password}")
-                  exit(2) 
-               else:
-                  print(f"[*] Trying password:- {password}")
+               self.validation_sha3(encryption_sha3,hash_input,password)
+               blas2=blake2b(data).hexdigest()
+               self.validation_blake2(blas2,hash_input,password)
 
-               blas2=blake2b(data).hexdigest() 
-               if blas2 == hash_input: 
-                    print("\n{***********************SUCCESS***********************}")
-                    print(f"[ ✔ ] Password Found:- {password}") 
-                    exit(2) 
-               else: 
-                    print(f"[*] Trying password:- {password}")
-                  
         print("[x] The password is not in the dictionary!")
-
-         
+                  
   def show_help(self):
              print("""
 Usage: 
      python3 Hasher.py
 Help Menu:
      -h  --help  print the help menu
- ----------------------------
-|  list of available hashes  |
- ----------------------------
+ --------------------------
+| List of supported hashes |
+ --------------------------
 |md5       |
 |sha1      |
 |sha224    |
