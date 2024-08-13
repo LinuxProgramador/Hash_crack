@@ -29,7 +29,9 @@ function main {
            echo -e "\033[1;37m"
          else
            sudo apt install crunch -y
-           
+           echo $(clear)
+           echo -e "\033[1;34¡Ready! Everything is now set up"
+           echo -e "\033[1;37m"
     else
         cp -f ~/Hash_crack/crunch  $PATH/
         echo -e "\033[1;34mThe system supports the Hash_crack directory crunch"
