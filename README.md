@@ -37,9 +37,6 @@ zcrack :- crack zip
 
 RARNinja :- crack rar
 
-Nota:en teléfonos de baja gama, recomendado dividir un diccionario personalizado como el rockyou en tamaños de 10 mb cada uno para evitar el lag en termux,
-con éste comando se divide split -b 10M wordlist.txt key_
-
 Opcional:borrar RARNinja (Multithreaded).py ya que no es necesario en el programa 
 
 Para salir del programa presione CTRL C
