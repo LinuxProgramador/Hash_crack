@@ -89,7 +89,7 @@ if __name__ == "__main__":
             else:
                  output=f"/home/{user}/Hash_crack/wordlist.txt"
             
-            dictionary =output
+            dictionary=output
 
             if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
                 break
