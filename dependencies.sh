@@ -13,7 +13,7 @@ function main {
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
        echo $(clear)
     elif [ "$os" = 'GNU/Linux' ] ; then
-       sudo apt install python3 python-pip -y
+       sudo apt install python3 python3-pip -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
        echo $(clear)
     else
