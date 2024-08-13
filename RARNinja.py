@@ -83,7 +83,7 @@ if __name__ == "__main__":
       
             RAR = input("\nEnter Rute RAR file here: ")
             
-            dictionary ="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
+            dictionary ="~/Hash_crack/wordlist.txt"
 
             if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
                 break
