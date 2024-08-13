@@ -30,6 +30,7 @@ class Hash_crack:
     self.user=getuser()
     self.rute_dictionary_termux="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
     self.rute_dictionary_linux=f"/home/{self.user}/Hash_crack/wordlist.txt"
+    self.os=system('uname -o | cut -f1')
     
   def banner(self):
         print ('''\n
@@ -132,8 +133,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
          
 
   def crack(self,hash_input,hash_verification):
-    os=system('uname -o | cut -f1')
-    if os == "Android":
+    if self.os == "Android":
       output=self.rute_dictionary_termux
     else:
       output=self.rute_dictionary_linux
