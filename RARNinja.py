@@ -2,7 +2,7 @@ import rarfile
 import time; import os
 from termcolor import colored
 import colorama
-
+from getpass import getuser
 colorama.init()
 
 correctPath = False
@@ -82,8 +82,14 @@ if __name__ == "__main__":
         while (True):
       
             RAR = input("\nEnter Rute RAR file here: ")
+            user=getuser()
+            syst=os.system('uname -o | cut -f1')
+            if syst == 'Android':
+                output="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
+            else:
+                 output=f"/home/{user}/Hash_crack/wordlist.txt"
             
-            dictionary =os.system("echo ~/Hash_crack/wordlist.txt | cut -f1")
+            dictionary =output
 
             if (os.path.isfile(RAR) is True and os.path.isfile(dictionary) is True):
                 break
