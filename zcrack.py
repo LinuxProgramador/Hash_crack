@@ -57,7 +57,7 @@ def linuxpdf():
     else:
         print(termcolor.colored("\n[ X ] This is not a valid .zip file...\n", 'red'))
         exit()
-    pwd_filename ="~/Hash_crack/wordlist.txt"
+    pwd_filename =os.system("echo ~/Hash_crack/wordlist.txt | cut -f1")
     if not os.path.exists(pwd_filename):
         print(termcolor.colored("\n[ X ] File " + pwd_filename + " was not found, Provide Valid FileName And Path!",
                                 'red'))
