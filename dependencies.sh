@@ -35,8 +35,8 @@ function main {
            echo "The system supports the Hash_crack directory crunch"
            
          else
-           cp -f ~/Hash_crack/crunch  /usr/bin/
-           echo "The system supports the Hash_crack directory crunch"
+           sudo apt install crunch -y
+           echo "!Ready! Everything is now set up"
            
          fi
     fi
