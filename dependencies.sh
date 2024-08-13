@@ -15,10 +15,7 @@ function main {
     elif [ "$os" = 'GNU/Linux' ] ; then
        sudo apt install python3 python3-pip -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
-       echo $(clear)
-    else
-      echo "system does not support"
-      exit
+       echo $(clear)      
     fi
          
     if [ "$arch" != 'aarch64' ] ; then
