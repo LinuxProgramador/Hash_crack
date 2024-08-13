@@ -170,9 +170,9 @@ Usage:
      python3 Hasher.py
 Help Menu:
      -h  --help  print the help menu
- --------------------------
-| List of supported hashes |
- --------------------------
+ ------------------------------
+|   List of available hashes   |
+ ------------------------------
 |md5       |
 |sha1      |
 |sha224    |
