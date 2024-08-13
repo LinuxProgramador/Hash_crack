@@ -13,7 +13,7 @@
 from Crypto.Hash import RIPEMD160
 from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s,blake2b
 from sys import argv,exit
-from os import system
+from os import system,path
 from time import sleep
 from getpass import getuser
 
@@ -30,7 +30,7 @@ class Hash_crack:
     self.user=getuser()
     self.rute_dictionary_termux="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
     self.rute_dictionary_linux=f"/home/{self.user}/Hash_crack/wordlist.txt"
-    self.os=system('uname -o | cut -f1')
+    self.os=path.exists("/data/data/com.termux/files/")
     
   def banner(self):
         print ('''\n
@@ -133,7 +133,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
          
 
   def crack(self,hash_input,hash_verification):
-    if self.os == "Android":
+    if self.os == "/data/data/com.termux/files/":
       output=self.rute_dictionary_termux
     else:
       output=self.rute_dictionary_linux
