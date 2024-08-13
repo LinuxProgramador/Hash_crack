@@ -133,7 +133,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
          
 
   def crack(self,hash_input,hash_verification):
-    if self.os == "/data/data/com.termux/files/":
+    if self.os == True:
       output=self.rute_dictionary_termux
     else:
       output=self.rute_dictionary_linux
