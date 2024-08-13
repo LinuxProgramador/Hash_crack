@@ -70,7 +70,7 @@ def linuxpdf():
             try:
                 my_zip_file.extractall(path="Extracted Folder", pwd=password.strip())
                 print(colored("\n{***********************SUCCESS***********************}", 'green'))
-                print(colored("[ ✔ ] ZIP FILE Password Found:- ", 'cyan'), password.decode().strip())
+                print(colored("[ ✔ ] ZIP FILE Password Found:- ", 'cyan'), password.decode('latin-1').strip())
                 break
             except KeyboardInterrupt:
                 print()
@@ -79,7 +79,7 @@ def linuxpdf():
                 if helo == '100%':
                     print(colored("[ X ] ALL ATTEMPTS FAILED", 'red'))
                 else:
-                    print(colored(f"[*] Trying password:- {password.decode().strip()} ", 'green'))
+                    print(colored(f"[*] Trying password:- {password.decode('latin-1').strip()} ", 'green'))
                 continue
 def winpdf():
     os.system("cls")
