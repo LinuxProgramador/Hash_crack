@@ -21,23 +21,23 @@ function main {
          if [ "$os" = 'Android' ] ; then
            apt install crunch -y
            echo $(clear)
-           echo -e "\033[1;34¡Ready! Everything is now set up"
-           echo -e "\033[1;37m"
+           echo "¡Ready! Everything is now set up"
+           
          else
            sudo apt install crunch -y
            echo $(clear)
-           echo -e "\033[1;34¡Ready! Everything is now set up"
-           echo -e "\033[1;37m"
+           echo "¡Ready! Everything is now set up"
+           
          fi 
     else
         if [ "$os" = 'Android' ] ; then
            cp -f ~/Hash_crack/crunch  $PATH/
-           echo -e "\033[1;34mThe system supports the Hash_crack directory crunch"
-           echo -e "\033[1;37m"
+           echo "The system supports the Hash_crack directory crunch"
+           
          else
            cp -f ~/Hash_crack/crunch  /usr/bin/
-           echo -e "\033[1;34mThe system supports the Hash_crack directory crunch"
-           echo -e "\033[1;37m"
+           echo "The system supports the Hash_crack directory crunch"
+           
          fi
     fi
 
