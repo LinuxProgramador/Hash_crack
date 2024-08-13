@@ -204,7 +204,7 @@ Help Menu:
 |blake2s   |
 |blake2b   |
 |RIPEMD-160|
- --------
+ ----------
                     """)
     
     
