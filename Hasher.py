@@ -79,7 +79,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                   """)
            comand=input("option: ")
            if comand == "1":
-                system("bash /data/data/com.termux/files/home/Hash_crack/crunch.sh")
+                system("bash ~/Hash_crack/crunch.sh")
                 exit(2)
            elif comand == "2":
                    system("clear")
