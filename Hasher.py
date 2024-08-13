@@ -60,7 +60,7 @@ class Hash_crack:
   def crunch(self):
      verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
      if verificate == "no":
-           system("rm -f /data/data/com.termux/files/home/Hash_crack/wordlist.txt")
+           system("rm -f ~/Hash_crack/wordlist.txt")
            print("We'll use Crunch to generate a new dictionary!")
            sleep(3)
            system("clear")
