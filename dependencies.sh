@@ -36,6 +36,7 @@ function main {
            
          else
            sudo apt install crunch -y
+           echo $(clear)
            echo "!Ready! Everything is now set up"
            
          fi
