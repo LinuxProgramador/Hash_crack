@@ -1,4 +1,5 @@
 import os
+from getpass import getuser
 import platform
 import time,zipfile
 print("[*] Checking Requirements Module....")
@@ -44,6 +45,12 @@ elif platform.system().startswith("Linux"):
         import pyfiglet
 def linuxpdf():
     os.system("clear")
+    user=getuser()
+    syst=os.system('uname -o | cut -f1')
+    if syst == 'Android':
+        output="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
+    else:
+        output=f"/home/{user}/Hash_crack/wordlist.txt"
     header()
     zip_filename = input(termcolor.colored("[*] Enter Your Rute zip file:- ", 'cyan'))
     if not os.path.exists(zip_filename):
@@ -57,7 +64,7 @@ def linuxpdf():
     else:
         print(termcolor.colored("\n[ X ] This is not a valid .zip file...\n", 'red'))
         exit()
-    pwd_filename =os.system("echo ~/Hash_crack/wordlist.txt | cut -f1")
+    pwd_filename=output
     if not os.path.exists(pwd_filename):
         print(termcolor.colored("\n[ X ] File " + pwd_filename + " was not found, Provide Valid FileName And Path!",
                                 'red'))
