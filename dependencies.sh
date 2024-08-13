@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+os=$(uname -o | cut -f1)
 system=$( uname -m  | cut -f1)
 
 function main {
@@ -8,9 +8,10 @@ function main {
     echo -e "\033[1;34minstalling dependencies"
     echo -e "\033[1;37m"
     sleep 2
-    apt install python3 python-pip -y
-    pip install pyfiglet requests termcolor rarfile colorama pycryptodome
-    echo $(clear)
+    if [ "$os" = '] ; Then
+       apt install python3 python-pip -y
+       pip install pyfiglet requests termcolor rarfile colorama pycryptodome
+        echo $(clear)
 
     if [ "$system" != 'aarch64' ] ; then
            apt install crunch -y
