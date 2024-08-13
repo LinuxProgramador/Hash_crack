@@ -15,7 +15,7 @@ from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_
 from sys import argv,exit
 from os import system
 from time import sleep
-
+from platform import system
 
 class Hash_crack:
 
@@ -27,8 +27,8 @@ class Hash_crack:
     self.sha256=64
     self.sha384=96
     self.sha512=128
-    self.rute_dictionary="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
-
+    self.rute_dictionary_termux="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
+    self.rute_dictionary_linux=system('echo ~/Hash_crack/wordlist.txt | cut -f1')
 
   def banner(self):
         print ('''\n
@@ -131,7 +131,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
          
 
   def crack(self,hash_input,hash_verification):
-    with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
+    if system == 
+      with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
         for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()
