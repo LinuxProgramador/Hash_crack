@@ -15,7 +15,7 @@ from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_
 from sys import argv,exit
 from os import system
 from time import sleep
-
+from getpass import getuser
 
 class Hash_crack:
 
@@ -27,8 +27,9 @@ class Hash_crack:
     self.sha256=64
     self.sha384=96
     self.sha512=128
+    self.user=getuser()
     self.rute_dictionary_termux="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
-    self.rute_dictionary_linux=system('echo ~/Hash_crack/wordlist.txt | cut -f1')
+    self.rute_dictionary_linux=f"/home/{self.user}/Hash_crack/wordlist.txt'
     
   def banner(self):
         print ('''\n
