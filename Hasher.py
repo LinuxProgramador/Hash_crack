@@ -110,8 +110,25 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                exit(2)
       else:
            print(f"[*] Trying password:- {password}")
+        
 
+  def validation_sha3(self,encryption_sha3,hash_input,password):
+       if encryption_sha3 == hash_input:
+            print("\n{***********************SUCCESS***********************}")
+            print(f"[ ✔ ] Password Found:- {password}")
+            exit(2)
+       else:
+            print(f"[*] Trying password:- {password}")
+         
 
+  def validation_blake2(self,blas2,hash_input,password):
+       if blas2 == hash_input:
+             print("\n{***********************SUCCESS***********************}")
+             print(f"[ ✔ ] Password Found:- {password}")
+             exit(2)
+       else:
+             print(f"[*] Trying password:- {password}")
+         
 
   def crack(self,hash_input,hash_verification):
     with open(self.rute_dictionary,'r',encoding='latin-1') as keywords_read:
@@ -163,6 +180,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                self.validation_blake2(blas2,hash_input,password)
 
         print("[x] The password is not in the dictionary!")
+      
                   
   def show_help(self):
              print("""
