@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-#Herramienta para romper hashes por fuerza bruta en termux
+#Herramienta para romper hashes por fuerza bruta en distros linux y termux
 
 #La herramienta zcrack fue brindada por maquina1337 visita su pagina en github
 #https://github.com/machine1337/zipcrack
