@@ -83,8 +83,8 @@ if __name__ == "__main__":
       
             RAR = input("\nEnter Rute RAR file here: ")
             user=getuser()
-            syst=os.system('uname -o | cut -f1')
-            if syst == 'Android':
+            syst=os.path.exists("/data/data/com.termux/files/")
+            if syst == True:
                 output="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
             else:
                  output=f"/home/{user}/Hash_crack/wordlist.txt"
