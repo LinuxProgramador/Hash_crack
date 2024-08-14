@@ -194,9 +194,9 @@ Usage:
      python3 Hasher.py
 Help Menu:
      -h  --help  print the help menu
- ------------------------------
-|   List of available hashes   |
- ------------------------------
+ ----------------------------
+|   List of available hash   |
+ ----------------------------
 |md5       |
 |sha1      |
 |sha224    |
