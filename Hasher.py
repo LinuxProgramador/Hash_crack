@@ -185,7 +185,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                blas2=blake2b(data).hexdigest()
                self.validation_blake2(blas2,hash_input,password)
 
-        print("[x] The password is not in the dictionary!")
+        print("[X] The password is not in the dictionary!")
       
                   
   def show_help(self):
