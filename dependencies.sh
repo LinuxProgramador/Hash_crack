@@ -17,32 +17,24 @@ function main {
            
     fi
          
-    if [ "$arch" != 'aarch64' ] ; then
-         if [ "$os" = 'Android' ] ; then
-           apt install crunch -y
-           echo $(clear)
-           echo "¡Ready! Everything is now set up"
-           
-         else
-           sudo apt install crunch -y
-           echo $(clear)
-           echo "¡Ready! Everything is now set up"
-           
-         fi 
-    else
-        if [ "$os" = 'Android' ] ; then
+    if [ "$os" = 'Android' ] ; then
+       if [ "$arch" = 'aarch64' ] ; then
            cp -f ~/Hash_crack/crunch  $PATH/
            echo $(clear)
            echo "The system supports the Hash_crack directory crunch"
-           
-         else
+
+       else
+           apt install crunch -y
+           echo $(clear)
+           echo "¡Ready! Everything is now set up"
+
+       fi
+    else
            sudo apt install crunch -y
            echo $(clear)
-           echo "!Ready! Everything is now set up"
-           
-         fi
+           echo "¡Ready! Everything is now set up"
     fi
-
+         
 }
 main
  
