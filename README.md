@@ -37,6 +37,4 @@ zcrack :- crack zip
 
 RARNinja :- crack rar
 
-Opcional:borrar RARNinja (Multithreaded).py ya que no es necesario en el programa 
-
 Para salir del programa presione CTRL C
