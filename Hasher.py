@@ -251,7 +251,7 @@ Wait, this may take a while
     elif len(hash_input) == self.sha1:
              hash_verification="sha1"
              print("Type hash => (sha1/rypemd-160)")
-             select = input("Cual deseas crackear: ")
+             select = input("Which one do you want to crack: ")
              sleep(1)
              system("clear")
              print("""
@@ -264,7 +264,7 @@ Wait, this may take a while
     elif len(hash_input) == self.sha224:
              hash_verification="sha224"
              print("Type hash => (sha224/sha3_224)")
-             select = input("Cual deseas crackear: ")
+             select = input("Which one do you want to crack: ")
              sleep(1)
              system("clear")
              print("""
@@ -277,7 +277,7 @@ Wait, this may take a while
     elif len(hash_input) == self.sha384:
              hash_verification="sha384"
              print("Type hash => (sha384/sha3_384)")
-             select = input("Cual deseas crackear: ")
+             select = input("Which one do you want to crack: ")
              sleep(1)
              system("clear")
              print("""
@@ -290,7 +290,7 @@ Wait, this may take a while
     elif len(hash_input) == self.sha256:
              hash_verification="sha256"
              print("Type hash => (sha256/sha3_256/blake2s)")
-             select = input("Cual deseas crackear: ")
+             select = input("Which one do you want to crack: ")
              sleep(1)
              system("clear")
              print("""
@@ -303,7 +303,7 @@ Wait, this may take a while
     elif len(hash_input) == self.sha512:
              hash_verification="sha512"
              print("Type hash => (sha512/sha3_512/blake2b)")
-             select = input("Cual deseas crackear: ")
+             select = input("Which one do you want to crack: ")
              sleep(1)
              system("clear")
              print("""
