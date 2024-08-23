@@ -239,6 +239,7 @@ Help Menu:
     if len(hash_input) == self.md5:
              hash_verification="md5"
              print(f"Type hash => {hash_verification}")
+             select = None
              sleep(3)
              system("clear")
              print("""
