@@ -10,31 +10,25 @@ function main {
     if [ "$os" = 'Android' ] ; then
        apt install python3 python-pip -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
-       
     else
        sudo apt install python3 python3-pip -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
-           
     fi
-         
     if [ "$os" = 'Android' ] ; then
        if [ "$arch" = 'aarch64' ] ; then
            cp -f ~/Hash_crack/crunch  $PATH/
            echo $(clear)
            echo "The system supports the Hash_crack directory crunch"
-
        else
            apt install crunch -y
            echo $(clear)
            echo "¡Ready! Everything is now set up"
-
        fi
     else
            sudo apt install crunch -y
            echo $(clear)
            echo "¡Ready! Everything is now set up"
     fi
-         
 }
 main
  
