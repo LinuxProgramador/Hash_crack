@@ -153,9 +153,9 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
                  if RIPEMD.hexdigest() == hash_input:
-                   print("\n{***********************SUCCESS***********************}")
-                   print(f"[ ✓ ] Password Found:- {password}")
-                   exit(2)
+                    print("\n{***********************SUCCESS***********************}")
+                    print(f"[ ✓ ] Password Found:- {password}")
+                    exit(2)
                  else:
                     print(f"[*] Trying password:- {password}")
 
