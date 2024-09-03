@@ -106,12 +106,12 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
 
 
   def validation(self,password,hash_input,encryption):
-      if encryption == hash_input:
-               print("\n{***********************SUCCESS***********************}")
-               print(f"[ ✔ ] Password Found:- {password}")
-               exit(2)
-      else:
-           print(f"[*] Trying password:- {password}")
+       if encryption == hash_input:
+            print("\n{***********************SUCCESS***********************}")
+            print(f"[ ✔ ] Password Found:- {password}")
+            exit(2)
+       else:
+            print(f"[*] Trying password:- {password}")
         
 
   def validation_sha3(self,encryption_sha3,hash_input,password):
