@@ -201,6 +201,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
     
                                 
   def show_help(self):
+             print("Hasher 1.0. Tool for cracking multiple hashes.")
              print("""
 Usage: 
      python3 Hasher.py
