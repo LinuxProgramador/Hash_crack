@@ -314,6 +314,7 @@ Wait, this may take a while
              sleep(2)
              self.crack(hash_input,hash_verification,select)
     else:
+        print()
         self.show_help()
       
    except KeyboardInterrupt:
