@@ -196,7 +196,6 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
               else:
                 blas2=blake2b(data).hexdigest()
                 self.validation_blake2(blas2,hash_input,password)
-
         print("[ X ] The password is not in the dictionary!")
     
                                 
@@ -232,7 +231,6 @@ Help Menu:
     if "-h" in argv or "--help" in argv:
                self.show_help()
                exit(2)
-     
     self.banner()
     self.crunch()
     self.call_modules()
@@ -316,13 +314,12 @@ Wait, this may take a while
              sleep(2)
              self.crack(hash_input,hash_verification,select)
     else:
-      self.show_help()
+        self.show_help()
       
    except KeyboardInterrupt:
         print("BYE!!")
-
    except FileNotFoundError as e:
-            print(f"Wordlist.txt does not exist in the path => {e}")
+        print(f"Wordlist.txt does not exist in the path => {e}")
     
 if __name__ == "__main__":
   crack=Hash_crack()
