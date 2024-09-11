@@ -13,7 +13,7 @@
 from Crypto.Hash import RIPEMD160
 from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s,blake2b
 from sys import argv
-from os import system,path
+from os import system,path,remove
 from time import sleep
 from getpass import getuser
 
@@ -56,12 +56,21 @@ class Hash_crack:
       sleep(3) 
       system("clear")
       system("python3 ~/Hash_crack/RARNinja.py")
-      exit(2)      
+      exit(2)  
+      
+      
+  def user_os(self):
+    if self.os == True:
+      output=self.rute_dictionary_termux
+    else:
+      output=self.rute_dictionary_linux
+    return output
+    
     
   def crunch(self):
      verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
      if verificate == "no":
-           system("rm -f ~/Hash_crack/wordlist.txt")
+           remove(self.user_os())
            print("We'll use Crunch to generate a new dictionary!")
            sleep(3)
            system("clear")
@@ -133,11 +142,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
          
 
   def crack(self,hash_input,select):
-    if self.os == True:
-      output=self.rute_dictionary_termux
-    else:
-      output=self.rute_dictionary_linux
-    with open(output,'r',encoding='latin-1') as keywords_read:
+     with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
         for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()
