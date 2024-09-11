@@ -216,7 +216,7 @@ Help Menu:
                     """)
     
     
-  def cracking_selection(self,hash_verification,hash_input):
+  def cracking_selection(self,hash_input,hash):
      if hash == 'md5':
         select = None
      else:
@@ -244,22 +244,22 @@ Wait, this may take a while
     if len(hash_input) == self.md5:
              hash = "md5"
              print("Type hash => md5")
-             self.cracking_selection(hash_input)
+             self.cracking_selection(hash_input,hash)
     elif len(hash_input) == self.sha1:
              print("Type hash => (sha1/rypemd-160)")
-             self.cracking_selection(hash_input)
+             self.cracking_selection(hash_input,hash)
     elif len(hash_input) == self.sha224:
              print("Type hash => (sha224/sha3_224)")   
-             self.cracking_selection(hash_input)
+             self.cracking_selection(hash_input,hash)
     elif len(hash_input) == self.sha384:
              print("Type hash => (sha384/sha3_384)")   
-             self.cracking_selection(hash_input)
+             self.cracking_selection(hash_input,hash)
     elif len(hash_input) == self.sha256:
              print("Type hash => (sha256/sha3_256/blake2s)")   
-             self.cracking_selection(hash_input)
+             self.cracking_selection(hash_input,hash)
     elif len(hash_input) == self.sha512:
              print("Type hash => (sha512/sha3_512/blake2b)")    
-             self.cracking_selection(hash_input)
+             self.cracking_selection(hash_input,hash)
     else:
         print()
         self.show_help()
