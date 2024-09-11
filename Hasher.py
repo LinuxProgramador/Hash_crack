@@ -226,7 +226,7 @@ Help Menu:
                     """)
     
     
-  def cracking_selection(self):
+  def cracking_selection(self,hash_verification,hash_input):
      if hash_verification != 'md5':
         select = input("Which one do you want to crack: ")
      else:
