@@ -226,6 +226,22 @@ Help Menu:
                     """)
     
     
+  def cracking_selection(self):
+     if hash_verification != 'md5':
+        select = input("Which one do you want to crack: ")
+     else:
+        select = None
+     sleep(1)
+     system("clear")
+     print("""
+*****************************
+Wait, this may take a while
+*****************************
+                   """)
+     sleep(2)
+     self.crack(hash_input,hash_verification,select)
+
+  
   def main(self):
    try:
     if "-h" in argv or "--help" in argv:
@@ -237,82 +253,22 @@ Help Menu:
     hash_input=input("Enter the hash to decrypt: ")
     if len(hash_input) == self.md5:
              hash_verification="md5"
-             print(f"Type hash => {hash_verification}")
-             select = None
-             sleep(3)
-             system("clear")
-             print("""
-*****************************
-Wait, this may take a while
-*****************************
-                   """)
-             sleep(2)
-             self.crack(hash_input,hash_verification,select)
+             print("Type hash => md5")
     elif len(hash_input) == self.sha1:
              hash_verification="sha1"
              print("Type hash => (sha1/rypemd-160)")
-             select = input("Which one do you want to crack: ")
-             sleep(1)
-             system("clear")
-             print("""
-*****************************
-Wait, this may take a while
-*****************************
-                   """)
-             sleep(2)
-             self.crack(hash_input,hash_verification,select)
     elif len(hash_input) == self.sha224:
              hash_verification="sha224"
-             print("Type hash => (sha224/sha3_224)")
-             select = input("Which one do you want to crack: ")
-             sleep(1)
-             system("clear")
-             print("""
-*****************************
-Wait, this may take a while
-*****************************
-                   """)
-             sleep(2)
-             self.crack(hash_input,hash_verification,select)
+             print("Type hash => (sha224/sha3_224)")            
     elif len(hash_input) == self.sha384:
              hash_verification="sha384"
-             print("Type hash => (sha384/sha3_384)")
-             select = input("Which one do you want to crack: ")
-             sleep(1)
-             system("clear")
-             print("""
-*****************************
-Wait, this may take a while
-*****************************
-                   """)
-             sleep(2)
-             self.crack(hash_input,hash_verification,select)
+             print("Type hash => (sha384/sha3_384)")            
     elif len(hash_input) == self.sha256:
              hash_verification="sha256"
-             print("Type hash => (sha256/sha3_256/blake2s)")
-             select = input("Which one do you want to crack: ")
-             sleep(1)
-             system("clear")
-             print("""
-*****************************
-Wait, this may take a while
-*****************************
-                   """)
-             sleep(2)
-             self.crack(hash_input,hash_verification,select)
+             print("Type hash => (sha256/sha3_256/blake2s)")           
     elif len(hash_input) == self.sha512:
              hash_verification="sha512"
-             print("Type hash => (sha512/sha3_512/blake2b)")
-             select = input("Which one do you want to crack: ")
-             sleep(1)
-             system("clear")
-             print("""
-*****************************
-Wait, this may take a while
-*****************************
-                   """)
-             sleep(2)
-             self.crack(hash_input,hash_verification,select)
+             print("Type hash => (sha512/sha3_512/blake2b)")            
     else:
         print()
         self.show_help()
