@@ -234,6 +234,7 @@ Wait, this may take a while
   
   def main(self):
    try:
+    hash = ''
     if "-h" in argv or "--help" in argv:
                self.show_help()
                exit(2)
@@ -270,7 +271,6 @@ Wait, this may take a while
         print(f"Wordlist.txt does not exist in the path => {e}")
     
 if __name__ == "__main__":
-  hash = ''
   crack=Hash_crack()
   crack.main()
 
