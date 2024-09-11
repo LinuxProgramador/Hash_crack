@@ -132,7 +132,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              print(f"[*] Trying password:- {password}")
          
 
-  def crack(self,hash_input,hash_verification,select):
+  def crack(self,hash_input,select):
     if self.os == True:
       output=self.rute_dictionary_termux
     else:
@@ -141,15 +141,13 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
         for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()
-             if hash_verification == "md5":
+             if select == None:
                encryption=md5(password.encode('latin-1')).hexdigest()
                self.validation(password,hash_input,encryption)
-
-             elif hash_verification == "sha1":
-               if select == 'sha1':
+             elif select == 'sha1':
                  encryption=sha1(password.encode('latin-1')).hexdigest()
                  self.validation(password,hash_input,encryption)
-               else:
+             elif select == "rypemd-160":
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
                  if RIPEMD.hexdigest() == hash_input:
@@ -158,42 +156,34 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                     exit(2)
                  else:
                     print(f"[*] Trying password:- {password}")
-
-             elif hash_verification == "sha224":
-              if select == "sha224":
+             elif select == "sha224":
                 encryption=sha224(password.encode('latin-1')).hexdigest()
                 self.validation(password,hash_input,encryption)
-              else:
+             elif select == "sha3_224":
                 encryption_sha3=sha3_224(password.encode('latin-1')).hexdigest()
                 self.validation_sha3(encryption_sha3,hash_input,password)
-
-             elif hash_verification == "sha384":
-              if select == "sha384":
+             elif select == "sha384":
                 encryption=sha384(password.encode('latin-1')).hexdigest()
                 self.validation(password,hash_input,encryption)
-              else:
+             elif select == "sha3_384":
                encryption_sha3=sha3_384(password.encode('latin-1')).hexdigest()
                self.validation_sha3(encryption_sha3,hash_input,password)
-
-             elif hash_verification == "sha256":
-              if select == "sha256":
+             elif select == "sha256":
                 encryption=sha256(password.encode('latin-1')).hexdigest()
                 self.validation(password,hash_input,encryption)
-              elif select == "sha3_256":
+             elif select == "sha3_256":
                 encryption_sha3=sha3_256(password.encode('latin-1')).hexdigest()
                 self.validation_sha3(encryption_sha3,hash_input,password)
-              else:
+             elif select == "blake2s":
                 blas2=blake2s(data).hexdigest()
                 self.validation_blake2(blas2,hash_input,password)
-
-             elif hash_verification == "sha512":
-              if select == "sha512":
+             elif select == "sha512":
                 encryption=sha512(password.encode('latin-1')).hexdigest()
                 self.validation(password,hash_input,encryption)
-              elif select == "sha3_512":
+             elif select == "sha3_512":
                 encryption_sha3=sha3_512(password.encode('latin-1')).hexdigest()
                 self.validation_sha3(encryption_sha3,hash_input,password)
-              else:
+             elif select == "blake2b":
                 blas2=blake2b(data).hexdigest()
                 self.validation_blake2(blas2,hash_input,password)
         print("[ X ] The password is not in the dictionary!")
@@ -227,10 +217,10 @@ Help Menu:
     
     
   def cracking_selection(self,hash_verification,hash_input):
-     if hash_verification != 'md5':
-        select = input("Which one do you want to crack: ")
-     else:
+     if hash == 'md5':
         select = None
+     else:
+       select = input("Which one do you want to crack: ")
      sleep(1)
      system("clear")
      print("""
@@ -239,7 +229,7 @@ Wait, this may take a while
 *****************************
                    """)
      sleep(2)
-     self.crack(hash_input,hash_verification,select)
+     self.crack(hash_input,select)
 
   
   def main(self):
@@ -252,29 +242,24 @@ Wait, this may take a while
     self.call_modules()
     hash_input=input("Enter the hash to decrypt: ")
     if len(hash_input) == self.md5:
-             hash_verification="md5"
+             hash = "md5"
              print("Type hash => md5")
-             self.cracking_selection(hash_verification,hash_input)
+             self.cracking_selection(hash_input)
     elif len(hash_input) == self.sha1:
-             hash_verification="sha1"
              print("Type hash => (sha1/rypemd-160)")
-             self.cracking_selection(hash_verification,hash_input)
+             self.cracking_selection(hash_input)
     elif len(hash_input) == self.sha224:
-             hash_verification="sha224"
              print("Type hash => (sha224/sha3_224)")   
-             self.cracking_selection(hash_verification,hash_input)
+             self.cracking_selection(hash_input)
     elif len(hash_input) == self.sha384:
-             hash_verification="sha384"
              print("Type hash => (sha384/sha3_384)")   
-             self.cracking_selection(hash_verification,hash_input)
+             self.cracking_selection(hash_input)
     elif len(hash_input) == self.sha256:
-             hash_verification="sha256"
              print("Type hash => (sha256/sha3_256/blake2s)")   
-             self.cracking_selection(hash_verification,hash_input)
+             self.cracking_selection(hash_input)
     elif len(hash_input) == self.sha512:
-             hash_verification="sha512"
              print("Type hash => (sha512/sha3_512/blake2b)")    
-             self.cracking_selection(hash_verification,hash_input)
+             self.cracking_selection(hash_input)
     else:
         print()
         self.show_help()
@@ -285,6 +270,7 @@ Wait, this may take a while
         print(f"Wordlist.txt does not exist in the path => {e}")
     
 if __name__ == "__main__":
+  hash = ''
   crack=Hash_crack()
   crack.main()
 
