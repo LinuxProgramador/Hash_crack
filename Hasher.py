@@ -276,7 +276,7 @@ Wait, this may take a while
    except KeyboardInterrupt:
         print("BYE!!")
    except FileNotFoundError as e:
-        print(f"Wordlist.txt does not exist in the path => {e}")
+        print(f"wordlist.txt does not exist in the path => {e}")
     
 if __name__ == "__main__":
   crack=Hash_crack()
