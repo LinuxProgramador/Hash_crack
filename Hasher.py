@@ -186,6 +186,9 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              elif select == "blake2b":
                 blas2=blake2b(data).hexdigest()
                 self.validation_blake2(blas2,hash_input,password)
+             else:
+               print("Wrong name!")
+               exit(2)
         print("[ X ] The password is not in the dictionary!")
     
                                 
