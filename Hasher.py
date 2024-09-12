@@ -75,15 +75,11 @@ class Hash_crack:
   def user_os(self):
     return self.rute_dictionary_termux if self.os == True else self.rute_dictionary_linux
     
-    
-  def crunch(self):
-     verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
-     if verificate == "no":
-           remove(self.user_os())
-           print("We'll use Crunch to generate a new dictionary!")
-           sleep(3)
-           system("clear")
-           print("""
+  def crunch_0(self):
+    print("We'll use Crunch to generate a new dictionary!")
+    sleep(3)
+    system("clear")
+    print("""
 1) create dictionary by concatenating words for example:
    unconcatenated (Harry Hermallony Ron) with concatenate (HarryHermallonyRon) 
    
@@ -96,6 +92,11 @@ class Hash_crack:
    
 NOTE:Be careful with the number of passwords you use. can be generated, it can reach up to gigabytes and block the phone
                   """)
+  def crunch(self):
+     verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
+     if verificate == "no":
+           remove(self.user_os())
+           self.crunch_0()
            comand=input("option: ")
            if comand == "1":
                 system("bash ~/Hash_crack/crunch.sh")
