@@ -114,7 +114,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                  exit(2)
 
 
-  def validation(self,many_hash,password,hash_input,encryption):
+  def validation(self,many_hash,password,hash_input):
        if many_hash == hash_input:
             print("\n{***********************SUCCESS***********************}")
             print(f"[ ✔ ] Password Found:- {password}")
