@@ -60,11 +60,7 @@ class Hash_crack:
       
       
   def user_os(self):
-    if self.os == True:
-      output=self.rute_dictionary_termux
-    else:
-      output=self.rute_dictionary_linux
-    return output
+    return self.rute_dictionary_termux if self.os == True else self.rute_dictionary_linux
     
     
   def crunch(self):
