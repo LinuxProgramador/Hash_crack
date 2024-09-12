@@ -30,7 +30,9 @@ class Hash_crack:
     'sha3_224':sha3_224,
     'sha3_384':sha3_384,
     'sha3_256':sha3_256,
-    'sha3_512':sha3_512
+    'sha3_512':sha3_512,
+    'blake2b':blake2b,
+    'blake2s':blake2s
     }
     self.md5=32
     self.sha1=40
@@ -149,12 +151,9 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                     exit(2)
                  else:
                     print(f"[*] Trying password:- {password}")
-             elif select == "blake2s":
-                blas2=blake2s(data).hexdigest()
-                self.validation(blas2,password,hash_input)
-             elif select == "blake2b":
-                blas2=blake2b(data).hexdigest()
-                self.validation(blas2,password,hash_input)
+             elif select in self.hash:
+                blas2=self.hash[select](data).hexdigest()
+                self.validation(blas2,password,hash_input)        
              else:
                print("Wrong name!")
                exit(2)
