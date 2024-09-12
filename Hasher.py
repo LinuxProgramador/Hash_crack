@@ -212,23 +212,23 @@ Wait, this may take a while
     self.crunch()
     self.call_modules()
     hash_input=input("Enter the hash to decrypt: ")
-    if len(hash_input) == self.hash['lenght_md5']:
+    if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
              print("Type hash => md5")
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.hash['lenght_sha1']:
+    elif len(hash_input) == self.hash['length_sha1']:
              print("Type hash => (sha1/rypemd-160)")
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.hash['lenght_sha224']:
+    elif len(hash_input) == self.hash['length_sha224']:
              print("Type hash => (sha224/sha3_224)")   
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.hash['lenght_sha384']:
+    elif len(hash_input) == self.hash['length_sha384']:
              print("Type hash => (sha384/sha3_384)")   
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.hash['lenght_sha256']:
+    elif len(hash_input) == self.hash['length_sha256']:
              print("Type hash => (sha256/sha3_256/blake2s)")   
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.hash['lenght_sha512']:
+    elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash => (sha512/sha3_512/blake2b)")    
              self.cracking_selection(hash_input,hash)
     else:
