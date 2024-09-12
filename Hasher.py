@@ -129,10 +129,10 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              data=password.encode()
              if select == None:
                encryption=md5(password.encode('latin-1')).hexdigest()
-               self.validation(password,hash_input,encryption)
+               self.validation(encryption,password,hash_input)
              elif select == 'sha1':
                  encryption=sha1(password.encode('latin-1')).hexdigest()
-                 self.validation(password,hash_input,encryption)
+                 self.validation(encryption,password,hash_input)
              elif select == "rypemd-160":
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
@@ -144,34 +144,34 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                     print(f"[*] Trying password:- {password}")
              elif select == "sha224":
                 encryption=sha224(password.encode('latin-1')).hexdigest()
-                self.validation(password,hash_input,encryption)
+                self.validation(encryption,password,hash_input)
              elif select == "sha3_224":
                 encryption_sha3=sha3_224(password.encode('latin-1')).hexdigest()
-                self.validation(encryption_sha3,hash_input,password)
+                self.validation(encryption_sha3,password,hash_input)
              elif select == "sha384":
                 encryption=sha384(password.encode('latin-1')).hexdigest()
-                self.validation(password,hash_input,encryption)
+                self.validation(encryption,password,hash_input)
              elif select == "sha3_384":
                encryption_sha3=sha3_384(password.encode('latin-1')).hexdigest()
-               self.validation(encryption_sha3,hash_input,password)
+               self.validation(encryption_sha3,password,hash_input)
              elif select == "sha256":
                 encryption=sha256(password.encode('latin-1')).hexdigest()
-                self.validation(password,hash_input,encryption)
+                self.validation(encryption,password,hash_input)
              elif select == "sha3_256":
                 encryption_sha3=sha3_256(password.encode('latin-1')).hexdigest()
-                self.validation(encryption_sha3,hash_input,password)
+                self.validation(encryption_sha3,password,hash_input)
              elif select == "blake2s":
                 blas2=blake2s(data).hexdigest()
-                self.validation(blas2,hash_input,password)
+                self.validation(blas2,password,hash_input)
              elif select == "sha512":
                 encryption=sha512(password.encode('latin-1')).hexdigest()
-                self.validation(password,hash_input,encryption)
+                self.validation(encryption,password,hash_input)
              elif select == "sha3_512":
                 encryption_sha3=sha3_512(password.encode('latin-1')).hexdigest()
-                self.validation(encryption_sha3,hash_input,password)
+                self.validation(encryption_sha3,password,hash_input)
              elif select == "blake2b":
                 blas2=blake2b(data).hexdigest()
-                self.validation(blas2,hash_input,password)
+                self.validation(blas2,password,hash_input)
              else:
                print("Wrong name!")
                exit(2)
