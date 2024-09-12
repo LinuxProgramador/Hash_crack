@@ -75,6 +75,7 @@ class Hash_crack:
   def user_os(self):
     return self.rute_dictionary_termux if self.os == True else self.rute_dictionary_linux
     
+    
   def crunch_0(self):
     print("We'll use Crunch to generate a new dictionary!")
     sleep(3)
@@ -92,6 +93,7 @@ class Hash_crack:
    
 NOTE:Be careful with the number of passwords you use. can be generated, it can reach up to gigabytes and block the phone
                   """)
+    
 
   def crunch2(sel):
      system("clear")
@@ -102,6 +104,17 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
      print("Then copy and paste the command that will be given to you into the console and run Hasher.py again.")
      print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
      exit(2)
+
+
+  def crunch3(self):
+    system("clear")
+    password=input("Enter what you know of the password and what you don't as the @ symbol: ")
+    valores=input("Enter the data to be tested in the password: ")
+    longitud=input("Please enter the total length of the password: ")
+    system("clear")
+    print("Next, copy and paste the command that will be given to you into the console and run Hasher.py again.")
+    print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
+    exit(2)
 
   
   def crunch(self):
@@ -116,14 +129,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
            elif comand == "2":
                  self.crunch2()                  
            elif comand == "3":
-                  system("clear")
-                  password=input("Enter what you know of the password and what you don't as the @ symbol: ")
-                  valores=input("Enter the data to be tested in the password: ")
-                  longitud=input("Please enter the total length of the password: ")
-                  system("clear")
-                  print("Next, copy and paste the command that will be given to you into the console and run Hasher.py again.")
-                  print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
-                  exit(2)
+                 self.crunch3()               
            else:
                  print("Invalid option!")
                  exit(2)
