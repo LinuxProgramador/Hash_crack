@@ -32,14 +32,14 @@ class Hash_crack:
     'sha3_256':sha3_256,
     'sha3_512':sha3_512,
     'blake2b':blake2b,
-    'blake2s':blake2s
+    'blake2s':blake2s,
+    'length_md5':32,
+    'length_sha1':40,
+    'length_sha224':56,
+    'length_sha256':64,
+    'length_sha384':96,
+    'length_sha512':128,
     }
-    self.md5=32
-    self.sha1=40
-    self.sha224=56
-    self.sha256=64
-    self.sha384=96
-    self.sha512=128
     self.user=getuser()
     self.rute_dictionary_termux="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
     self.rute_dictionary_linux=f"/home/{self.user}/Hash_crack/wordlist.txt"
@@ -212,23 +212,23 @@ Wait, this may take a while
     self.crunch()
     self.call_modules()
     hash_input=input("Enter the hash to decrypt: ")
-    if len(hash_input) == self.md5:
+    if len(hash_input) == self.hash[lenght_md5]:
              hash = "md5"
              print("Type hash => md5")
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.sha1:
+    elif len(hash_input) == self.hash[lenght_sha1]:
              print("Type hash => (sha1/rypemd-160)")
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.sha224:
+    elif len(hash_input) == self.hash[lenght_sha224]:
              print("Type hash => (sha224/sha3_224)")   
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.sha384:
+    elif len(hash_input) == self.hash[lenght_sha384]:
              print("Type hash => (sha384/sha3_384)")   
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.sha256:
+    elif len(hash_input) == self.hash[lenght_sha256]:
              print("Type hash => (sha256/sha3_256/blake2s)")   
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.sha512:
+    elif len(hash_input) == self.hash[lenght_sha512]:
              print("Type hash => (sha512/sha3_512/blake2b)")    
              self.cracking_selection(hash_input,hash)
     else:
