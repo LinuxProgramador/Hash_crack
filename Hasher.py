@@ -131,60 +131,35 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                
   def crack(self,hash_input,select):
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
-        for keywords in keywords_read:
+       for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()
              if select == None:
-               encryption=md5(password.encode('latin-1')).hexdigest()
+               encryption = md5(password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input)
-             elif select == 'sha1':
-                 encryption=sha1(password.encode('latin-1')).hexdigest()
-                 self.validation(encryption,password,hash_input)
+             elif select in self.hash:
+               encryption = self.hash[select](password.encode('latin-1')).hexdigest()
+               self.validation(encryption,password,hash_input)
              elif select == "rypemd-160":
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
                  if RIPEMD.hexdigest() == hash_input:
                     print("\n{***********************SUCCESS***********************}")
-                    print(f"[ ✓ ] Password Found:- {password}")
+                    print(f"[  ^|^s ] Password Found:- {password}")
                     exit(2)
                  else:
                     print(f"[*] Trying password:- {password}")
-             elif select == "sha224":
-                encryption=sha224(password.encode('latin-1')).hexdigest()
-                self.validation(encryption,password,hash_input)
-             elif select == "sha3_224":
-                encryption_sha3=sha3_224(password.encode('latin-1')).hexdigest()
-                self.validation(encryption_sha3,password,hash_input)
-             elif select == "sha384":
-                encryption=sha384(password.encode('latin-1')).hexdigest()
-                self.validation(encryption,password,hash_input)
-             elif select == "sha3_384":
-               encryption_sha3=sha3_384(password.encode('latin-1')).hexdigest()
-               self.validation(encryption_sha3,password,hash_input)
-             elif select == "sha256":
-                encryption=sha256(password.encode('latin-1')).hexdigest()
-                self.validation(encryption,password,hash_input)
-             elif select == "sha3_256":
-                encryption_sha3=sha3_256(password.encode('latin-1')).hexdigest()
-                self.validation(encryption_sha3,password,hash_input)
              elif select == "blake2s":
                 blas2=blake2s(data).hexdigest()
                 self.validation(blas2,password,hash_input)
-             elif select == "sha512":
-                encryption=sha512(password.encode('latin-1')).hexdigest()
-                self.validation(encryption,password,hash_input)
-             elif select == "sha3_512":
-                encryption_sha3=sha3_512(password.encode('latin-1')).hexdigest()
-                self.validation(encryption_sha3,password,hash_input)
              elif select == "blake2b":
                 blas2=blake2b(data).hexdigest()
                 self.validation(blas2,password,hash_input)
              else:
                print("Wrong name!")
                exit(2)
-        print("[ X ] The password is not in the dictionary!")
-    
-                                
+       print("[ X ] The password is not in the dictionary!")
+                                    
   def show_help(self):
              print("Hasher 1.0. Tool for cracking multiple hashes.")
              print("""
