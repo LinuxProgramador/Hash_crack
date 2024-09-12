@@ -92,6 +92,18 @@ class Hash_crack:
    
 NOTE:Be careful with the number of passwords you use. can be generated, it can reach up to gigabytes and block the phone
                   """)
+
+  def crunch2(sel):
+     system("clear")
+     minimo=input("Enter the minimum password: ")
+     maximo=input("Enter the maximum password: ")
+     valores=input("Enter the data to generate the dictionary: ")
+     system("clear")
+     print("Then copy and paste the command that will be given to you into the console and run Hasher.py again.")
+     print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
+     exit(2)
+
+  
   def crunch(self):
      verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
      if verificate == "no":
@@ -102,14 +114,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                 system("bash ~/Hash_crack/crunch.sh")
                 exit(2)
            elif comand == "2":
-                   system("clear")
-                   minimo=input("Enter the minimum password: ")
-                   maximo=input("Enter the maximum password: ")
-                   valores=input("Enter the data to generate the dictionary: ")
-                   system("clear")
-                   print("Then copy and paste the command that will be given to you into the console and run Hasher.py again.")
-                   print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
-                   exit(2)
+                 self.crunch2()                  
            elif comand == "3":
                   system("clear")
                   password=input("Enter what you know of the password and what you don't as the @ symbol: ")
