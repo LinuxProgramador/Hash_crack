@@ -21,6 +21,17 @@ class Hash_crack:
 
 
   def __init__(self):
+    self.hash = {
+    'sha1':sha1,
+    'sha224':sha224,
+    'sha384':sha384,
+    'sha256':sha256,
+    'sha512':sha512,
+    'sha3_224':sha3_224,
+    'sha3_384':sha3_384,
+    'sha3_256':sha3_256,
+    'sha3_512':sha3_512
+    }
     self.md5=32
     self.sha1=40
     self.sha224=56
