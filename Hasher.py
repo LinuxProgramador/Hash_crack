@@ -12,7 +12,7 @@ from getpass import getuser
 
 class Hash_crack:
   '''
-     Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the imported third-party projects
+     Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects
   '''
 
   def __init__(self):
