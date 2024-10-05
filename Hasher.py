@@ -2,13 +2,6 @@
 
 #Herramienta para romper hash por fuerza bruta en distros linux y termux
 
-#La herramienta zcrack fue brindada por maquina1337 visita su pagina en github
-#https://github.com/machine1337/zipcrack
-#El banner fue brindado por CiKu370 visita su pagina en github
-#https://github.com/CiKu370/hasher
-#La herramienta RARNinja fue brindado por SHUR1K-N visita su pagina en github
-#https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
-
 
 from Crypto.Hash import RIPEMD160
 from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s,blake2b
