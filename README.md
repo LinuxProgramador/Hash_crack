@@ -5,8 +5,6 @@ Proyectos de terceros incluidos:
 
 zipcrack: https://github.com/machine1337/zipcrack
 
-hasher: https://github.com/CiKu370/hasher
-
 RARNinja: https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
 
 
@@ -28,31 +26,31 @@ python3 Hasher.py [-h,--help]
 
 Hashes soportados:
 
-MD5
+    MD5
 
-SHA1
+    SHA1
 
-SHA224
+    SHA224
 
-SHA256
+    SHA256
 
-SHA384
+    SHA384
 
-SHA512
+    SHA512
 
-SHA3-224
+    SHA3-224
 
-SHA3-256
+    SHA3-256
 
-SHA3-384
+    SHA3-384
 
-SHA3-512
+    SHA3-512
 
-BLAKE2s
+    BLAKE2s
 
-BLAKE2b
+    BLAKE2b
 
-RIPEMD-160
+    RIPEMD-160
 
 
 Notas importantes:
@@ -61,14 +59,6 @@ Notas importantes:
 
 
 2. El éxito al descifrar contraseñas de archivos ZIP y RAR depende en gran medida del programa utilizado para comprimirlos. Es más probable que el descifrado funcione si se comprimieron utilizando herramientas de consola como zip o rar.
-
-
-
-Comandos para descifrado:
-
-zcrack : Descifrar contraseñas de archivos ZIP.
-
-RARNinja : Descifrar contraseñas de archivos RAR.
 
 
 Salir del programa:
