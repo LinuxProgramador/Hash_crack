@@ -1,6 +1,15 @@
 
-Descargo de Responsabilidad:Esta herramienta fue creada con fines educativos, no me hago responsable de su mal uso
+Descargo de Responsabilidad: Esta herramienta fue creada con fines educativos, no me hago responsable de su mal uso
 
+Proyectos de Terceros incluidos:
+
+1) https://github.com/machine1337/zipcrack
+   
+2) https://github.com/CiKu370/hasher
+   
+3) https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
+
+   
 cd ~
 
 git clone https://github.com/LinuxProgramador/Hash_crack
