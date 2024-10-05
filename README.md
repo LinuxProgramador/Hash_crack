@@ -1,13 +1,13 @@
+Descargo de responsabilidad:
+Esta herramienta ha sido creada exclusivamente con fines educativos. El autor no se responsabiliza por el mal uso que se le pueda dar.
 
-Descargo de Responsabilidad: Esta herramienta fue creada con fines educativos, no me hago responsable de su mal uso
+Proyectos de terceros incluidos:
 
-Proyectos de Terceros incluidos:
+zipcrack: https://github.com/machine1337/zipcrack
 
-1) https://github.com/machine1337/zipcrack
-   
-2) https://github.com/CiKu370/hasher
-   
-3) https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
+hasher: https://github.com/CiKu370/hasher
+
+RARNinja: https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
 
 
 Instalación:
@@ -22,30 +22,54 @@ bash dependencies.sh
 
 python3 Hasher.py
 
-python3 Hasher.py [-h,--help]  muestra el menu de ayuda 
+Para acceder al menú de ayuda:
 
-Hash soportados:
+python3 Hasher.py [-h,--help]
 
-    md5
-    sha1
-    sha224
-    sha256
-    sha384                                                                     
-    sha512      
-    sha3_256
-    sha3_224
-    sha3_384
-    sha3_512
-    blake2s
-    blake2b
-    RIPEMD-160
+Hashes soportados:
 
-Nota: si quiere importar su propio diccionario tiene que llamarse wordlist.txt y estar dentro del directorio Hash_crack
+MD5
 
-Nota: descifrar la contraseña en archivos zip y rar depende mucho del programa que los comprimió, es más factible descifrarlos si se comprimieron con zip o rar de consola
+SHA1
 
-zcrack :- crack zip
+SHA224
 
-RARNinja :- crack rar
+SHA256
 
-Para salir del programa presione CTRL C
+SHA384
+
+SHA512
+
+SHA3-224
+
+SHA3-256
+
+SHA3-384
+
+SHA3-512
+
+BLAKE2s
+
+BLAKE2b
+
+RIPEMD-160
+
+
+Notas importantes:
+
+1. Si deseas utilizar tu propio diccionario, debes llamarlo wordlist.txt y colocarlo en el directorio Hash_crack.
+
+
+2. El éxito al descifrar contraseñas de archivos ZIP y RAR depende en gran medida del programa utilizado para comprimirlos. Es más probable que el descifrado funcione si se comprimieron utilizando herramientas de consola como zip o rar.
+
+
+
+Comandos para descifrado:
+
+zcrack : Descifrar contraseñas de archivos ZIP.
+
+RARNinja : Descifrar contraseñas de archivos RAR.
+
+
+Salir del programa:
+Presiona CTRL + C
