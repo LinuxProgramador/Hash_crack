@@ -11,7 +11,9 @@ from time import sleep
 from getpass import getuser
 
 class Hash_crack:
-
+  '''
+    Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the imported third-party projects
+  '''
 
   def __init__(self):
     self.hash = {
@@ -39,6 +41,9 @@ class Hash_crack:
     self.os=path.exists("/data/data/com.termux/files/")
     
   def banner(self):
+        '''
+          Method where the baneer is established
+        '''
         print ('''\n
                  Hasher 1.0
   --------------------------------------------
@@ -51,6 +56,9 @@ class Hash_crack:
         
 
   def call_modules(self):
+    '''
+      Call for third-party projects included to extend the program's functionality 
+    '''
     confirm=input("Do you want to use (zcrack/rarninja/or \"no\" for none ): ").strip().lower()
     if confirm == "zcrack": 
       print("NOTE:This process may take time!") 
@@ -66,6 +74,9 @@ class Hash_crack:
       
       
   def user_os(self):
+    '''
+      Detects the operating system and in relation to that returns the path of the dictionary 
+    '''
     return self.rute_dictionary_termux if self.os == True else self.rute_dictionary_linux
     
     
@@ -111,6 +122,9 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
 
   
   def crunch(self):
+     '''
+        Generate custom dictionaries
+     '''
      verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
      if verificate == "no":
            remove(self.user_os())
@@ -129,6 +143,9 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
 
 
   def validation(self,many_hash,password,hash_input):
+       '''
+       Validates if the hash is equal to the encrypted password
+       '''
        if many_hash == hash_input:
             print("\n{***********************SUCCESS***********************}")
             print(f"[ ✔ ] Password Found:- {password}")
@@ -137,6 +154,9 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
             print(f"[*] Trying password:- {password}")
                
   def crack(self,hash_input,select):
+     '''
+     Encode each word in the dictionary, to verify with the hash of the key
+     '''
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
        for keywords in keywords_read:
              password=keywords.strip()
@@ -165,6 +185,9 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
        print("[ X ] The password is not in the dictionary!")
                                     
   def show_help(self):
+             '''
+                Method that displays a help menu 
+             '''
              print("Hasher 1.0. Tool for cracking multiple hashes.")
              print("""
 Usage: 
@@ -192,6 +215,9 @@ Help Menu:
     
     
   def cracking_selection(self,hash_input,hash):
+     '''
+       Allows the user to choose which hash to crack
+     '''
      if hash == 'md5':
         select = None
      else:
@@ -208,6 +234,9 @@ Wait, this may take a while
 
   
   def main(self):
+   '''
+      Performs tasks based on what the user selects 
+   '''
    try:
     hash = ''
     if "-h" in argv or "--help" in argv:
