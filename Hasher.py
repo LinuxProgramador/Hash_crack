@@ -155,7 +155,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                
   def crack(self,hash_input,select):
      '''
-     Encode each word in the dictionary, to verify with the hash of the key
+       Encode each word in the dictionary, to verify with the hash of the key
      '''
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
        for keywords in keywords_read:
