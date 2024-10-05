@@ -9,7 +9,9 @@ Proyectos de Terceros incluidos:
    
 3) https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
 
-   
+
+Instalación:
+
 cd ~
 
 git clone https://github.com/LinuxProgramador/Hash_crack
@@ -38,9 +40,9 @@ Hash soportados:
     blake2b
     RIPEMD-160
 
-NOTA:si quiere importar su propio diccionario tiene que llamarse wordlist.txt y estar dentro del directorio Hash_crack
+Nota: si quiere importar su propio diccionario tiene que llamarse wordlist.txt y estar dentro del directorio Hash_crack
 
-Nota:descifrar la contraseña en archivos zip y rar depende mucho del programa que los comprimió, es más factible descifrarlos si se comprimieron con zip o rar de consola
+Nota: descifrar la contraseña en archivos zip y rar depende mucho del programa que los comprimió, es más factible descifrarlos si se comprimieron con zip o rar de consola
 
 zcrack :- crack zip
 
