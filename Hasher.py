@@ -149,8 +149,10 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
      '''
 
      #Note: calculations may not be as accurate
-     sizes_mb = path.getsize(self.user_os()) / (1024 ** 2)
-
+     sizes = path.getsize(self.user_os())
+     sizes_kb = sizes / 1024
+     sizes_mb = sizes_kb / 1024
+    
      if sizes_mb > 1.0 and sizes_mb <= 20.0:
             return "~2 mins"
      elif sizes_mb > 20.0 and sizes_mb <= 40.0:
