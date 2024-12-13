@@ -142,6 +142,32 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                  exit(2)
 
 
+  
+  def duration(self):
+     '''
+        Method that calculates the approximate duration of the crack based on the size of the dictionary
+     '''
+
+     #Note: calculations may not be as accurate
+     sizes_mb = path.getsize(self.user_os()) / (1024 ** 2)
+
+     if sizes_mb > 1.0 and sizes_mb <= 20.0:
+            return "~2 mins"
+     elif sizes_mb > 20.0 and sizes_mb <= 40.0:
+            return "~6 mins"
+     elif sizes_mb > 40.0 and sizes_mb <= 81.0:
+            return "~10 mins"
+     elif sizes_mb > 81.0 and sizes_mb <= 140.0:
+            return "~18 mins"
+     elif sizes_mb > 140.0 and sizes_mb <= 250.0:
+            return "~32 mins"
+     elif sizes_mb > 250.0 and sizes_mb <= 600.0:
+            return "~1 and 19 mins"
+     elif sizes_mb > 600.0:
+            return "more 2 hours"
+
+  
+
   def validation(self,many_hash,password,hash_input):
        '''
           Validates if the hash is equal to the encrypted password
