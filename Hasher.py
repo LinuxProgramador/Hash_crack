@@ -168,7 +168,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
 
   
 
-  def validation(self,many_hash,password,hash_input):
+  def validation(self,many_hash,password,hash_input,x):
        '''
           Validates if the hash is equal to the encrypted password
        '''
@@ -177,22 +177,23 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
             print(f"[ ✔ ] Password Found:- {password}")
             exit(2)
        else:
-            print(f"[*] Trying password:- {password}")
+            print(f"[{x}] Trying password:- {password}")
                
   def crack(self,hash_input,select):
      '''
         Encode each word in the dictionary, to verify with the hash of the key
      '''
+     x = self.duration()
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
        for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()
              if select == None:
                encryption = md5(password.encode('latin-1')).hexdigest()
-               self.validation(encryption,password,hash_input)
+               self.validation(encryption,password,hash_input,x)
              elif select in self.hash:
                encryption = self.hash[select](password.encode('latin-1')).hexdigest()
-               self.validation(encryption,password,hash_input)
+               self.validation(encryption,password,hash_input,x)
              elif select == "rypemd-160":
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
@@ -201,10 +202,10 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                     print(f"[ ✓ ] Password Found:- {password}")
                     exit(2)
                  else:
-                    print(f"[*] Trying password:- {password}")
+                    print(f"[{x}] Trying password:- {password}")
              elif select in self.hash:
                 blas2=self.hash[select](data).hexdigest()
-                self.validation(blas2,password,hash_input)        
+                self.validation(blas2,password,hash_input,x)        
              else:
                print("Wrong name!")
                exit(2)
