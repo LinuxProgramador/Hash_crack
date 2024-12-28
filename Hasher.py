@@ -195,7 +195,6 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                self.validation(encryption,password,hash_input,x)
              elif select == "bcrypt":
                 if not self.os:
-                   print("bcrypt is considered a secure hash, it is recommended to use small dictionaries")
                    if checkpw(data, bytes(hash_input,encoding="latin-1")):
                      print("\n{***********************SUCCESS***********************}")
                      print(f"[✓] Password Found:- {password}")
@@ -208,6 +207,7 @@ bcrypt is not compatible with termux:
 option 1: install \"userland\" from play store
 option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/hash-suite-droid/com.hashsuite.droid
                           """)
+                    exit(2)
              elif select in self.hash:
                encryption = self.hash[select](password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
@@ -315,6 +315,8 @@ Wait, this may take a while
     elif len(hash_input) == self.hash['length_bcrypt']:
              hash = "bcrypt"
              print("Type hash => bcrypt")
+             print("bcrypt is considered a secure hash, it is recommended to use small dictionaries")
+             sleep(2)
              self.cracking_selection(hash_input,hash)
     else:
         print()
