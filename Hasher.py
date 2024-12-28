@@ -196,7 +196,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              elif select == "bcrypt":
                 if not self.os:
                    print("bcrypt is considered a secure hash, it is recommended to use small dictionaries")
-                   if checkpw(data, bytes(hash_input,encoding="utf-8")):
+                   if checkpw(data, bytes(hash_input,encoding="latin-1")):
                      print("\n{***********************SUCCESS***********************}")
                      print(f"[✓] Password Found:- {password}")
                      exit(2)
