@@ -9,6 +9,7 @@ from sys import argv,exit
 from os import system,path,remove
 from time import sleep
 from getpass import getuser
+from bcrypt import checkpw
 
 class Hash_crack:
   '''
