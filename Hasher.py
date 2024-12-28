@@ -316,7 +316,7 @@ Wait, this may take a while
              hash = "bcrypt"
              print("Type hash => bcrypt")
              print("bcrypt is considered a secure hash, it is recommended to use small dictionaries")
-             sleep(2)
+             sleep(3)
              self.cracking_selection(hash_input,hash)
     else:
         print()
