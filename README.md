@@ -52,6 +52,8 @@ Hashes soportados:
 
     RIPEMD-160
 
+    Bcrypt 
+
 
 Notas importantes:
 
