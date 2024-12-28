@@ -262,6 +262,8 @@ Help Menu:
      '''
      if hash == 'md5':
         select = None
+     elif hash == "bcrypt":
+        select = "bcrypt"
      else:
        select = input("Which one do you want to crack: ")
      sleep(1)
