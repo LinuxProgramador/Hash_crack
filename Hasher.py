@@ -191,6 +191,21 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              if select == None:
                encryption = md5(password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
+             elif select == "bcrypt":
+                if not self.os:
+                   print("bcrypt is considered a secure hash, it is recommended to use small dictionaries")
+                   if checkpw(data, bytes(hash_input,encoding="utf-8")):
+                     print("\n{***********************SUCCESS***********************}")
+                     print(f"[✓] Password Found:- {password}")
+                     exit(2)
+                   else:
+                     print(f"[indefinite] Trying password:- {password}")
+                else:
+                    print("""
+bcrypt is not compatible with termux:
+option 1: install \"userland\" from play store
+option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/hash-suite-droid/com.hashsuite.droid
+                          """)
              elif select in self.hash:
                encryption = self.hash[select](password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
