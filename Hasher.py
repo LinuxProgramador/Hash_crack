@@ -307,6 +307,10 @@ Wait, this may take a while
     elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash => (sha512/sha3_512/blake2b)")    
              self.cracking_selection(hash_input,hash)
+    elif len(hash_input) == self.hash['length_bcrypt']:
+             hash = "bcrypt"
+             print("Type hash => bcrypt")
+             self.cracking_selection(hash_input,hash)
     else:
         print()
         self.show_help()
