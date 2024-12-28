@@ -28,6 +28,7 @@ class Hash_crack:
     'sha3_512':sha3_512,
     'blake2b':blake2b,
     'blake2s':blake2s,
+    'length_bcrypt':60,
     'length_md5':32,
     'length_sha1':40,
     'length_sha224':56,
