@@ -12,7 +12,7 @@ function main {
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
     else
        sudo apt install python3 python3-pip -y
-       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt 
     fi
     if [ "$os" = 'Android' ] ; then
        if [ "$arch" = 'aarch64' ] ; then
