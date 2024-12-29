@@ -346,6 +346,12 @@ Wait, this may take a while
              print("Sha256crypt is considered a secure hash, it is recommended to use small dictionaries")
              sleep(4)
              self.cracking_selection(hash_input,hash)
+    elif len(hash_input) == self.hash['length_sha512crypt']:
+             hash = "sha512crypt"
+             print("Type hash => sha512crypt")
+             print("Sha512crypt is considered a secure hash, it is recommended to use small dictionaries")
+             sleep(4)
+             self.cracking_selection(hash_input,hash)
     else:
         print()
         self.show_help()
