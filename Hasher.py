@@ -182,6 +182,15 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
             exit(2)
        else:
             print(f"[{x}] Trying password:- {password}")
+
+  def auxiliary_crack(self,password):
+    '''
+     Helper function that will show the correct key
+    '''
+    print("\n{***********************SUCCESS***********************}")
+    print(f"[✓] Password Found:- {password}")
+    exit(2)
+
                
   def crack(self,hash_input,select):
      '''
@@ -197,18 +206,14 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                self.validation(encryption,password,hash_input,x)
              elif select in self.hash:
                 if self.hash[select].verify(password, hash_input):
-                     print("\n{***********************SUCCESS***********************}")
-                     print(f"[✓] Password Found:- {password}")
-                     exit(2)
+                     self.auxliary_crack(password)
                 else:
                      print(f"[indefinite] Trying password:- {password}")
              elif select == "bcrypt":
                 if not self.os:
                    from bcrypt import checkpw
                    if checkpw(data, bytes(hash_input,encoding="latin-1")):
-                     print("\n{***********************SUCCESS***********************}")
-                     print(f"[✓] Password Found:- {password}")
-                     exit(2)
+                     self.auxiliary_crack(password)
                    else:
                      print(f"[indefinite] Trying password:- {password}")
                 else:
@@ -225,9 +230,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
                  if RIPEMD.hexdigest() == hash_input:
-                    print("\n{***********************SUCCESS***********************}")
-                    print(f"[ ✓ ] Password Found:- {password}")
-                    exit(2)
+                    self.auxiliary_crack(password)
                  else:
                     print(f"[{x}] Trying password:- {password}")
              elif select in self.hash:
