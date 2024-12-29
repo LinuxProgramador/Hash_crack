@@ -58,6 +58,9 @@ Hashes soportados:
 
     SHA512CRYPT
 
+    SHAKE-128
+
+
 
 Notas importantes:
 
