@@ -196,10 +196,6 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                encryption = md5(password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
              elif select in self.hash:
-                """
-                Default rounds value in many implementations,
-                but can be customized depending on your needs
-                """
                 if self.hash[select].verify(password, hash_input):
                      print("\n{***********************SUCCESS***********************}")
                      print(f"[✓] Password Found:- {password}")
