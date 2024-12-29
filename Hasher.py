@@ -254,20 +254,21 @@ Help Menu:
  ----------------------------
 |   List of available hash   |
  ----------------------------
-|md5       |
-|sha1      |
-|sha224    |
-|sha256    |
-|sha384    |
-|sha512    |
-|sha3_256  |
-|sha3_224  |
-|sha3_384  |
-|sha3_512  |
-|blake2s   |
-|blake2b   |
-|RIPEMD-160|
-|bcrypt    |
+|md5        |
+|sha1       |
+|sha224     |
+|sha256     |
+|sha384     |
+|sha512     |
+|sha3_256   |
+|sha3_224   |
+|sha3_384   |
+|sha3_512   |
+|blake2s    |
+|blake2b    |
+|RIPEMD-160 |
+|bcrypt     |
+|sha256crypt|
  ----------
                     """)
     
@@ -278,6 +279,8 @@ Help Menu:
      '''
      if hash == 'md5':
         select = None
+     elif hash == "sha256crypt":
+        select = "sha256crypt"
      elif hash == "bcrypt":
         select = "bcrypt"
      else:
