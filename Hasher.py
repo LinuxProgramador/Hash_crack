@@ -257,6 +257,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
              print("""
 Usage: 
      python3 Hasher.py
+     python3 Hasher.py -sk  parameter to enter the shake-128 hash
 Help Menu:
      -h  --help  print the help menu
  ----------------------------
