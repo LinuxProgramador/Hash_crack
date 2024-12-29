@@ -272,6 +272,7 @@ Help Menu:
 |RIPEMD-160 |
 |bcrypt     |
 |sha256crypt|
+|sha512crypt|
  ----------
                     """)
     
