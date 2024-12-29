@@ -278,11 +278,11 @@ Help Menu:
      if hash == 'md5':
         select = None
      elif hash == "sha256crypt":
-        select = "sha256crypt"
+        select = hash
      elif hash == "sha512crypt":
-        select = "sha512crypt"
+        select = hash
      elif hash == "bcrypt":
-        select = "bcrypt"
+        select = hash
      else:
        select = input("Which one do you want to crack: ")
      sleep(1)
