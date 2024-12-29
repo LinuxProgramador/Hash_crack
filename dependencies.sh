@@ -9,10 +9,10 @@ function main {
     sleep 2
     if [ "$os" = 'Android' ] ; then
        apt install python3 python-pip -y
-       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome passlib
     else
        sudo apt install python3 python3-pip -y
-       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt 
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib
     fi
     if [ "$os" = 'Android' ] ; then
        if [ "$arch" = 'aarch64' ] ; then
