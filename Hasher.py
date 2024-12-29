@@ -279,6 +279,7 @@ Help Menu:
 |bcrypt     |
 |sha256crypt|
 |sha512crypt|
+|shake-128  |
  ----------
                     """)
     
