@@ -56,6 +56,8 @@ Hashes soportados:
 
     SHA256CRYPT
 
+    SHA512CRYPT
+
 
 Notas importantes:
 
