@@ -328,6 +328,16 @@ Wait, this may take a while
     if "-h" in argv or "--help" in argv:
                self.show_help()
                exit(2)
+    if "-sk" in argv:
+         hash_input=input("Enter the hash shake-128: ")
+         if hash_input:
+           hash = "shake-128"
+           self.cracking_selection(hash_input,hash)
+           exit(2)
+         else:
+           print()
+           self.show_help()
+           exit(2)
     self.banner()
     self.crunch()
     self.call_modules()
