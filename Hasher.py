@@ -334,6 +334,12 @@ Wait, this may take a while
              print("Bcrypt is considered a secure hash, it is recommended to use small dictionaries")
              sleep(4)
              self.cracking_selection(hash_input,hash)
+    elif len(hash_input) == self.hash['length_sha256crypt']:
+             hash = "sha256crypt"
+             print("Type hash => sha256crypt")
+             print("Sha256crypt is considered a secure hash, it is recommended to use small dictionaries")
+             sleep(4)
+             self.cracking_selection(hash_input,hash)
     else:
         print()
         self.show_help()
