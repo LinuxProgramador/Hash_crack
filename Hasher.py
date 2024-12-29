@@ -9,7 +9,7 @@ from sys import argv,exit
 from os import system,path,remove
 from time import sleep
 from getpass import getuser
-from bcrypt import checkpw
+
 
 class Hash_crack:
   '''
@@ -195,6 +195,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                self.validation(encryption,password,hash_input,x)
              elif select == "bcrypt":
                 if not self.os:
+                   from bcrypt import checkpw
                    if checkpw(data, bytes(hash_input,encoding="latin-1")):
                      print("\n{***********************SUCCESS***********************}")
                      print(f"[✓] Password Found:- {password}")
@@ -315,8 +316,8 @@ Wait, this may take a while
     elif len(hash_input) == self.hash['length_bcrypt']:
              hash = "bcrypt"
              print("Type hash => bcrypt")
-             print("bcrypt is considered a secure hash, it is recommended to use small dictionaries")
-             sleep(3)
+             print("Bcrypt is considered a secure hash, it is recommended to use small dictionaries")
+             sleep(4)
              self.cracking_selection(hash_input,hash)
     else:
         print()
