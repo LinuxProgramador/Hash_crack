@@ -285,6 +285,8 @@ Help Menu:
         select = None
      elif hash == "sha256crypt":
         select = "sha256crypt"
+     elif hash == "sha512crypt":
+        select = "sha512crypt"
      elif hash == "bcrypt":
         select = "bcrypt"
      else:
