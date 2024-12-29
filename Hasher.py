@@ -341,10 +341,7 @@ Wait, this may take a while
              self.hash_secure_info(hash_input,hash)
     elif "$5" in hash_input[0:2]:
              hash = "sha256crypt"
-             print("Type hash => sha256crypt")
-             print("Sha256crypt is considered a secure hash, it is recommended to use small dictionaries")
-             sleep(4)
-             self.cracking_selection(hash_input,hash)
+             self.hash_secure_info(hash_input,hash)
     elif "$6" in hash_input[0:2]:
              hash = "sha512crypt"
              print("Type hash => sha512crypt")
