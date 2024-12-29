@@ -192,7 +192,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
        for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()
-             if select == None:
+             if select == "md5":
                encryption = md5(password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
              elif select in self.hash:
@@ -276,7 +276,7 @@ Help Menu:
         Allows the user to choose which hash to crack
      '''
      if hash == 'md5':
-        select = None
+        select = hash
      elif hash == "sha256crypt":
         select = hash
      elif hash == "sha512crypt":
@@ -319,7 +319,7 @@ Wait, this may take a while
     hash_input=input("Enter the hash to decrypt: ")
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
-             print("Type hash => md5")
+             print(f"Type hash => {hash}")
              self.cracking_selection(hash_input,hash)
     elif len(hash_input) == self.hash['length_sha1']:
              print("Type hash => (sha1/rypemd-160)")
