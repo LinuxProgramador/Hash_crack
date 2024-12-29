@@ -197,12 +197,12 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              if select == None:
                encryption = md5(password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
-             elif select == "sha256crypt":
+             elif select in self.hash:
                 """
                 Default rounds value in many implementations,
                 but can be customized depending on your needs
                 """
-                if sha256_crypt.verify(password, hash_input):
+                if self.hash[select].verify(password, hash_input):
                      print("\n{***********************SUCCESS***********************}")
                      print(f"[✓] Password Found:- {password}")
                      exit(2)
