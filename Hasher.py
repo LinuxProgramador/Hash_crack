@@ -204,6 +204,14 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              if select == "md5":
                encryption = md5(password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
+             elif select == "shake-128":
+                 shake = shake_128()
+                 shake.update(data)
+                 calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
+                 if calculated_hash == hash_input:
+                    self.auxiliary_crack(password)
+                 else:
+                    print(f"[{x}] Trying password:- {password}")
              elif select in self.hash:
                 if self.hash[select].verify(password, hash_input):
                      self.auxliary_crack(password)
