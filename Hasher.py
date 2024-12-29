@@ -288,7 +288,9 @@ Help Menu:
      '''
         Allows the user to choose which hash to crack
      '''
-     if hash == 'md5':
+     if hash == "md5":
+        select = hash
+     elif hash == "shake-128":
         select = hash
      elif hash == "sha256crypt":
         select = hash
