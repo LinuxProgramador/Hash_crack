@@ -338,10 +338,7 @@ Wait, this may take a while
              self.cracking_selection(hash_input,hash)
     elif len(hash_input) == self.hash['length_bcrypt']:
              hash = "bcrypt"
-             print("Type hash => bcrypt")
-             print("Bcrypt is considered a secure hash, it is recommended to use small dictionaries")
-             sleep(4)
-             self.cracking_selection(hash_input,hash)
+             self.hash_secure_info(hash_input,hash)
     elif "$5" in hash_input[0:2]:
              hash = "sha256crypt"
              print("Type hash => sha256crypt")
