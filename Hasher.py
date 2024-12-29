@@ -295,7 +295,15 @@ Wait, this may take a while
      sleep(2)
      self.crack(hash_input,select)
 
-  
+  def hash_secure_info(self,hash_input,hash):  
+       '''
+       reports that a secure hash is being cracked 
+       '''
+       print(f"Type hash => {hash}")
+       print(f"{hash.capitalize()} is considered a secure hash, it is recommended to use small dictionaries")
+       sleep(4)
+       self.cracking_selection(hash_input,hash)
+    
   def main(self):
    '''
       Performs tasks based on what the user selects 
