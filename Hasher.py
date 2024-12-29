@@ -31,8 +31,6 @@ class Hash_crack:
     'blake2s':blake2s,
     'sha256crypt':sha256_crypt,
     'sha512crypt':sha512_crypt,
-    'length_sha256crypt':63, #length changes based on number of rounds, default: 5000
-    'length_sha512crypt':106, #length changes based on number of rounds, default: 5000
     'length_bcrypt':60,
     'length_md5':32,
     'length_sha1':40,
@@ -340,13 +338,13 @@ Wait, this may take a while
              print("Bcrypt is considered a secure hash, it is recommended to use small dictionaries")
              sleep(4)
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.hash['length_sha256crypt']:
+    elif "$5" in hash_input[0:2]:
              hash = "sha256crypt"
              print("Type hash => sha256crypt")
              print("Sha256crypt is considered a secure hash, it is recommended to use small dictionaries")
              sleep(4)
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.hash['length_sha512crypt']:
+    elif "$6" in hash_input[0:2]:
              hash = "sha512crypt"
              print("Type hash => sha512crypt")
              print("Sha512crypt is considered a secure hash, it is recommended to use small dictionaries")
