@@ -220,7 +220,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                     print(f"[{x}] Trying password:- {password}")
              elif select in self.hash:
                 if self.hash[select].verify(password, hash_input):
-                     self.auxliary_crack(password)
+                     self.auxiliary_crack(password)
                 else:
                      print(f"[indefinite] Trying password:- {password}")
              elif select == "bcrypt":
