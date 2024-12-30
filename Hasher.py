@@ -399,7 +399,7 @@ Wait, this may take a while
     elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash => (sha512/sha3_512/blake2b)")    
              self.cracking_selection(hash_input,hash)
-    elif len(hash_input) == self.hash['length_bcrypt']:
+    elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
              self.hash_secure_info(hash_input,hash)
     elif "$5" in hash_input[0:2]:
