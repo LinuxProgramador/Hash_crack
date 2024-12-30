@@ -60,6 +60,7 @@ Hashes soportados:
 
     SHAKE-128
 
+    SHAKE-256
 
 
 Notas importantes:
