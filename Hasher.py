@@ -358,18 +358,11 @@ Wait, this may take a while
                exit(2)
     if "-sk" in argv:
          hash_input=input("Enter the hash shake-128: ")
-         if hash_input:
-           if len(hash_input) >= 1 and len(hash_input) <= 2048:
-             hash = "shake-128"
-             self.cracking_selection(hash_input,hash)
-             exit(2)
-           else:
-             print("exceeded the allowed bits of \"1024\"")
-             exit(2)
-         else:
-           print()
-           self.show_help()
-           exit(2)
+         hash = "shake-128"
+    elif "-sk2" in argv:
+         hash_input=input("Enter the hash shake-256: ")
+         hash = "shake-256"
+         self.auxiliary_main(hash_input,hash)
     self.banner()
     self.crunch()
     self.call_modules()
