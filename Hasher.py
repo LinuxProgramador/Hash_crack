@@ -409,6 +409,11 @@ Wait, this may take a while
              hash = "sha512crypt"
              self.hash_secure_info(hash_input,hash)
     else:
+        print("""
+ The hash entered is of incorrect length or does not comply
+ with the standards supported by the script.
+ Please verify and try again.
+              """)
         print()
         self.show_help()
       
