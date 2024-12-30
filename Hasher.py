@@ -366,8 +366,8 @@ Wait, this may take a while
              if hash_input:
                print("You did not enter a valid hash!")
                exit(2)
-           hash = "shake-256"
-           self.auxiliary_main(hash_input,hash)
+         hash = "shake-256"
+         self.auxiliary_main(hash_input,hash)
     self.banner()
     self.crunch()
     self.call_modules()
