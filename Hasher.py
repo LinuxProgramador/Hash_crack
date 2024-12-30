@@ -362,12 +362,12 @@ Wait, this may take a while
          self.auxiliary_main(hash_input,hash)
     elif "-sk2" in argv:
          hash_input=input("Enter the hash shake-256: ")
-         if hash_input.isalnum(): 
+         if not hash_input.isalnum():
+             if hash_input:
+               print("You did not enter a valid hash!")
+               exit(2)
            hash = "shake-256"
            self.auxiliary_main(hash_input,hash)
-         else:
-            print("You did not enter a valid hash!")
-            exit(2)
     self.banner()
     self.crunch()
     self.call_modules()
