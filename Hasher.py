@@ -362,7 +362,7 @@ Wait, this may take a while
          self.auxiliary_main(hash_input,hash)
     elif "-sk2" in argv:
          hash_input=input("Enter the hash shake-256: ")
-         if type(hash_input) is hex: 
+         if path.isalnum(hash_input): 
            hash = "shake-256"
            self.auxiliary_main(hash_input,hash)
          else:
