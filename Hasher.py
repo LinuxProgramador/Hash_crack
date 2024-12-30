@@ -329,6 +329,24 @@ Wait, this may take a while
        sleep(4)
        self.cracking_selection(hash_input,hash)
     
+
+  def auxiliary_main(self,hash_input,hash):
+     '''
+     Helper function to validation shake hash
+     '''
+     if hash_input:
+       if len(hash_input) >= 1 and len(hash_input) <= 2056:
+         self.cracking_selection(hash_input,hash)
+         exit(2)
+       else:
+         print("exceeded the allowed bits of \"1024\"")
+         exit(2)
+     else:
+         print()
+         self.show_help()
+         exit(2)
+       
+    
   def main(self):
    '''
       Performs tasks based on what the user selects 
