@@ -359,6 +359,7 @@ Wait, this may take a while
     if "-sk" in argv:
          hash_input=input("Enter the hash shake-128: ")
          hash = "shake-128"
+         self.auxiliary_main(hash_input,hash)
     elif "-sk2" in argv:
          hash_input=input("Enter the hash shake-256: ")
          hash = "shake-256"
