@@ -212,15 +212,20 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
        for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()
+             #md5 hash check
              if select == "md5":
                encryption = md5(password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
+
+             #Checking hash shakes
              elif select == "shake-256":
                 hash1 = shake_256(data).hexdigest(int(len(hash_input)/2))
                 if hash1 == hash_input:
                     self.auxiliary_crack(password)
                 else:
                     print(f"[{x}] Trying password:- {password}")
+
+         
              elif select == "shake-128":
                  shake = shake_128()
                  shake.update(data)
@@ -229,8 +234,12 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                     self.auxiliary_crack(password)
                  else:
                     print(f"[{x}] Trying password:- {password}")
+
+             #checking shacrypt hashes
              elif select == "sha256crypt" or select == "sha512crypt":
                   self.shacrypt(hash_input,password,select)
+
+             #bcrypt hash check 
              elif select == "bcrypt":
                 if not self.os:
                    from bcrypt import checkpw
@@ -245,9 +254,13 @@ option 1: install \"userland\" from play store
 option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/hash-suite-droid/com.hashsuite.droid
                           """)
                     exit(2)
+
+             #checking  sha1, sha2, sha3 hashes
              elif select in self.hash:
                encryption = self.hash[select](password.encode('latin-1')).hexdigest()
                self.validation(encryption,password,hash_input,x)
+
+             #rypemd-160 hash check
              elif select == "rypemd-160":
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
@@ -255,9 +268,13 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
                     self.auxiliary_crack(password)
                  else:
                     print(f"[{x}] Trying password:- {password}")
+
+             #Checking blake2 hashes
              elif select in self.hash:
                 blas2=self.hash[select](data).hexdigest()
-                self.validation(blas2,password,hash_input,x)        
+                self.validation(blas2,password,hash_input,x)  
+
+         
              else:
                print("Wrong name!")
                exit(2)
