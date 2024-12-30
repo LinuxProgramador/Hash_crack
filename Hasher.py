@@ -264,6 +264,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
 Usage: 
      python3 Hasher.py
      python3 Hasher.py -sk  parameter to enter the shake-128 hash
+     python3 Hasher.py -sk2  parameter to enter the shake-256 hash
 Help Menu:
      -h  --help  print the help menu
  ----------------------------
@@ -286,6 +287,7 @@ Help Menu:
 |sha256crypt|
 |sha512crypt|
 |shake-128  |
+|shake-256  |
  ----------
                     """)
     
