@@ -331,7 +331,7 @@ Wait, this may take a while
     if "-sk" in argv:
          hash_input=input("Enter the hash shake-128: ")
          if hash_input:
-           if len(hash_input) >= 1 and len(hash_input) <= 1024:
+           if len(hash_input) >= 1 and len(hash_input) < 2048:
              hash = "shake-128"
              self.cracking_selection(hash_input,hash)
              exit(2)
