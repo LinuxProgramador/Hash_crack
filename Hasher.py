@@ -188,7 +188,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
      Helper function that will show the correct key
     '''
     print("\n{***********************SUCCESS***********************}")
-    print(f"[✓] Password Found:- {password}")
+    print(f"[ ✓ ] Password Found:- {password}")
     exit(2)
 
                
