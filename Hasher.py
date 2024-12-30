@@ -191,7 +191,18 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
     print(f"[ ✓ ] Password Found:- {password}")
     exit(2)
 
-               
+
+
+  def shacrypt(self,hash_input,password,select):
+        '''
+        function that separates the logic of the sha256crypt and sha512crypt hash so that it does not give an error with blake2
+        '''
+        if self.hash[select].verify(password, hash_input):
+          self.auxiliary_crack(password)
+        else:
+          print(f"[indefinite] Trying password:- {password}")
+
+  
   def crack(self,hash_input,select):
      '''
         Encode each word in the dictionary, to verify with the hash of the key
@@ -218,11 +229,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                     self.auxiliary_crack(password)
                  else:
                     print(f"[{x}] Trying password:- {password}")
-             elif select in self.hash:
-                if self.hash[select].verify(password, hash_input):
-                     self.auxiliary_crack(password)
-                else:
-                     print(f"[indefinite] Trying password:- {password}")
+             elif select == "sha256crypt" or select == "sha512crypt":
+                  self.shacrypt(hash_input,password,select)
              elif select == "bcrypt":
                 if not self.os:
                    from bcrypt import checkpw
