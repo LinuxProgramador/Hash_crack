@@ -362,8 +362,12 @@ Wait, this may take a while
          self.auxiliary_main(hash_input,hash)
     elif "-sk2" in argv:
          hash_input=input("Enter the hash shake-256: ")
-         hash = "shake-256"
-         self.auxiliary_main(hash_input,hash)
+         if type(hash_input) is hex: 
+           hash = "shake-256"
+           self.auxiliary_main(hash_input,hash)
+         else:
+            print("You did not enter a valid hash!")
+            exit(2)
     self.banner()
     self.crunch()
     self.call_modules()
@@ -404,6 +408,8 @@ Wait, this may take a while
         print("BYE!!")
    except FileNotFoundError as e:
         print(f"wordlist.txt does not exist in the path => {e}")
+   except ValueError:
+       print("You did not enter a valid hash!")
     
 if __name__ == "__main__":
   crack=Hash_crack()
