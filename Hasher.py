@@ -300,6 +300,8 @@ Help Menu:
         select = hash
      elif hash == "shake-128":
         select = hash
+     elif hash == "shake-256":
+        select = hash
      elif hash == "sha256crypt":
         select = hash
      elif hash == "sha512crypt":
