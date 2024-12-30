@@ -335,6 +335,9 @@ Wait, this may take a while
              hash = "shake-128"
              self.cracking_selection(hash_input,hash)
              exit(2)
+           else:
+             print("exceeded the allowed bits of \"1024\"")
+             exit(2)
          else:
            print()
            self.show_help()
