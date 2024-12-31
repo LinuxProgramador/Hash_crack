@@ -414,12 +414,16 @@ Wait, this may take a while
                self.show_help()
                exit(2)
     if "-sk" in argv:
+         print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
+         combined = input().strip().lower()
          fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
          hash_input=input("Enter the hash shake-128: ")
          hash = "shake-128"
          self.auxiliary_main(hash_input,hash,fast)
 
     elif "-sk2" in argv:
+         print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
+         combined = input().strip().lower()
          fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
          hash_input=input("Enter the hash shake-256: ")
          if not hash_input.isalnum():
@@ -435,6 +439,8 @@ proceed to enter \"n\" and then choose option 3\"
           """)
     self.crunch()
     self.call_modules()
+    print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
+    combined = input().strip().lower()
     fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
     hash_input=input("Enter the hash to decrypt: ")
     if len(hash_input) == self.hash['length_md5']:
