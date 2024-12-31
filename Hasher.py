@@ -222,6 +222,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
      else:
         x = ''
 
+     OldPass = ''
+     OldPassbin = b''
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
        for keywords in keywords_read:
              password=keywords.strip()
