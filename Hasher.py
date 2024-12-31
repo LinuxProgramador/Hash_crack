@@ -212,7 +212,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
               print(f"[indefinite] Trying password:- {password}")
 
 
-  def crack(self,hash_input,select,fast):
+  def crack(self,hash_input,select,fast,combined):
      '''
         Encode each word in the dictionary, to verify with the hash of the key
      '''
@@ -344,7 +344,7 @@ Help Menu:
                     """)
 
 
-  def cracking_selection(self,hash_input,hash,fast):
+  def cracking_selection(self,hash_input,hash,fast,combined):
      '''
         Allows the user to choose which hash to crack
      '''
@@ -373,27 +373,27 @@ Wait, this may take a while
          print("\nCRACKED............")
          print()
      sleep(2)
-     self.crack(hash_input,select,fast)
+     self.crack(hash_input,select,fast,combined)
 
 
-  def hash_secure_info(self,hash_input,hash,fast):
+  def hash_secure_info(self,hash_input,hash,fast,combined):
        '''
        reports that a secure hash is being cracked
        '''
        print(f"Type hash => {hash}")
        print(f"{hash.capitalize()} is considered a secure hash, it is recommended to use small dictionaries")
        sleep(4)
-       self.cracking_selection(hash_input,hash,fast)
+       self.cracking_selection(hash_input,hash,fast,combined)
 
 
 
-  def auxiliary_main(self,hash_input,hash,fast):
+  def auxiliary_main(self,hash_input,hash,fast,combined):
      '''
      Helper function to validation shake hash
      '''
      if hash_input:
        if len(hash_input) >= 1 and len(hash_input) <= 2056:
-         self.cracking_selection(hash_input,hash,fast)
+         self.cracking_selection(hash_input,hash,fast,combined)
          exit(2)
        else:
          print("exceeded the allowed bits of \"1024\"")
