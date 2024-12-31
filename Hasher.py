@@ -419,7 +419,7 @@ Wait, this may take a while
          fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
          hash_input=input("Enter the hash shake-128: ")
          hash = "shake-128"
-         self.auxiliary_main(hash_input,hash,fast)
+         self.auxiliary_main(hash_input,hash,fast,combined)
 
     elif "-sk2" in argv:
          print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
@@ -431,7 +431,7 @@ Wait, this may take a while
                print("You did not enter a valid hash!")
                exit(2)
          hash = "shake-256"
-         self.auxiliary_main(hash_input,hash,fast)
+         self.auxiliary_main(hash_input,hash,fast,combined)
     self.banner()
     print("""
 \"NOTE: If you want to perform a mask attack
@@ -446,31 +446,31 @@ proceed to enter \"n\" and then choose option 3\"
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
              print(f"Type hash => {hash}")
-             self.cracking_selection(hash_input,hash,fast)
+             self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha1']:
              print("Type hash => (sha1/rypemd-160)")
-             self.cracking_selection(hash_input,hash,fast)
+             self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha224']:
              print("Type hash => (sha224/sha3_224)")
-             self.cracking_selection(hash_input,hash,fast)
+             self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha384']:
              print("Type hash => (sha384/sha3_384)")
-             self.cracking_selection(hash_input,hash,fast)
+             self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha256']:
              print("Type hash => (sha256/sha3_256/blake2s)")
-             self.cracking_selection(hash_input,hash,fast)
+             self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash => (sha512/sha3_512/blake2b)")
-             self.cracking_selection(hash_input,hash,fast)
+             self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
-             self.hash_secure_info(hash_input,hash,fast)
+             self.hash_secure_info(hash_input,hash,fast,combined)
     elif "$5" in hash_input[0:2]:
              hash = "sha256crypt"
-             self.hash_secure_info(hash_input,hash,fast)
+             self.hash_secure_info(hash_input,hash,fast,combined)
     elif "$6" in hash_input[0:2]:
              hash = "sha512crypt"
-             self.hash_secure_info(hash_input,hash,fast)
+             self.hash_secure_info(hash_input,hash,fast,combined)
     else:
         if hash_input:
           print("""\n
