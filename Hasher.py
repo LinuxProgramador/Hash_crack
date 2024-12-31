@@ -227,6 +227,14 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              password=keywords.strip()
              data=password.encode()
 
+             if combined == "y":
+               password += OldPass
+               data += OldPassbin
+               x = "indefinite"
+               OldPass = keywords.strip()
+               OldPassbin = password.encode()
+               
+
              #md5 hash check
              if select == "md5":
                encryption = md5(password.encode('latin-1')).hexdigest()
