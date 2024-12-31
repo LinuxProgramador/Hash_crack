@@ -63,7 +63,7 @@ class Hash_crack:
     '''
        Call for third-party projects included to extend the program's functionality
     '''
-    confirm=input("Do you want to use (zcrack/rarninja/or \"no\" for none ): ").strip().lower()
+    confirm=input("Do you want to use (zcrack/rarninja/or \"n\" for none ): ").strip().lower()
     if confirm == "zcrack":
       print("NOTE:This process may take time!")
       sleep(3)
@@ -130,8 +130,8 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
      '''
         Generate custom dictionaries
      '''
-     verificate=input("You want to use the existing dictionary (yes/no): ").strip().lower()
-     if verificate == "no":
+     verificate=input("You want to use the existing dictionary (y/n): ").strip().lower()
+     if verificate == "n":
            remove(self.user_os())
            self.crunch_0()
            comand=input("option: ")
@@ -421,7 +421,7 @@ Wait, this may take a while
     self.banner()
     print("""
 \"NOTE: If you want to perform a mask attack
-proceed to enter \"no\" and then choose option 3\"
+proceed to enter \"n\" and then choose option 3\"
           """)
     self.crunch()
     self.call_modules()
