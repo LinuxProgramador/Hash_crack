@@ -420,8 +420,8 @@ Wait, this may take a while
          self.auxiliary_main(hash_input,hash,fast)
     self.banner()
     print("""
-NOTE: If you want to perform a mask attack
-proceed to enter \"no\" and then choose option 3
+\"NOTE: If you want to perform a mask attack
+proceed to enter \"no\" and then choose option 3\"
           """)
     self.crunch()
     self.call_modules()
