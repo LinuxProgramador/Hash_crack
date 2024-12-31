@@ -7,6 +7,7 @@ zipcrack: https://github.com/machine1337/zipcrack
 
 RARNinja: https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
 
+Rockyou dictionary download link 2023: https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt&ved=2ahUKEwjL6oTfvdKKAxUdSDABHe3UMvwQFnoECBoQAQ&usg=AOvVaw3snAERl1mU6Ccr4WFEazBd
 
 Instalación:
 
