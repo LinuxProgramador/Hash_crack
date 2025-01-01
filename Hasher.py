@@ -533,9 +533,8 @@ proceed to enter \"n\" and then choose option 3\"
           print("""\n
  \"The hash entered is of incorrect length or does not comply
  with the standards supported by the script.
- Please verify and try again.\"
+ Please verify and try again.\"\n
                 """)
-        print()
         self.show_help()
 
    except KeyboardInterrupt:
