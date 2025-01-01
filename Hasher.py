@@ -434,6 +434,14 @@ Wait, this may take a while
                exit(2)
          hash = "shake-256"
          self.auxiliary_main(hash_input,hash,fast,combined)
+
+    elif "-wpk" in argv:
+          #It's a slow hash
+          print("NOTE: The procedure is slow because the hash is obtained with \"PBKDF2\"")
+          hash_input = input("Enter the WPA hash: ").strip()
+          ssid = input("Enter the SSID: ").strip()
+          self.crack_wpa_psk(hash_input, ssid, self.user_os())
+      
     self.banner()
     print("""
 \"NOTE: If you want to perform a mask attack
