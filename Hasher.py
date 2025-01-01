@@ -345,8 +345,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
     OldPass = ''
     combined,fast = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
-    if fast == "y":
-         print("\nCRACKED............\n")
+    print(self.message_cracking(fast))
     with open(dictionary_path, 'r', encoding='latin-1') as file:
        for password in file:
          password = password.rstrip("\n")
@@ -430,8 +429,7 @@ Help Menu:
 Wait, this may take a while
 *****************************
                    """)
-     if fast == "y":
-         print("\nCRACKED............" + "\n")
+     print(self.message_cracking(fast))
      sleep(2)
      self.crack(hash_input,select,fast,combined)
 
