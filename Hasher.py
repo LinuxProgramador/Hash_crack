@@ -329,7 +329,13 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
        print("[ X ] The password is not in the dictionary!")
 
 
-
+  def message_cracking(self,fast):
+     '''
+     prints a message that the cracking process has already started
+     '''
+     if fast == "y":
+         return "\nCRACKED............\n"
+       
 
   def crack_wpa_psk(self, hash_input, ssid, dictionary_path):
     '''
