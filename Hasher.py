@@ -334,9 +334,9 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
             if derived_key.hex() == hash_input:
                 print("\n{***********************SUCCESS***********************}")
-                print(f"[  ^|^s ] SSID: {ssid}")
-                print(f"[  ^|^s ] Password Found:- {password}")
-                exit(0)
+                print(f"[ ✓ ] SSID: {ssid}")
+                print(f"[ ✓ ] Password Found:- {password}")
+                exit(2)
             else:
                if fast != "y":
                   print(f"[indefinite] Trying password:- {password}")
