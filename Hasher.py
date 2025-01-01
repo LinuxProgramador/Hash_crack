@@ -317,6 +317,7 @@ Usage:
      python3 Hasher.py
      python3 Hasher.py -sk  parameter to enter the shake-128 hash
      python3 Hasher.py -sk2  parameter to enter the shake-256 hash
+     python3 Hasher.py -wpk  parameter to enter the wpa-psk hash
 Help Menu:
      -h  --help  print the help menu
  ----------------------------
