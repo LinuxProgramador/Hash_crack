@@ -170,6 +170,17 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      return "indefinite"
 
 
+  def remaining_parameters_cracking(self):
+      '''
+      Asks the user if he wants to apply a combo attack or
+      if he wants to execute the fast cracking mode
+      '''
+      print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
+      combined = input().strip().lower()
+      fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
+      return combined,fast
+    
+
   def faster(self,fast,x,password):
       '''
       Function that will only print attempts if the user wants a slow crack
