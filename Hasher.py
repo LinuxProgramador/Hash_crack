@@ -4,7 +4,7 @@
 
 
 from Crypto.Hash import RIPEMD160
-from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s,blake2b,shake_128,shake_256
+from hashlib import md5,sha1,sha224,sha384,sha256,sha512,sha3_256,sha3_224,sha3_384,sha3_512,blake2s,blake2b,shake_128,shake_256,pbkdf2_hmac
 from sys import argv,exit
 from os import system,path,remove
 from time import sleep
