@@ -245,15 +245,14 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      OldPass = ''
      OldPassbin = b''
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
-       for keywords in keywords_read:
-             password=keywords.strip()
+       for password in keywords_read.read().splitlines():
              data=password.encode()
 
              if combined == "y":
                password += OldPass
                data += OldPassbin
                x = "indefinite"
-               OldPass = keywords.strip()
+               OldPass = password 
                OldPassbin = password.encode()
                
 
