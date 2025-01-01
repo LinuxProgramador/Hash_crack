@@ -183,10 +183,10 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
        '''
           Validates if the hash is equal to the encrypted password
        '''
+       wpa_psk = False
+       ssid = ''
        if many_hash == hash_input:
-            print("\n{***********************SUCCESS***********************}")
-            print(f"[ ✔ ] Password Found:- {password}")
-            exit(2)
+            self.auxiliary_crack(self,password,wpa_psk,ssid)
        else:
             self.faster(fast,x,password)
 
