@@ -100,7 +100,7 @@ class Hash_crack:
    Note: It is important to emphasize that if the password is hello123 and the initials that you do not know are 123, then put them in @ for example hello@@@ and the exact length for example in this case would be 8
    Note: the \"@\" can go in any position of the key, it is only used to specify where the combinations given by the user will be tested.
    
-NOTE:Be careful with the number of passwords you use. can be generated, it can reach up to gigabytes and block the phone
+NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN REACH UP TO GIGABYTES AND BLOCK THE PHONE!!!!!!!
                   """)
 
 
