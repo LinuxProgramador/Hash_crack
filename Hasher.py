@@ -336,9 +336,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
     '''
     x = 'indefinite'
     OldPass = ''
-    print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
-    combined = input().strip().lower()
-    fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
+    combined,fast = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
     if fast == "y":
          print("\nCRACKED............\n")
@@ -471,17 +469,13 @@ Wait, this may take a while
                self.show_help()
                exit(2)
     if "-sk" in argv:
-         print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
-         combined = input().strip().lower()
-         fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
+         combined,fast = self.remaining_parameters_cracking()
          hash_input=input("Enter the hash shake-128: ")
          hash = "shake-128"
          self.auxiliary_main(hash_input,hash,fast,combined)
 
     elif "-sk2" in argv:
-         print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
-         combined = input().strip().lower()
-         fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
+         combined,fast = self.remaining_parameters_cracking()
          hash_input=input("Enter the hash shake-256: ")
          if not hash_input.isalnum():
              if hash_input:
@@ -504,9 +498,7 @@ proceed to enter \"n\" and then choose option 3\"
           """)
     self.crunch()
     self.call_modules()
-    print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
-    combined = input().strip().lower()
-    fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
+    combined,fast = self.remaining_parameters_cracking()
     hash_input=input("Enter the hash to decrypt: ")
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
