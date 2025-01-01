@@ -533,6 +533,7 @@ proceed to enter \"n\" and then choose option 3\"
  with the standards supported by the script.
  Please verify and try again.\"
                 """ + "\n")
+        print()
         self.show_help()
 
    except KeyboardInterrupt:
