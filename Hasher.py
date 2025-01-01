@@ -403,18 +403,17 @@ Help Menu:
      '''
         Allows the user to choose which hash to crack
      '''
-     if hash == "md5":
-        select = hash
-     elif hash == "shake-128":
-        select = hash
-     elif hash == "shake-256":
-        select = hash
-     elif hash == "sha256crypt":
-        select = hash
-     elif hash == "sha512crypt":
-        select = hash
-     elif hash == "bcrypt":
-        select = hash
+     valid_hashes = {
+     "md5": "md5",
+     "shake-128": "shake-128",
+     "shake-256": "shake-256",
+     "sha256crypt": "sha256crypt",
+     "sha512crypt": "sha512crypt",
+     "bcrypt": "bcrypt"
+     }
+     select = valid_hashes.get(hash, None)
+     if select:
+           pass
      else:
        select = input("Which one do you want to crack: ")
      sleep(1)
@@ -425,7 +424,7 @@ Wait, this may take a while
 *****************************
                    """)
      if fast == "y":
-         print("\nCRACKED............\n")
+         print("\nCRACKED............" + "\n")
      sleep(2)
      self.crack(hash_input,select,fast,combined)
 
@@ -532,8 +531,8 @@ proceed to enter \"n\" and then choose option 3\"
           print("""\n
  \"The hash entered is of incorrect length or does not comply
  with the standards supported by the script.
- Please verify and try again.\"\n
-                """)
+ Please verify and try again.\"
+                """ + "\n")
         self.show_help()
 
    except KeyboardInterrupt:
