@@ -466,7 +466,7 @@ Wait, this may take a while
     if "-h" in argv or "--help" in argv:
                self.show_help()
                exit(2)
-    if "-sk" in argv:
+    elif "-sk" in argv:
          combined,fast = self.remaining_parameters_cracking()
          hash_input=input("Enter the hash shake-128: ")
          hash = "shake-128"
