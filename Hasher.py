@@ -205,11 +205,11 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
         '''
         function that separates the logic of the sha256crypt and sha512crypt hash so that it does not give an error with blake2
         '''
+        x = 'indefinite'
         if self.hash[select].verify(password, hash_input):
           self.auxiliary_crack(password)
         else:
-          if fast != "y":
-              print(f"[indefinite] Trying password:- {password}")
+          self.faster(fast,x,password)
 
 
   def crack(self,hash_input,select,fast,combined):
@@ -268,12 +268,12 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              #It's a slow hash
              elif select == "bcrypt":
                 if not self.os:
+                   x = 'indefinite'
                    from bcrypt import checkpw
                    if checkpw(data, bytes(hash_input,encoding="latin-1")):
                      self.auxiliary_crack(password)
                    else:
-                     if fast != "y":
-                        print(f"[indefinite] Trying password:- {password}")
+                     self.faster(fast,x,password)
                 else:
                     print("""
 bcrypt is not compatible with termux:
