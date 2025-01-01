@@ -425,8 +425,7 @@ Wait, this may take a while
 *****************************
                    """)
      if fast == "y":
-         print("\nCRACKED............")
-         print()
+         print("\nCRACKED............\n")
      sleep(2)
      self.crack(hash_input,select,fast,combined)
 
