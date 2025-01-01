@@ -191,7 +191,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
             self.faster(fast,x,password)
 
 
-  def auxiliary_crack(self,password,wpa_psk):
+  def auxiliary_crack(self,password,wpa_psk,ssid):
     '''
      Helper function that will show the correct key
     '''
@@ -211,10 +211,11 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
         '''
         function that separates the logic of the sha256crypt and sha512crypt hash so that it does not give an error with blake2
         '''
+        ssid = ''
         wpa_psk = False
         x = 'indefinite'
         if self.hash[select].verify(password, hash_input):
-          self.auxiliary_crack(password,wpa_psk)
+          self.auxiliary_crack(password,wpa_psk,ssid)
         else:
           self.faster(fast,x,password)
 
@@ -229,6 +230,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
      else:
         x = ''
 
+     ssid = ''
      wpa_psk = False
      OldPass = ''
      OldPassbin = b''
@@ -254,7 +256,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
              elif select == "shake-256":
                 hash1 = shake_256(data).hexdigest(int(len(hash_input)/2))
                 if hash1 == hash_input:
-                    self.auxiliary_crack(password,wpa_psk)
+                    self.auxiliary_crack(password,wpa_psk,ssid)
                 else:
                    self.faster(fast,x,password)
 
@@ -263,7 +265,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                  shake.update(data)
                  calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
                  if calculated_hash == hash_input:
-                    self.auxiliary_crack(password,wpa_psk)
+                    self.auxiliary_crack(password,wpa_psk,ssid)
                  else:
                     self.faster(fast,x,password)
 
@@ -279,7 +281,7 @@ NOTE:Be careful with the number of passwords you use. can be generated, it can r
                    x = 'indefinite'
                    from bcrypt import checkpw
                    if checkpw(data, bytes(hash_input,encoding="latin-1")):
-                     self.auxiliary_crack(password,wpa_psk)
+                     self.auxiliary_crack(password,wpa_psk,ssid)
                    else:
                      self.faster(fast,x,password)
                 else:
@@ -301,7 +303,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
                  if RIPEMD.hexdigest() == hash_input:
-                    self.auxiliary_crack(password,wpa_psk)
+                    self.auxiliary_crack(password,wpa_psk,ssid)
                  else:
                     self.faster(fast,x,password)
 
@@ -343,7 +345,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
             if derived_key.hex() == hash_input:
                 wpa_psk = True
-                self.auxiliary_crack(password,wpa_psk)
+                self.auxiliary_crack(password,wpa_psk,ssid)
             else:
                self.faster(fast,x,password)
     print("[ X ] The password is not in the dictionary!")
