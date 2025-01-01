@@ -340,6 +340,7 @@ Help Menu:
 |sha512crypt|
 |shake-128  |
 |shake-256  |
+|wpa-psk    |
  ----------
                     """)
 
