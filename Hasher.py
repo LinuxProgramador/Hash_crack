@@ -179,18 +179,6 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
           print(f"[{x}] Trying password:- {password}")
 
 
-  def validation(self,many_hash,password,hash_input,fast,x):
-       '''
-          Validates if the hash is equal to the encrypted password
-       '''
-       wpa_psk = False
-       ssid = ''
-       if many_hash == hash_input:
-            self.auxiliary_crack(self,password,wpa_psk,ssid)
-       else:
-            self.faster(fast,x,password)
-
-
   def auxiliary_crack(self,password,wpa_psk,ssid):
     '''
      Helper function that will show the correct key
@@ -206,7 +194,19 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
        exit(2)
 
 
+  
+  def validation(self,many_hash,password,hash_input,fast,x):
+       '''
+          Validates if the hash is equal to the encrypted password
+       '''
+       wpa_psk = False
+       ssid = ''
+       if many_hash == hash_input:
+            self.auxiliary_crack(self,password,wpa_psk,ssid)
+       else:
+            self.faster(fast,x,password)
 
+  
   def shacrypt(self,hash_input,password,select,fast):
         '''
         function that separates the logic of the sha256crypt and sha512crypt hash so that it does not give an error with blake2
