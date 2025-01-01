@@ -346,7 +346,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
             password = keyword
             if combined == "y":
                 password += OldPass
-                OldPass = keyword.strip()
+                OldPass = keyword
 
             # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
