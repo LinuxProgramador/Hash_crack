@@ -9,7 +9,7 @@ RARNinja: https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
 
 Rockyou dictionary download link 2023: https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt&ved=2ahUKEwjL6oTfvdKKAxUdSDABHe3UMvwQFnoECBoQAQ&usg=AOvVaw3snAERl1mU6Ccr4WFEazBd
 
-Note: (bcrypt/sha256crypt/sha512crypt/rypemd-160) are slow hashes, that's why the cracking time tends to take longer.
+Note: (bcrypt/sha256crypt/sha512crypt/rypemd-160/wpa-psk) are slow hashes, that's why the cracking time tends to take longer.
 
 Instalación:
 
@@ -64,6 +64,8 @@ Hashes soportados:
     SHAKE-128
 
     SHAKE-256
+
+    WPA-PSK 
 
 
 Notas importantes:
