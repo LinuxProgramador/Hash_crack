@@ -343,7 +343,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
          print("\nCRACKED............\n")
     with open(dictionary_path, 'r', encoding='latin-1') as file:
        for keyword in file:
-            keyword = keyword.rstrip("\n")
+         keyword = keyword.rstrip("\n")
          if len(keyword) >= 8 and len(keyword) <= 63:
             password = keyword
             if combined == "y":
