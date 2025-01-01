@@ -237,6 +237,8 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
 
      if fast != "y":
         x = self.duration()
+     elif combined == "y":
+        x = "indefinite"
      else:
         x = ''
 
@@ -251,7 +253,6 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
              if combined == "y":
                password += OldPass
                data += OldPassbin
-               x = "indefinite"
                OldPass = password 
                OldPassbin = password.encode()
                
