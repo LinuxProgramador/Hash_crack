@@ -314,6 +314,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
     '''
     Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
     '''
+    x = 'indefinite'
     OldPass = ''
     print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
     combined = input().strip().lower()
@@ -338,8 +339,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
                 print(f"[ ✓ ] Password Found:- {password}")
                 exit(2)
             else:
-               if fast != "y":
-                  print(f"[indefinite] Trying password:- {password}")
+               self.faster(fast,x,password)
     print("[ X ] The password is not in the dictionary!")
     exit(2)
 
