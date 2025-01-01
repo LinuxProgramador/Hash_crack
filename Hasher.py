@@ -237,10 +237,10 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
 
      if fast != "y":
         x = self.duration()
-     elif combined == "y":
-        x = "indefinite"
      else:
         x = ''
+     if combined == "y" and fast != "y":      
+        x = "indefinite"
 
      ssid = ''
      wpa_psk = False
