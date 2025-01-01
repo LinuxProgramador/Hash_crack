@@ -254,7 +254,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
                password += OldPass
                data += OldPassbin
                OldPass = password 
-               OldPassbin = password.encode()
+               OldPassbin = data
                
 
              #md5 hash check
