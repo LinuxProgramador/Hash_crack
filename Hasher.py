@@ -154,21 +154,20 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
 
      #Note: calculations may not be as accurate
      sizes_mb = path.getsize(self.user_os()) / (1024 ** 2)
+     ranges = {
+        (1.0, 20.0): "~2 mins",
+        (20.0, 40.0): "~6 mins",
+        (40.0, 81.0): "~10 mins",
+        (81.0, 140.0): "~18 mins",
+        (140.0, 250.0): "~32 mins",
+        (250.0, 600.0): "~1 and 19 mins",
+        (600.0, float('inf')): "more 2 hours"
+     }
+     for size_range, duration in ranges.items():
+        if size_range[0] <= sizes_mb < size_range[1]:
+            return duration
 
-     if sizes_mb > 1.0 and sizes_mb <= 20.0:
-            return "~2 mins"
-     elif sizes_mb > 20.0 and sizes_mb <= 40.0:
-            return "~6 mins"
-     elif sizes_mb > 40.0 and sizes_mb <= 81.0:
-            return "~10 mins"
-     elif sizes_mb > 81.0 and sizes_mb <= 140.0:
-            return "~18 mins"
-     elif sizes_mb > 140.0 and sizes_mb <= 250.0:
-            return "~32 mins"
-     elif sizes_mb > 250.0 and sizes_mb <= 600.0:
-            return "~1 and 19 mins"
-     elif sizes_mb > 600.0:
-            return "more 2 hours"
+     return "indefinite"
 
 
   def faster(self,fast,x,password):
