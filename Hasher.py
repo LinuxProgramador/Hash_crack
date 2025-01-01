@@ -307,6 +307,44 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
                exit(2)
        print("[ X ] The password is not in the dictionary!")
 
+
+
+
+  def crack_wpa_psk(self, hash_input, ssid, dictionary_path):
+    '''
+    Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
+    '''
+    OldPass = ''
+    print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
+    combined = input().strip().lower()
+    fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
+    print("Starting WPA-PSK cracking")
+    if fast == "y":
+         print("\nCRACKED............\n")
+    with open(dictionary_path, 'r', encoding='latin-1') as file:
+       for keyword in file:
+         if len(keyword) >= 8 and len(keyword) <= 63:
+            password = keyword.strip()
+
+            if combined == "y":
+                password += OldPass
+                OldPass = keyword.strip()
+
+            # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
+            derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
+            if derived_key.hex() == hash_input:
+                print("\n{***********************SUCCESS***********************}")
+                print(f"[  ^|^s ] SSID: {ssid}")
+                print(f"[  ^|^s ] Password Found:- {password}")
+                exit(0)
+            else:
+               if fast != "y":
+                  print(f"[indefinite] Trying password:- {password}")
+    print("[ X ] The password is not in the dictionary!")
+    exit(2)
+
+  
+
   def show_help(self):
              '''
                 Method that displays a help menu
