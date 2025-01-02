@@ -319,7 +319,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
      prints a message that the cracking process has already started
      '''
      if fast == "y":
-         return "\nCRACKED............\n"
+         print("\nCRACKED............\n")
        
 
   def crack_wpa_psk(self, hash_input, ssid, dictionary_path):
@@ -330,7 +330,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
     OldPass = ''
     combined,fast = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
-    print(self.message_cracking(fast))
+    self.message_cracking(fast)
     with open(dictionary_path, 'r', encoding='latin-1') as file:
       for keyword in file:
         if len(keyword) >= 8 and len(keyword) <= 63:                        
@@ -415,7 +415,7 @@ Help Menu:
 Wait, this may take a while
 *****************************
                    """)
-     print(self.message_cracking(fast))
+     self.message_cracking(fast)
      sleep(2)
      self.crack(hash_input,select,fast,combined)
 
