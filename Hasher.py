@@ -341,10 +341,14 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
       for keyword in file:
         if len(keyword) >= 8 and len(keyword) <= 63:                        
             password = keyword.strip()
-                                                                                 
+            counter = 0                                                                     
             if combined == "y":
-                password += OldPass
-                OldPass = keyword.strip()
+                if counter % 2 == 0:
+                   password += OldPass
+               else:
+                   password = OldPass + password
+               OldPass = keyword.strip()
+               counter += 1
 
             # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
