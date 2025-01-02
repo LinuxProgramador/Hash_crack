@@ -241,15 +241,21 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      wpa_psk = False
      OldPass = ''
      OldPassbin = b''
+     counter = 0
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
        for keywords in keywords_read:
              password=keywords.strip()
              data=password.encode()                                          
              if combined == "y":
-               password += OldPass
-               data += OldPassbin
+               if counter % 2 == 0:
+                   password += OldPass
+                   data += OldPassbin
+               else:
+                   password = OldPass + password
+                   data = OldPassbin + data
                OldPass = keywords.strip()
                OldPassbin = password.encode()
+               counter += 1
                
 
              #md5 hash check
