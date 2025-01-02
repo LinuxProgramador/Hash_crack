@@ -244,14 +244,13 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      OldPass = ''
      OldPassbin = b''
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
-       for password in keywords_read:
-             password = password.rstrip("\n")
-             data=password.encode()
-
+       for keywords in keywords_read:
+             password=keywords.strip()
+             data=password.encode()                                          >
              if combined == "y":
                password += OldPass
                data += OldPassbin
-               OldPass = password.rstrip("\n")
+               OldPass = keywords.strip()
                OldPassbin = password.encode()
                
 
