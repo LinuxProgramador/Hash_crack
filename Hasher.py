@@ -491,7 +491,17 @@ Wait, this may take a while
           print("NOTE: The procedure is slow because the hash is obtained with \"PBKDF2\"")
           hash_input = input("Enter the WPA hash: ").strip()
           ssid = input("Enter the SSID: ").strip()
-          self.crack_wpa_psk(hash_input, ssid, self.user_os())
+          if hash_input and ssid:
+            if len(hash_input) == 64:
+                self.crack_wpa_psk(hash_input, ssid, self.user_os())
+            else:
+                print("You did not enter a valid hash!")
+                exit(2)
+          else:
+            print()
+            self.show_help()
+            exit(2)
+      
       
     self.banner()
     print("""
