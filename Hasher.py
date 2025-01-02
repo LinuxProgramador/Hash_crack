@@ -335,12 +335,13 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
     print("Starting WPA-PSK cracking")
     print(self.message_cracking(fast))
     with open(dictionary_path, 'r', encoding='latin-1') as file:
-       for password in file:
-         password = password.rstrip("\n")
-         if len(password) >= 8 and len(password) <= 63:
+      for keyword in file:
+        if len(keyword) >= 8 and len(keyword) <= 63:                        
+            password = keyword.strip()
+                                                                                 
             if combined == "y":
                 password += OldPass
-                OldPass = password.rstrip("\n")
+                OldPass = keyword.strip()
 
             # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
