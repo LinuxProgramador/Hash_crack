@@ -25,7 +25,7 @@ python3 Hasher.py
 
 Para acceder al menú de ayuda:
 
-python3 Hasher.py [-h,--help]
+python3 Hasher.py [-h,--help,-sk,-sk2,-wpk]
 
 Hashes soportados:
 
