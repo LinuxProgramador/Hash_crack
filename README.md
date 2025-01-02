@@ -23,7 +23,7 @@ bash dependencies.sh
 
 python3 Hasher.py
 
-Para acceder al menú de ayuda:
+Para acceder al menú de ayuda y parámetros de opciones:
 
 python3 Hasher.py [-h,--help,-sk,-sk2,-wpk]
 
