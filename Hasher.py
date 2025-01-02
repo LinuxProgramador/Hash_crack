@@ -251,8 +251,8 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
              if combined == "y":
                password += OldPass
                data += OldPassbin
-               OldPass = password 
-               OldPassbin = data
+               OldPass = password.rstrip("\n")
+               OldPassbin = password.encode()
                
 
              #md5 hash check
@@ -340,7 +340,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
          if len(password) >= 8 and len(password) <= 63:
             if combined == "y":
                 password += OldPass
-                OldPass = password 
+                OldPass = password.rstrip("\n")
 
             # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
