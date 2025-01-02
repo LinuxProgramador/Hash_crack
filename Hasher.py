@@ -256,7 +256,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
                    password = OldPass + password
                    data = OldPassbin + data
                OldPass = keyclean
-               OldPassbin = KeyBin
+               OldPassbin = keyBin
                counter += 1
                
 
