@@ -263,19 +263,13 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
              #Checking hash shakes
              elif select == "shake-256":
                 hash1 = shake_256(data).hexdigest(int(len(hash_input)/2))
-                if hash1 == hash_input:
-                    self.auxiliary_crack(password,wpa_psk,ssid)
-                else:
-                   self.faster(fast,x,password)
+                self.validation(hash1,hash_input,password,wpa_psk,ssid,fast,x)
 
              elif select == "shake-128":
                  shake = shake_128()
                  shake.update(data)
                  calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
-                 if calculated_hash == hash_input:
-                    self.auxiliary_crack(password,wpa_psk,ssid)
-                 else:
-                    self.faster(fast,x,password)
+                 self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,fast,x)
 
              #checking shacrypt hashes
              #It's a slow hash
@@ -310,11 +304,8 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
              elif select == "rypemd-160":
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
-                 if RIPEMD.hexdigest() == hash_input:
-                    self.auxiliary_crack(password,wpa_psk,ssid)
-                 else:
-                    self.faster(fast,x,password)
-
+                 self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,fast,x)
+               
              #Checking blake2 hashes
              elif select in self.hash:
                 blas2=self.hash[select](data).hexdigest()
