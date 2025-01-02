@@ -343,7 +343,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
             password = keyword.strip()
             counter = 0                                                                     
             if combined == "y":
-                if counter % 2 == 0:
+               if counter % 2 == 0:
                    password += OldPass
                else:
                    password = OldPass + password
