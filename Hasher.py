@@ -205,7 +205,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
 
 
   
-  def validation(self,many_hash,password,hash_input,fast,x):
+  def validation(self,many_hash,hash_input,password,wpa_psk,ssid,fast,x):
        '''
           Validates if the hash is equal to the encrypted password
        '''
@@ -258,7 +258,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
              #md5 hash check
              if select == "md5":
                encryption = md5(password.encode('latin-1')).hexdigest()
-               self.validation(encryption,password,hash_input,fast,x)
+               self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,x)
 
              #Checking hash shakes
              elif select == "shake-256":
@@ -303,7 +303,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
              #checking  sha1, sha2, sha3 hashes
              elif select in self.hash:
                encryption = self.hash[select](password.encode('latin-1')).hexdigest()
-               self.validation(encryption,password,hash_input,fast,x)
+               self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,x)
 
              #rypemd-160 hash check
              #It is slow due to its anti-collision implementation.
@@ -318,7 +318,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
              #Checking blake2 hashes
              elif select in self.hash:
                 blas2=self.hash[select](data).hexdigest()
-                self.validation(blas2,password,hash_input,fast,x)
+                self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,x)
 
              else:
                print("Wrong name!")
