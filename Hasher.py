@@ -244,8 +244,10 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      counter = 0
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
        for keywords in keywords_read:
-             password=keywords.strip()
-             data=password.encode()                                          
+             keyclean = keywords.rstrip("\n")
+             password = keyclean
+             keyBin = password.encode()
+             data = keyBin                                       
              if combined == "y":
                if counter % 2 == 0:
                    password += OldPass
@@ -253,8 +255,8 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
                else:
                    password = OldPass + password
                    data = OldPassbin + data
-               OldPass = keywords.strip()
-               OldPassbin = password.encode()
+               OldPass = keyclean
+               OldPassbin = KeyBin
                counter += 1
                
 
@@ -339,15 +341,16 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
     self.message_cracking(fast)
     with open(dictionary_path, 'r', encoding='latin-1') as file:
       for keyword in file:
-        if len(keyword) >= 8 and len(keyword) <= 63:                        
-            password = keyword.strip()
+        if len(keyword) >= 8 and len(keyword) <= 63:    
+            keyclean = keyword.rstrip("\n")
+            password = keyclean
             counter = 0                                                                     
             if combined == "y":
                if counter % 2 == 0:
                    password += OldPass
                else:
                    password = OldPass + password
-               OldPass = keyword.strip()
+               OldPass = keyclean
                counter += 1
 
             # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
