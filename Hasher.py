@@ -244,7 +244,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
        for keywords in keywords_read:
              password=keywords.strip()
-             data=password.encode()                                          >
+             data=password.encode()                                          
              if combined == "y":
                password += OldPass
                data += OldPassbin
