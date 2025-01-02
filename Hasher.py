@@ -212,7 +212,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
        wpa_psk = False
        ssid = ''
        if many_hash == hash_input:
-            self.auxiliary_crack(self,password,wpa_psk,ssid)
+            self.auxiliary_crack(password,wpa_psk,ssid)
        else:
             self.faster(fast,x,password)
 
