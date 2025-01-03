@@ -340,11 +340,11 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
     print("Starting WPA-PSK cracking")
     self.message_cracking(fast)
     with open(dictionary_path, 'r', encoding='latin-1') as file:
+      counter = 0
       for keyword in file:
         if len(keyword) >= 8 and len(keyword) <= 63:    
             keyclean = keyword.rstrip("\n")
-            password = keyclean
-            counter = 0                                                                     
+            password = keyclean                                                                 
             if combined == "y":
                if counter % 2 == 0:
                    password += OldPass
