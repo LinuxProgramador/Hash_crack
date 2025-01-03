@@ -183,7 +183,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
 
   def faster(self,fast,x,password):
       '''
-      Function that will not only print attempts if the user wants a slow crack
+      Function that will not print attempts if the user wants a quick crack
       '''
       if fast != "y":
           print(f"[{x}] Trying password:- {password}")
