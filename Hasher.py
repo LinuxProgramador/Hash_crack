@@ -176,7 +176,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
       if he wants to execute the fast cracking mode
       '''
       #Note: not all possible combinations are tested to avoid blocking the script or extending the 
-      #timeout too much, as there would be millions of possible combinations.
+      #timeout too much, as there would be many millions of possible combinations.
       print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
       combined = input().strip().lower()
       fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
