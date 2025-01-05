@@ -153,6 +153,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      '''
 
      #Note: calculations may not be as accurate
+     #Rather, what is calculated is the approximate time. 
      sizes_mb = path.getsize(self.user_os()) / (1024 ** 2)
      ranges = {
         (1.0, 20.0): "~2 mins",
