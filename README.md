@@ -13,15 +13,15 @@ Nota: (bcrypt/sha256crypt/sha512crypt/rypemd-160/wpa-psk) son hashes lentos, es 
 
 Instalación:
 
-cd ~
+    cd ~
 
-git clone https://github.com/LinuxProgramador/Hash_crack
+    git clone https://github.com/LinuxProgramador/Hash_crack
 
-cd Hash_crack
+    cd Hash_crack
 
-bash dependencies.sh
+    bash dependencies.sh
 
-python3 Hasher.py
+    python3 Hasher.py
 
 Para acceder al menú de ayuda y parámetros de opciones:
 
