@@ -26,11 +26,11 @@ Installation:
 
     python3 Hasher.py
 
-Para acceder al menú de ayuda y parámetros de opciones:
+To access the help menu and option parameters:
 
-python3 Hasher.py [-h,--help,-sk,-sk2,-wpk]
+python3 Hasher.py [-h,--help,-sk,-sk2,-wpk] 
 
-Hashes soportados:
+Supported Hashes:
 
     MD5
 
