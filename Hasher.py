@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-#Herramienta para romper hash por fuerza bruta en distros linux (Ubuntu/Debían) y termux
+#Tool to crack hashes by brute force on linux distros (Ubuntu/Debian) and termux
 
 
 from Crypto.Hash import RIPEMD160
