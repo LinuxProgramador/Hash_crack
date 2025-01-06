@@ -71,13 +71,10 @@ Supported Hashes:
     WPA-PSK 
 
 
-Notas importantes:
+Important Notes: 
 
-1. Si deseas utilizar tu propio diccionario, debes llamarlo wordlist.txt y colocarlo en el directorio Hash_crack.
+1- If you want to use your own dictionary, you should name it wordlist.txt and place it in the Hash_crack directory.
 
+2- Success in cracking passwords from ZIP and RAR files depends heavily on the program used to compress them. Decryption is more likely to work if they were compressed using console tools such as zip or rar.
 
-2. El éxito al descifrar contraseñas de archivos ZIP y RAR depende en gran medida del programa utilizado para comprimirlos. Es más probable que el descifrado funcione si se comprimieron utilizando herramientas de consola como zip o rar.
-
-
-Salir del programa:
-Presiona CTRL + C
+Quit the program: Press CTRL + C
