@@ -431,7 +431,7 @@ Help Menu:
 Wait, this may take a while
 *****************************
                    """)
-     if hash == "rypemd-160" and fast == "y":
+     if select == "rypemd-160" and fast == "y":
         print("NOTE: The procedure may take a while, because it is a slow hash.")
      self.message_cracking(fast)
      sleep(2)
