@@ -4,6 +4,20 @@ This tool has been created for educational purposes only.
 
 The author is not responsible for any misuse of it. 
 
+Features:
+
+    1- Multi-process
+
+    2- Creation of custom dictionaries with crunch
+
+    3- Crack ZIP and RAR file passwords
+
+    4- Perform combined and mask attacks
+
+    5- Fast and simple to use
+
+    6- Support for multiple hashes
+
 Included third-party projects:
 
 zipcrack: https://github.com/machine1337/zipcrack 
