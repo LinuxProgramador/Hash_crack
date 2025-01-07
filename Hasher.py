@@ -63,7 +63,7 @@ class Hash_crack:
     '''
        Call for third-party projects included to extend the program's functionality
     '''
-    confirm=input("Do you want to use (zcrack/rarninja/or \"n\" for none ): ").strip().lower()
+    confirm=input("Do you want to use (zcrack/rarninja/multiprocess/or \"n\" for none ): ").strip().lower()
     if confirm == "zcrack":
       print("NOTE:This process may take time!")
       sleep(3)
