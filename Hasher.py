@@ -81,7 +81,8 @@ Note: This feature is still under development
 Note: This feature is ideal for very large
 dictionaries or testing two dictionaries at
 once, to increase the probability of a successful
-decryption You want to use the option:
+decryption.
+You want to use the option:
 
 1) for fast hashes like md5,sha1,sha2,sha3,blake2,shake
 
