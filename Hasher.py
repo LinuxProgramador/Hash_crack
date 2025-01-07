@@ -517,7 +517,7 @@ proceed to enter \"n\" and then choose option 3\"
     self.crunch()
     self.call_modules()
     combined,fast = self.remaining_parameters_cracking()
-    hash_input=input("Enter the hash to decrypt: ")
+    hash_input=input("Enter the hash to decrypt: ").strip()
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
              print(f"Type hash => {hash}")
