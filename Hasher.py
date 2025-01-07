@@ -75,7 +75,27 @@ class Hash_crack:
       system("clear")
       system("python3 ~/Hash_crack/RARNinja.py")
       exit(2)
+    elif confirm == "multiprocess":
+      print("""
+Note: This feature is still under development
+Note: This feature is ideal for very large
+dictionaries or testing two dictionaries at
+once, to increase the probability of a successful
+decryption You want to use the option:
 
+1) for fast hashes like md5,sha1,sha2,sha3,blake2,shake
+
+2) for slow hashes like bcrypt, shacrypt, wpa-psk
+""")
+      valid = input("option: ").strip()
+      if valid == "1":
+        system("clear")
+        system("python3 ~/Hash_crack/multiprocess1.py")
+        exit(2)
+      elif valid == "2":
+        system("clear")
+        system("python3 ~/Hash_crack/multiprocess2.py")
+        exit(2)
 
   def user_os(self):
     '''
