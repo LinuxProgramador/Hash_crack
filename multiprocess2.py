@@ -4,6 +4,8 @@ from sys import exit
 from passlib.hash import sha256_crypt, sha512_crypt
 from os import path
 
+#The code has some flaws, but it serves its purpose 
+
 hashes = {
     'sha256crypt': sha256_crypt,
     'sha512crypt': sha512_crypt
@@ -94,3 +96,7 @@ if __name__ == "__main__":
         print(queue.get())
 
     print("Checking completed.")
+
+
+
+__status__="beta"
