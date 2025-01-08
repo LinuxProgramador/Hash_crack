@@ -47,7 +47,8 @@ def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, chunk_s
     try:
         with open(rute, 'r', encoding='latin-1') as file:
             buffer = ""
-            while not encontrado.is_set():                                                                           chunk = file.read(chunk_size)
+            while not encontrado.is_set():                                                                         
+                chunk = file.read(chunk_size)
                 if not chunk:
                     break
                 buffer += chunk
