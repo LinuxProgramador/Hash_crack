@@ -386,7 +386,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
          buffer = lines[-1] if len(lines) > 1 else ""
          for keyword in lines[:-1]:
           if 8 <= len(keyword) <= 63:   
-            keyclean = keyword.rstrip("\n")
+            keyclean = keyword
             password = keyclean                                                                 
             if combined == "y":
                if counter % 2 == 0:
