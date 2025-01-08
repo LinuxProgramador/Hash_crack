@@ -18,6 +18,8 @@ Features:
 
     6- Support for multiple hashes
 
+    7- Optimized, only consumption of (1/2) cores and 512 kb in ram per block
+
 Included third-party projects:
 
 zipcrack: https://github.com/machine1337/zipcrack 
