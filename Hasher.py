@@ -80,12 +80,12 @@ class Hash_crack:
 Note: This feature is still under development
 Note: This feature is ideal for very large
 dictionaries or testing two dictionaries at
-once, to increase the probability of a successful
+once, to increase the probability of a hash successful
 decryption.
 Note: split -b 100M rockyou.txt  \"The above example is to split a large dictionary into 100 meg chunks on Linux and Termux\"
 You want to use the option:
 
-1) for fast hashes like md5,sha1,sha2,sha3,blake2,shake
+1) for fast hashes like md5,sha1,sha2,sha3,blake2,shake,rypemd-160
 
 2) for slow hashes like bcrypt, shacrypt, wpa-psk
 """)
