@@ -37,6 +37,9 @@ def crack(hash_objetivo, palabra, select, evento, queue):
     else:
         print("Wrong hash name!")
         evento.set()
+        proceso1.terminate()
+        proceso2.terminate()
+        exit(0)
         return
 
     if hash_generado == hash_objetivo:
