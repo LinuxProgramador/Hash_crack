@@ -303,7 +303,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
 
              #checking shacrypt hashes
              #It's a slow hash
-             elif select in self.hash:
+             elif select == "sha256crypt" or select == "sha512crypt":
                   self.shacrypt(hash_input,password,select,fast)
 
              #bcrypt hash check
