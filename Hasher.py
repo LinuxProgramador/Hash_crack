@@ -268,8 +268,17 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      OldPassbin = b''
      counter = 0
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
-       for keywords in keywords_read:
-             keyclean = keywords.rstrip("\n")
+       chunk_size = 512 * 1024
+       buffer = ""
+       while True:
+         chunk = keywords_read.read(chunk_size)
+         if not chunk:
+            break
+         buffer += chunk
+         lines = buffer.splitlines()
+         buffer = lines[-1] if len(lines) > 1 else ""
+         for keywords in lines[:-1]:
+             keyclean = keywords
              password = keyclean
              keyBin = password.encode()
              data = keyBin                                       
