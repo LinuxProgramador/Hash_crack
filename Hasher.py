@@ -375,8 +375,17 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
     self.message_cracking(fast)
     with open(dictionary_path, 'r', encoding='latin-1') as file:
       counter = 0
-      for keyword in file:
-        if 8 <= len(keyword) <= 63:   
+      chunk_size = 512 * 1024
+      buffer = ""
+      while True:
+         chunk = file.read(chunk_size)
+         if not chunk:
+            break
+         buffer += chunk
+         lines = buffer.splitlines()
+         buffer = lines[-1] if len(lines) > 1 else ""
+         for keyword in lines[:-1]:
+          if 8 <= len(keyword) <= 63:   
             keyclean = keyword.rstrip("\n")
             password = keyclean                                                                 
             if combined == "y":
