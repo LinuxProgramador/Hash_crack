@@ -46,12 +46,17 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
 def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, chunk_size=512 * 1024):
     try:
         with open(rute, 'r', encoding='latin-1') as file:
-            while not encontrado.is_set():
-                chunk = file.read(chunk_size).splitlines()
+            buffer = ""
+            while not encontrado.is_set():                                                                           chunk = file.read(chunk_size)
                 if not chunk:
                     break
-                for palabra in chunk:
+                buffer += chunk
+                lines = buffer.splitlines()
+                buffer = lines[-1] if len(lines) > 1 else ""
+                for palabra in lines[:-1]:
                     crack(hash_objetivo, palabra.strip(), select, ssid, encontrado, queue)
+            if buffer:
+                crack(hash_objetivo, buffer.strip(), select, ssid, encontrado, queue)
     except FileNotFoundError:
         queue.put(f"File not found: {rute}")
     except Exception as e:
