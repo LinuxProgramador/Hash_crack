@@ -18,7 +18,8 @@ Features:
 
     6- Support for multiple hashes
 
-    7- Optimized, only consumption of (1/2) cores and 512 kb in ram per block
+    7- Optimized: limited to 1–2 cores and 512 KB RAM per block.
+
 
 Included third-party projects:
 
