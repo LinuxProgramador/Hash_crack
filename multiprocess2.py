@@ -55,7 +55,7 @@ def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, chunk_s
                 lines = buffer.splitlines()
                 buffer = lines[-1] if len(lines) > 1 else ""
                 for palabra in lines[:-1]:
-                    crack(hash_objetivo, palabra.strip(), select, ssid, encontrado, queue)
+                    crack(hash_objetivo, palabra, select, ssid, encontrado, queue)
             if buffer:
                 crack(hash_objetivo, buffer.strip(), select, ssid, encontrado, queue)
     except FileNotFoundError:
