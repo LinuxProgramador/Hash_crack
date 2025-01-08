@@ -342,7 +342,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
                 self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,x)
 
              else:
-               print("Wrong name!")
+               print("Wrong hash name!")
                exit(2)
        print("[ X ] The password is not in the dictionary!")
 
