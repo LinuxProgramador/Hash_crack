@@ -55,13 +55,16 @@ def crack(hash_objetivo, palabra, select, evento, queue):
 def comprobar_hash(rute, hash_objetivo, select, evento, queue, chunk_size=512 * 1024):
     try:
         with open(rute, 'r', encoding='latin-1') as file:
-            while not evento.is_set():
-                chunk = file.read(chunk_size).splitlines()
-                if not chunk:
-                    break
-
-                for line in chunk:
-                    palabra = line.strip()
+           buffer = ""
+           while not evento.is_set():
+               chunk = file.read(chunk_size)
+               if not chunk:
+                  break
+               buffer += chunk
+               lines = buffer.splitlines()
+               buffer = lines[-1] if len(lines) > 1 else ""
+               for line in lines[:-1]:
+                    palabra = line
                     crack(hash_objetivo, palabra, select, evento, queue)
     except FileNotFoundError:
         print(f"File not found: {rute}")
