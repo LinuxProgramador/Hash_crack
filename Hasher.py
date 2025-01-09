@@ -57,7 +57,7 @@ class Hash_crack:
  ' 88  88 dP""""Yb 8bodP  88  88 88888 88  Yb '
  ' -------------------------------------------
                ''')
-         return
+        return
     
 
   def call_modules(self):
