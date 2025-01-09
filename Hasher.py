@@ -78,7 +78,7 @@ class Hash_crack:
       system("python3 ~/Hash_crack/RARNinja.py")
       exit(2)
     elif confirm == "3":
-      for _ range(2):
+      for _ in range(2):
        print("""
 Note: This feature is still under development.
 Note: This method is ideal for very large dictionaries or testing two dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
