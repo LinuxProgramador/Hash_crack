@@ -78,7 +78,8 @@ class Hash_crack:
       system("python3 ~/Hash_crack/RARNinja.py")
       exit(2)
     elif confirm == "3":
-      print("""
+      for _ range(2):
+       print("""
 Note: This feature is still under development.
 Note: This method is ideal for very large dictionaries or testing two dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
 Note: Use the following command to split a large dictionary into 100 MB chunks on Linux or Termux:
@@ -90,12 +91,14 @@ Options:
 
 Additional Note: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
-      valid = input("option: ").strip()
-      if valid == "1":
+       valid = input("option: ").strip()
+       if valid in ["1","2"]:
+         print("Wrong option, please try again")
+       elif valid == "1":
         system("clear")
         system("python3 ~/Hash_crack/multiprocess1.py")
         exit(2)
-      elif valid == "2":
+       elif valid == "2":
         system("clear")
         system("python3 ~/Hash_crack/multiprocess2.py")
         exit(2)
