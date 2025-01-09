@@ -136,7 +136,7 @@ Additional Note: Method 2 may take significantly longer due to the security meas
    
 NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN REACH UP TO GIGABYTES AND BLOCK THE PHONE!!!!!!!
                   """)
-       return
+    return
 
   def crunch2(sel):
      system("clear")
