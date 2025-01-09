@@ -97,7 +97,7 @@ Additional Note: Method 2 may take significantly longer due to the security meas
        if not valid in ["1","2"]:
          counter += 1
          if counter == 1:
-            print("Wrong option, please try again")
+            print("Incorrect choice, please try again")
          sleep(2)
          system("clear")
        elif valid == "1":
