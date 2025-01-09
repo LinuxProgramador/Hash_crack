@@ -107,6 +107,7 @@ if __name__ == "__main__":
 
     if not encontrado.is_set():
         print("Key not found in the dictionaries.")
+        print("Checking completed.")
         exit(1)
 
     print("Checking completed.")
