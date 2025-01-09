@@ -94,6 +94,7 @@ Additional Note: Method 2 may take significantly longer due to the security meas
        valid = input("option: ").strip()
        if valid in ["1","2"]:
          print("Wrong option, please try again")
+         sleep(2)
        elif valid == "1":
         system("clear")
         system("python3 ~/Hash_crack/multiprocess1.py")
