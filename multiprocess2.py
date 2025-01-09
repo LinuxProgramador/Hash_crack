@@ -90,6 +90,11 @@ if __name__ == "__main__":
         while proceso1.is_alive() or proceso2.is_alive():
             while not queue.empty():
                 print(queue.get())
+                encontrado.set()
+            if encontrado.is_set():
+                proceso1.terminate()
+                proceso2.terminate()
+                break
             proceso1.join(timeout=1)
             proceso2.join(timeout=1)
 
