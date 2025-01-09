@@ -92,7 +92,7 @@ Options:
 Additional Note: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
        valid = input("option: ").strip()
-       if valid in ["1","2"]:
+       if not valid in ["1","2"]:
          print("Wrong option, please try again")
          sleep(2)
          system("clear")
