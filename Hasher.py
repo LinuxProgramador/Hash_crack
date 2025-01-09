@@ -63,19 +63,21 @@ class Hash_crack:
     '''
        Call for third-party projects included to extend the program's functionality
     '''
-    confirm=input("Do you want to use (zcrack/rarninja/multiprocess/or \"n\" for none ): ").strip().lower()
-    if confirm == "zcrack":
+    print("You want to use:")
+    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\nor \"n\" for none")
+    confirm=input("Option: ").strip()
+    if confirm == "1":
       print("NOTE:This process may take time!")
       sleep(3)
       system("python3 ~/Hash_crack/zcrack.py")
       exit(2)
-    elif confirm == "rarninja":
+    elif confirm == "2":
       print("NOTE:This process may take time!")
       sleep(3)
       system("clear")
       system("python3 ~/Hash_crack/RARNinja.py")
       exit(2)
-    elif confirm == "multiprocess":
+    elif confirm == "3":
       print("""
 Note: This feature is still under development.
 Note: This method is ideal for very large dictionaries or testing two dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
