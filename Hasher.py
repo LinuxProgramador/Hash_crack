@@ -77,17 +77,14 @@ class Hash_crack:
       exit(2)
     elif confirm == "multiprocess":
       print("""
-Note: This feature is still under development
-Note: This feature is ideal for very large
-dictionaries or testing two dictionaries at
-once, to increase the probability of a hash successful
-decryption.
-Note: split -b 100M rockyou.txt  \"The above example is to split a large dictionary into 100 meg chunks on Linux and Termux\"
-You want to use the option:
-
-1) for fast hashes like md5,sha1,sha2,sha3,blake2,shake,rypemd-160
-
-2) for slow hashes like bcrypt, shacrypt, wpa-psk
+Note: This feature is still under development.
+Note: This method is ideal for very large dictionaries or testing two dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
+Note: Use the following command to split a large dictionary into 100 MB chunks on Linux or Termux:
+split -b 100M rockyou.txt
+Options:
+1. Use this option for fast hashes such as MD5, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
+2. Use this option for slow hashes such as bcrypt, shaCrypt, or WPA-PSK.
+Additional Note: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
       valid = input("option: ").strip()
       if valid == "1":
