@@ -85,7 +85,7 @@ if __name__ == "__main__":
     proceso2.start()
 
     try:
-        while not encontrado.is_set():
+        while proceso1.is_alive() or proceso2.is_alive():
             while not queue.empty():
                 print(queue.get())
             proceso1.join(timeout=1)
