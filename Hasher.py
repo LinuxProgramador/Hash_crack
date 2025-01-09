@@ -81,9 +81,11 @@ Note: This feature is still under development.
 Note: This method is ideal for very large dictionaries or testing two dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
 Note: Use the following command to split a large dictionary into 100 MB chunks on Linux or Termux:
 split -b 100M rockyou.txt
+
 Options:
-1. Use this option for fast hashes such as MD5, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
-2. Use this option for slow hashes such as bcrypt, shaCrypt, or WPA-PSK.
+1) Use this option for fast hashes such as MD5, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
+2) Use this option for slow hashes such as bcrypt, shaCrypt, or WPA-PSK.
+
 Additional Note: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
       valid = input("option: ").strip()
