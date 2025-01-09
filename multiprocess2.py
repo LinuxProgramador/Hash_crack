@@ -72,6 +72,7 @@ if __name__ == "__main__":
         select = input("Enter the hash type: ").strip().lower()
         ssid = input("Enter the SSID (if WPA-PSK): ").strip() if select == "wpa-psk" else None
     except KeyboardInterrupt:
+        print()
         exit(0)
 
     encontrado = multiprocessing.Event()
@@ -94,6 +95,7 @@ if __name__ == "__main__":
             proceso1.terminate()
             proceso2.terminate()
     except KeyboardInterrupt:
+        print()
         proceso1.terminate()
         proceso2.terminate()
         exit(0)
