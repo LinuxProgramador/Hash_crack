@@ -57,7 +57,8 @@ class Hash_crack:
  ' 88  88 dP""""Yb 8bodP  88  88 88888 88  Yb '
  ' -------------------------------------------
                ''')
-
+         return
+    
 
   def call_modules(self):
     '''
@@ -78,6 +79,7 @@ class Hash_crack:
       system("python3 ~/Hash_crack/RARNinja.py")
       exit(2)
     elif confirm == "3":
+      counter = 0
       for _ in range(2):
        print("""
 Note: This feature is still under development.
@@ -92,7 +94,6 @@ Options:
 Additional Note: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
        valid = input("option: ").strip()
-       counter = 0
        if not valid in ["1","2"]:
          counter += 1
          if counter == 1:
@@ -107,7 +108,9 @@ Additional Note: Method 2 may take significantly longer due to the security meas
         system("clear")
         system("python3 ~/Hash_crack/multiprocess2.py")
         exit(2)
-
+       return
+        
+        
   def user_os(self):
     '''
        Detects the operating system and in relation to that returns the path of the dictionary
@@ -133,7 +136,7 @@ Additional Note: Method 2 may take significantly longer due to the security meas
    
 NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN REACH UP TO GIGABYTES AND BLOCK THE PHONE!!!!!!!
                   """)
-
+       return
 
   def crunch2(sel):
      system("clear")
@@ -144,7 +147,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      print("Then copy and paste the command that will be given to you into the console and run Hasher.py again.")
      print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
      exit(2)
-
+   
 
   def crunch3(self):
     system("clear")
@@ -371,7 +374,7 @@ option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/ha
      '''
      if fast == "y":
          print("\nCRACKED............\n")
-       
+     return
 
   def crack_wpa_psk(self, hash_input, ssid, dictionary_path):
     '''
@@ -485,7 +488,7 @@ Wait, this may take a while
      self.message_cracking(fast)
      sleep(2)
      self.crack(hash_input,select,fast,combined)
-
+     return
 
   def hash_secure_info(self,hash_input,hash,fast,combined):
        '''
@@ -495,7 +498,7 @@ Wait, this may take a while
        print(f"{hash.capitalize()} is considered a secure hash, it is recommended to use small dictionaries")
        sleep(4)
        self.cracking_selection(hash_input,hash,fast,combined)
-
+       return
 
 
   def auxiliary_main(self,hash_input,hash,fast,combined):
