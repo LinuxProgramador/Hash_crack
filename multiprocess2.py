@@ -78,6 +78,8 @@ if __name__ == "__main__":
     encontrado = multiprocessing.Event()
     queue = multiprocessing.Queue()
 
+    print("Starting parallel checking..")
+
     proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, ssid, encontrado, queue))
     proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, ssid, encontrado, queue))
 
