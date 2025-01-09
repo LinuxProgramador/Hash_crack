@@ -103,6 +103,10 @@ if __name__ == "__main__":
     while not queue.empty():
         print(queue.get())
 
+    if not encontrado.is_set():
+        print("Key not found in the dictionaries.")
+        exit(1)
+
     print("Checking completed.")
 
 
