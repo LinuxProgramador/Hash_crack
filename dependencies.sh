@@ -9,7 +9,7 @@ function main {
     sleep 2
     if [ "$os" = 'Android' ] ; then
        apt install python3 python-pip rust -y
-       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome passlib
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib
     else
        sudo apt install python3 python3-pip -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib
