@@ -128,6 +128,8 @@ if __name__ == "__main__":
          __________
         """)
         select = input("Enter the hash type: ").strip().lower()
+        if select == "rypemd-160":
+            print("rypemd-160 tends to take a little longer")
 
     except KeyboardInterrupt:
         print()
