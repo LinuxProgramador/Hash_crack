@@ -168,7 +168,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      if verificate == "n":
            remove(self.user_os())
            self.crunch_0()
-           comand=input("option: ")
+           comand=input("option: ").strip()
            if comand == "1":
                 system("bash ~/Hash_crack/crunch.sh")
                 exit(2)
