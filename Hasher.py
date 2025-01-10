@@ -529,13 +529,13 @@ Wait, this may take a while
                exit(2)
     elif "-sk" in argv:
          combined,fast = self.remaining_parameters_cracking()
-         hash_input=input("Enter the hash shake-128: ")
+         hash_input=input("Enter the hash shake-128: ").strip().lower()
          hash = "shake-128"
          self.auxiliary_main(hash_input,hash,fast,combined)
 
     elif "-sk2" in argv:
          combined,fast = self.remaining_parameters_cracking()
-         hash_input=input("Enter the hash shake-256: ")
+         hash_input=input("Enter the hash shake-256: ").strip().lower()
          if not hash_input.isalnum():
              if hash_input:
                print("You did not enter a valid hash!")
@@ -569,7 +569,7 @@ proceed to enter \"n\" and then choose option 3\"
     self.crunch()
     self.call_modules()
     combined,fast = self.remaining_parameters_cracking()
-    hash_input=input("Enter the hash to decrypt: ").strip()
+    hash_input=input("Enter the hash to decrypt: ").strip().lower()
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
              print(f"Type hash => {hash}")
