@@ -3,6 +3,7 @@ from hashlib import pbkdf2_hmac
 from sys import exit
 from passlib.hash import sha256_crypt, sha512_crypt
 from os import path
+from bcrypt import checkpw
 
 #The code has some flaws, but it serves its purpose 
 
@@ -13,23 +14,10 @@ hashes = {
 
 def crack(hash_objetivo, palabra, select, ssid, encontrado, queue):
     if select == "bcrypt":
-      if not path.exists("/data/data/com.termux/files/"):
-        from bcrypt import checkpw
         if checkpw(palabra.encode(), bytes(hash_objetivo, encoding="latin-1")):
             queue.put(f"Key found: {palabra}")
             encontrado.set()
-            return
-      else:
-            print("""
-bcrypt is not compatible with termux:
-option 1: install \"userland\" from play store
-option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/hash-suite-droid/com.hashsuite.droid
-                          """)
-            encontrado.set()
-            proceso1.terminate()
-            proceso2.terminate()
-            exit(0)
-            return
+            return        
     elif select in hashes:
         if hashes[select].verify(palabra, hash_objetivo):
             queue.put(f"Key found: {palabra}")
