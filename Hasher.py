@@ -140,8 +140,8 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
 
   def crunch2(sel):
      system("clear")
-     minimo=input("Enter the minimum password: ")
-     maximo=input("Enter the maximum password: ")
+     minimo=input("Enter the minimum password: ").strip()
+     maximo=input("Enter the maximum password: ").strip()
      valores=input("Enter the data to generate the dictionary: ")
      system("clear")
      print("Then copy and paste the command that will be given to you into the console and run Hasher.py again.")
@@ -151,9 +151,9 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
 
   def crunch3(self):
     system("clear")
-    password=input("Enter what you know of the password and what you don't as the @ symbol: ")
+    password=input("Enter what you know of the password and what you don't as the @ symbol: ").strip()
     valores=input("Enter the data to be tested in the password: ")
-    longitud=input("Please enter the total length of the password: ")
+    longitud=input("Please enter the total length of the password: ").strip()
     system("clear")
     print("Next, copy and paste the command that will be given to you into the console and run Hasher.py again.")
     print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
