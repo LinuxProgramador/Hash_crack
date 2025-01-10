@@ -8,7 +8,7 @@ function main {
     echo "Installing dependencies"
     sleep 2
     if [ "$os" = 'Android' ] ; then
-       apt install python3 python-pip -y
+       apt install python3 python-pip rust -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome passlib
     else
        sudo apt install python3 python3-pip -y
