@@ -127,7 +127,7 @@ if __name__ == "__main__":
         |rypemd-160|
          __________
         """)
-        select = input("Enter the hash type: ").strip().lower()
+        select = input("Enter the hash type: ").strip()
         if select == "rypemd-160":
             print("rypemd-160 tends to take a little longer")
 
