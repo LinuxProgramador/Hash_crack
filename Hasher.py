@@ -557,6 +557,9 @@ Wait, this may take a while
     print("""
 \"NOTE: If you want to perform a mask attack
 proceed to enter \"n\" and then choose option 3\"
+
+\"Simulate a brute force attack using all possible
+lengths and combinations with option 2\"
           """)
     self.crunch()
     self.call_modules()
