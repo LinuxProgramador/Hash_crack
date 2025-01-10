@@ -10,6 +10,7 @@ from os import system,path,remove
 from time import sleep
 from getpass import getuser
 from passlib.hash import sha256_crypt,sha512_crypt
+from bcrypt import checkpw
 
 class Hash_crack:
   '''
@@ -330,21 +331,12 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
              #bcrypt hash check
              #It's a slow hash
              elif select == "bcrypt":
-                if not self.os:
                    x = 'indefinite'
-                   from bcrypt import checkpw
                    if checkpw(data, bytes(hash_input,encoding="latin-1")):
                      self.auxiliary_crack(password,wpa_psk,ssid)
                    else:
                      self.faster(fast,x,password)
-                else:
-                    print("""
-bcrypt is not compatible with termux:
-option 1: install \"userland\" from play store
-option 2: install \"hash suite droid\" from this link: https://apkpure.com/en/hash-suite-droid/com.hashsuite.droid
-                          """)
-                    exit(2)
-
+           
              #checking  sha1, sha2, sha3 hashes
              elif select in self.hash:
                encryption = self.hash[select](password.encode('latin-1')).hexdigest()
