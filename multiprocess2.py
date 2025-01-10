@@ -57,8 +57,8 @@ if __name__ == "__main__":
         rute2 = input("Enter the path of the second dictionary: ").strip()
         hash_objetivo = input("Enter the hash to be decrypted: ").strip()
         print("Supported hashes:\n- bcrypt\n- sha512crypt\n- sha256crypt\n- wpa-psk")
-        select = input("Enter the hash type: ").strip().lower()
-        ssid = input("Enter the SSID (if WPA-PSK): ").strip() if select == "wpa-psk" else None
+        select = input("Enter the hash type: ").strip()
+        ssid = input("Enter the SSID (if WPA-PSK): ") if select == "wpa-psk" else None
     except KeyboardInterrupt:
         print()
         exit(0)
