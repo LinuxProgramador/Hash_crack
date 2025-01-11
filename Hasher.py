@@ -270,7 +270,8 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
      '''
         Encode each word in the dictionary, to verify with the hash of the key
      '''
-
+    
+     wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
      x = self.duration() if fast != "y" else ''
      if combined == "y" and fast != "y":      
         x = "indefinite"
