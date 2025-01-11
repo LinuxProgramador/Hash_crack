@@ -273,7 +273,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
     
      wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
      x = self.duration() if fast != "y" else ''
-     if combined == "y" and fast != "y":      
+     if combined == "y" and fast != "y" or wait_time == "y":      
         x = "indefinite"
 
      ssid = ''
