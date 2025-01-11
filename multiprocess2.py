@@ -20,6 +20,7 @@ def crack(hash_objetivo, palabra, select, ssid, encontrado, queue):
             return        
     elif select in hashes:
         if hashes[select].verify(palabra, hash_objetivo):
+            print(f"key found: {palabra}")
             queue.put(f"Key found: {palabra}")
             encontrado.set()
             return
