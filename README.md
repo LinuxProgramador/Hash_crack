@@ -20,6 +20,8 @@ Features:
 
     7- Optimized: limited to 1–2 cores and 512 KB RAM per block
 
+    8- Hash Type Detection 
+
 
 Included third-party projects:
 
