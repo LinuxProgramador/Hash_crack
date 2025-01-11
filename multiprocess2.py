@@ -32,7 +32,7 @@ def crack(hash_objetivo, palabra, select, ssid, encontrado, queue):
                 encontrado.set()
                 return
 
-def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, chunk_size=512 * 1024):
+def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, wait_time, chunk_size=512 * 1024):
     try:
         with open(rute, 'r', encoding='latin-1') as file:
             buffer = ""
@@ -60,6 +60,7 @@ if __name__ == "__main__":
         print("Supported hashes:\n- bcrypt\n- sha512crypt\n- sha256crypt\n- wpa-psk")
         select = input("Enter the hash type: ").strip()
         ssid = input("Enter the SSID (if WPA-PSK): ") if select == "wpa-psk" else None
+        wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
     except KeyboardInterrupt:
         print()
         exit(0)
@@ -69,8 +70,8 @@ if __name__ == "__main__":
 
     print("Starting parallel checking..")
 
-    proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, ssid, encontrado, queue))
-    proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, ssid, encontrado, queue))
+    proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, ssid, encontrado, queue, wait_time))
+    proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, ssid, encontrado, queue, wait_time))
 
     proceso1.start()
     proceso2.start()
