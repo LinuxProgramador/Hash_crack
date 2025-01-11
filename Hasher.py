@@ -378,6 +378,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
     x = 'indefinite'
     OldPass = ''
     combined,fast = self.remaining_parameters_cracking()
+    wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
     print("Starting WPA-PSK cracking")
     self.message_cracking(fast)
     with open(dictionary_path, 'r', encoding='latin-1') as file:
