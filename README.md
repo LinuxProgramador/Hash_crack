@@ -2,7 +2,9 @@ Disclaimer:
 
 This tool has been created for educational purposes only. 
 
-The author is not responsible for any misuse of it. 
+The author is not responsible for any misuse of it.
+
+Warning: Using dictionaries larger than 10GB is not recommended on low-resource systems.
 
 Features:
 
