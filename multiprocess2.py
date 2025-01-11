@@ -4,6 +4,7 @@ from sys import exit
 from passlib.hash import sha256_crypt, sha512_crypt
 from os import path
 from bcrypt import checkpw
+from time import sleep
 
 #The code has some flaws, but it serves its purpose 
 
