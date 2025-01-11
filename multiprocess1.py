@@ -2,6 +2,7 @@ import multiprocessing
 from Crypto.Hash import RIPEMD160
 from hashlib import md5, sha1, sha224, sha384, sha256, sha512, sha3_256, sha3_224, sha3_384, sha3_512, blake2s, blake2b, shake_128, shake_256
 from sys import exit
+from time import sleep
 
 #The code has some flaws when entering the hash name, variable and function names in Spanish and English
 #and others of the sort, but it does serve its purpose. 
