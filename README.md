@@ -6,7 +6,7 @@ The author is not responsible for any misuse of it.
 
 Features:
 
-    1- Multi-process
+    1- Multi-process  "Currently functional but still in development"
 
     2- Creation of custom dictionaries with crunch
 
