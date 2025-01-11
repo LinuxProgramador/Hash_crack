@@ -54,6 +54,7 @@ def crack(hash_objetivo, palabra, select, evento, queue):
 
 def comprobar_hash(rute, hash_objetivo, select, evento, queue, chunk_size=512 * 1024):
     try:
+        wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         with open(rute, 'r', encoding='latin-1') as file:
            buffer = ""
            while not evento.is_set():
