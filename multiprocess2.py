@@ -38,6 +38,8 @@ def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, wait_ti
             buffer = ""
             while not encontrado.is_set():                                                                         
                 chunk = file.read(chunk_size)
+                if wait_time == "y":
+                    sleep(3)
                 if not chunk:
                     break
                 buffer += chunk
