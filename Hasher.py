@@ -385,6 +385,8 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
       buffer = ""
       while True:
          chunk = file.read(chunk_size)
+         if wait_time == "y":
+             sleep(3)
          if not chunk:
             break
          buffer += chunk
