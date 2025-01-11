@@ -52,9 +52,9 @@ def crack(hash_objetivo, palabra, select, evento, queue):
         queue.put(palabra)
         return
 
-def comprobar_hash(rute, hash_objetivo, select, evento, queue, chunk_size=512 * 1024):
+def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_size=512 * 1024):
     try:
-        wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
+        
         with open(rute, 'r', encoding='latin-1') as file:
            buffer = ""
            while not evento.is_set():
@@ -74,14 +74,14 @@ def comprobar_hash(rute, hash_objetivo, select, evento, queue, chunk_size=512 * 
     except Exception as e:
         print(f"Processing error {rute}: {e}")
 
-def process_files(rute1, rute2, hash_objetivo, select):
+def process_files(rute1, rute2, hash_objetivo, select, wait_time):
     evento = multiprocessing.Event()
     queue = multiprocessing.Queue()
 
     print("Starting parallel checking...")
 
-    proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, evento, queue))
-    proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, evento, queue))
+    proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, evento, queue, wait_time))
+    proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, evento, queue, wait_time))
 
     proceso1.start()
     proceso2.start()
@@ -131,6 +131,7 @@ if __name__ == "__main__":
          __________
         """)
         select = input("Enter the hash type: ").strip()
+        wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         if select == "rypemd-160":
             print("rypemd-160 tends to take a little longer")
 
@@ -140,7 +141,7 @@ if __name__ == "__main__":
     except FileNotFoundError as F:
         print(f"invalid path: {F}")
 
-    process_files(rute1, rute2, hash_objetivo, select)
+    process_files(rute1, rute2, hash_objetivo, select, wait_time)
 
 
 __status__="beta"
