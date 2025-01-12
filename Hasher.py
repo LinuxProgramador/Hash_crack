@@ -484,7 +484,7 @@ Wait, this may take a while
 *****************************
                    """)
      if select == "rypemd-160" and fast == "y":
-        print("INFO: The procedure may take a while, because it is a slow hash.")
+        print("INFO: The process may take time due to slow hashing")
      self.message_cracking(fast)
      sleep(2)
      self.crack(hash_input,select,fast,combined,wait_time)
