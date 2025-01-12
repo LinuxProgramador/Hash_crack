@@ -516,6 +516,7 @@ Wait, this may take a while
          print()
          self.show_help()
          exit(2)
+       
 
   def main_auxiliary_arguments(self,hash):
      '''
@@ -568,7 +569,8 @@ Wait, this may take a while
       Performs tasks based on what the user selects
    '''
    try:
-    hash = ''     
+    hash = ''   
+    self.main_auxiliary_arguments(hash)
     self.banner()
     print("""
 \"INFO: If you want to perform a mask attack
