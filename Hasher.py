@@ -517,24 +517,21 @@ Wait, this may take a while
          self.show_help()
          exit(2)
 
-
-  def main(self):
-   '''
-      Performs tasks based on what the user selects
-   '''
-   try:
-    hash = ''
-    if "-h" in argv or "--help" in argv:
+  def main_auxiliary_arguments(self,hash):
+     '''
+      Helper function that handles input arguments "-h,--help,-sk,-sk2,-wpk"
+     '''
+     if "-h" in argv or "--help" in argv:
                self.show_help()
                exit(2)
-    elif "-sk" in argv:
+     elif "-sk" in argv:
          combined,fast = self.remaining_parameters_cracking()
          wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
          hash_input=input("Enter the hash shake-128: ").strip()
          hash = "shake-128"
          self.auxiliary_main(hash_input,hash,fast,combined,wait_time)
 
-    elif "-sk2" in argv:
+     elif "-sk2" in argv:
          combined,fast = self.remaining_parameters_cracking()
          wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
          hash_input=input("Enter the hash shake-256: ").strip()
@@ -546,7 +543,7 @@ Wait, this may take a while
          hash = "shake-256"
          self.auxiliary_main(hash_input,hash,fast,combined,wait_time)
 
-    elif "-wpk" in argv:
+     elif "-wpk" in argv:
           #It's a slow hash
           print("INFO: The process is slow due to PBKDF2 hashing")
           print("INFO: It is recommended to use small dictionaries")
@@ -563,8 +560,15 @@ Wait, this may take a while
             print()
             self.show_help()
             exit(2)
-      
-      
+     return
+
+
+  def main(self):
+   '''
+      Performs tasks based on what the user selects
+   '''
+   try:
+    hash = ''     
     self.banner()
     print("""
 \"INFO: If you want to perform a mask attack
