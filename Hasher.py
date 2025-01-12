@@ -498,7 +498,7 @@ Wait, this may take a while
        '''
        reports that a secure hash is being cracked
        '''
-       print(f"Type hash => {hash}")
+       print(f"Type hash: {hash}")
        print(f"{hash.capitalize()} Use small dictionaries for secure hashing")
        sleep(4)
        self.cracking_selection(hash_input,hash,fast,combined,wait_time)
@@ -589,7 +589,7 @@ lengths and combinations with option 2\"
     hash_input=input("Enter the hash to decrypt: ").strip()
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
-             print(f"Type hash => {hash}")
+             print(f"Type hash: {hash}")
              self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha1']:
              print("Type hash:\n- sha1\n- rypemd-160")
