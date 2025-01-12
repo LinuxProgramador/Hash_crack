@@ -277,8 +277,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       '''
       if wpa_psk:
          if self.counter % 2 == 0:
-            password += self.OldPass
-            return password
+            password += self.OldPass          
          else:
             password = self.OldPass + password
          self.OldPass = keyclean
@@ -288,8 +287,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       else:
          if self.counter % 2 == 0:
             password += self.OldPass
-            data += self.OldPassbin
-            return password,data
+            data += self.OldPassbin           
          else:
             password = self.OldPass + password
             data = self.OldPassbin + data
@@ -327,7 +325,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              keyBin = password.encode()
              data = keyBin                                       
              if combined == "y":
-                password,data = self.validation_combined(password,data,keyclean,keyBin)     
+                password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)     
                
              #md5 hash check
              if select == "md5":
@@ -418,7 +416,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             keyclean = keyword
             password = keyclean                                                                 
             if combined == "y":
-               password = self.validation_combined(password,data,keyclean,keyBin)
+               password = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
             # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
