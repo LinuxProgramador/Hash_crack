@@ -44,6 +44,9 @@ class Hash_crack:
     self.rute_dictionary_termux="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
     self.rute_dictionary_linux=f"/home/{self.user}/Hash_crack/wordlist.txt"
     self.os=path.exists("/data/data/com.termux/files/")
+    self.OldPass = ''
+    self.OldPassbin = b''
+    self.counter = 0
 
   def banner(self):
         '''
@@ -271,18 +274,13 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   def crack(self,hash_input,select,fast,combined,wait_time):
      '''
         Encode each word in the dictionary, to verify with the hash of the key
-     '''
-    
-    
+     ''' 
      x = self.duration() if fast != "y" else ''
      if combined == "y" and fast != "y" or wait_time == "y":      
         x = "time unknown"
 
      ssid = ''
      wpa_psk = False
-     OldPass = ''
-     OldPassbin = b''
-     counter = 0
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
        chunk_size = 512 * 1024
        buffer = ""
