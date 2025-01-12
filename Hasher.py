@@ -266,12 +266,12 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
           self.faster(fast,x,password)
 
 
-  def crack(self,hash_input,select,fast,combined):
+  def crack(self,hash_input,select,fast,combined,wait_time):
      '''
         Encode each word in the dictionary, to verify with the hash of the key
      '''
     
-     wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
+    
      x = self.duration() if fast != "y" else ''
      if combined == "y" and fast != "y" or wait_time == "y":      
         x = "indefinite"
@@ -457,7 +457,7 @@ Help Menu:
                     """)
 
 
-  def cracking_selection(self,hash_input,hash,fast,combined):
+  def cracking_selection(self,hash_input,hash,fast,combined,wait_time):
      '''
         Allows the user to choose which hash to crack
      '''
@@ -485,27 +485,27 @@ Wait, this may take a while
         print("NOTE: The procedure may take a while, because it is a slow hash.")
      self.message_cracking(fast)
      sleep(2)
-     self.crack(hash_input,select,fast,combined)
+     self.crack(hash_input,select,fast,combined,wait_time)
      return
 
-  def hash_secure_info(self,hash_input,hash,fast,combined):
+  def hash_secure_info(self,hash_input,hash,fast,combined,wait_time):
        '''
        reports that a secure hash is being cracked
        '''
        print(f"Type hash => {hash}")
        print(f"{hash.capitalize()} is considered a secure hash, it is recommended to use small dictionaries")
        sleep(4)
-       self.cracking_selection(hash_input,hash,fast,combined)
+       self.cracking_selection(hash_input,hash,fast,combined,wait_time)
        return
 
 
-  def auxiliary_main(self,hash_input,hash,fast,combined):
+  def auxiliary_main(self,hash_input,hash,fast,combined,wait_time):
      '''
      Helper function to validation shake hash
      '''
      if hash_input:
        if len(hash_input) >= 1 and len(hash_input) <= 2056:
-         self.cracking_selection(hash_input,hash,fast,combined)
+         self.cracking_selection(hash_input,hash,fast,combined,wait_time)
          exit(2)
        else:
          print("exceeded the allowed bits of \"1024\"")
@@ -527,19 +527,21 @@ Wait, this may take a while
                exit(2)
     elif "-sk" in argv:
          combined,fast = self.remaining_parameters_cracking()
+         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
          hash_input=input("Enter the hash shake-128: ").strip()
          hash = "shake-128"
-         self.auxiliary_main(hash_input,hash,fast,combined)
+         self.auxiliary_main(hash_input,hash,fast,combined,wait_time)
 
     elif "-sk2" in argv:
          combined,fast = self.remaining_parameters_cracking()
+         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
          hash_input=input("Enter the hash shake-256: ").strip()
          if not hash_input.isalnum():
              if hash_input:
                print("You did not enter a valid hash!")
                exit(2)
          hash = "shake-256"
-         self.auxiliary_main(hash_input,hash,fast,combined)
+         self.auxiliary_main(hash_input,hash,fast,combined,wait_time)
 
     elif "-wpk" in argv:
           #It's a slow hash
@@ -570,35 +572,36 @@ lengths and combinations with option 2\"
     self.crunch()
     self.call_modules()
     combined,fast = self.remaining_parameters_cracking()
+    wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
     hash_input=input("Enter the hash to decrypt: ").strip()
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
              print(f"Type hash => {hash}")
-             self.cracking_selection(hash_input,hash,fast,combined)
+             self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha1']:
              print("Type hash:\n- sha1\n- rypemd-160")
-             self.cracking_selection(hash_input,hash,fast,combined)
+             self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha224']:
              print("Type hash:\n- sha224\n- sha3_224")
-             self.cracking_selection(hash_input,hash,fast,combined)
+             self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha384']:
              print("Type hash:\n- sha384\n- sha3_384")
-             self.cracking_selection(hash_input,hash,fast,combined)
+             self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha256']:
              print("Type hash:\n- sha256\n- sha3_256\n- blake2s")
-             self.cracking_selection(hash_input,hash,fast,combined)
+             self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash:\n- sha512\n- sha3_512\n- blake2b")
-             self.cracking_selection(hash_input,hash,fast,combined)
+             self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
-             self.hash_secure_info(hash_input,hash,fast,combined)
+             self.hash_secure_info(hash_input,hash,fast,combined,wait_time)
     elif "$5" in hash_input[0:2]:
              hash = "sha256crypt"
-             self.hash_secure_info(hash_input,hash,fast,combined)
+             self.hash_secure_info(hash_input,hash,fast,combined,wait_time)
     elif "$6" in hash_input[0:2]:
              hash = "sha512crypt"
-             self.hash_secure_info(hash_input,hash,fast,combined)
+             self.hash_secure_info(hash_input,hash,fast,combined,wait_time)
     else:
         if hash_input:
           print("""\n
@@ -612,7 +615,7 @@ lengths and combinations with option 2\"
    except KeyboardInterrupt:
         print("BYE!!")
    except FileNotFoundError as e:
-        print(f"wordlist.txt does not exist in the path => {e}")
+        print(f"Wordlist.txt does not exist in the path => {e}")
    except ValueError:
        print("You did not enter a valid hash!")
 
