@@ -225,12 +225,12 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       return combined,fast,wait_time
     
 
-  def faster(self,fast,x,password):
+  def faster(self,fast,crackTimeEstimate,password):
       '''
       Function that will not print attempts if the user wants a quick crack
       '''
       if fast != "y":
-          print(f"[{x}] Trying password:- {password}")
+          print(f"[{crackTimeEstimate}] Trying password:- {password}")
 
 
   def auxiliary_crack(self,password,wpa_psk,ssid):
@@ -249,14 +249,14 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   
-  def validation(self,many_hash,hash_input,password,wpa_psk,ssid,fast,x):
+  def validation(self,many_hash,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate):
        '''
           Validates if the hash is equal to the encrypted password
        '''
        if many_hash == hash_input:
             self.auxiliary_crack(password,wpa_psk,ssid)
        else:
-            self.faster(fast,x,password)
+            self.faster(fast,crackTimeEstimate,password)
 
   
   def shacrypt(self,hash_input,password,select,fast):
@@ -265,11 +265,11 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
         '''
         ssid = ''
         wpa_psk = False
-        x = 'time unknown'
+        crackTimeEstimate = 'time unknown'
         if self.hash[select].verify(password, hash_input):
           self.auxiliary_crack(password,wpa_psk,ssid)
         else:
-          self.faster(fast,x,password)
+          self.faster(fast,crackTimeEstimate,password)
 
   def validation_combined(self,password,data,keyclean,keyBin,wpa_psk):
       '''
@@ -301,9 +301,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      '''
         Encode each word in the dictionary, to verify with the hash of the key
      ''' 
-     x = self.duration() if fast != "y" else ''
+     crackTimeEstimate = self.duration() if fast != "y" else ''
      if combined == "y" and fast != "y" or wait_time == "y":      
-        x = "time unknown"
+        crackTimeEstimate = "time unknown"
 
      ssid = ''
      wpa_psk = False
@@ -330,18 +330,18 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              #md5 hash check
              if select == "md5":
                encryption = md5(password.encode('latin-1')).hexdigest()
-               self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,x)
+               self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
 
              #Checking hash shakes
              elif select == "shake-256":
                 hash1 = shake_256(data).hexdigest(int(len(hash_input)/2))
-                self.validation(hash1,hash_input,password,wpa_psk,ssid,fast,x)
+                self.validation(hash1,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
 
              elif select == "shake-128":
                  shake = shake_128()
                  shake.update(data)
                  calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
-                 self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,fast,x)
+                 self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
 
              #checking shacrypt hashes
              #It's a slow hash
@@ -351,28 +351,28 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              #bcrypt hash check
              #It's a slow hash
              elif select == "bcrypt":
-                   x = 'time unknown'
+                   crackTimeEstimate = 'time unknown'
                    if checkpw(data, bytes(hash_input,encoding="latin-1")):
                      self.auxiliary_crack(password,wpa_psk,ssid)
                    else:
-                     self.faster(fast,x,password)
+                     self.faster(fast,crackTimeEstimate,password)
            
              #checking  sha1, sha2, sha3 hashes
              elif select in self.hash:
                encryption = self.hash[select](password.encode('latin-1')).hexdigest()
-               self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,x)
+               self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
 
              #rypemd-160 hash check
              #It is slow due to its anti-collision implementation.
              elif select == "rypemd-160":
                  RIPEMD = RIPEMD160.new()
                  RIPEMD.update(data)
-                 self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,fast,x)
+                 self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
                
              #Checking blake2 hashes
              elif select in self.hash:
                 blas2=self.hash[select](data).hexdigest()
-                self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,x)
+                self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
 
              else:
                print("Wrong hash name!")
@@ -395,7 +395,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     wpa_psk = True
     data = b''
     keyBin = b''
-    x = 'time unknown'
+    crackTimeEstimate = 'time unknown'
     combined,fast,wait_time = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
     self.message_cracking(fast)
@@ -423,7 +423,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             if derived_key.hex() == hash_input:
                 self.auxiliary_crack(password,wpa_psk,ssid)
             else:
-               self.faster(fast,x,password)
+               self.faster(fast,crackTimeEstimate,password)
     print("[X] The password does not exist in the dictionary!")
     exit(2)
 
