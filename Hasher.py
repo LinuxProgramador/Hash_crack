@@ -548,7 +548,7 @@ Wait, this may take a while
 
     elif "-wpk" in argv:
           #It's a slow hash
-          print("INFO: The procedure is slow because the hash is obtained with \"PBKDF2\"")
+          print("INFO: The process is slow due to PBKDF2 hashing")
           print("INFO: It is recommended to use small dictionaries")
           hash_input = input("Enter the WPA hash: ").strip()
           ssid = input("Enter the SSID: ")
