@@ -58,6 +58,8 @@ class Hash_crack:
  ' 88  88 dP""""Yb 8bodP  88  88 88888 88  Yb '
  ' -------------------------------------------
                ''')
+        print("INFO: Tool for cracking multiple types of hashes")
+        print("INFO: Use the help menu for guidance: 'python3 Hasher.py -h'\n")
         return
     
 
