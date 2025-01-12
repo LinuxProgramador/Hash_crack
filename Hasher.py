@@ -83,16 +83,16 @@ class Hash_crack:
       counter = 0
       for _ in range(2):
        print("""
-Note: This feature is still under development.
-Note: This method is ideal for very large dictionaries or testing two dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
-Note: Use the following command to split a large dictionary into 100 MB chunks on Linux or Termux:
+INFO: This feature is still under development.
+INFO: This method is ideal for very large dictionaries or testing two dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
+INFO: Use the following command to split a large dictionary into 100 MB chunks on Linux or Termux:
 split -b 100M rockyou.txt
 
 Options:
 1) Use this option for fast hashes such as MD5, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
 2) Use this option for slow hashes such as bcrypt, shaCrypt, or WPA-PSK.
 
-Additional Note: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
+Additional INFO: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
        valid = input("option: ").strip()
        if not valid in ["1","2"]:
@@ -135,7 +135,7 @@ Additional Note: Method 2 may take significantly longer due to the security meas
    Note: It is important to emphasize that if the password is hello123 and the initials that you do not know are 123, then put them in @ for example hello@@@ and the exact length for example in this case would be 8
    Note: the \"@\" can go in any position of the key, it is only used to specify where the combinations given by the user will be tested.
    
-NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN REACH UP TO GIGABYTES AND BLOCK THE PHONE!!!!!!!
+WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN REACH UP TO GIGABYTES AND BLOCK THE PHONE!!!!!!!
                   """)
     return
 
@@ -482,7 +482,7 @@ Wait, this may take a while
 *****************************
                    """)
      if select == "rypemd-160" and fast == "y":
-        print("NOTE: The procedure may take a while, because it is a slow hash.")
+        print("INFO: The procedure may take a while, because it is a slow hash.")
      self.message_cracking(fast)
      sleep(2)
      self.crack(hash_input,select,fast,combined,wait_time)
@@ -545,8 +545,8 @@ Wait, this may take a while
 
     elif "-wpk" in argv:
           #It's a slow hash
-          print("NOTE: The procedure is slow because the hash is obtained with \"PBKDF2\"")
-          print("NOTE: It is recommended to use small dictionaries")
+          print("INFO: The procedure is slow because the hash is obtained with \"PBKDF2\"")
+          print("INFO: It is recommended to use small dictionaries")
           hash_input = input("Enter the WPA hash: ").strip()
           ssid = input("Enter the SSID: ")
           if hash_input and ssid:
@@ -563,9 +563,8 @@ Wait, this may take a while
       
     self.banner()
     print("""
-\"NOTE: If you want to perform a mask attack
-proceed to enter \"n\" and then choose option 3\"
-
+\"INFO: If you want to perform a mask attack
+proceed to enter \"n\" and then choose option 3\ or
 \"Simulate a brute force attack using all possible
 lengths and combinations with option 2\"
           """)
