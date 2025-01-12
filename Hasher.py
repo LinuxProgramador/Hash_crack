@@ -510,7 +510,7 @@ Wait, this may take a while
          self.cracking_selection(hash_input,hash,fast,combined,wait_time)
          exit(2)
        else:
-         print("exceeded the allowed bits of \"1024\"")
+         print("Exceeded the allowed bits of \"1024\"")
          exit(2)
      else:
          print()
