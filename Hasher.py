@@ -382,13 +382,11 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
     '''
     x = 'time unknown'
-    OldPass = ''
     combined,fast = self.remaining_parameters_cracking()
     wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
     print("Starting WPA-PSK cracking")
     self.message_cracking(fast)
     with open(dictionary_path, 'r', encoding='latin-1') as file:
-      counter = 0
       chunk_size = 512 * 1024
       buffer = ""
       while True:
@@ -405,12 +403,12 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             keyclean = keyword
             password = keyclean                                                                 
             if combined == "y":
-               if counter % 2 == 0:
-                   password += OldPass
+               if self.counter % 2 == 0:
+                   password += self.OldPass
                else:
-                   password = OldPass + password
-               OldPass = keyclean
-               counter += 1
+                   password = self.OldPass + password
+               self.OldPass = keyclean
+               self.counter += 1
 
             # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
