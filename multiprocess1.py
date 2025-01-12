@@ -131,7 +131,7 @@ if __name__ == "__main__":
         |rypemd-160|
          __________
         """)
-        select = input("Enter the hash type: ").strip()
+        select = input("Enter the hash type: ").strip().lower()
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         if select == "rypemd-160":
             print("rypemd-160 tends to take a little longer")
