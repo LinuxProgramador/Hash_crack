@@ -556,6 +556,7 @@ Wait, this may take a while
                 self.crack_wpa_psk(hash_input, ssid, self.user_os())
             else:
                 print("You did not enter a valid hash!")
+                print("Enter a hash in \"WPA-PSK\" format")
                 exit(2)
           else:
             print()
