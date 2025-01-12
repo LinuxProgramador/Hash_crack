@@ -145,7 +145,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      system("clear")
      minimo=input("Enter the minimum password: ").strip()
      maximo=input("Enter the maximum password: ").strip()
-     valores=input("Enter the data to generate the dictionary: ")
+     valores=input("Enter the data to generate the dictionary: ").strip()
      system("clear")
      print("Then copy and paste the command that will be given to you into the console and run Hasher.py again:")
      print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
@@ -155,7 +155,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   def crunch3(self):
     system("clear")
     password=input("Enter what you know of the password and what you don't as the @ symbol: ").strip()
-    valores=input("Enter the data to be tested in the password: ")
+    valores=input("Enter the data to be tested in the password: ").strip()
     longitud=input("Please enter the total length of the password: ").strip()
     system("clear")
     print("Next, copy and paste the command that will be given to you into the console and run Hasher.py again:")
@@ -475,7 +475,7 @@ Help Menu:
      if select:
            pass
      else:
-       select = input("Which one do you want to crack?: ").strip()
+       select = input("Which one do you want to crack?: ").strip().lower()
      sleep(1)
      system("clear")
      print("""
