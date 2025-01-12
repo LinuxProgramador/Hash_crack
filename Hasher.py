@@ -336,7 +336,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              #bcrypt hash check
              #It's a slow hash
              elif select == "bcrypt":
-                   x = 'indefinite'
+                   x = 'time unknown'
                    if checkpw(data, bytes(hash_input,encoding="latin-1")):
                      self.auxiliary_crack(password,wpa_psk,ssid)
                    else:
