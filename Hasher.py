@@ -270,6 +270,21 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
         else:
           self.faster(fast,x,password)
 
+  def validation_combined(self,password,data,keyclean,keyBin):
+      '''
+       Function that combines keys if the value of the variable combined is "y"
+      '''
+      if self.counter % 2 == 0:
+        password += self.OldPass
+        data += self.OldPassbin
+      else:
+        password = self.OldPass + password
+        data = self.OldPassbin + data
+      self.OldPass = keyclean
+      self.OldPassbin = keyBin
+      self.counter += 1
+      return password,data
+
 
   def crack(self,hash_input,select,fast,combined,wait_time):
      '''
@@ -299,17 +314,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              keyBin = password.encode()
              data = keyBin                                       
              if combined == "y":
-               if counter % 2 == 0:
-                   password += OldPass
-                   data += OldPassbin
-               else:
-                   password = OldPass + password
-                   data = OldPassbin + data
-               OldPass = keyclean
-               OldPassbin = keyBin
-               counter += 1
-               
-
+                          
              #md5 hash check
              if select == "md5":
                encryption = md5(password.encode('latin-1')).hexdigest()
