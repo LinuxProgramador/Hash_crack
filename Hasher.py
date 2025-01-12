@@ -576,19 +576,19 @@ lengths and combinations with option 2\"
              print(f"Type hash => {hash}")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha1']:
-             print("Type hash => (sha1/rypemd-160)")
+             print("Type hash:\n- sha1\n- rypemd-160")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha224']:
-             print("Type hash => (sha224/sha3_224)")
+             print("Type hash:\n- sha224\n- sha3_224")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha384']:
-             print("Type hash => (sha384/sha3_384)")
+             print("Type hash:\n- sha384\n- sha3_384")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha256']:
-             print("Type hash => (sha256/sha3_256/blake2s)")
+             print("Type hash:\n- sha256\n- sha3_256\n- blake2s)")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha512']:
-             print("Type hash => (sha512/sha3_512/blake2b)")
+             print("Type hash:\n- sha512\n- sha3_512\n- blake2b)")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
