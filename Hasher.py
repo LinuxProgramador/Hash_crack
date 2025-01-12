@@ -69,12 +69,12 @@ class Hash_crack:
     print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\nor \"n\" for none")
     confirm=input("Option: ").strip()
     if confirm == "1":
-      print("NOTE:This process may take time!")
+      print("INFO:This process may take time!")
       sleep(3)
       system("python3 ~/Hash_crack/zcrack.py")
       exit(2)
     elif confirm == "2":
-      print("NOTE:This process may take time!")
+      print("INFO:This process may take time!")
       sleep(3)
       system("clear")
       system("python3 ~/Hash_crack/RARNinja.py")
@@ -132,8 +132,8 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
 
 3) create a dictionary with the initial of a password and the rest trying combinations for example:
    qwerty (12345)
-   Note: It is important to emphasize that if the password is hello123 and the initials that you do not know are 123, then put them in @ for example hello@@@ and the exact length for example in this case would be 8
-   Note: the \"@\" can go in any position of the key, it is only used to specify where the combinations given by the user will be tested.
+   INFO: It is important to emphasize that if the password is hello123 and the initials that you do not know are 123, then put them in @ for example hello@@@ and the exact length for example in this case would be 8
+   INFO: the \"@\" can go in any position of the key, it is only used to specify where the combinations given by the user will be tested.
    
 WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN REACH UP TO GIGABYTES AND BLOCK THE PHONE!!!!!!!
                   """)
