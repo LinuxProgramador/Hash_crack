@@ -221,7 +221,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
       combined = input().strip().lower()
       fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
-      return combined,fast
+      wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
+      return combined,fast,wait_time
     
 
   def faster(self,fast,x,password):
@@ -382,8 +383,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
     '''
     x = 'time unknown'
-    combined,fast = self.remaining_parameters_cracking()
-    wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
+    combined,fast,wait_time = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
     self.message_cracking(fast)
     with open(dictionary_path, 'r', encoding='latin-1') as file:
@@ -528,15 +528,13 @@ Wait, this may take a while
                self.show_help()
                exit(2)
      elif "-sk" in argv:
-         combined,fast = self.remaining_parameters_cracking()
-         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
+         combined,fast,wait_time = self.remaining_parameters_cracking()
          hash_input=input("Enter the hash shake-128: ").strip()
          hash = "shake-128"
          self.auxiliary_main(hash_input,hash,fast,combined,wait_time)
 
      elif "-sk2" in argv:
-         combined,fast = self.remaining_parameters_cracking()
-         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
+         combined,fast,wait_time = self.remaining_parameters_cracking()
          hash_input=input("Enter the hash shake-256: ").strip()
          if not hash_input.isalnum():
              if hash_input:
@@ -582,8 +580,7 @@ lengths and combinations with option 2\"
           """)
     self.crunch()
     self.call_modules()
-    combined,fast = self.remaining_parameters_cracking()
-    wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
+    combined,fast,wait_time = self.remaining_parameters_cracking()
     hash_input=input("Enter the hash to decrypt: ").strip()
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
