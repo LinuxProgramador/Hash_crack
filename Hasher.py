@@ -41,12 +41,12 @@ class Hash_crack:
     'length_sha512':128,
     }
     self.user=getuser()
-    self.rute_dictionary_termux="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
-    self.rute_dictionary_linux=f"/home/{self.user}/Hash_crack/wordlist.txt"
+    self.termux_dict_path="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
+    self.linux_dict_path=f"/home/{self.user}/Hash_crack/wordlist.txt"
     self.os=path.exists("/data/data/com.termux/files/")
-    self.OldPass = ''
-    self.OldPassbin = b''
-    self.counter = 0
+    self.previous_password = ''
+    self.previous_password_bin = b''
+    self.attempt_count = 0
 
   def banner(self):
         '''
@@ -121,7 +121,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
     '''
        Detects the operating system and in relation to that returns the path of the dictionary
     '''
-    return self.rute_dictionary_termux if self.os == True else self.rute_dictionary_linux
+    return self.termux_dict_path if self.os == True else self.linux_dict_path
 
 
   def crunch_0(self):
@@ -276,24 +276,24 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
        Function that combines keys if the value of the variable combined is "y"
       '''
       if wpa_psk:
-         if self.counter % 2 == 0:
-            password += self.OldPass          
+         if self.attempt_count % 2 == 0:
+            password += self.previous_password        
          else:
-            password = self.OldPass + password
-         self.OldPass = keyclean
-         self.counter += 1
+            password = self.previous_password + password
+         self.previous_password = keyclean
+         self.attempt_count += 1
          return password
            
       else:
-         if self.counter % 2 == 0:
-            password += self.OldPass
-            data += self.OldPassbin           
+         if self.attempt_count % 2 == 0:
+            password += self.previous_password
+            data +=  self.previous_password_bin       
          else:
-            password = self.OldPass + password
-            data = self.OldPassbin + data
-         self.OldPass = keyclean
-         self.OldPassbin = keyBin
-         self.counter += 1
+            password = self.previous_password + password
+            data = self.previous_password_bin + data
+         self.previous_password = keyclean
+         self.previous_password_bin = keyBin
+         self.attempt_count += 1
          return password,data
 
 
