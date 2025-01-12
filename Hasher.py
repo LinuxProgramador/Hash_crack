@@ -203,7 +203,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
         if size_range[0] <= sizes_mb < size_range[1]:
             return duration
 
-     return "indefinite"
+     return "time unknown"
 
 
   def remaining_parameters_cracking(self):
@@ -259,7 +259,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
         '''
         ssid = ''
         wpa_psk = False
-        x = 'indefinite'
+        x = 'time unknown'
         if self.hash[select].verify(password, hash_input):
           self.auxiliary_crack(password,wpa_psk,ssid)
         else:
@@ -274,7 +274,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
     
      x = self.duration() if fast != "y" else ''
      if combined == "y" and fast != "y" or wait_time == "y":      
-        x = "indefinite"
+        x = "time unknown"
 
      ssid = ''
      wpa_psk = False
@@ -375,7 +375,7 @@ NOTE:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN R
     '''
     Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
     '''
-    x = 'indefinite'
+    x = 'time unknown'
     OldPass = ''
     combined,fast = self.remaining_parameters_cracking()
     wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
