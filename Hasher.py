@@ -314,7 +314,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              keyBin = password.encode()
              data = keyBin                                       
              if combined == "y":
-                          
+                password,data = self.validation_combined(password,data,keyclean,keyBin)     
+               
              #md5 hash check
              if select == "md5":
                encryption = md5(password.encode('latin-1')).hexdigest()
