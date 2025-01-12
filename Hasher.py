@@ -475,7 +475,7 @@ Help Menu:
      if select:
            pass
      else:
-       select = input("Which one do you want to crack: ").strip()
+       select = input("Which one do you want to crack?: ").strip()
      sleep(1)
      system("clear")
      print("""
