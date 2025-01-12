@@ -235,12 +235,12 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     '''
     if wpa_psk:
         print("\n{***********************SUCCESS***********************}")
-        print(f"[ ✓ ] SSID: {ssid}")
-        print(f"[ ✓ ] Password Found:- {password}")
+        print(f"[✓] SSID: {ssid}")
+        print(f"[✓] Password Found:- {password}")
         exit(2)
     else:
        print("\n{***********************SUCCESS***********************}")
-       print(f"[ ✓ ] Password Found:- {password}")
+       print(f"[✓] Password Found:- {password}")
        exit(2)
 
 
@@ -362,7 +362,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              else:
                print("Wrong hash name!")
                exit(2)
-       print("[ X ] The password is not in the dictionary!")
+       print("[X] The password does not exist in the dictionary!")
 
 
   def message_cracking(self,fast):
@@ -415,7 +415,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                 self.auxiliary_crack(password,wpa_psk,ssid)
             else:
                self.faster(fast,x,password)
-    print("[ X ] The password is not in the dictionary!")
+    print("[X] The password does not exist in the dictionary!")
     exit(2)
 
   
