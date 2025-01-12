@@ -271,20 +271,32 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
         else:
           self.faster(fast,x,password)
 
-  def validation_combined(self,password,data,keyclean,keyBin):
+  def validation_combined(self,password,data,keyclean,keyBin,wpa_psk):
       '''
        Function that combines keys if the value of the variable combined is "y"
       '''
-      if self.counter % 2 == 0:
-        password += self.OldPass
-        data += self.OldPassbin
+      if wpa_psk:
+         if self.counter % 2 == 0:
+            password += self.OldPass
+            return password
+         else:
+            password = self.OldPass + password
+         self.OldPass = keyclean
+         self.counter += 1
+         return password
+           
       else:
-        password = self.OldPass + password
-        data = self.OldPassbin + data
-      self.OldPass = keyclean
-      self.OldPassbin = keyBin
-      self.counter += 1
-      return password,data
+         if self.counter % 2 == 0:
+            password += self.OldPass
+            data += self.OldPassbin
+            return password,data
+         else:
+            password = self.OldPass + password
+            data = self.OldPassbin + data
+         self.OldPass = keyclean
+         self.OldPassbin = keyBin
+         self.counter += 1
+         return password,data
 
 
   def crack(self,hash_input,select,fast,combined,wait_time):
@@ -382,6 +394,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     '''
     Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
     '''
+    wpa_psk = True
+    data = b''
+    keyBin = b''
     x = 'time unknown'
     combined,fast,wait_time = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
@@ -403,17 +418,11 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             keyclean = keyword
             password = keyclean                                                                 
             if combined == "y":
-               if self.counter % 2 == 0:
-                   password += self.OldPass
-               else:
-                   password = self.OldPass + password
-               self.OldPass = keyclean
-               self.counter += 1
+               password = self.validation_combined(password,data,keyclean,keyBin)
 
             # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
             derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
             if derived_key.hex() == hash_input:
-                wpa_psk = True
                 self.auxiliary_crack(password,wpa_psk,ssid)
             else:
                self.faster(fast,x,password)
