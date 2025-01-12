@@ -495,7 +495,7 @@ Wait, this may take a while
        reports that a secure hash is being cracked
        '''
        print(f"Type hash => {hash}")
-       print(f"{hash.capitalize()} is considered a secure hash, it is recommended to use small dictionaries")
+       print(f"{hash.capitalize()} Use small dictionaries for secure hashing")
        sleep(4)
        self.cracking_selection(hash_input,hash,fast,combined,wait_time)
        return
