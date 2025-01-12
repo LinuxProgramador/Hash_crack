@@ -541,6 +541,7 @@ Wait, this may take a while
          if not hash_input.isalnum():
              if hash_input:
                print("You did not enter a valid hash!")
+               print("Enter a hash in \"SHAKE-256\" format")
                exit(2)
          hash = "shake-256"
          self.auxiliary_main(hash_input,hash,fast,combined,wait_time)
@@ -620,6 +621,7 @@ lengths and combinations with option 2\"
         print(f"Wordlist.txt does not exist in the path => {e}")
    except ValueError:
        print("You did not enter a valid hash!")
+       print("Enter a hash in \"SHAKE-128\" format")
 
 if __name__ == "__main__":
   crack=Hash_crack()
