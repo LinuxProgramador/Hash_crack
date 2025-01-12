@@ -585,10 +585,10 @@ lengths and combinations with option 2\"
              print("Type hash:\n- sha384\n- sha3_384")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha256']:
-             print("Type hash:\n- sha256\n- sha3_256\n- blake2s)")
+             print("Type hash:\n- sha256\n- sha3_256\n- blake2s")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_sha512']:
-             print("Type hash:\n- sha512\n- sha3_512\n- blake2b)")
+             print("Type hash:\n- sha512\n- sha3_512\n- blake2b")
              self.cracking_selection(hash_input,hash,fast,combined)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
