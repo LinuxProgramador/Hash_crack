@@ -70,20 +70,14 @@ class Hash_crack:
     '''
        Call for third-party projects included to extend the program's functionality
     '''
+    modules_names = {
+"1":"zcrack.py",
+"2":"RARNinja.py"
+    }
     print("You want to use:")
     print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\nor \"n\" for none")
     confirm=input("Option: ").strip()
-    if confirm == "1":
-      print("INFO:This process may take time!")
-      sleep(3)
-      system("python3 ~/Hash_crack/zcrack.py")
-      exit(2)
-    elif confirm == "2":
-      print("INFO:This process may take time!")
-      sleep(3)
-      system("clear")
-      system("python3 ~/Hash_crack/RARNinja.py")
-      exit(2)
+   
     elif confirm == "3":
       counter = 0
       for _ in range(2):
