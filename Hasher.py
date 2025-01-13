@@ -402,6 +402,32 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          print("\nCRACKED............\n")
      return
 
+  def worker_wpa(self,entry,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input):
+    '''
+    passwords using the PBKDF2-HMAC-SHA1 algorithm.
+    This method processes a list of potential passwords (`entry`), validates password combinations,
+    and generates a WPA-PSK hash to compare it with the given hash (`hash_input`)
+    '''
+    for keyword in entry:
+      if 8 <= len(keyword) <= 63:
+         if type(entry) is str:
+           for _ in range(1):
+            keyclean = entry.strip()
+            password = keyclean
+         else:
+            keyclean = keyword.strip()
+            password = keyclean
+         if combined == "y":
+            password = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
+
+         # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
+         derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
+         if derived_key.hex() == hash_input:
+            self.auxiliary_crack(password,wpa_psk,ssid)
+         else:
+            self.faster(fast,crackTimeEstimate,password)
+
+
   def crack_wpa_psk(self, hash_input, ssid):
     '''
     Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
@@ -425,24 +451,13 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          buffer += chunk
          lines = buffer.splitlines()
          buffer = lines.pop() if not chunk.endswith('\n') else ""
-         for keyword in lines[:-1]:
-          if 8 <= len(keyword) <= 63:   
-            keyclean = keyword
-            password = keyclean                                                                 
-            if combined == "y":
-               password = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
-
-            # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
-            derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
-            if derived_key.hex() == hash_input:
-                self.auxiliary_crack(password,wpa_psk,ssid)
-            else:
-               self.faster(fast,crackTimeEstimate,password)
+         self.worker_wpa(lines,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input)
+      if buffer:
+          self.worker_wpa(buffer,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input)
     print("[X] The password does not exist in the dictionary!")
     exit(2)
 
   
-
   def show_help(self):
              '''
                 Method that displays a help menu
