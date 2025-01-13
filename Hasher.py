@@ -388,7 +388,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          print("\nCRACKED............\n")
      return
 
-  def crack_wpa_psk(self, hash_input, ssid, dictionary_path):
+  def crack_wpa_psk(self, hash_input, ssid):
     '''
     Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
     '''
@@ -399,7 +399,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     combined,fast,wait_time = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
     self.message_cracking(fast)
-    with open(dictionary_path, 'r', encoding='latin-1') as file:
+    with open(self.user_os(), 'r', encoding='latin-1') as file:
       chunk_size = 512 * 1024
       buffer = ""
       while True:
@@ -559,7 +559,7 @@ Wait, this may take a while
           ssid = input("Enter the SSID: ")
           if hash_input and ssid:
             if len(hash_input) == 64:
-                self.crack_wpa_psk(hash_input, ssid, self.user_os())
+                self.crack_wpa_psk(hash_input, ssid)
             else:
                 print("You did not enter a valid hash!")
                 print("Enter a hash in \"WPA-PSK\" format")
