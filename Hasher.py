@@ -74,6 +74,10 @@ class Hash_crack:
 "1":"zcrack.py",
 "2":"RARNinja.py"
     }
+    modules_multiprocess = {
+"1":"multiprocess1.py",
+"2":"multiprocess2.py"
+    }
     print("You want to use:")
     print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\nor \"n\" for none")
     confirm=input("Option: ").strip()
@@ -104,14 +108,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
             print("Incorrect choice, please try again")
          sleep(2)
          system("clear")
-       elif valid == "1":
-        system("clear")
-        system("python3 ~/Hash_crack/multiprocess1.py")
-        exit(2)
-       elif valid == "2":
-        system("clear")
-        system("python3 ~/Hash_crack/multiprocess2.py")
-        exit(2)
+       
     return
         
         
