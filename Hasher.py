@@ -295,14 +295,85 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          return password,data
 
 
+  def worker(self,entry,crackTimeEstimate,fast,ssid,wpa_psk,hash_input,select,combined):
+      '''
+        Processes an input and validates passwords against various hash algorithms.
+      '''
+      for keywords in entry:
+          if type(entry) is str:
+            for _ in range(1):
+              keyclean = entry.strip()
+              password = keyclean
+              keyBin = password.encode()
+              data = keyBin
+          else:
+              keyclean = keywords.strip()
+              password = keyclean
+              keyBin = password.encode()
+              data = keyBin
+
+          if combined == "y":
+             password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
+
+          #md5 hash check
+          if select == "md5":
+             encryption = md5(password.encode('latin-1')).hexdigest()
+             self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+
+          #Checking hash shakes
+          elif select == "shake-256":
+             hash1 = shake_256(data).hexdigest(int(len(hash_input)/2))
+             self.validation(hash1,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+
+          elif select == "shake-128":
+             shake = shake_128()
+             shake.update(data)
+             calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
+             self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+
+          #checking shacrypt hashes
+          #It's a slow hash
+          elif select == "sha256crypt" or select == "sha512crypt":
+             self.shacrypt(hash_input,password,select,fast)
+
+          #bcrypt hash check
+          #It's a slow hash
+          elif select == "bcrypt":
+             crackTimeEstimate = 'time unknown'
+             if checkpw(data, bytes(hash_input,encoding="latin-1")):
+                self.auxiliary_crack(password,wpa_psk,ssid)
+             else:
+                self.faster(fast,crackTimeEstimate,password)
+
+          #checking  sha1, sha2, sha3 hashes
+          elif select in self.hash:
+            encryption = self.hash[select](password.encode('latin-1')).hexdigest()
+            self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+
+          #rypemd-160 hash check
+          #It is slow due to its anti-collision implementation.
+          elif select == "rypemd-160":
+            RIPEMD = RIPEMD160.new()
+            RIPEMD.update(data)
+            self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+
+          #Checking blake2 hashes
+          elif select in self.hash:
+             blas2=self.hash[select](data).hexdigest()
+             self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+
+          else:
+             print("Wrong hash name!")
+             exit(2)
+
+
   def crack(self,hash_input,select,fast,combined,wait_time):
      '''
         Encode each word in the dictionary, to verify with the hash of the key
-     ''' 
+     '''
      crackTimeEstimate = self.duration() if fast != "y" else ''
-     if combined == "y" and fast != "y" or wait_time == "y":      
+     if combined == "y" and fast != "y" or wait_time == "y":
         crackTimeEstimate = "time unknown"
-
      ssid = ''
      wpa_psk = False
      with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
@@ -316,65 +387,10 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             break
          buffer += chunk
          lines = buffer.splitlines()
-         buffer = lines[-1] if len(lines) > 1 else ""
-         for keywords in lines[:-1]:
-             keyclean = keywords
-             password = keyclean
-             keyBin = password.encode()
-             data = keyBin                                       
-             if combined == "y":
-                password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)     
-               
-             #md5 hash check
-             if select == "md5":
-               encryption = md5(password.encode('latin-1')).hexdigest()
-               self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
-
-             #Checking hash shakes
-             elif select == "shake-256":
-                hash1 = shake_256(data).hexdigest(int(len(hash_input)/2))
-                self.validation(hash1,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
-
-             elif select == "shake-128":
-                 shake = shake_128()
-                 shake.update(data)
-                 calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
-                 self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
-
-             #checking shacrypt hashes
-             #It's a slow hash
-             elif select == "sha256crypt" or select == "sha512crypt":
-                  self.shacrypt(hash_input,password,select,fast)
-
-             #bcrypt hash check
-             #It's a slow hash
-             elif select == "bcrypt":
-                   crackTimeEstimate = 'time unknown'
-                   if checkpw(data, bytes(hash_input,encoding="latin-1")):
-                     self.auxiliary_crack(password,wpa_psk,ssid)
-                   else:
-                     self.faster(fast,crackTimeEstimate,password)
-           
-             #checking  sha1, sha2, sha3 hashes
-             elif select in self.hash:
-               encryption = self.hash[select](password.encode('latin-1')).hexdigest()
-               self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
-
-             #rypemd-160 hash check
-             #It is slow due to its anti-collision implementation.
-             elif select == "rypemd-160":
-                 RIPEMD = RIPEMD160.new()
-                 RIPEMD.update(data)
-                 self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
-               
-             #Checking blake2 hashes
-             elif select in self.hash:
-                blas2=self.hash[select](data).hexdigest()
-                self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
-
-             else:
-               print("Wrong hash name!")
-               exit(2)
+         buffer = lines.pop() if not chunk.endswith('\n') else ""
+         self.worker(lines,crackTimeEstimate,fast,ssid,wpa_psk,hash_input,select,combined)
+       if buffer:
+         self.worker(buffer,crackTimeEstimate,fast,ssid,wpa_psk,hash_input,select,combined)
        print("[X] The password does not exist in the dictionary!")
 
 
@@ -403,12 +419,12 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       while True:
          chunk = file.read(chunk_size)
          if wait_time == "y":
-             sleep(3)
+            sleep(3)
          if not chunk:
             break
          buffer += chunk
          lines = buffer.splitlines()
-         buffer = lines[-1] if len(lines) > 1 else ""
+         buffer = lines.pop() if not chunk.endswith('\n') else ""
          for keyword in lines[:-1]:
           if 8 <= len(keyword) <= 63:   
             keyclean = keyword
