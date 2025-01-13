@@ -77,9 +77,13 @@ class Hash_crack:
     print("You want to use:")
     print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\nor \"n\" for none")
     confirm=input("Option: ").strip()
-   
+    if confirm in modules_names:
+      print("INFO:This process may take time!")
+      sleep(3)
+      system("clear")
+      system(f"python3 ~/Hash_crack/{modules_names[confirm]}")
+      exit(2)
     elif confirm == "3":
-      counter = 0
       for _ in range(2):
        print("""
 INFO: This feature is still under development.
@@ -95,8 +99,8 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
 """)
        valid = input("option: ").strip()
        if not valid in ["1","2"]:
-         counter += 1
-         if counter == 1:
+         self.attempt_count += 1
+         if self.attempt_count == 1:
             print("Incorrect choice, please try again")
          sleep(2)
          system("clear")
