@@ -43,7 +43,7 @@ class Hash_crack:
     self.user=getuser()
     self.termux_dict_path="/data/data/com.termux/files/home/Hash_crack/wordlist.txt"
     self.linux_dict_path=f"/home/{self.user}/Hash_crack/wordlist.txt"
-    self.os=path.exists("/data/data/com.termux/files/")
+    self.is_termux=path.exists("/data/data/com.termux/files/")
     self.previous_password = ''
     self.previous_password_bin = b''
     self.attempt_count = 0
@@ -121,7 +121,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
     '''
        Detects the operating system and in relation to that returns the path of the dictionary
     '''
-    return self.termux_dict_path if self.os == True else self.linux_dict_path
+    return self.termux_dict_path if self.is_termux == True else self.linux_dict_path
 
 
   def crunch_0(self):
