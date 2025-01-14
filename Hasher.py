@@ -408,7 +408,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     and generates a WPA-PSK hash to compare it with the given hash (`hash_input`)
     '''
     for keyword in entry:
-      if 8 <= len(keyword) <= 63:
+      if 8 <= len(keyword) <= 63 or type(entry) is str and 8 <= len(entry) <= 63:
          if type(entry) is str:
             keyclean = entry.strip()
             password = keyclean
