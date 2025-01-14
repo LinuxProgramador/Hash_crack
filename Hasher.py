@@ -296,10 +296,11 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       '''
         Processes an input and validates passwords against various hash algorithms.
       '''
+      backup_entry = entry
       validation_str,entry = self.validate_and_transform_entry(entry)
       for keywords in entry:
           if validation_str:
-              keyclean = entry.strip()
+              keyclean = backup_entry.strip()
               password = keyclean
               keyBin = password.encode()
               data = keyBin
@@ -409,11 +410,12 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     This method processes a list of potential passwords (`entry`), validates password combinations,
     and generates a WPA-PSK hash to compare it with the given hash (`hash_input`)
     '''
+    backup_entry = entry
     validation_str,entry = self.validate_and_transform_entry(entry)
     for keyword in entry:
-      if 8 <= len(keyword) <= 63 or validation_str and 8 <= len(entry) <= 63:
+      if 8 <= len(keyword) <= 63 or validation_str and 8 <= len(backup_entry) <= 63:
          if validation_str:
-            keyclean = entry.strip()
+            keyclean = backup_entry.strip()
             password = keyclean
          else:
             keyclean = keyword
