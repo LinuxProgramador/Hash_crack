@@ -80,7 +80,7 @@ class Hash_crack:
     '''
     print("You want to use:")
     print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\n4) for \"none\"")
-    option_chosen = input("Option: ").strip()
+    option_chosen = input("option: ").strip()
     if option_chosen in self.modules_names:
       print("INFO:This process may take time!")
       sleep(3)
