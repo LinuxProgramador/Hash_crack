@@ -503,6 +503,10 @@ Help Menu:
            pass
      else:
        select = input("Option to decrypt?: ").strip()
+       if select in dic_hash:
+           select = dic_hash[select]
+       else:
+           select = None
      sleep(1)
      system("clear")
      print("""
