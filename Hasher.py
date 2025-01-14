@@ -280,8 +280,18 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          self.previous_password_bin = keyBin
          self.attempt_count += 1
          return password,data
+        
 
+  def validate_and_transform_entry(self,entry):
+     '''
+       Validates if the input is a string. If it is, transforms the value to "1"
+     '''
+     validation_str = type(entry) is str
+     if validation_str:
+            entry = "1"
+     return validation_str,entry
 
+  
   def worker(self,entry,crackTimeEstimate,fast,ssid,wpa_psk,hash_input,select,combined):
       '''
         Processes an input and validates passwords against various hash algorithms.
