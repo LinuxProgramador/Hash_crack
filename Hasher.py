@@ -256,19 +256,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
        else:
             self.faster(fast,crackTimeEstimate,password)
 
-  
-  def shacrypt(self,hash_input,password,select,fast):
-        '''
-        function that separates the logic of the sha256crypt and sha512crypt hash so that it does not give an error with blake2
-        '''
-        ssid = ''
-        wpa_psk = False
-        crackTimeEstimate = 'time unknown'
-        if self.hash[select].verify(password, hash_input):
-          self.auxiliary_crack(password,wpa_psk,ssid)
-        else:
-          self.faster(fast,crackTimeEstimate,password)
-
   def validation_combined(self,password,data,keyclean,keyBin,wpa_psk):
       '''
        Function that combines keys if the value of the variable combined is "y"
@@ -333,7 +320,11 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #checking shacrypt hashes
           #It's a slow hash
           elif select == "sha256crypt" or select == "sha512crypt":
-             self.shacrypt(hash_input,password,select,fast)
+             crackTimeEstimate = 'time unknown'
+             if self.hash[select].verify(password, hash_input):
+                self.auxiliary_crack(password,wpa_psk,ssid)
+             else:
+                self.faster(fast,crackTimeEstimate,password)
 
           #bcrypt hash check
           #It's a slow hash
