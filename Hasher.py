@@ -533,7 +533,7 @@ Wait, this may take a while
      self.crack(hash_input,select,is_fast_mode,combined,wait_time)
      return
 
-  def hash_secure_info(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
+  def process_secure_hash(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
        '''
        reports that a secure hash is being cracked
        '''
@@ -650,13 +650,13 @@ lengths and combinations with option 2\"
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
-             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "$5" in hash_input[0:2]:
              hash = "sha256crypt"
-             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "$6" in hash_input[0:2]:
              hash = "sha512crypt"
-             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     else:
         if hash_input:
           print("""\n
