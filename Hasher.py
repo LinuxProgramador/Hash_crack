@@ -411,7 +411,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     '''
     validation_str,entry = self.validate_and_transform_entry(entry)
     for keyword in entry:
-      if 8 <= len(keyword) <= 63 or type(entry) is str and 8 <= len(entry) <= 63:
+      if 8 <= len(keyword) <= 63 or validation_str and 8 <= len(entry) <= 63:
          if validation_str:
             keyclean = entry.strip()
             password = keyclean
