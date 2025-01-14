@@ -67,8 +67,7 @@ def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_
                buffer += chunk
                lines = buffer.splitlines()
                buffer = lines[-1] if len(lines) > 1 else ""
-               for line in lines[:-1]:
-                    palabra = line
+               for palabra in lines[:-1]:
                     crack(hash_objetivo, palabra, select, evento, queue)
            if buffer:
               crack(hash_objetivo, buffer.strip(), select, evento, queue)
