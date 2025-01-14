@@ -404,7 +404,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          print("\nCRACKED............\n")
      return
 
-  def worker_wpa(self,password_list,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
+  def process_wpa_passwords(self,password_list,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
     '''
     passwords using the PBKDF2-HMAC-SHA1 algorithm.
     This method processes a list of potential passwords (`entry`), validates password combinations,
@@ -454,9 +454,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          buffer += chunk
          lines = buffer.splitlines()
          buffer = lines.pop() if not chunk.endswith('\n') else ""
-         self.worker_wpa(lines,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input)
+         self.process_wpa_passwords(lines,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input)
       if buffer:
-         self.worker_wpa(buffer,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input)
+         self.process_wpa_passwords(buffer,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input)
     print("[X] The password does not exist in the dictionary!")
     exit(2)
 
