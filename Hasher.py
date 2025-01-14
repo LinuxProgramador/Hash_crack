@@ -569,13 +569,13 @@ Wait, this may take a while
                self.show_help()
                exit(2)
      elif "-sk" in argv:
-         combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
+         combined,is_fast_mode,wait_time = self.get_cracking_parameters()
          hash_input=input("Enter the hash shake-128: ").strip()
          hash = "shake-128"
          self.auxiliary_main(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
 
      elif "-sk2" in argv:
-         combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
+         combined,is_fast_mode,wait_time = self.get_cracking_parameters()
          hash_input=input("Enter the hash shake-256: ").strip()
          if not hash_input.isalnum():
              if hash_input:
