@@ -296,8 +296,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       '''
         Processes an input and validates passwords against various hash algorithms.
       '''
+      validation_str,entry = self.validate_and_transform_entry(entry)
       for keywords in entry:
-          if type(entry) is str:
+          if validation_str:
               keyclean = entry.strip()
               password = keyclean
               keyBin = password.encode()
