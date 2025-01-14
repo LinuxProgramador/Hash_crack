@@ -192,7 +192,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
      #Note: calculations may not be as accurate
      #Rather, what is calculated is the approximate time. 
-     sizes_mb = path.getsize(self.user_os()) / (1024 ** 2)
+     sizes_mb = path.getsize(self.directory_path()) / (1024 ** 2)
      ranges = {
         (1.0, 20.0): "~2 mins",
         (20.0, 40.0): "~6 mins",
