@@ -79,7 +79,7 @@ class Hash_crack:
        Call for third-party projects included to extend the program's functionality
     '''
     print("You want to use:")
-    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\nor \"n\" for none")
+    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\n4) for \"none\"")
     confirm=input("Option: ").strip()
     if confirm in self.modules_names:
       print("INFO:This process may take time!")
