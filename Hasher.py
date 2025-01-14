@@ -500,7 +500,7 @@ Help Menu:
                     """)
 
 
-  def cracking_selection(self,hash_input,hash,is_fast_mode,combined,wait_time,dic_hash):
+  def cracking_selection(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
      '''
         Allows the user to choose which hash to crack
      '''
@@ -517,8 +517,8 @@ Help Menu:
            pass
      else:
        select = input("Option to decrypt?: ").strip()
-       if select in dic_hash:
-           select = dic_hash.get(select, None)
+       if select in hash_algorithm_map:
+           select = hash_algorithm_map.get(select, None)
      sleep(1)
      system("clear")
      print("""
@@ -533,26 +533,24 @@ Wait, this may take a while
      self.crack(hash_input,select,is_fast_mode,combined,wait_time)
      return
 
-  def hash_secure_info(self,hash_input,hash,is_fast_mode,combined,wait_time):
+  def hash_secure_info(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
        '''
        reports that a secure hash is being cracked
        '''
-       dic_hash = None
        print(f"Type hash: {hash}")
        print(f"{hash.capitalize()} Use small dictionaries for secure hashing")
        sleep(4)
-       self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+       self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
        return
 
 
-  def auxiliary_main(self,hash_input,hash,is_fast_mode,combined,wait_time):
+  def auxiliary_main(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
      '''
      Helper function to validation shake hash
      '''
-     dic_hash = None
      if hash_input:
        if len(hash_input) >= 1 and len(hash_input) <= 2056:
-         self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+         self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
          exit(2)
        else:
          print("Exceeded the allowed bits of \"1024\"")
@@ -563,7 +561,7 @@ Wait, this may take a while
          exit(2)
        
 
-  def main_auxiliary_arguments(self,hash):
+  def main_auxiliary_arguments(self,hash,hash_algorithm_map):
      '''
       Helper function that handles input arguments "-h,--help,-sk,-sk2,-wpk"
      '''
@@ -574,7 +572,7 @@ Wait, this may take a while
          combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
          hash_input=input("Enter the hash shake-128: ").strip()
          hash = "shake-128"
-         self.auxiliary_main(hash_input,hash,is_fast_mode,combined,wait_time)
+         self.auxiliary_main(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
 
      elif "-sk2" in argv:
          combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
@@ -585,7 +583,7 @@ Wait, this may take a while
                print("Enter a hash in \"SHAKE-256\" format")
                exit(2)
          hash = "shake-256"
-         self.auxiliary_main(hash_input,hash,is_fast_mode,combined,wait_time)
+         self.auxiliary_main(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
 
      elif "-wpk" in argv:
           #It's a slow hash
@@ -612,9 +610,9 @@ Wait, this may take a while
       Performs tasks based on what the user selects
    '''
    try:
-    dic_hash = None
+    hash_algorithm_map = None
     hash = ''   
-    self.main_auxiliary_arguments(hash)
+    self.main_auxiliary_arguments(hash,hash_algorithm_map)
     self.banner()
     print("""
 \"INFO: If you want to perform a mask attack
@@ -629,36 +627,36 @@ lengths and combinations with option 2\"
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
              print(f"Type hash: {hash}")
-             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha1']:
              print("Type hash:\n1)- sha1\n2)- ripemd-160")
-             dic_hash ={"1":"sha1","2":"ripemd-160"}
-             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             hash_algorithm_map ={"1":"sha1","2":"ripemd-160"}
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha224']:
              print("Type hash:\n1)- sha224\n2)- sha3_224")
-             dic_hash ={"1":"sha224","2":"sha3_224"}
-             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             hash_algorithm_map ={"1":"sha224","2":"sha3_224"}
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha384']:
              print("Type hash:\n1)- sha384\n2)- sha3_384")
-             dic_hash ={"1":"sha384","2":"sha3_384"}
-             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             hash_algorithm_map ={"1":"sha384","2":"sha3_384"}
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha256']:
              print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s")
-             dic_hash ={"1":"sha256","2":"sha3_256","3":"blake2s"}
-             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             hash_algorithm_map ={"1":"sha256","2":"sha3_256","3":"blake2s"}
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b")
-             dic_hash ={"1":"sha512","2":"sha3_512","3":"blake2b"}
-             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             hash_algorithm_map ={"1":"sha512","2":"sha3_512","3":"blake2b"}
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
-             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "$5" in hash_input[0:2]:
              hash = "sha256crypt"
-             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "$6" in hash_input[0:2]:
              hash = "sha512crypt"
-             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
+             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     else:
         if hash_input:
           print("""\n
