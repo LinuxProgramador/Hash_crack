@@ -396,7 +396,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
        print("[X] The password does not exist in the dictionary!")
 
 
-  def message_cracking(self,is_fast_mode):
+  def display_cracking_message(self,is_fast_mode):
      '''
      prints a message that the cracking process has already started
      '''
@@ -441,7 +441,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     crackTimeEstimate = 'time unknown'
     combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
-    self.message_cracking(is_fast_mode)
+    self.display_cracking_message(is_fast_mode)
     with open(self.user_os(), 'r', encoding='latin-1') as file:
       chunk_size = 512 * 1024
       buffer = ""
@@ -528,7 +528,7 @@ Wait, this may take a while
                    """)
      if select == "rypemd-160" and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
-     self.message_cracking(is_fast_mode)
+     self.display_cracking_message(is_fast_mode)
      sleep(2)
      self.crack(hash_input,select,is_fast_mode,combined,wait_time)
      return
