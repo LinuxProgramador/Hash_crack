@@ -218,16 +218,16 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       #timeout too much, as there would be many millions of possible combinations.
       print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
       combined = input().strip().lower()
-      fast = input("Do you want to use the fast crack version (y/n): ").strip().lower()
+      is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
       wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
-      return combined,fast,wait_time
+      return combined,is_fast_mode,wait_time
     
 
-  def faster(self,fast,crackTimeEstimate,password):
+  def faster(self,is_fast_mode,crackTimeEstimate,password):
       '''
       Function that will not print attempts if the user wants a quick crack
       '''
-      if fast != "y":
+      if is_fast_mode != "y":
           print(f"[{crackTimeEstimate}] Trying password:- {password}")
 
 
@@ -247,14 +247,14 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   
-  def validation(self,many_hash,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate):
+  def validation(self,many_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate):
        '''
           Validates if the hash is equal to the encrypted password
        '''
        if many_hash == hash_input:
             self.auxiliary_crack(password,wpa_psk,ssid)
        else:
-            self.faster(fast,crackTimeEstimate,password)
+            self.faster(is_fast_mode,crackTimeEstimate,password)
 
   def validation_combined(self,password,data,keyclean,keyBin,wpa_psk):
       '''
@@ -292,7 +292,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      return validation_str,entry
 
   
-  def worker(self,entry,crackTimeEstimate,fast,ssid,wpa_psk,hash_input,select,combined):
+  def worker(self,entry,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
       '''
         Processes an input and validates passwords against various hash algorithms.
       '''
@@ -316,18 +316,18 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #md5 hash check
           if select == "md5":
              encryption = md5(password.encode('latin-1')).hexdigest()
-             self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+             self.validation(encryption,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #Checking hash shakes
           elif select == "shake-256":
              hash1 = shake_256(data).hexdigest(int(len(hash_input)/2))
-             self.validation(hash1,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+             self.validation(hash1,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           elif select == "shake-128":
              shake = shake_128()
              shake.update(data)
              calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
-             self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+             self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #checking shacrypt hashes
           #It's a slow hash
@@ -336,7 +336,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              if self.hash[select].verify(password, hash_input):
                 self.auxiliary_crack(password,wpa_psk,ssid)
              else:
-                self.faster(fast,crackTimeEstimate,password)
+                self.faster(is_fast_mode,crackTimeEstimate,password)
 
           #bcrypt hash check
           #It's a slow hash
@@ -345,31 +345,31 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              if checkpw(data, bytes(hash_input,encoding="latin-1")):
                 self.auxiliary_crack(password,wpa_psk,ssid)
              else:
-                self.faster(fast,crackTimeEstimate,password)
+                self.faster(is_fast_mode,crackTimeEstimate,password)
 
           #checking  sha1, sha2, sha3 hashes
           elif select in self.hash:
             encryption = self.hash[select](password.encode('latin-1')).hexdigest()
-            self.validation(encryption,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+            self.validation(encryption,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #rypemd-160 hash check
           #It is slow due to its anti-collision implementation.
           elif select == "ripemd-160":
             RIPEMD = RIPEMD160.new()
             RIPEMD.update(data)
-            self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+            self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #Checking blake2 hashes
           elif select in self.hash:
              blas2=self.hash[select](data).hexdigest()
-             self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
+             self.validation(blas2,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
             
           else:
             print("Wrong option!")
             exit(2)
 
 
-  def crack(self,hash_input,select,fast,combined,wait_time):
+  def crack(self,hash_input,select,is_fast_mode,combined,wait_time):
      '''
         Encode each word in the dictionary, to verify with the hash of the key
      '''
@@ -390,21 +390,21 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          buffer += chunk
          lines = buffer.splitlines()
          buffer = lines.pop() if not chunk.endswith('\n') else ""
-         self.worker(lines,crackTimeEstimate,fast,ssid,wpa_psk,hash_input,select,combined)
+         self.worker(lines,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined)
        if buffer:
-         self.worker(buffer,crackTimeEstimate,fast,ssid,wpa_psk,hash_input,select,combined)
+         self.worker(buffer,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined)
        print("[X] The password does not exist in the dictionary!")
 
 
-  def message_cracking(self,fast):
+  def message_cracking(self,is_fast_mode):
      '''
      prints a message that the cracking process has already started
      '''
-     if fast == "y":
+     if is_fast_mode == "y":
          print("\nCRACKED............\n")
      return
 
-  def worker_wpa(self,entry,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input):
+  def worker_wpa(self,entry,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
     '''
     passwords using the PBKDF2-HMAC-SHA1 algorithm.
     This method processes a list of potential passwords (`entry`), validates password combinations,
@@ -428,7 +428,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          if derived_key.hex() == hash_input:
             self.auxiliary_crack(password,wpa_psk,ssid)
          else:
-            self.faster(fast,crackTimeEstimate,password)
+            self.faster(is_fast_mode,crackTimeEstimate,password)
 
 
   def crack_wpa_psk(self, hash_input, ssid):
@@ -439,9 +439,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     data = b''
     keyBin = b''
     crackTimeEstimate = 'time unknown'
-    combined,fast,wait_time = self.remaining_parameters_cracking()
+    combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
     print("Starting WPA-PSK cracking")
-    self.message_cracking(fast)
+    self.message_cracking(is_fast_mode)
     with open(self.user_os(), 'r', encoding='latin-1') as file:
       chunk_size = 512 * 1024
       buffer = ""
@@ -454,9 +454,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          buffer += chunk
          lines = buffer.splitlines()
          buffer = lines.pop() if not chunk.endswith('\n') else ""
-         self.worker_wpa(lines,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input)
+         self.worker_wpa(lines,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input)
       if buffer:
-         self.worker_wpa(buffer,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input)
+         self.worker_wpa(buffer,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input)
     print("[X] The password does not exist in the dictionary!")
     exit(2)
 
@@ -500,7 +500,7 @@ Help Menu:
                     """)
 
 
-  def cracking_selection(self,hash_input,hash,fast,combined,wait_time,dic_hash):
+  def cracking_selection(self,hash_input,hash,is_fast_mode,combined,wait_time,dic_hash):
      '''
         Allows the user to choose which hash to crack
      '''
@@ -526,14 +526,14 @@ Help Menu:
 Wait, this may take a while
 *****************************
                    """)
-     if select == "rypemd-160" and fast == "y":
+     if select == "rypemd-160" and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
-     self.message_cracking(fast)
+     self.message_cracking(is_fast_mode)
      sleep(2)
-     self.crack(hash_input,select,fast,combined,wait_time)
+     self.crack(hash_input,select,is_fast_mode,combined,wait_time)
      return
 
-  def hash_secure_info(self,hash_input,hash,fast,combined,wait_time):
+  def hash_secure_info(self,hash_input,hash,is_fast_mode,combined,wait_time):
        '''
        reports that a secure hash is being cracked
        '''
@@ -541,18 +541,18 @@ Wait, this may take a while
        print(f"Type hash: {hash}")
        print(f"{hash.capitalize()} Use small dictionaries for secure hashing")
        sleep(4)
-       self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
+       self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
        return
 
 
-  def auxiliary_main(self,hash_input,hash,fast,combined,wait_time):
+  def auxiliary_main(self,hash_input,hash,is_fast_mode,combined,wait_time):
      '''
      Helper function to validation shake hash
      '''
      dic_hash = None
      if hash_input:
        if len(hash_input) >= 1 and len(hash_input) <= 2056:
-         self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
+         self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
          exit(2)
        else:
          print("Exceeded the allowed bits of \"1024\"")
@@ -571,13 +571,13 @@ Wait, this may take a while
                self.show_help()
                exit(2)
      elif "-sk" in argv:
-         combined,fast,wait_time = self.remaining_parameters_cracking()
+         combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
          hash_input=input("Enter the hash shake-128: ").strip()
          hash = "shake-128"
-         self.auxiliary_main(hash_input,hash,fast,combined,wait_time)
+         self.auxiliary_main(hash_input,hash,is_fast_mode,combined,wait_time)
 
      elif "-sk2" in argv:
-         combined,fast,wait_time = self.remaining_parameters_cracking()
+         combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
          hash_input=input("Enter the hash shake-256: ").strip()
          if not hash_input.isalnum():
              if hash_input:
@@ -585,7 +585,7 @@ Wait, this may take a while
                print("Enter a hash in \"SHAKE-256\" format")
                exit(2)
          hash = "shake-256"
-         self.auxiliary_main(hash_input,hash,fast,combined,wait_time)
+         self.auxiliary_main(hash_input,hash,is_fast_mode,combined,wait_time)
 
      elif "-wpk" in argv:
           #It's a slow hash
@@ -624,41 +624,41 @@ lengths and combinations with option 2\"
           """)
     self.crunch()
     self.call_modules()
-    combined,fast,wait_time = self.remaining_parameters_cracking()
+    combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
     hash_input=input("Enter the hash to decrypt: ").strip()
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
              print(f"Type hash: {hash}")
-             self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha1']:
              print("Type hash:\n1)- sha1\n2)- ripemd-160")
              dic_hash ={"1":"sha1","2":"ripemd-160"}
-             self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha224']:
              print("Type hash:\n1)- sha224\n2)- sha3_224")
              dic_hash ={"1":"sha224","2":"sha3_224"}
-             self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha384']:
              print("Type hash:\n1)- sha384\n2)- sha3_384")
              dic_hash ={"1":"sha384","2":"sha3_384"}
-             self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha256']:
              print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s")
              dic_hash ={"1":"sha256","2":"sha3_256","3":"blake2s"}
-             self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b")
              dic_hash ={"1":"sha512","2":"sha3_512","3":"blake2b"}
-             self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
-             self.hash_secure_info(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     elif "$5" in hash_input[0:2]:
              hash = "sha256crypt"
-             self.hash_secure_info(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     elif "$6" in hash_input[0:2]:
              hash = "sha512crypt"
-             self.hash_secure_info(hash_input,hash,fast,combined,wait_time,dic_hash)
+             self.hash_secure_info(hash_input,hash,is_fast_mode,combined,wait_time,dic_hash)
     else:
         if hash_input:
           print("""\n
