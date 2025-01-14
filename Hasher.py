@@ -373,7 +373,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      '''
         Encode each word in the dictionary, to verify with the hash of the key
      '''
-     crackTimeEstimate = self.approximate_duration() if fast != "y" else ''
+     crackTimeEstimate = self.approximate_duration() if is_fast_mode != "y" else ''
      if combined == "y" and fast != "y" or wait_time == "y":
         crackTimeEstimate = "time unknown"
      ssid = ''
