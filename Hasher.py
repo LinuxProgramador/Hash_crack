@@ -561,7 +561,7 @@ Wait, this may take a while
          exit(2)
        
 
-  def main_auxiliary_arguments(self,hash,hash_algorithm_map):
+  def parse_auxiliary_arguments(self,hash,hash_algorithm_map):
      '''
       Helper function that handles input arguments "-h,--help,-sk,-sk2,-wpk"
      '''
@@ -612,7 +612,7 @@ Wait, this may take a while
    try:
     hash_algorithm_map = None
     hash = ''   
-    self.main_auxiliary_arguments(hash,hash_algorithm_map)
+    self.parse_auxiliary_arguments(hash,hash_algorithm_map)
     self.banner()
     print("""
 \"INFO: If you want to perform a mask attack
