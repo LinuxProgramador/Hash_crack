@@ -413,7 +413,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             keyclean = entry.strip()
             password = keyclean
          else:
-            keyclean = keyword.strip()
+            keyclean = keyword
             password = keyclean
          if combined == "y":
             password = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
@@ -451,7 +451,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          buffer = lines.pop() if not chunk.endswith('\n') else ""
          self.worker_wpa(lines,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input)
       if buffer:
-          self.worker_wpa(buffer,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input)
+         self.worker_wpa(buffer,combined,data,keyBin,wpa_psk,ssid,fast,crackTimeEstimate,hash_input)
     print("[X] The password does not exist in the dictionary!")
     exit(2)
 
