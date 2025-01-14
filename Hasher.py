@@ -504,9 +504,7 @@ Help Menu:
      else:
        select = input("Option to decrypt?: ").strip()
        if select in dic_hash:
-           select = dic_hash[select]
-       else:
-           select = None
+           select = dic_hash.get(select, None)
      sleep(1)
      system("clear")
      print("""
