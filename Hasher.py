@@ -282,25 +282,25 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          return password,data
         
 
-  def validate_and_transform_entry(self,entry):
+  def validate_and_transform_entry(self,password_list):
      '''
        Validates if the input is a string. If it is, transforms the value to "1"
      '''
-     validation_str = type(entry) is str
+     validation_str = type(password_list) is str
      if validation_str:
-            entry = "1"
-     return validation_str,entry
+            password_list = "1"
+     return validation_str,password_list
 
   
-  def worker(self,entry,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
+  def worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
       '''
         Processes an input and validates passwords against various hash algorithms.
       '''
-      backup_entry = entry
-      validation_str,entry = self.validate_and_transform_entry(entry)
-      for keywords in entry:
+      backup_password_list = password_list
+      validation_str,password_list = self.validate_and_transform_entry(password_list)
+      for keywords in password_list:
           if validation_str:
-              keyclean = backup_entry.strip()
+              keyclean = backup_password_list.strip()
               password = keyclean
               keyBin = password.encode()
               data = keyBin
@@ -404,18 +404,18 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          print("\nCRACKED............\n")
      return
 
-  def worker_wpa(self,entry,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
+  def worker_wpa(self,password_list,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
     '''
     passwords using the PBKDF2-HMAC-SHA1 algorithm.
     This method processes a list of potential passwords (`entry`), validates password combinations,
     and generates a WPA-PSK hash to compare it with the given hash (`hash_input`)
     '''
-    backup_entry = entry
-    validation_str,entry = self.validate_and_transform_entry(entry)
-    for keyword in entry:
-      if 8 <= len(keyword) <= 63 or validation_str and 8 <= len(backup_entry) <= 63:
+    backup_password_list = password_list
+    validation_str,password_list = self.validate_and_transform_entry(password_list)
+    for keyword in password_list:
+      if 8 <= len(keyword) <= 63 or validation_str and 8 <= len(backup_password_list) <= 63:
          if validation_str:
-            keyclean = backup_entry.strip()
+            keyclean = backup_password_list.strip()
             password = keyclean
          else:
             keyclean = keyword
