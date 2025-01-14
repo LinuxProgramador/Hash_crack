@@ -80,14 +80,14 @@ class Hash_crack:
     '''
     print("You want to use:")
     print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using two dictionaries.\n4) for \"none\"")
-    confirm=input("Option: ").strip()
-    if confirm in self.modules_names:
+    option_chosen = input("Option: ").strip()
+    if option_chosen in self.modules_names:
       print("INFO:This process may take time!")
       sleep(3)
       system("clear")
       system(f"python3 ~/Hash_crack/{self.modules_names[confirm]}")
       exit(2)
-    elif confirm == "3":
+    elif option_chosen == "3":
       for _ in range(2):
        print("""
 INFO: This feature is still under development.
@@ -101,21 +101,21 @@ Options:
 
 Additional INFO: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
-       valid = input("option: ").strip()
-       if not valid in ["1","2"]:
+       option_chosen_2 = input("option: ").strip()
+       if not option_chosen_2 in ["1","2"]:
          self.attempt_count += 1
          if self.attempt_count == 1:
             print("Incorrect choice, please try again")
          sleep(2)
          system("clear")
-       elif valid in self.modules_multiprocess:
+       elif option_chosen_2 in self.modules_multiprocess:
          system("clear")
          system(f"python3 ~/Hash_crack/{self.modules_multiprocess[valid]}")
          exit(2)
     return
         
         
-  def user_os(self):
+  def directory_path(self):
     '''
        Detects the operating system and in relation to that returns the path of the dictionary
     '''
@@ -142,25 +142,25 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                   """)
     return
 
-  def crunch2(sel):
+  def crunch_option2(sel):
      system("clear")
-     minimo=input("Enter the minimum password: ").strip()
-     maximo=input("Enter the maximum password: ").strip()
-     valores=input("Enter the data to generate the dictionary: ").strip()
+     minimum = input("Enter the minimum password: ").strip()
+     maximum = input("Enter the maximum password: ").strip()
+     values = input("Enter the data to generate the dictionary: ").strip()
      system("clear")
      print("Then copy and paste the command that will be given to you into the console and run Hasher.py again:")
-     print(f"crunch {minimo} {maximo} {valores} -o ~/Hash_crack/wordlist.txt")
+     print(f"crunch {minimum} {maximum} {values} -o ~/Hash_crack/wordlist.txt")
      exit(2)
    
 
-  def crunch3(self):
+  def crunch_option3(self):
     system("clear")
-    password=input("Enter what you know of the password and what you don't as the @ symbol: ").strip()
-    valores=input("Enter the data to be tested in the password: ").strip()
-    longitud=input("Please enter the total length of the password: ").strip()
+    password = input("Enter what you know of the password and what you don't as the @ symbol: ").strip()
+    values = input("Enter the data to be tested in the password: ").strip()
+    length = input("Please enter the total length of the password: ").strip()
     system("clear")
     print("Next, copy and paste the command that will be given to you into the console and run Hasher.py again:")
-    print(f"crunch {longitud} {longitud}  {valores} -t {password} -o ~/Hash_crack/wordlist.txt")
+    print(f"crunch {length} {length}  {values} -t {password} -o ~/Hash_crack/wordlist.txt")
     exit(2)
 
 
@@ -168,24 +168,24 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      '''
         Generate custom dictionaries
      '''
-     verificate=input("You want to use the existing dictionary (y/n): ").strip().lower()
-     if verificate == "n":
-           remove(self.user_os())
+     confirmation = input("You want to use the existing dictionary (y/n): ").strip().lower()
+     if confirmation == "n":
+           remove(self.directory_path())
            self.crunch_info()
-           comand=input("option: ").strip()
-           if comand == "1":
+           option_chosen = input("option: ").strip()
+           if option_chosen == "1":
                 system("bash ~/Hash_crack/crunch.sh")
                 exit(2)
-           elif comand == "2":
-                 self.crunch2()
-           elif comand == "3":
-                 self.crunch3()
+           elif option_chosen == "2":
+                 self.crunch_option2()
+           elif option_chosen == "3":
+                 self.crunch_option3()
            else:
                  print("Invalid option!")
                  exit(2)
 
 
-  def duration(self):
+  def approximate_duration(self):
      '''
         Method that calculates the approximate duration of the crack based on the size of the dictionary
      '''
@@ -209,7 +209,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      return "time unknown"
 
 
-  def remaining_parameters_cracking(self):
+  def get_cracking_parameters(self):
       '''
       Asks the user if he wants to apply a combo attack or
       if he wants to execute the fast cracking mode
@@ -373,12 +373,12 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      '''
         Encode each word in the dictionary, to verify with the hash of the key
      '''
-     crackTimeEstimate = self.duration() if fast != "y" else ''
+     crackTimeEstimate = self.approximate_duration() if fast != "y" else ''
      if combined == "y" and fast != "y" or wait_time == "y":
         crackTimeEstimate = "time unknown"
      ssid = ''
      wpa_psk = False
-     with open(self.user_os(),'r',encoding='latin-1') as keywords_read:
+     with open(self.directory_path(),'r',encoding='latin-1') as keywords_read:
        chunk_size = 512 * 1024
        buffer = ""
        while True:
@@ -439,10 +439,10 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     data = b''
     keyBin = b''
     crackTimeEstimate = 'time unknown'
-    combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
+    combined,is_fast_mode,wait_time = self.get_cracking_parameters()
     print("Starting WPA-PSK cracking")
     self.display_cracking_message(is_fast_mode)
-    with open(self.user_os(), 'r', encoding='latin-1') as file:
+    with open(self.directory_path(), 'r', encoding='latin-1') as file:
       chunk_size = 512 * 1024
       buffer = ""
       while True:
@@ -622,7 +622,7 @@ lengths and combinations with option 2\"
           """)
     self.crunch()
     self.call_modules()
-    combined,is_fast_mode,wait_time = self.remaining_parameters_cracking()
+    combined,is_fast_mode,wait_time = self.get_cracking_parameters()
     hash_input=input("Enter the hash to decrypt: ").strip()
     if len(hash_input) == self.hash['length_md5']:
              hash = "md5"
