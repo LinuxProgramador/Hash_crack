@@ -85,7 +85,7 @@ class Hash_crack:
       print("INFO:This process may take time!")
       sleep(3)
       system("clear")
-      system(f"python3 ~/Hash_crack/{self.modules_names[confirm]}")
+      system(f"python3 ~/Hash_crack/{self.modules_names[option_chosen]}")
       exit(2)
     elif option_chosen == "3":
       for _ in range(2):
@@ -110,7 +110,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
          system("clear")
        elif option_chosen_2 in self.modules_multiprocess:
          system("clear")
-         system(f"python3 ~/Hash_crack/{self.modules_multiprocess[valid]}")
+         system(f"python3 ~/Hash_crack/{self.modules_multiprocess[option_chosen_2]}")
          exit(2)
     return
         
