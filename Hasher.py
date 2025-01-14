@@ -342,7 +342,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #rypemd-160 hash check
           #It is slow due to its anti-collision implementation.
-          elif select == "rypemd-160":
+          elif select == "ripemd-160":
             RIPEMD = RIPEMD160.new()
             RIPEMD.update(data)
             self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
@@ -615,7 +615,8 @@ lengths and combinations with option 2\"
              print(f"Type hash: {hash}")
              self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha1']:
-             print("Type hash:\n1)- sha1\n2)- rypemd-160")
+             print("Type hash:\n1)- sha1\n2)- ripemd-160")
+             dic_hash ={"1":"sha1","2":"ripemd-160"}
              self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha224']:
              print("Type hash:\n1)- sha224\n2)- sha3_224")
