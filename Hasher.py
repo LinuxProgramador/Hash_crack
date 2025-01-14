@@ -122,7 +122,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
     return self.termux_dict_path if self.is_termux == True else self.linux_dict_path
 
 
-  def crunch_0(self):
+  def crunch_info(self):
     print("We'll use Crunch to generate a new dictionary!")
     sleep(3)
     system("clear")
@@ -171,7 +171,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      verificate=input("You want to use the existing dictionary (y/n): ").strip().lower()
      if verificate == "n":
            remove(self.user_os())
-           self.crunch_0()
+           self.crunch_info()
            comand=input("option: ").strip()
            if comand == "1":
                 system("bash ~/Hash_crack/crunch.sh")
