@@ -301,7 +301,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       '''
       for keywords in entry:
           if type(entry) is str:
-            for _ in range(1):
               keyclean = entry.strip()
               password = keyclean
               keyBin = password.encode()
@@ -411,7 +410,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     for keyword in entry:
       if 8 <= len(keyword) <= 63:
          if type(entry) is str:
-           for _ in range(1):
             keyclean = entry.strip()
             password = keyclean
          else:
