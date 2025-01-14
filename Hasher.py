@@ -306,7 +306,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               keyBin = password.encode()
               data = keyBin
           else:
-              keyclean = keywords.strip()
+              keyclean = keywords
               password = keyclean
               keyBin = password.encode()
               data = keyBin
