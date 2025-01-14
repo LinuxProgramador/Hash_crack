@@ -292,7 +292,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      return validation_str,password_list
 
   
-  def worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
+  def hash_cracking_worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
       '''
         Processes an input and validates passwords against various hash algorithms.
       '''
@@ -390,9 +390,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          buffer += chunk
          lines = buffer.splitlines()
          buffer = lines.pop() if not chunk.endswith('\n') else ""
-         self.worker(lines,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined)
+         self.hash_cracking_worker(lines,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined)
        if buffer:
-         self.worker(buffer,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined)
+         self.hash_cracking_worker(buffer,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined)
        print("[X] The password does not exist in the dictionary!")
 
 
