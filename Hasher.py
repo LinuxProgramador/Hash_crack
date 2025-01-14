@@ -352,9 +352,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              blas2=self.hash[select](data).hexdigest()
              self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
 
-          else:
-             print("Wrong hash name!")
-             exit(2)
 
 
   def crack(self,hash_input,select,fast,combined,wait_time):
@@ -502,7 +499,7 @@ Help Menu:
      if select:
            pass
      else:
-       select = input("Which one do you want to crack?: ").strip().lower()
+       select = input("Option to decrypt?: ").strip()
      sleep(1)
      system("clear")
      print("""
@@ -612,19 +609,19 @@ lengths and combinations with option 2\"
              print(f"Type hash: {hash}")
              self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha1']:
-             print("Type hash:\n- sha1\n- rypemd-160")
+             print("Type hash:\n1)- sha1\n2)- rypemd-160")
              self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha224']:
-             print("Type hash:\n- sha224\n- sha3_224")
+             print("Type hash:\n1)- sha224\n2)- sha3_224")
              self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha384']:
-             print("Type hash:\n- sha384\n- sha3_384")
+             print("Type hash:\n1)- sha384\n2)- sha3_384")
              self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha256']:
-             print("Type hash:\n- sha256\n- sha3_256\n- blake2s")
+             print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s")
              self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_sha512']:
-             print("Type hash:\n- sha512\n- sha3_512\n- blake2b")
+             print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b")
              self.cracking_selection(hash_input,hash,fast,combined,wait_time)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
