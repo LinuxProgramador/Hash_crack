@@ -351,7 +351,10 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           elif select in self.hash:
              blas2=self.hash[select](data).hexdigest()
              self.validation(blas2,hash_input,password,wpa_psk,ssid,fast,crackTimeEstimate)
-
+            
+          else:
+            print("Wrong option!")
+            exit(2)
 
 
   def crack(self,hash_input,select,fast,combined,wait_time):
