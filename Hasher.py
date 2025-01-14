@@ -625,6 +625,7 @@ lengths and combinations with option 2\"
              self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha256']:
              print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s")
+             dic_hash ={"1":"sha256","2":"sha3_256","3":"blake2s"}
              self.cracking_selection(hash_input,hash,fast,combined,wait_time,dic_hash)
     elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b")
