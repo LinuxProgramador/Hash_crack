@@ -70,6 +70,8 @@ def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_
                for line in lines[:-1]:
                     palabra = line
                     crack(hash_objetivo, palabra, select, evento, queue)
+           if buffer:
+              crack(hash_objetivo, palabra, select, evento, queue)
     except FileNotFoundError:
         print(f"File not found: {rute}")
     except Exception as e:
