@@ -680,9 +680,9 @@ lengths and combinations with option 2\"
         print("BYE!!")
    except FileNotFoundError as e:
         print(f"Wordlist.txt does not exist in the path => {e}")
-   except ValueError:
-       print("You did not enter a valid hash!")
-       print("Enter a hash in \"SHAKE-128\" format")
+   except ValueError as F:
+       print(f"Type error: {F}")
+
 
 if __name__ == "__main__":
   crack=Hash_crack()
