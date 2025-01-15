@@ -18,7 +18,7 @@ class Hash_crack:
   '''
 
   def __init__(self):
-    if not "-h" in argv or "--help" in argv:
+    if not "-h" in argv or not "--help" in argv:
       print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
       print("1) latin-1\n2) utf-8")
       encoder_text = input("option: ")
