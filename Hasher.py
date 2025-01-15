@@ -31,6 +31,7 @@ class Hash_crack:
          self.encoder = "latin-1"
     except KeyboardInterrupt:
          print("BYE!!")   
+         exit(2)
     self.hash = {
     'sha1':sha1,
     'sha224':sha224,
