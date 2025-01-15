@@ -18,8 +18,8 @@ class Hash_crack:
   '''
 
   def __init__(self):
-    print("For compatibility reasons with certain symbols")
-    print("Do you choose encoder \n1) latin-1\n2) utf-8")
+    print("INFO: For compatibility reasons with certain symbols")
+    print("Do you choose encoder: \n1) latin-1\n2) utf-8")
     encoder_text = input("option: ")
     if encoder_text == "1":
       self.encoder = "latin-1"
