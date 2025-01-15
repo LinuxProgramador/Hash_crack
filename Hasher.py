@@ -18,7 +18,8 @@ class Hash_crack:
   '''
 
   def __init__(self):
-    if not any( help in argv for help in ["-h","--help"]):
+    try:
+     if not any( help in argv for help in ["-h","--help"]):
       print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
       print("1) latin-1\n2) utf-8")
       encoder_text = input("option: ")
@@ -28,7 +29,8 @@ class Hash_crack:
          self.encoder = "utf-8"
       else:
          self.encoder = "latin-1"
-        
+    except KeyboardInterrupt:
+         print("BYE!!")   
     self.hash = {
     'sha1':sha1,
     'sha224':sha224,
