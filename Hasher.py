@@ -29,6 +29,8 @@ class Hash_crack:
          self.encoder = "utf-8"
       else:
          self.encoder = "latin-1"
+      sleep(1)
+      system("clear")
     except KeyboardInterrupt:
          print("BYE!!")   
          exit(2)
