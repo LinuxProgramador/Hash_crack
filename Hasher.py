@@ -18,6 +18,15 @@ class Hash_crack:
   '''
 
   def __init__(self):
+    print("For compatibility reasons with certain symbols")
+    print("Do you choose encoder \n1) latin-1\n2) utf-8")
+    encoder_text = input("option: ")
+    if encoder_text == "1":
+      self.encoder = "latin-1"
+    elif encoder_text == "2":
+      self.encoder = "utf-8"
+    else:
+      self.encoder = "latin-1"
     self.hash = {
     'sha1':sha1,
     'sha224':sha224,
@@ -315,7 +324,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #md5 hash check
           if select == "md5":
-             encryption = md5(password.encode('latin-1')).hexdigest()
+             encryption = md5(password.encode(self.encoder)).hexdigest()
              self.validation(encryption,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #Checking hash shakes
@@ -342,14 +351,14 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #It's a slow hash
           elif select == "bcrypt":
              crackTimeEstimate = 'time unknown'
-             if checkpw(data, bytes(hash_input,encoding="latin-1")):
+             if checkpw(data, bytes(hash_input,encoding=self.encoder)):
                 self.auxiliary_crack(password,wpa_psk,ssid)
              else:
                 self.faster(is_fast_mode,crackTimeEstimate,password)
 
           #checking  sha1, sha2, sha3 hashes
           elif select in self.hash:
-            encryption = self.hash[select](password.encode('latin-1')).hexdigest()
+            encryption = self.hash[select](password.encode(self.encoder)).hexdigest()
             self.validation(encryption,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #rypemd-160 hash check
@@ -378,7 +387,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
         crackTimeEstimate = "time unknown"
      ssid = ''
      wpa_psk = False
-     with open(self.directory_path(),'r',encoding='latin-1') as keywords_read:
+     with open(self.directory_path(),'r',encoding=self.encoder) as keywords_read:
        chunk_size = 512 * 1024
        buffer = ""
        while True:
@@ -442,7 +451,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     combined,is_fast_mode,wait_time = self.get_cracking_parameters()
     print("Starting WPA-PSK cracking")
     self.display_cracking_message(is_fast_mode)
-    with open(self.directory_path(), 'r', encoding='latin-1') as file:
+    with open(self.directory_path(), 'r', encoding=self.encoder) as file:
       chunk_size = 512 * 1024
       buffer = ""
       while True:
