@@ -18,15 +18,17 @@ class Hash_crack:
   '''
 
   def __init__(self):
-    print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
-    print("1) latin-1\n2) utf-8")
-    encoder_text = input("option: ")
-    if encoder_text == "1":
-      self.encoder = "latin-1"
-    elif encoder_text == "2":
-      self.encoder = "utf-8"
-    else:
-      self.encoder = "latin-1"
+    if not "-h" in argv or "--help" in argv:
+      print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
+      print("1) latin-1\n2) utf-8")
+      encoder_text = input("option: ")
+      if encoder_text == "1":
+         self.encoder = "latin-1"
+      elif encoder_text == "2":
+         self.encoder = "utf-8"
+      else:
+         self.encoder = "latin-1"
+        
     self.hash = {
     'sha1':sha1,
     'sha224':sha224,
