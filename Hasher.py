@@ -531,7 +531,6 @@ Help Menu:
         Allows the user to choose which hash to crack
      '''
      valid_hashes = {
-     "md5": "md5",
      "shake-128": "shake-128",
      "shake-256": "shake-256",
      "sha256crypt": "sha256crypt",
