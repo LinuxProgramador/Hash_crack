@@ -91,6 +91,8 @@ Supported Hashes:
 
     WPA-PSK 
 
+    NTLM 
+
 
 Important Notes: 
 
