@@ -25,7 +25,7 @@ hashes = {
 def crack(hash_objetivo, palabra, select, evento, queue):
     data = palabra.encode()
 
-    if select == "NTLM":
+    if select == "ntlm":
         password_utf16 = palabra.encode('utf-16le')
         hash = MD4.new()
         hash.update(password_utf16)
