@@ -377,7 +377,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             encryption = self.hash[select](password.encode(self.encoder)).hexdigest()
             self.validation(encryption,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
-          #rypemd-160 hash check
+          #ripemd-160 hash check
           #It is slow due to its anti-collision implementation.
           elif select == "ripemd-160":
             RIPEMD = RIPEMD160.new()
