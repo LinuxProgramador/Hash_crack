@@ -329,8 +329,17 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           if combined == "y":
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
+          #NTLM hash check
+          if select == "NTLM":
+              password_utf16 = password.encode('utf-16le')
+              hash = MD4.new()
+              hash.update(password_utf16)
+              hash.hexdigest()
+              self.validation(hash.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+
+        
           #md5 hash check
-          if select == "md5":
+          elif select == "md5":
              encryption = md5(password.encode(self.encoder)).hexdigest()
              self.validation(encryption,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
