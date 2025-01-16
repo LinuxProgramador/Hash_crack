@@ -112,7 +112,7 @@ INFO: Use the following command to split a large dictionary into 100 MB chunks o
 split -b 100M rockyou.txt
 
 Options:
-1) Use this option for fast hashes such as MD5, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
+1) Use this option for fast hashes such as MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
 2) Use this option for slow hashes such as bcrypt, shaCrypt, or WPA-PSK.
 
 Additional INFO: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
