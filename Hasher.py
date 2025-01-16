@@ -551,7 +551,7 @@ Help Menu:
 Wait, this may take a while
 *****************************
                    """)
-     if select == "rypemd-160" and is_fast_mode == "y":
+     if select in ["ripemd-160","NTLM"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
      self.display_cracking_message(is_fast_mode)
      sleep(2)
