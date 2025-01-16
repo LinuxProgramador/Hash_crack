@@ -1,5 +1,5 @@
 import multiprocessing
-from Crypto.Hash import RIPEMD160
+from Crypto.Hash import RIPEMD160,MD4
 from hashlib import md5, sha1, sha224, sha384, sha256, sha512, sha3_256, sha3_224, sha3_384, sha3_512, blake2s, blake2b, shake_128, shake_256
 from sys import exit
 from time import sleep
@@ -25,7 +25,12 @@ hashes = {
 def crack(hash_objetivo, palabra, select, evento, queue):
     data = palabra.encode()
 
-    if select == "md5":
+    if select == "NTLM":
+        password_utf16 = palabra.encode('utf-16le')
+        hash = MD4.new()
+        hash.update(password_utf16)
+        hash_generado = hash.hexdigest()
+    elif select == "md5":
         hash_generado = md5(data).hexdigest()
     elif select in hashes:
         hash_generado = hashes[select](data).hexdigest()
@@ -130,6 +135,7 @@ if __name__ == "__main__":
         |shake-128 |
         |shake-256 |
         |rypemd-160|
+        |NTLM      |
          __________
         """)
         select = input("Enter the hash type: ").strip().lower()
