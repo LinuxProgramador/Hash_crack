@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
         while (True):
       
-            RAR = input("\nEnter Rute RAR file here: ")
+            RAR = input("\nEnter Rute RAR file here: ").strip()
             user=getuser()
             syst=os.path.exists("/data/data/com.termux/files/")
             if syst == True:
