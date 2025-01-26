@@ -615,7 +615,7 @@ Wait, this may take a while
           print("INFO: The process is slow due to PBKDF2 hashing")
           print("INFO: It is recommended to use small dictionaries")
           hash_input = input("Enter the WPA hash: ").strip()
-          ssid = input("Enter the SSID: ")
+          ssid = input("Enter the SSID: ").strip()
           if hash_input and ssid:
             if len(hash_input) == 64:
                 self.crack_wpa_psk(hash_input, ssid)
