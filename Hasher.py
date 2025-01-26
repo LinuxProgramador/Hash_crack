@@ -268,7 +268,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
        '''
           Validates if the hash is equal to the encrypted password
        '''
-       if many_hash == hash_input:
+       if many_hash.lower() == hash_input.lower():
             self.auxiliary_crack(password,wpa_psk,ssid)
        else:
             self.faster(is_fast_mode,crackTimeEstimate,password)
@@ -335,7 +335,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               password_utf16 = password.encode('utf-16le')
               hash = MD4.new()
               hash.update(password_utf16)
-              self.validation(hash.hexdigest(),hash_input.lower(),password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+              self.validation(hash.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
         
           #md5 hash check
