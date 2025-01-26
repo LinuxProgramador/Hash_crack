@@ -62,7 +62,7 @@ if __name__ == "__main__":
         hash_objetivo = input("Enter the hash to be decrypted: ").strip()
         print("Supported hashes:\n- bcrypt\n- sha512crypt\n- sha256crypt\n- wpa-psk")
         select = input("Enter the hash type: ").strip().lower()
-        ssid = input("Enter the SSID (if WPA-PSK): ") if select == "wpa-psk" else None
+        ssid = input("Enter the SSID (if WPA-PSK): ").strip() if select == "wpa-psk" else None
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
     except KeyboardInterrupt:
         print()
