@@ -450,7 +450,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
          # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
          derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
-         if derived_key.hex() == hash_input:
+         if derived_key.hex().lower() == hash_input.lower():
             self.auxiliary_crack(password,wpa_psk,ssid)
          else:
             self.faster(is_fast_mode,crackTimeEstimate,password)
