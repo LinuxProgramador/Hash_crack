@@ -28,7 +28,7 @@ def crack(hash_objetivo, palabra, select, ssid, encontrado, queue):
     elif select == "wpa-psk":
         if 8 <= len(palabra) <= 63:
             derived_key = pbkdf2_hmac('sha1', palabra.encode(), ssid.encode(), 4096, 32)
-            if derived_key.hex() == hash_objetivo:
+            if derived_key.hex().lower() == hash_objetivo.lower():
                 queue.put(f"SSID: {ssid}\nKey found: {palabra}")
                 encontrado.set()
                 return
