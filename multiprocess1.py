@@ -52,7 +52,7 @@ def crack(hash_objetivo, palabra, select, evento, queue):
         exit(0)
         return
 
-    if hash_generado == hash_objetivo:
+    if hash_generado.lower() == hash_objetivo.lower():
         print(f"Key found: {palabra}")
         evento.set()
         queue.put(palabra)
