@@ -574,11 +574,11 @@ Wait, this may take a while
      Helper function to validation shake hash
      '''
      if hash_input:
-       if len(hash_input) >= 1 and len(hash_input) <= 2056:
+       if len(hash_input) >= 1 and len(hash_input) <= 4090:
          self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
          exit(2)
        else:
-         print("Exceeded the allowed bits of \"1024\"")
+         print("Exceeded the allowed bits of \"16,360\"")
          exit(2)
      else:
          print()
