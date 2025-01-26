@@ -335,7 +335,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               password_utf16 = password.encode('utf-16le')
               hash = MD4.new()
               hash.update(password_utf16)
-              self.validation(hash.hexdigest(),hash_input.upper(),password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+              self.validation(hash.hexdigest(),hash_input.lower(),password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
         
           #md5 hash check
