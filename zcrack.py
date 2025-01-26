@@ -52,7 +52,7 @@ def linuxpdf():
     else:
         output=f"/home/{user}/Hash_crack/wordlist.txt"
     header()
-    zip_filename = input(termcolor.colored("[*] Enter Your Rute zip file:- ", 'cyan'))
+    zip_filename = input(termcolor.colored("[*] Enter Your Rute zip file:- ", 'cyan')).strip()
     if not os.path.exists(zip_filename):
         print(termcolor.colored("\n[ X ] File " + zip_filename + " was not found, Provide Valid FileName And Path!",
                                 'red'))
