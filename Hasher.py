@@ -115,6 +115,7 @@ Options:
 1) Use this option for fast hashes such as MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
 2) Use this option for slow hashes such as bcrypt, shaCrypt, or WPA-PSK.
 
+WARNING: On 4-core only systems, may slow down your computer 
 Additional INFO: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
        option_chosen_2 = input("option: ").strip()
@@ -154,7 +155,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
    INFO: It is important to emphasize that if the password is hello123 and the initials that you do not know are 123, then put them in @ for example hello@@@ and the exact length for example in this case would be 8
    INFO: the \"@\" can go in any position of the key, it is only used to specify where the combinations given by the user will be tested.
    
-WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN REACH UP TO GIGABYTES AND BLOCK THE PHONE!!!!!!!
+WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CAN REACH UP TO GIGABYTES AND BLOCK THE SYSTEM!!!!!!!
                   """)
     return
 
