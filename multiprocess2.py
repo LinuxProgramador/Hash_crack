@@ -86,24 +86,32 @@ if __name__ == "__main__":
     proceso4.start()
 
     try:
-        while proceso1.is_alive() or proceso2.is_alive():
+        while proceso1.is_alive() or proceso2.is_alive() or proceso3.is_alive() or proceso4.is_alive():
             while not queue.empty():
                 print(queue.get())
                 encontrado.set()
             if encontrado.is_set():
                 proceso1.terminate()
                 proceso2.terminate()
+                proceso3.terminate()
+                proceso4.terminate()
                 break
             proceso1.join(timeout=1)
             proceso2.join(timeout=1)
+            proceso3.join(timeout=1)                                                             
+            proceso4.join(timeout=1)
 
         if encontrado.is_set():
             proceso1.terminate()
             proceso2.terminate()
+            proceso3.terminate()
+            proceso4.terminate()
     except KeyboardInterrupt:
         print()
         proceso1.terminate()
         proceso2.terminate()
+        proceso3.terminate()
+        proceso4.terminate()
         exit(0)
 
     while not queue.empty():
