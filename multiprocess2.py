@@ -59,6 +59,8 @@ if __name__ == "__main__":
     try:
         rute1 = input("Enter the path of the first dictionary: ").strip()
         rute2 = input("Enter the path of the second dictionary: ").strip()
+        rute3 = input("Enter the path of the third dictionary: ").strip()
+        rute4 = input("Enter the path of the fourth dictionary: ").strip()
         hash_objetivo = input("Enter the hash to be decrypted: ").strip()
         print("Supported hashes:\n- bcrypt\n- sha512crypt\n- sha256crypt\n- wpa-psk")
         select = input("Enter the hash type: ").strip().lower()
