@@ -77,8 +77,8 @@ if __name__ == "__main__":
 
     proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, ssid, encontrado, queue, wait_time))
     proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, ssid, encontrado, queue, wait_time))
-    proceso3 = multiprocessing.Process(target=comprobar_hash, args=(rute3, hash_objetivo, select, evento, queue, wait_time))
-    proceso4 = multiprocessing.Process(target=comprobar_hash, args=(rute4, hash_objetivo, select, evento, queue, wait_time))
+    proceso3 = multiprocessing.Process(target=comprobar_hash, args=(rute3, hash_objetivo, select, ssid, encontrado, queue, wait_time))
+    proceso4 = multiprocessing.Process(target=comprobar_hash, args=(rute4, hash_objetivo, select, ssid, encontrado, queue, wait_time))
     
     proceso1.start()
     proceso2.start()
