@@ -40,7 +40,7 @@ def crack(hash_objetivo, palabra, select, evento, queue):
         shake = shake_128()
         shake.update(data)
         hash_generado = shake.digest(len(bytes.fromhex(hash_objetivo))).hex()
-    elif select == "rypemd-160":
+    elif select == "ripemd-160":
         RIPEMD = RIPEMD160.new()
         RIPEMD.update(data)
         hash_generado = RIPEMD.hexdigest()
@@ -134,14 +134,14 @@ if __name__ == "__main__":
         |blake2b   |
         |shake-128 |
         |shake-256 |
-        |rypemd-160|
+        |ripemd-160|
         |NTLM      |
          __________
         """)
         select = input("Enter the hash type: ").strip().lower()
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
-        if select == "rypemd-160":
-            print("rypemd-160 tends to take a little longer")
+        if select in ["ripemd-160","NTLM"]:
+            print(f"{select} tends to take a little longer")
 
     except KeyboardInterrupt:
         print()
