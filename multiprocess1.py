@@ -106,6 +106,8 @@ def process_files(rute1, rute2, hash_objetivo, select, wait_time):
         evento.set()
         proceso1.terminate()
         proceso2.terminate()
+        proceso3.terminate()
+        proceso4.terminate()
         exit(0)
 
     if evento.is_set():
