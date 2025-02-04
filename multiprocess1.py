@@ -135,7 +135,7 @@ if __name__ == "__main__":
         |shake-128 |
         |shake-256 |
         |ripemd-160|
-        |NTLM      |
+        |ntlm      |
          __________
         """)
         select = input("Enter the hash type: ").strip().lower()
