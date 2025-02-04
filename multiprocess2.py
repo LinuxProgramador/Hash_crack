@@ -82,6 +82,8 @@ if __name__ == "__main__":
     
     proceso1.start()
     proceso2.start()
+    proceso3.start()
+    proceso4.start()
 
     try:
         while proceso1.is_alive() or proceso2.is_alive():
