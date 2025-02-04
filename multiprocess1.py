@@ -81,7 +81,7 @@ def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_
     except Exception as e:
         print(f"Processing error {rute}: {e}")
 
-def process_files(rute1, rute2, hash_objetivo, select, wait_time):
+def process_files(rute1, rute2, rute3, rute4, hash_objetivo, select, wait_time):
     evento = multiprocessing.Event()
     queue = multiprocessing.Queue()
 
@@ -122,6 +122,8 @@ if __name__ == "__main__":
     try:
         rute1 = input("Enter the path of the first dictionary: ").strip()
         rute2 = input("Enter the path of the second dictionary: ").strip()
+        rute3 = input("Enter the path of the third dictionary: ").strip()
+        rute4 = input("Enter the path of the fourth dictionary: ").strip()
         hash_objetivo = input("Enter the hash to be decrypted: ").strip()
         print()
         print("Supported hashes:")
@@ -156,7 +158,7 @@ if __name__ == "__main__":
     except FileNotFoundError as F:
         print(f"invalid path: {F}")
 
-    process_files(rute1, rute2, hash_objetivo, select, wait_time)
+    process_files(rute1, rute2, rute3, rute4, hash_objetivo, select, wait_time)
 
 
 __status__="beta"
