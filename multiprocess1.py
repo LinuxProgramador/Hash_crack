@@ -89,7 +89,9 @@ def process_files(rute1, rute2, hash_objetivo, select, wait_time):
 
     proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, evento, queue, wait_time))
     proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, evento, queue, wait_time))
-
+    proceso3 = multiprocessing.Process(target=comprobar_hash, args=(rute3, hash_objetivo, select, evento, queue, wait_time))
+    proceso4 = multiprocessing.Process(target=comprobar_hash, args=(rute4, hash_objetivo, select, evento, queue, wait_time))
+ 
     proceso1.start()
     proceso2.start()
 
