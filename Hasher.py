@@ -107,10 +107,9 @@ class Hash_crack:
       for _ in range(2):
        print("""
 INFO: This feature is still under development.
-INFO: This method is ideal for very large dictionaries or testing two dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
+INFO: This method is ideal for very large dictionaries or testing four dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
 INFO: Use the following command to split a large dictionary into 100 MB chunks on Linux or Termux:
 split -b 100M rockyou.txt
-INFO: Do not divide into more than two dictionaries, to avoid loss of keys
 
 Options:
 1) Use this option for fast hashes such as MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
