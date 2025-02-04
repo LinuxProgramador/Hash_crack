@@ -99,6 +99,8 @@ def process_files(rute1, rute2, hash_objetivo, select, wait_time):
     try:
         proceso1.join()
         proceso2.join()
+        proceso3.join()
+        proceso4.join()
     except KeyboardInterrupt:
         print("Interruption detected. Closing...")
         evento.set()
