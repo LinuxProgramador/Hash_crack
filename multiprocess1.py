@@ -94,7 +94,8 @@ def process_files(rute1, rute2, hash_objetivo, select, wait_time):
  
     proceso1.start()
     proceso2.start()
-
+    proceso3.start()
+    proceso4.start()
     try:
         proceso1.join()
         proceso2.join()
