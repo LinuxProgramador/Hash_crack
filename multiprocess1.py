@@ -140,7 +140,7 @@ if __name__ == "__main__":
         """)
         select = input("Enter the hash type: ").strip().lower()
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
-        if select in ["ripemd-160","NTLM"]:
+        if select in ["ripemd-160","ntlm"]:
             print(f"{select} tends to take a little longer")
 
     except KeyboardInterrupt:
