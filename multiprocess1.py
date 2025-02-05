@@ -66,7 +66,7 @@ def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_
            while not evento.is_set():
                chunk = file.read(chunk_size)
                if wait_time == "y":
-                    sleep(9)
+                    sleep(10)
                if not chunk:
                   break
                buffer += chunk
