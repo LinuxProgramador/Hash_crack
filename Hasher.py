@@ -409,7 +409,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
        while True:
          chunk = keywords_read.read(chunk_size)
          if wait_time == "y":
-             sleep(5)
+             sleep(8)
          if not chunk:
             break
          buffer += chunk
@@ -473,7 +473,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       while True:
          chunk = file.read(chunk_size)
          if wait_time == "y":
-            sleep(5)
+            sleep(8)
          if not chunk:
             break
          buffer += chunk
