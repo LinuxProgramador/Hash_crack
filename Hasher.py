@@ -642,7 +642,7 @@ Wait, this may take a while
     print("""
 \"INFO: If you want to perform a mask attack
 proceed to enter \"n\" and then choose option 3 or
-simulate a brute force attack using all possible
+simulate a brute force attack by dictionary using all possible
 lengths and combinations with option 2\"
           """)
     self.crunch()
