@@ -67,6 +67,8 @@ def brute_force():
         print("Invalid input. The default length will be set.")
         min_length,max_length = 1,8
         sleep(3)
+    if min_length  >  max_length:
+            min_length,max_length = max_length,min_length
 
     for combo in product(characters, repeat=max_length):
         yield ''.join(combo)
