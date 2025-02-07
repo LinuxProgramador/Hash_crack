@@ -195,6 +195,8 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print()
         exit(0)
+    except ValueError as F:
+        print(f"Type error: {F}")
     except FileNotFoundError as F:
         print(f"invalid path: {F}")
 
