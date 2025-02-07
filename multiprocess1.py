@@ -24,6 +24,24 @@ hashes = {
     'blake2s': blake2s
 }
 
+global encoder
+try:
+  if not any( help in argv for help in ["-h","--help"]):
+     print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
+     print("1) latin-1\n2) utf-8")
+     encoder_text = input("option: ")
+     if encoder_text == "1":
+         encoder = "latin-1"
+     elif encoder_text == "2":
+         encoder = "utf-8"
+     else:
+         encoder = "latin-1"
+     sleep(1)
+     system("clear")
+except KeyboardInterrupt:
+    print("BYE!!")
+    exit(2)
+    
 def crack(hash_objetivo, palabra, select, evento, queue):
     data = palabra.encode()
 
@@ -63,7 +81,7 @@ def crack(hash_objetivo, palabra, select, evento, queue):
 def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_size=512 * 1024):
     try:
         
-        with open(rute, 'r', encoding='latin-1') as file:
+        with open(rute, 'r', encoding=encoder) as file:
            buffer = ""
            while not evento.is_set():
                chunk = file.read(chunk_size)
