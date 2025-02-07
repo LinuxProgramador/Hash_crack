@@ -34,7 +34,7 @@ except KeyboardInterrupt:
 
 def crack(hash_objetivo, palabra, select, ssid, encontrado, queue):
     if select == "bcrypt":
-        if checkpw(palabra.encode(), bytes(hash_objetivo, encoding="latin-1")):
+        if checkpw(palabra.encode(), bytes(hash_objetivo, encoding=encoder)):
             queue.put(f"Key found: {palabra}")
             encontrado.set()
             return        
