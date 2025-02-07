@@ -95,7 +95,7 @@ class Hash_crack:
        Call for third-party projects included to extend the program's functionality
     '''
     print("You want to use:")
-    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) for \"none\"")
+    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) bruteforce: Brute force attack without dictionary.\n5) for \"none\"")
     option_chosen = input("option: ").strip()
     if option_chosen in self.modules_names:
       print("INFO:This process may take time!")
@@ -128,6 +128,10 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
        elif option_chosen_2 in self.modules_multiprocess:
          system("clear")
          system(f"python3 ~/Hash_crack/{self.modules_multiprocess[option_chosen_2]}")
+         exit(2)
+    elif option_chosen == "4":
+         system("clear")
+         system(f"python3 ~/Hash_crack/brute_force.py")
          exit(2)
     return
         
