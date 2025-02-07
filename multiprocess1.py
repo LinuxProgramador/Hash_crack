@@ -98,6 +98,8 @@ def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_
               crack(hash_objetivo, buffer.strip(), select, evento, queue)
     except FileNotFoundError:
         print(f"File not found: {rute}")
+    except ValueError as F:
+        print(f"Type error: {F}")
     except Exception as e:
         print(f"Processing error {rute}: {e}")
 
