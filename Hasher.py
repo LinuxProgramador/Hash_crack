@@ -618,6 +618,7 @@ Wait, this may take a while
           #It's a slow hash
           print("INFO: The process is slow due to PBKDF2 hashing")
           print("INFO: It is recommended to use small dictionaries")
+          print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
           hash_input = input("Enter the WPA hash: ").strip()
           ssid = input("Enter the SSID: ").strip()
           if hash_input and ssid:
