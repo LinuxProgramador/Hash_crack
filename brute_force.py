@@ -65,7 +65,7 @@ def brute_force():
         max_length = int(input("Key maximum length: "))
     except ValueError:
         print("Invalid input. The default length will be set.")
-        max_length = 8
+        min_length,max_length = 1,8
         sleep(3)
 
     for combo in product(characters, repeat=max_length):
