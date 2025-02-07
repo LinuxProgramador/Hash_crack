@@ -125,7 +125,8 @@ def validation(many_hash,hash_input,password,wpa_psk,ssid):
        if many_hash.lower() == hash_input.lower():
             auxiliary_crack(password,wpa_psk,ssid)
        else:
-            print(f"[*] Trying password:- {password}")
+            if is_fast_mode != "y":
+               print(f"[*] Trying password:- {password}")
 
 
 
@@ -256,6 +257,7 @@ def main(hashes,count):
   '''
   hash_algorithm_map = ''
   hash = ''
+  global is_fast_mode
   try:
     wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
     hash_input=input("Enter the hash to decrypt: ").strip()
