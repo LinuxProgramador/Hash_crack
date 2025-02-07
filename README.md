@@ -24,6 +24,8 @@ Features:
 
     8- Hash Type Detection 
 
+    9- Dictionary or brute force hash decryption
+
 
 Included third-party projects:
 
