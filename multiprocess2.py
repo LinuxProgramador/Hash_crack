@@ -1,8 +1,8 @@
 import multiprocessing
 from hashlib import pbkdf2_hmac
-from sys import exit
+from sys import exit,argv
 from passlib.hash import sha256_crypt, sha512_crypt
-from os import path
+from os import path,system
 from bcrypt import checkpw
 from time import sleep
 
@@ -12,6 +12,25 @@ hashes = {
     'sha256crypt': sha256_crypt,
     'sha512crypt': sha512_crypt
 }
+
+global encoder
+try:
+  if not any( help in argv for help in ["-h","--help"]):
+     print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
+     print("1) latin-1\n2) utf-8")
+     encoder_text = input("option: ")
+     if encoder_text == "1":
+         encoder = "latin-1"
+     elif encoder_text == "2":
+         encoder = "utf-8"
+     else:
+         encoder = "latin-1"
+     sleep(1)
+     system("clear")
+except KeyboardInterrupt:
+    print("BYE!!")
+    exit(2)
+
 
 def crack(hash_objetivo, palabra, select, ssid, encontrado, queue):
     if select == "bcrypt":
@@ -35,7 +54,7 @@ def crack(hash_objetivo, palabra, select, ssid, encontrado, queue):
 
 def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, wait_time, chunk_size=512 * 1024):
     try:
-        with open(rute, 'r', encoding='latin-1') as file:
+        with open(rute, 'r', encoding=encoder) as file:
             buffer = ""
             while not encontrado.is_set():                                                                         
                 chunk = file.read(chunk_size)
