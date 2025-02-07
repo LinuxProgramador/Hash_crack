@@ -259,6 +259,7 @@ def main(hashes,count):
   hash = ''
   global is_fast_mode
   try:
+    is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
     wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
     hash_input=input("Enter the hash to decrypt: ").strip()
     if len(hash_input) == hashes['length_md5']:
