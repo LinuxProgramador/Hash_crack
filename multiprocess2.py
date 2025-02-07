@@ -71,6 +71,8 @@ def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, wait_ti
                 crack(hash_objetivo, buffer.strip(), select, ssid, encontrado, queue)
     except FileNotFoundError:
         queue.put(f"File not found: {rute}")
+    except ValueError as F:
+        print(f"Type error: {F}")
     except Exception as e:
         queue.put(f"Error processing {rute}: {e}")
 
@@ -132,6 +134,8 @@ if __name__ == "__main__":
         proceso3.terminate()
         proceso4.terminate()
         exit(0)
+    except ValueError as F:
+        print(f"Type error: {F}")
 
     while not queue.empty():
         print(queue.get())
