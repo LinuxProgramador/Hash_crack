@@ -200,7 +200,7 @@ def crack(count,hash_input,select,wait_time):
 
 
 
-def crack_wpa_psk(count,hash_input):
+def crack_wpa_psk(count,hash_input,wait_time):
     '''
      Performs a brute-force attack on a WPA-PSK hash using PBKDF2-HMAC-SHA1
     '''
@@ -238,7 +238,7 @@ def cracking_selection(count,hash_input,hash,wait_time,hash_algorithm_map):
      else:
        select = input("option to decrypt: ").strip()
        if select == "4":
-          crack_wpa_psk(count,hash_input)
+          crack_wpa_psk(count,hash_input,wait_time)
        elif select == "128":
           select = "shake-128"
           crack(count,hash_input,select,wait_time)
