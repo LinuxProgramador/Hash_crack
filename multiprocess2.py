@@ -83,8 +83,14 @@ if __name__ == "__main__":
         rute3 = input("Enter the path of the third dictionary: ").strip()
         rute4 = input("Enter the path of the fourth dictionary: ").strip()
         hash_objetivo = input("Enter the hash to be decrypted: ").strip()
-        print("Supported hashes:\n- bcrypt\n- sha512crypt\n- sha256crypt\n- wpa-psk")
-        select = input("Enter the hash type: ").strip().lower()
+        if any(v in hash_objetivo[0:5] for v in ["2a$", "2b$", "2y$"]):
+             select = "bcrypt"
+        elif "$5" in hash_objetivo[0:2]:
+             select = "sha256crypt"
+        elif "$6" in hash_objetivo[0:2]:
+             select = "sha512crypt"
+        elif len(hash_objetivo) == 64:
+             select = "wpa-psk"
         if select == "wpa-psk":
             print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
             sleep(4)
