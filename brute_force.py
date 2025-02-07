@@ -69,8 +69,12 @@ def brute_force():
         sleep(3)
     if min_length  >  max_length:
             min_length,max_length = max_length,min_length
-
-    for combo in product(characters, repeat=max_length):
+        
+    combinations = []
+    for r in range(min_length, max_length + 1):
+        combinations.extend(product(characters, repeat=r))
+        
+    for combo in combinations:
         yield ''.join(combo)
 
 
