@@ -141,7 +141,7 @@ def crack(count,hash_input,select,wait_time):
 
         if count == 300000 and wait_time == "y":
              count = 0
-             sleep(8)
+             sleep(15)
 
         if select == "NTLM":
               password_utf16 = password.encode('utf-16le')
@@ -208,7 +208,7 @@ def crack_wpa_psk(count,hash_input):
     for keywords in brute_force():
        if count == 300000 and wait_time == "y":
              count = 0
-             sleep(8)
+             sleep(17)
        if 8 <= len(keywords) <= 63:
          password = keywords
          derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
