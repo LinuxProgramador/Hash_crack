@@ -147,29 +147,41 @@ if __name__ == "__main__":
         rute3 = input("Enter the path of the third dictionary: ").strip()
         rute4 = input("Enter the path of the fourth dictionary: ").strip()
         hash_objetivo = input("Enter the hash to be decrypted: ").strip()
-        print()
-        print("Supported hashes:")
-        print("""
-         _________
-        |md5       |
-        |sha1      |
-        |sha224    |
-        |sha384    |
-        |sha256    |
-        |sha512    |
-        |sha3_224  |
-        |sha3_384  |
-        |sha3_256  |
-        |sha3_512  |
-        |blake2s   |
-        |blake2b   |
-        |shake-128 |
-        |shake-256 |
-        |ripemd-160|
-        |ntlm      |
-         __________
-        """)
-        select = input("Enter the hash type: ").strip().lower()
+        if len(hash_input) == hashes['length_md5']:
+             print(f"Type hash:\n1)- md5\n2)- NTLM\n128)- shake-128\n256)- shake-256")
+             hash_algorithm_map ={"1":"md5","2":"NTLM","128":"shake-128","256":"shake-256"}
+             select = input("option: ")
+             select = hash_algorithm_map[select]
+
+        elif len(hash_input) == hashes['length_sha1']:
+             print("Type hash:\n1)- sha1\n2)- ripemd-160\n128)- shake-128\n256)- shake-256")
+             hash_algorithm_map ={"1":"sha1","2":"ripemd-160","128":"shake-128","256":"shake-256"}
+             select = input("option: ")
+             select = hash_algorithm_map[select]
+
+        elif len(hash_input) == hashes['length_sha224']:
+             print("Type hash:\n1)- sha224\n2)- sha3_224\n128)- shake-128\n256)- shake-256")
+             hash_algorithm_map ={"1":"sha224","2":"sha3_224","128":"shake-128","256":"shake-256"}
+             select = input("option: ")
+             select = hash_algorithm_map[select]
+
+        elif len(hash_input) == hashes['length_sha384']:
+             print("Type hash:\n1)- sha384\n2)- sha3_384\n128)- shake-128\n256)- shake-256")
+             hash_algorithm_map ={"1":"sha384","2":"sha3_384","128":"shake-128","256":"shake-256"}
+             select = input("option: ")
+             select = hash_algorithm_map[select]
+
+        elif len(hash_input) == hashes['length_sha256']:
+             print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n128)- shake-128\n256)- shake-256")
+             hash_algorithm_map ={"1":"sha256","2":"sha3_256","3":"blake2s","128":"shake-128","256":"shake-256"}
+             select = input("option: ")
+             select = hash_algorithm_map[select]
+
+        elif len(hash_input) == hashes['length_sha512']:
+             print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n128)- shake-128\n256)- shake-256")
+             hash_algorithm_map ={"1":"sha512","2":"sha3_512","3":"blake2b","128":"shake-128","256":"shake-256"}
+             select = input("option: ")
+             select = hash_algorithm_map[select]
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         if select in ["ripemd-160","ntlm"]:
             print(f"{select} tends to take a little longer")
