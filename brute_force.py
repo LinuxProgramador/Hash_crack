@@ -35,6 +35,32 @@ hashes = {
     }
 count = 0
 
+def generate_combinations(characters, min_length, max_length):
+    '''
+     Generates and yields buffered combinations of characters within the specified length range.
+    '''
+    block_size=512*1024
+    buffer = []
+    buffer_size = 0
+
+    for r in range(min_length, max_length + 1):
+        for combo in product(characters, repeat=r):
+            combo_str = ''.join(combo)
+            combo_bytes = combo_str.encode()
+            combo_size = len(combo_bytes)
+
+            if buffer_size + combo_size > block_size:
+                yield buffer
+                buffer = []
+                buffer_size = 0
+
+            buffer.append(combo_str)
+            buffer_size += combo_size
+
+    if buffer:
+        yield buffer
+
+
 def brute_force():
     '''
       Prompts the user to exclude character sets, then generates and prints random keys for a specified number of attempts
