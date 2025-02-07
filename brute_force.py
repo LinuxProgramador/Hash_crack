@@ -216,7 +216,8 @@ def crack_wpa_psk(count,hash_input,wait_time):
          if derived_key.hex().lower() == hash_input.lower():
             auxiliary_crack(password,wpa_psk,ssid)
          else:
-            print(f"[*] Trying password:- {password}")
+            if is_fast_mode != "y":
+               print(f"[*] Trying password:- {password}")
        else:
            print("Passwords do not meet wpa-psk required lengths (8/63)")
            exit(2)
