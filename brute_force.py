@@ -61,6 +61,7 @@ def brute_force():
 
     characters = list(characters)
     try:
+        min_length = int(input("Key minimum length: "))
         max_length = int(input("Key maximum length: "))
     except ValueError:
         print("Invalid input. The default length will be set.")
