@@ -256,6 +256,9 @@ def cracking_selection(count,hash_input,hash,wait_time,hash_algorithm_map):
        elif select in hash_algorithm_map:
           select = hash_algorithm_map.get(select, None)
           crack(count,hash_input,select,wait_time)
+       else:
+           print("You did not select the hash type!")
+           exit(2)
      return
 
 
