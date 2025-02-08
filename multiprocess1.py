@@ -77,7 +77,6 @@ def crack(target_hash, word, select, event, queue):
         return
 
     if generated_hash.lower() == target_hash.lower():
-        print(f"Key found: {word}")
         event.set()
         queue.put(word)
         return
