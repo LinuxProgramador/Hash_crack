@@ -193,10 +193,6 @@ def crack(count,hash_input,select,wait_time):
              blas2=hashes[select](data).hexdigest()
              validation(blas2,hash_input,password,wpa_psk,ssid)
 
-        else:
-            print("Wrong option!")
-            exit(2)
-
         count += 1
     print("[X] Password not found!")
     exit(2)
@@ -257,7 +253,7 @@ def cracking_selection(count,hash_input,hash,wait_time,hash_algorithm_map):
           select = hash_algorithm_map.get(select, None)
           crack(count,hash_input,select,wait_time)
        else:
-           print("You did not select the hash type!")
+           print("You did not enter the requested data!")
            exit(2)
      return
 
