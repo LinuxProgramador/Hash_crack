@@ -6,10 +6,6 @@ from time import sleep
 from os import system
 
 
-#The code has some flaws when entering the hash name, variable and function names in Spanish and English
-#and others of the sort, but it does serve its purpose. 
-
-
 hashes = {
     'sha1': sha1,
     'sha224': sha224,
@@ -48,43 +44,45 @@ except KeyboardInterrupt:
     print("BYE!!")
     exit(2)
     
-def crack(hash_objetivo, palabra, select, evento, queue):
-    data = palabra.encode()
+def crack(target_hash, word, select, event, queue):
+    data = word.encode()
 
     if select == "ntlm":
-        password_utf16 = palabra.encode('utf-16le')
+        password_utf16 = word.encode('utf-16le')
         hash = MD4.new()
         hash.update(password_utf16)
-        hash_generado = hash.hexdigest()
+        generated_hash = hash.hexdigest()
     elif select == "md5":
-        hash_generado = md5(data).hexdigest()
+        generated_hash = md5(data).hexdigest()
     elif select in hashes:
-        hash_generado = hashes[select](data).hexdigest()
+        generated_hash = hashes[select](data).hexdigest()
     elif select == "shake-256":
-        hash_generado = shake_256(data).hexdigest(len(hash_objetivo) // 2)
+        generated_hash = shake_256(data).hexdigest(len(target_hash) // 2)
     elif select == "shake-128":
         shake = shake_128()
         shake.update(data)
-        hash_generado = shake.digest(len(bytes.fromhex(hash_objetivo))).hex()
+        generated_hash = shake.digest(len(bytes.fromhex(target_hash))).hex()
     elif select == "ripemd-160":
         RIPEMD = RIPEMD160.new()
         RIPEMD.update(data)
-        hash_generado = RIPEMD.hexdigest()
+        generated_hash = RIPEMD.hexdigest()
     else:
         print("Wrong hash name!")
-        evento.set()
-        proceso1.terminate()
-        proceso2.terminate()
+        event.set()
+        process1.terminate()
+        process2.terminate()
+        process3.terminate()
+        process4.terminate()
         exit(0)
         return
 
-    if hash_generado.lower() == hash_objetivo.lower():
-        print(f"Key found: {palabra}")
-        evento.set()
-        queue.put(palabra)
+    if generated_hash.lower() == target_hash.lower():
+        print(f"Key found: {word}")
+        event.set()
+        queue.put(word)
         return
 
-def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_size=512 * 1024):
+def check_hash(rute, target_hash, select, event, queue, wait_time, chunk_size=512 * 1024):
     try:
         
         with open(rute, 'r', encoding=encoder) as file:
@@ -98,10 +96,10 @@ def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_
                buffer += chunk
                lines = buffer.splitlines()
                buffer = lines[-1] if len(lines) > 1 else ""
-               for palabra in lines[:-1]:
-                    crack(hash_objetivo, palabra, select, evento, queue)
+               for word in lines[:-1]:
+                    crack(target_hash, word, select, event, queue)
            if buffer:
-              crack(hash_objetivo, buffer.strip(), select, evento, queue)
+              crack(target_hash, buffer.strip(), select, event, queue)
     except FileNotFoundError:
         print(f"File not found: {rute}")
     except ValueError as F:
@@ -109,36 +107,36 @@ def comprobar_hash(rute, hash_objetivo, select, evento, queue, wait_time, chunk_
     except Exception as e:
         print(f"Processing error {rute}: {e}")
 
-def process_files(rute1, rute2, rute3, rute4, hash_objetivo, select, wait_time):
-    evento = multiprocessing.Event()
+def process_files(rute1, rute2, rute3, rute4, target_hash, select, wait_time):
+    event = multiprocessing.Event()
     queue = multiprocessing.Queue()
 
     print("Starting parallel checking...")
 
-    proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, evento, queue, wait_time))
-    proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, evento, queue, wait_time))
-    proceso3 = multiprocessing.Process(target=comprobar_hash, args=(rute3, hash_objetivo, select, evento, queue, wait_time))
-    proceso4 = multiprocessing.Process(target=comprobar_hash, args=(rute4, hash_objetivo, select, evento, queue, wait_time))
+    process1 = multiprocessing.Process(target=check_hash, args=(rute1, target_hash, select, event, queue, wait_time))
+    process2 = multiprocessing.Process(target=check_hash, args=(rute2, target_hash, select, event, queue, wait_time))
+    process3 = multiprocessing.Process(target=check_hash, args=(rute3, target_hash, select, event, queue, wait_time))
+    process4 = multiprocessing.Process(target=check_hash, args=(rute4, target_hash, select, event, queue, wait_time))
  
-    proceso1.start()
-    proceso2.start()
-    proceso3.start()
-    proceso4.start()
+    process1.start()
+    process2.start()
+    process3.start()
+    process4.start()
     try:
-        proceso1.join()
-        proceso2.join()
-        proceso3.join()
-        proceso4.join()
+        process1.join()
+        process2.join()
+        process3.join()
+        process4.join()
     except KeyboardInterrupt:
         print("Interruption detected. Closing...")
-        evento.set()
-        proceso1.terminate()
-        proceso2.terminate()
-        proceso3.terminate()
-        proceso4.terminate()
+        event.set()
+        process1.terminate()
+        process2.terminate()
+        process3.terminate()
+        process4.terminate()
         exit(0)
 
-    if evento.is_set():
+    if event.is_set():
         found_word = queue.get()
         print(f"Key found: {found_word}")
     else:
@@ -152,33 +150,33 @@ if __name__ == "__main__":
         rute2 = input("Enter the path of the second dictionary: ").strip()
         rute3 = input("Enter the path of the third dictionary: ").strip()
         rute4 = input("Enter the path of the fourth dictionary: ").strip()
-        hash_objetivo = input("Enter the hash to be decrypted: ").strip()
-        if len(hash_objetivo) == hashes['length_md5']:
+        target_hash = input("Enter the hash to be decrypted: ").strip()
+        if len(target_hash) == hashes['length_md5']:
              print(f"Type hash:\n1)- md5\n2)- NTLM\n128)- shake-128\n256)- shake-256")
              hash_algorithm_map ={"1":"md5","2":"NTLM","128":"shake-128","256":"shake-256"}
              select = input("option: ")
              select = hash_algorithm_map[select]
-        elif len(hash_objetivo) == hashes['length_sha1']:
+        elif len(target_hash) == hashes['length_sha1']:
              print("Type hash:\n1)- sha1\n2)- ripemd-160\n128)- shake-128\n256)- shake-256")
              hash_algorithm_map ={"1":"sha1","2":"ripemd-160","128":"shake-128","256":"shake-256"}
              select = input("option: ")
              select = hash_algorithm_map[select]
-        elif len(hash_objetivo) == hashes['length_sha224']:
+        elif len(target_hash) == hashes['length_sha224']:
              print("Type hash:\n1)- sha224\n2)- sha3_224\n128)- shake-128\n256)- shake-256")
              hash_algorithm_map ={"1":"sha224","2":"sha3_224","128":"shake-128","256":"shake-256"}
              select = input("option: ")
              select = hash_algorithm_map[select]
-        elif len(hash_objetivo) == hashes['length_sha384']:
+        elif len(target_hash) == hashes['length_sha384']:
              print("Type hash:\n1)- sha384\n2)- sha3_384\n128)- shake-128\n256)- shake-256")
              hash_algorithm_map ={"1":"sha384","2":"sha3_384","128":"shake-128","256":"shake-256"}
              select = input("option: ")
              select = hash_algorithm_map[select]
-        elif len(hash_objetivo) == hashes['length_sha256']:
+        elif len(target_hash) == hashes['length_sha256']:
              print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n128)- shake-128\n256)- shake-256")
              hash_algorithm_map ={"1":"sha256","2":"sha3_256","3":"blake2s","128":"shake-128","256":"shake-256"}
              select = input("option: ")
              select = hash_algorithm_map[select]
-        elif len(hash_objetivo) == hashes['length_sha512']:
+        elif len(target_hash) == hashes['length_sha512']:
              print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n128)- shake-128\n256)- shake-256")
              hash_algorithm_map ={"1":"sha512","2":"sha3_512","3":"blake2b","128":"shake-128","256":"shake-256"}
              select = input("option: ")
@@ -192,10 +190,10 @@ if __name__ == "__main__":
         exit(0)
     except ValueError as F:
         print(f"Type error: {F}")
-    except FileNotFoundError as F:
-        print(f"invalid path: {F}")
+    except FileNotFoundError as s:
+        print(f"invalid path: {s}")
 
-    process_files(rute1, rute2, rute3, rute4, hash_objetivo, select, wait_time)
+    process_files(rute1, rute2, rute3, rute4, target_hash, select, wait_time)
 
 
 __status__="beta"
