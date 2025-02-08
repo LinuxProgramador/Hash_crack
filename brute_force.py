@@ -76,15 +76,18 @@ def brute_force():
     "4": "/+_-='~£¢€¥^✓§∆π√©®™•÷×?#;|&}!{][*>%<)($@:`,°\"\\"
     }
 
-    if len(option) == 1:
+    try:
+     if len(option) == 1:
         characters = char_sets[option[0]]
-    elif len(option) == 2:
+     elif len(option) == 2:
         characters = char_sets[option[0]] + char_sets[option[1]]
-    elif len(option) == 3:
+     elif len(option) == 3:
         characters = char_sets[option[0]] + char_sets[option[1]] + char_sets[option[2]]
-    else:
+     else:
         characters = char_sets[option[0]] + char_sets[option[1]] + char_sets[option[2]] + char_sets[option[3]]
-
+    except IndexError:
+         characters = ascii_lowercase  + ascii_uppercase + digits + "/+_-='~£¢€¥^✓§∆π√©®™•÷×?#;|&}!{][*>%<)($@:`,°\"\\"
+    
     characters = list(characters)
     try:
         min_length = int(input("Key minimum length: "))
