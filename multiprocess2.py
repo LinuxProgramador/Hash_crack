@@ -6,7 +6,6 @@ from os import path,system
 from bcrypt import checkpw
 from time import sleep
 
-#The code has some flaws, but it serves its purpose 
 
 hashes = {
     'sha256crypt': sha256_crypt,
@@ -32,31 +31,31 @@ except KeyboardInterrupt:
     exit(2)
 
 
-def crack(hash_objetivo, palabra, select, ssid, encontrado, queue):
+def crack(target_hash, word, select, ssid, found, queue):
     if select == "bcrypt":
-        if checkpw(palabra.encode(), bytes(hash_objetivo, encoding=encoder)):
-            queue.put(f"Key found: {palabra}")
-            encontrado.set()
+        if checkpw(word.encode(), bytes(target_hash, encoding=encoder)):
+            queue.put(f"Key found: {word}")
+            found.set()
             return        
     elif select in hashes:
-        if hashes[select].verify(palabra, hash_objetivo):
-            print(f"key found: {palabra}")
-            queue.put(f"Key found: {palabra}")
-            encontrado.set()
+        if hashes[select].verify(word, target_hash):
+            print(f"key found: {word}")
+            queue.put(f"Key found: {word}")
+            found.set()
             return
     elif select == "wpa-psk":
-        if 8 <= len(palabra) <= 63:
-            derived_key = pbkdf2_hmac('sha1', palabra.encode(), ssid.encode(), 4096, 32)
-            if derived_key.hex().lower() == hash_objetivo.lower():
-                queue.put(f"SSID: {ssid}\nKey found: {palabra}")
-                encontrado.set()
+        if 8 <= len(word) <= 63:
+            derived_key = pbkdf2_hmac('sha1', word.encode(), ssid.encode(), 4096, 32)
+            if derived_key.hex().lower() == target_hash.lower():
+                queue.put(f"SSID: {ssid}\nKey found: {word}")
+                found.set()
                 return
 
-def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, wait_time, chunk_size=512 * 1024):
+def check_hash(rute, target_hash, select, ssid, found, queue, wait_time, chunk_size=512 * 1024):
     try:
         with open(rute, 'r', encoding=encoder) as file:
             buffer = ""
-            while not encontrado.is_set():                                                                         
+            while not found.is_set():                                                                         
                 chunk = file.read(chunk_size)
                 if wait_time == "y":
                     sleep(15)
@@ -65,10 +64,10 @@ def comprobar_hash(rute, hash_objetivo, select, ssid, encontrado, queue, wait_ti
                 buffer += chunk
                 lines = buffer.splitlines()
                 buffer = lines[-1] if len(lines) > 1 else ""
-                for palabra in lines[:-1]:
-                    crack(hash_objetivo, palabra, select, ssid, encontrado, queue)
+                for word in lines[:-1]:
+                    crack(target_hash, word, select, ssid, found, queue)
             if buffer:
-                crack(hash_objetivo, buffer.strip(), select, ssid, encontrado, queue)
+                crack(target_hash, buffer.strip(), select, ssid, found, queue)
     except FileNotFoundError:
         queue.put(f"File not found: {rute}")
     except ValueError as F:
@@ -82,14 +81,14 @@ if __name__ == "__main__":
         rute2 = input("Enter the path of the second dictionary: ").strip()
         rute3 = input("Enter the path of the third dictionary: ").strip()
         rute4 = input("Enter the path of the fourth dictionary: ").strip()
-        hash_objetivo = input("Enter the hash to be decrypted: ").strip()
-        if any(v in hash_objetivo[0:5] for v in ["2a$", "2b$", "2y$"]):
+        target_hash = input("Enter the hash to be decrypted: ").strip()
+        if any(v in target_hash[0:5] for v in ["2a$", "2b$", "2y$"]):
              select = "bcrypt"
-        elif "$5" in hash_objetivo[0:2]:
+        elif "$5" in target_hash[0:2]:
              select = "sha256crypt"
-        elif "$6" in hash_objetivo[0:2]:
+        elif "$6" in target_hash[0:2]:
              select = "sha512crypt"
-        elif len(hash_objetivo) == 64:
+        elif len(target_hash) == 64:
              select = "wpa-psk"
         if select == "wpa-psk":
             print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
@@ -100,48 +99,48 @@ if __name__ == "__main__":
         print()
         exit(0)
 
-    encontrado = multiprocessing.Event()
+    found = multiprocessing.Event()
     queue = multiprocessing.Queue()
 
     print("Starting parallel checking..")
 
-    proceso1 = multiprocessing.Process(target=comprobar_hash, args=(rute1, hash_objetivo, select, ssid, encontrado, queue, wait_time))
-    proceso2 = multiprocessing.Process(target=comprobar_hash, args=(rute2, hash_objetivo, select, ssid, encontrado, queue, wait_time))
-    proceso3 = multiprocessing.Process(target=comprobar_hash, args=(rute3, hash_objetivo, select, ssid, encontrado, queue, wait_time))
-    proceso4 = multiprocessing.Process(target=comprobar_hash, args=(rute4, hash_objetivo, select, ssid, encontrado, queue, wait_time))
+    process1 = multiprocessing.Process(target=check_hash, args=(rute1, target_hash, select, ssid, found, queue, wait_time))
+    process2 = multiprocessing.Process(target=check_hash, args=(rute2, target_hash, select, ssid, found, queue, wait_time))
+    process3 = multiprocessing.Process(target=check_hash, args=(rute3, target_hash, select, ssid, found, queue, wait_time))
+    process4 = multiprocessing.Process(target=check_hash, args=(rute4, target_hash, select, ssid, found, queue, wait_time))
     
-    proceso1.start()
-    proceso2.start()
-    proceso3.start()
-    proceso4.start()
+    process1.start()
+    process2.start()
+    process3.start()
+    process4.start()
 
     try:
-        while proceso1.is_alive() or proceso2.is_alive() or proceso3.is_alive() or proceso4.is_alive():
+        while process1.is_alive() or process2.is_alive() or process3.is_alive() or process4.is_alive():
             while not queue.empty():
                 print(queue.get())
-                encontrado.set()
-            if encontrado.is_set():
-                proceso1.terminate()
-                proceso2.terminate()
-                proceso3.terminate()
-                proceso4.terminate()
+                found.set()
+            if found.is_set():
+                process1.terminate()
+                process2.terminate()
+                process3.terminate()
+                process4.terminate()
                 break
-            proceso1.join(timeout=1)
-            proceso2.join(timeout=1)
-            proceso3.join(timeout=1)                                                             
-            proceso4.join(timeout=1)
+            process1.join(timeout=1)
+            process2.join(timeout=1)
+            process3.join(timeout=1)                                                             
+            process4.join(timeout=1)
 
-        if encontrado.is_set():
-            proceso1.terminate()
-            proceso2.terminate()
-            proceso3.terminate()
-            proceso4.terminate()
+        if found.is_set():
+            process1.terminate()
+            process2.terminate()
+            process3.terminate()
+            process4.terminate()
     except KeyboardInterrupt:
         print()
-        proceso1.terminate()
-        proceso2.terminate()
-        proceso3.terminate()
-        proceso4.terminate()
+        process1.terminate()
+        process2.terminate()
+        process3.terminate()
+        process4.terminate()
         exit(0)
     except ValueError as F:
         print(f"Type error: {F}")
@@ -149,7 +148,7 @@ if __name__ == "__main__":
     while not queue.empty():
         print(queue.get())
 
-    if not encontrado.is_set():
+    if not found.is_set():
         print("Key not found in the dictionaries.")
         print("Checking completed.")
         exit(1)
