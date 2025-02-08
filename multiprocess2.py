@@ -39,7 +39,6 @@ def crack(target_hash, word, select, ssid, found, queue):
             return        
     elif select in hashes:
         if hashes[select].verify(word, target_hash):
-            print(f"key found: {word}")
             queue.put(f"Key found: {word}")
             found.set()
             return
