@@ -65,9 +65,10 @@ def brute_force():
     '''
       Prompts the user to exclude character sets, then generates and prints random keys for a specified number of attempts
     '''
-    print("Enter the characters to use (ENTER THE NUMBERS CLOSELY):")
+    print("Enter the characters to use:")
     print("1) Numbers\n2) Uppercase Letters\n3) Lowercase Letters\n4) Symbols")
-    option = list(input("option: "))
+    option = input("option: ").strip().replace(" ","")
+    option = list(option)
 
     char_sets = {
     "3": ascii_lowercase,
