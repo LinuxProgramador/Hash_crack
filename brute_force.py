@@ -172,13 +172,15 @@ def crack(count,hash_input,select,wait_time):
              if hashes[select].verify(password, hash_input):
                 auxiliary_crack(password,wpa_psk,ssid)
              else:
-                faster(password)
+                if is_fast_mode != "y":
+                   print(f"[*] Trying password:- {password}")
 
         elif select == "bcrypt":
              if checkpw(data, bytes(hash_input,encoding="utf-8")):
                 auxiliary_crack(password,wpa_psk,ssid)
              else:
-                faster(password)
+                if is_fast_mode != "y":
+                   print(f"[*] Trying password:- {password}")
 
         elif select in hashes:
             encryption = hashes[select](password.encode("utf-8")).hexdigest()
