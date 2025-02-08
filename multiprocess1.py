@@ -181,6 +181,7 @@ if __name__ == "__main__":
              select = hash_algorithm_map[select]
         else:
             print("You did not enter a valid hash!")
+            exit(0)
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         if select in ["ripemd-160","ntlm"]:
             print(f"{select} tends to take a little longer")
