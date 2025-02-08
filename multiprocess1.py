@@ -148,6 +148,7 @@ if __name__ == "__main__":
         rute2 = input("Enter the path of the second dictionary: ").strip()
         rute3 = input("Enter the path of the third dictionary: ").strip()
         rute4 = input("Enter the path of the fourth dictionary: ").strip()
+        wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         target_hash = input("Enter the hash to be decrypted: ").strip()
         if len(target_hash) == hashes['length_md5']:
              print(f"Type hash:\n1)- md5\n2)- NTLM\n128)- shake-128\n256)- shake-256")
@@ -182,7 +183,6 @@ if __name__ == "__main__":
         else:
             print("You did not enter a valid hash!")
             exit(0)
-        wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         if select in ["ripemd-160","ntlm"]:
             print(f"{select} tends to take a little longer")
 
