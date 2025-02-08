@@ -84,10 +84,9 @@ def crack(target_hash, word, select, event, queue):
 
 def check_hash(rute, target_hash, select, event, queue, wait_time, chunk_size=512 * 1024):
     try:
-        
         with open(rute, 'r', encoding=encoder) as file:
            buffer = ""
-           while not evento.is_set():
+           while not event.is_set():
                chunk = file.read(chunk_size)
                if wait_time == "y":
                     sleep(10)
