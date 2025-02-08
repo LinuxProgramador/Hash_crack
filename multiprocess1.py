@@ -179,6 +179,8 @@ if __name__ == "__main__":
              hash_algorithm_map ={"1":"sha512","2":"sha3_512","3":"blake2b","128":"shake-128","256":"shake-256"}
              select = input("option: ")
              select = hash_algorithm_map[select]
+        else:
+            print("You did not enter a valid hash!")
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         if select in ["ripemd-160","ntlm"]:
             print(f"{select} tends to take a little longer")
