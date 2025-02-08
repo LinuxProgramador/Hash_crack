@@ -90,8 +90,7 @@ if __name__ == "__main__":
         elif len(target_hash) == 64:
              select = "wpa-psk"
         if select == "wpa-psk":
-            print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
-            sleep(4)
+            print("\n\"INFO: Make sure the keys within the dictionary are approximately 8-63 in length\"")
         ssid = input("Enter the SSID (if WPA-PSK): ").strip() if select == "wpa-psk" else None
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
     except KeyboardInterrupt:
