@@ -189,6 +189,8 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print()
         exit(0)
+    except KeyError:
+        print("You did not select the hash type!")
     except ValueError as F:
         print(f"Type error: {F}")
     except FileNotFoundError as s:
