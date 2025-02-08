@@ -222,7 +222,7 @@ def crack_wpa_psk(count,hash_input,wait_time):
             if is_fast_mode != "y":
                print(f"[*] Trying password:- {password}")
        else:
-           print("Passwords do not meet wpa-psk required lengths (8/63)")
+           print("Passwords do not meet wpa-psk required lengths (8/63)!")
            exit(2)
        count += 1
     print("[X] Password not found!")
