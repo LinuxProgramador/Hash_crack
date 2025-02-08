@@ -152,7 +152,7 @@ if __name__ == "__main__":
         target_hash = input("Enter the hash to be decrypted: ").strip()
         if len(target_hash) == hashes['length_md5']:
              print(f"Type hash:\n1)- md5\n2)- NTLM\n128)- shake-128\n256)- shake-256")
-             hash_algorithm_map ={"1":"md5","2":"NTLM","128":"shake-128","256":"shake-256"}
+             hash_algorithm_map ={"1":"md5","2":"ntlm","128":"shake-128","256":"shake-256"}
              select = input("option: ")
              select = hash_algorithm_map[select]
         elif len(target_hash) == hashes['length_sha1']:
