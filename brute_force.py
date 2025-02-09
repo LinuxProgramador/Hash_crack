@@ -87,6 +87,7 @@ def brute_force():
      else:
         characters = char_sets[option[0]] + char_sets[option[1]] + char_sets[option[2]] + char_sets[option[3]]
     except IndexError:
+         print("Invalid input. Default characters will be set!")
          characters = ascii_lowercase  + ascii_uppercase + digits + "/+_-='~£¢€¥^✓§∆π√©®™•÷×?#;|&}!{][*>%<)($@:`,°\"\\"
     
     characters = list(characters)
