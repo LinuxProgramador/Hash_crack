@@ -471,7 +471,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     combined,is_fast_mode,wait_time = self.get_cracking_parameters()
     print("Starting WPA-PSK cracking")
     if is_fast_mode == "y":
-      print("INFO: The process may take time due to slow hashing")
+      print("\nINFO: The process may take time due to slow hashing")
     self.display_cracking_message(is_fast_mode)
     with open(self.directory_path(), 'r', encoding=self.encoder) as file:
       chunk_size = 512 * 1024
