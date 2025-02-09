@@ -80,6 +80,7 @@ if __name__ == "__main__":
         rute2 = input("Enter the path of the second dictionary: ").strip()
         rute3 = input("Enter the path of the third dictionary: ").strip()
         rute4 = input("Enter the path of the fourth dictionary: ").strip()
+        wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         target_hash = input("Enter the hash to be decrypted: ").strip()
         if any(v in target_hash[0:5] for v in ["2a$", "2b$", "2y$"]):
              select = "bcrypt"
@@ -95,7 +96,6 @@ if __name__ == "__main__":
         if select == "wpa-psk":
             print("\n\"INFO: Make sure the keys within the dictionary are approximately 8-63 in length\"")
         ssid = input("Enter the SSID (if WPA-PSK): ").strip() if select == "wpa-psk" else None
-        wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
     except KeyboardInterrupt:
         print()
         exit(0)
