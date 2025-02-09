@@ -470,6 +470,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     crackTimeEstimate = 'time unknown'
     combined,is_fast_mode,wait_time = self.get_cracking_parameters()
     print("Starting WPA-PSK cracking")
+    if is_fast_mode == "y":
+      print("INFO: The process may take time due to slow hashing")
     self.display_cracking_message(is_fast_mode)
     with open(self.directory_path(), 'r', encoding=self.encoder) as file:
       chunk_size = 512 * 1024
@@ -555,7 +557,7 @@ Help Menu:
 Wait, this may take a while
 *****************************
                    """)
-     if select in ["ripemd-160","NTLM"]  and is_fast_mode == "y":
+     if select in ["ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
      self.display_cracking_message(is_fast_mode)
      sleep(2)
