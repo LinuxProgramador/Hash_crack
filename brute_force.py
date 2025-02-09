@@ -306,11 +306,17 @@ def main(hashes,count):
              cracking_selection(count,hash_input,hash,wait_time,hash_algorithm_map)
     else:
         if hash_input:
-          print("""\n
+          consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
+          if consultation == "y":
+            print(f"Type hash:\n128)- shake-128\n256)- shake-256")
+            hash_algorithm_map ={"128":"shake-128","256":"shake-256"}
+            cracking_selection(count,hash_input,hash,wait_time,hash_algorithm_map)
+          else:
+            print("""\n
  \"The hash entered is of incorrect length or does not comply
  with the standards supported by the script.
  Please verify and try again.\"
-                """ + "\n")
+                  """ + "\n")
         else:
           print("No hash entered!")
 
