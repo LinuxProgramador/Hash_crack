@@ -148,7 +148,11 @@ if __name__ == "__main__":
         exit(0)
     except ValueError as F:
         print(f"Type error: {F}")
-
+        process1.terminate()
+        process2.terminate()
+        process3.terminate()
+        process4.terminate()
+        exit(0)
     while not queue.empty():
         print(queue.get())
 
