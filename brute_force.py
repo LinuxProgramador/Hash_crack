@@ -207,6 +207,9 @@ def crack_wpa_psk(count,hash_input,wait_time):
      Performs a brute-force attack on a WPA-PSK hash using PBKDF2-HMAC-SHA1
     '''
     ssid = input("Enter the SSID: ").strip()
+    if not ssid:
+       print("You did not enter the SSID name!")
+       exit(2)
     wpa_psk = True
     for keywords in brute_force():
        if count == 300000 and wait_time == "y":
