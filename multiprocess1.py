@@ -198,10 +198,13 @@ if __name__ == "__main__":
         exit(0)
     except KeyError:
         print("You did not select the hash type!")
+        exit(0)
     except ValueError as F:
         print(f"Type error: {F}")
+        exit(0)
     except FileNotFoundError as s:
         print(f"invalid path: {s}")
+        exit(0)
 
     process_files(rute1, rute2, rute3, rute4, target_hash, select, wait_time)
 
