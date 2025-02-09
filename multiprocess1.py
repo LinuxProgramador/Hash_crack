@@ -181,8 +181,15 @@ if __name__ == "__main__":
              select = input("option: ")
              select = hash_algorithm_map[select]
         else:
-            print("You did not enter a valid hash!")
-            exit(0)
+            consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
+            if consultation == "y":
+               print(f"Type hash:\n128)- shake-128\n256)- shake-256")
+               hash_algorithm_map ={"128":"shake-128","256":"shake-256"}
+               select = input("option: ")
+               select = hash_algorithm_map[select]
+            else:
+               print("You did not enter a valid hash!")
+               exit(0)
         if select in ["ripemd-160","ntlm"]:
             print(f"{select} tends to take a little longer")
 
