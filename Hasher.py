@@ -227,7 +227,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
         if size_range[0] <= sizes_mb < size_range[1]:
             return duration
 
-     return "time unknown"
+     return "~30 seconds"
 
 
   def get_cracking_parameters(self):
@@ -403,7 +403,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
         Encode each word in the dictionary, to verify with the hash of the key
      '''
      crackTimeEstimate = self.approximate_duration() if is_fast_mode != "y" else ''
-     if combined == "y" and is_fast_mode != "y" or wait_time == "y":
+     if combined == "y" or wait_time == "y":
         crackTimeEstimate = "time unknown"
      ssid = ''
      wpa_psk = False
