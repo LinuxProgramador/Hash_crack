@@ -94,7 +94,7 @@ if __name__ == "__main__":
             print("You did not enter a valid hash!")
             exit(0)
         if select == "wpa-psk":
-            print("\n\"INFO: Make sure the keys within the dictionary are approximately 8-63 in length\"")
+            print("\"INFO: Make sure the keys within the dictionary are approximately 8-63 in length\"")
         ssid = input("Enter the SSID (if WPA-PSK): ").strip() if select == "wpa-psk" else None
         if not ssid and select == "wpa-psk":
            print("You did not enter the SSID name")
