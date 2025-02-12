@@ -332,3 +332,6 @@ def main(hashes,count):
 
 if __name__ == "__main__":
      main(hashes,count)
+    
+
+__status__="Finished"
