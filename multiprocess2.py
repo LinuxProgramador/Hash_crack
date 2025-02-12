@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import multiprocessing
 from hashlib import pbkdf2_hmac
 from sys import exit,argv
@@ -38,6 +40,7 @@ def crack(target_hash, word, select, ssid, found, queue):
             found.set()
             return        
     elif select in hashes:
+        sleep(0.4)
         if hashes[select].verify(word, target_hash):
             queue.put(f"Key found: {word}")
             found.set()
