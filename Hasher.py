@@ -106,7 +106,6 @@ class Hash_crack:
     elif option_chosen == "3":
       for _ in range(2):
        print("""
-INFO: This feature is still under development.
 INFO: This method is ideal for very large dictionaries or testing four dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
 INFO: Use the following command to split a large dictionary into 100 MB chunks on Linux or Termux:
 split -b 100M rockyou.txt
