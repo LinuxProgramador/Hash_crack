@@ -68,16 +68,7 @@ def crack(target_hash, word, select, event, queue):
         RIPEMD = RIPEMD160.new()
         RIPEMD.update(data)
         generated_hash = RIPEMD.hexdigest()
-    else:
-        print("Wrong hash name!")
-        event.set()
-        process1.terminate()
-        process2.terminate()
-        process3.terminate()
-        process4.terminate()
-        exit(0)
-        return
-
+ 
     if generated_hash.lower() == target_hash.lower():
         event.set()
         queue.put(word)
