@@ -71,10 +71,10 @@ def main():
         sleep(1)
         system("clear")
 
-        rute1 = input("Enter the path of the first dictionary: ").strip()
-        rute2 = input("Enter the path of the second dictionary: ").strip()
-        rute3 = input("Enter the path of the third dictionary: ").strip()
-        rute4 = input("Enter the path of the fourth dictionary: ").strip()
+        rute1 = input("Enter the path of dictionary -1: ").strip()
+        rute2 = input("Enter the path of dictionary -2: ").strip()
+        rute3 = input("Enter the path of dictionary -3: ").strip()
+        rute4 = input("Enter the path of dictionary -4: ").strip()
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         target_hash = input("Enter the hash to be decrypted: ").strip()
 
