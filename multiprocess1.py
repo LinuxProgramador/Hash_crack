@@ -162,7 +162,7 @@ if __name__ == "__main__":
         system("clear")
 
         file_paths = [
-            input(f"Enter the path of dictionary {i + 1}: ").strip()
+            input(f"Enter the path of dictionary -{i + 1}: ").strip()
             for i in range(4)
         ]
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
