@@ -70,9 +70,9 @@ def brute_force():
         "4": "/+_-='~£¢€¥^✓§∆π√©®™•÷×?#;|&}!{][*>%<)($@:`,°\"\\"
     }
 
-    try:
-        characters = ''.join([char_sets[o] for o in option])
-    except KeyError:
+    
+    characters = ''.join([char_sets[o] for o in option])
+    if not characters:
         print("Invalid input. Default characters will be set!")
         characters = ascii_lowercase + ascii_uppercase + digits + "/+_-='~£¢€¥^✓§∆π√©®™•÷×?#;|&}!{][*>%<)($@:`,°\"\\"
 
