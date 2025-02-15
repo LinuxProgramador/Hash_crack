@@ -70,12 +70,15 @@ def brute_force():
         "4": "/+_-='~£¢€¥^✓§∆π√©®™•÷×?#;|&}!{][*>%<)($@:`,°\"\\"
     }
 
-    
-    characters = ''.join([char_sets[o] for o in option])
-    if not characters:
+    try:
+      characters = ''.join([char_sets[o] for o in option])
+      if not characters:
         print("Invalid input. Default characters will be set!")
         characters = ascii_lowercase + ascii_uppercase + digits + "/+_-='~£¢€¥^✓§∆π√©®™•÷×?#;|&}!{][*>%<)($@:`,°\"\\"
-
+    except KeyError:
+        print("Invalid input. Default characters will be set!")
+        characters = ascii_lowercase + ascii_uppercase + digits + "/+_-='~£¢€¥^✓§∆π√©®™•÷×?#;|&}!{][*>%<)($@:`,°\"\\"
+        
     try:
         min_length = int(input("Key minimum length: "))
         max_length = int(input("Key maximum length: "))
