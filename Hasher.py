@@ -546,7 +546,7 @@ Help Menu:
      if select:
            pass
      else:
-       select = input("option to decrypt: ").strip()
+       select = input("option: ").strip()
        if select in hash_algorithm_map:
            select = hash_algorithm_map.get(select, None)
      sleep(1)
