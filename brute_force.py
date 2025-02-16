@@ -200,7 +200,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
     if select:
         crack(count, hash_input, select, wait_time)
     else:
-        select = input("Option to decrypt: ").strip()
+        select = input("option: ").strip()
         if select == "4":
             crack_wpa_psk(count, hash_input, wait_time)
         elif select == "128":
