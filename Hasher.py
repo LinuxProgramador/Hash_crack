@@ -384,16 +384,15 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
   def process_wpa_passwords(self,password_list,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
     ''' This method processes a list of passwords, converts them into hashes, and compares them with the hash to be decrypted '''
-    backup_password_list = password_list
+    backup_password_list = password_list if type(password_list) is str else ''
     validation_str,password_list = self.validate_and_transform_entry(password_list)
     for keyword in password_list:
       if 8 <= len(keyword) <= 63 or validation_str and 8 <= len(backup_password_list) <= 63:
          if validation_str:
             keyclean = backup_password_list.strip()
-            password = keyclean
          else:
             keyclean = keyword
-            password = keyclean
+         password = keyclean
          if combined == "y":
             password = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
