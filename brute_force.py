@@ -203,12 +203,6 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
         select = input("option: ").strip()
         if select == "4":
             crack_wpa_psk(count, hash_input, wait_time)
-        elif select == "128":
-            select = "shake-128"
-            crack(count, hash_input, select, wait_time)
-        elif select == "256":
-            select = "shake-256"
-            crack(count, hash_input, select, wait_time)
         elif select in hash_algorithm_map:
             select = hash_algorithm_map.get(select, None)
             crack(count, hash_input, select, wait_time)
@@ -227,28 +221,28 @@ def main(hashes, count):
         hash_input = input("Enter the hash to decrypt: ").strip()
 
         if len(hash_input) == hashes['length_md5']:
-            print("Type hash:\n1)- md5\n2)- NTLM\n128)- shake-128\n256)- shake-256")
-            hash_algorithm_map = {"1": "md5", "2": "NTLM", "128": "shake-128", "256": "shake-256"}
+            print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256")
+            hash_algorithm_map = {"1": "md5", "2": "NTLM", "3": "shake-128", "4": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha1']:
-            print("Type hash:\n1)- sha1\n2)- ripemd-160\n128)- shake-128\n256)- shake-256")
-            hash_algorithm_map = {"1": "sha1", "2": "ripemd-160", "128": "shake-128", "256": "shake-256"}
+            print("Type hash:\n1)- sha1\n2)- ripemd-160\n3)- shake-128\n4)- shake-256")
+            hash_algorithm_map = {"1": "sha1", "2": "ripemd-160", "3": "shake-128", "4": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha224']:
-            print("Type hash:\n1)- sha224\n2)- sha3_224\n128)- shake-128\n256)- shake-256")
-            hash_algorithm_map = {"1": "sha224", "2": "sha3_224", "128": "shake-128", "256": "shake-256"}
+            print("Type hash:\n1)- sha224\n2)- sha3_224\n3)- shake-128\n4)- shake-256")
+            hash_algorithm_map = {"1": "sha224", "2": "sha3_224", "3": "shake-128", "4": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha384']:
-            print("Type hash:\n1)- sha384\n2)- sha3_384\n128)- shake-128\n256)- shake-256")
-            hash_algorithm_map = {"1": "sha384", "2": "sha3_384", "128": "shake-128", "256": "shake-256"}
+            print("Type hash:\n1)- sha384\n2)- sha3_384\n3)- shake-128\n4)- shake-256")
+            hash_algorithm_map = {"1": "sha384", "2": "sha3_384", "3": "shake-128", "4": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha256']:
-            print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n4)- wpa-psk\n128)- shake-128\n256)- shake-256")
-            hash_algorithm_map = {"1": "sha256", "2": "sha3_256", "3": "blake2s", "4": "wpa-psk", "128": "shake-128", "256": "shake-256"}
+            print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n4)- wpa-psk\n5)- shake-128\n6)- shake-256")
+            hash_algorithm_map = {"1": "sha256", "2": "sha3_256", "3": "blake2s", "4": "wpa-psk", "5": "shake-128", "6": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha512']:
-            print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n128)- shake-128\n256)- shake-256")
-            hash_algorithm_map = {"1": "sha512", "2": "sha3_512", "3": "blake2b", "128": "shake-128", "256": "shake-256"}
+            print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n4)- shake-128\n5)- shake-256")
+            hash_algorithm_map = {"1": "sha512", "2": "sha3_512", "3": "blake2b", "4": "shake-128", "5": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
             cracking_selection(count, hash_input, "bcrypt", wait_time, "")
@@ -260,8 +254,8 @@ def main(hashes, count):
             if hash_input:
                 consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
                 if consultation == "y":
-                    print("Type hash:\n128)- shake-128\n256)- shake-256")
-                    hash_algorithm_map = {"128": "shake-128", "256": "shake-256"}
+                    print("Type hash:\n1)- shake-128\n2)- shake-256")
+                    hash_algorithm_map = {"1": "shake-128", "2": "shake-256"}
                     cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
                 else:
                     print("""\n
