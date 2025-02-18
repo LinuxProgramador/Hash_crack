@@ -352,7 +352,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   def crack(self,hash_input,select,is_fast_mode,combined,wait_time):
-     ''' Encode each word in the dictionary, to verify with the hash of the key '''
+     ''' The crack function attempts to decrypt a hash by comparing it with a dictionary of words '''
      crackTimeEstimate = self.approximate_duration() if is_fast_mode != "y" else ''
      if combined == "y" or wait_time == "y" and is_fast_mode != "y":
         crackTimeEstimate = "time unknown"
