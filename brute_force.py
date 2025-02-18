@@ -221,9 +221,9 @@ def main(hashes, count):
     global is_fast_mode
 
     try:
+        print("INFO:\"bcrypt/shacrypt/wpa-psk/ripemd-160/ntlm\" hashes tend to take longer to decrypt.\n")
         is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
-        print("\"bcrypt/shacrypt/wpa-psk/ripemd-160/ntlm\" hashes tend to take longer to decrypt")
         hash_input = input("Enter the hash to decrypt: ").strip()
 
         if len(hash_input) == hashes['length_md5']:
