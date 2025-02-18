@@ -203,7 +203,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
            else:
                  print("Invalid option!")
                  exit(2)
-
+      return
 
   def approximate_duration(self):
      '''
