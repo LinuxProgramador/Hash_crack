@@ -144,7 +144,8 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
     print("""
 1) create dictionary by concatenating words for example:
    unconcatenated (Harry Hermallony Ron) with concatenate (HarryHermallonyRon)
-
+   taking into account that it generates all possible combinations of these.
+   
 2) create dictionary specifying a minimum and maximum of characters to use for example:
    (crunch 4 8 abcdef) Here it will generate a minimum of 4 and a maximum of 8 characters using all possible combinations of the \"abcdef\" or any other data assigned to it.!
 
