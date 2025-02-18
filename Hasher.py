@@ -273,7 +273,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   
   def hash_cracking_worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
       '''  Processes an input and validates passwords against various hash algorithms. '''
-      backup_password_list = password_list
+      backup_password_list = password_list if type(password_list) is str else ''
       validation_str,password_list = self.validate_and_transform_entry(password_list)
       for keywords in password_list:
           if validation_str:
@@ -357,7 +357,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   def crack(self,hash_input,select,is_fast_mode,combined,wait_time):
      ''' Encode each word in the dictionary, to verify with the hash of the key '''
      crackTimeEstimate = self.approximate_duration() if is_fast_mode != "y" else ''
-     if combined == "y" or wait_time == "y":
+     if combined == "y" or wait_time == "y" and is_fast_mode != "y":
         crackTimeEstimate = "time unknown"
      ssid = ''
      wpa_psk = False
