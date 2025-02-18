@@ -248,26 +248,19 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
   def validation_combined(self,password,data,keyclean,keyBin,wpa_psk):
       '''Function that combines keys if the value of the variable combined is "y"'''
-      if wpa_psk:
-         if self.attempt_count % 2 == 0:
-            password += self.previous_password        
-         else:
-            password = self.previous_password + password
-         self.previous_password = keyclean
-         self.attempt_count += 1
-         return password
-           
-      else:
-         if self.attempt_count % 2 == 0:
-            password += self.previous_password
+      if self.attempt_count % 2 == 0:
+         password += self.previous_password
+         if not wpa_psk:
             data +=  self.previous_password_bin       
-         else:
-            password = self.previous_password + password
+      else:
+         password = self.previous_password + password
+         if not wpa_psk:
             data = self.previous_password_bin + data
-         self.previous_password = keyclean
+      self.previous_password = keyclean
+      if not wpa_psk:
          self.previous_password_bin = keyBin
-         self.attempt_count += 1
-         return password,data
+      self.attempt_count += 1
+      return password,data
         
 
   def validate_and_transform_entry(self,password_list):
