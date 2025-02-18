@@ -278,14 +278,11 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       for keywords in password_list:
           if validation_str:
               keyclean = backup_password_list.strip()
-              password = keyclean
-              keyBin = password.encode()
-              data = keyBin
           else:
               keyclean = keywords
-              password = keyclean
-              keyBin = password.encode()
-              data = keyBin
+          password = keyclean
+          keyBin = password.encode()
+          data = keyBin
 
           if combined == "y":
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
