@@ -512,7 +512,7 @@ Wait, this may take a while
   def auxiliary_main(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
      ''' Helper function to validation shake hash '''
      if hash_input:
-       if len(hash_input) >= 1 and len(hash_input) <= 4090:
+       if 1 <= len(hash_input) <= 4090:
          self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
          exit(2)
        else:
