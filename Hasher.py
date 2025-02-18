@@ -254,17 +254,12 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   def auxiliary_crack(self,password,wpa_psk,ssid):
     '''
      Helper function that will show the correct key
-    '''
-    if wpa_psk:
-        print("\n{***********************SUCCESS***********************}")
-        print(f"[✓] SSID: {ssid}")
-        print(f"[✓] Password Found:- {password}")
-        exit(2)
-    else:
-       print("\n{***********************SUCCESS***********************}")
-       print(f"[✓] Password Found:- {password}")
-       exit(2)
-
+    '''    
+   print("\n{***********************SUCCESS***********************}")
+   if wpa_psk:
+     print(f"[✓] SSID: {ssid}")
+   print(f"[✓] Password Found:- {password}")
+   exit(2)
 
   
   def validation(self,many_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate):
