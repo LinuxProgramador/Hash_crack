@@ -526,7 +526,7 @@ Wait, this may take a while
 
   def parse_auxiliary_arguments(self,hash,hash_algorithm_map):
      ''' Helper function that handles input arguments "-h,--help,-sk,-sk2,-wpk" '''
-     if "-h" in argv or "--help" in argv:
+     if any( help in argv for help in ["-h","--help"]):
                self.show_help()
                exit(2)
      elif "-sk" in argv:
