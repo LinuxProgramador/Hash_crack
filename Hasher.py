@@ -13,9 +13,7 @@ from passlib.hash import sha256_crypt,sha512_crypt
 from bcrypt import checkpw
 
 class Hash_crack:
-  '''
-     Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects
-  '''
+  '''  Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects '''
 
   def __init__(self):
     try:
@@ -68,9 +66,7 @@ class Hash_crack:
     self.attempt_count = 0
 
   def banner(self):
-        '''
-           Method where the baneer is established
-        '''
+        '''  Method where the baneer is established '''
         print ('''\n
                  Hasher 1.0
   --------------------------------------------
@@ -86,9 +82,7 @@ class Hash_crack:
     
 
   def call_modules(self):
-    '''
-       Call for third-party projects included to extend the program's functionality
-    '''
+    '''  Call for third-party projects included to extend the program's functionality '''
     print("You want to use:")
     print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) bruteforce: Brute force attack without dictionary.\n5) for \"none\"")
     option_chosen = input("option: ").strip()
@@ -131,9 +125,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
         
         
   def directory_path(self):
-    '''
-       Detects the operating system and in relation to that returns the path of the dictionary
-    '''
+    '''   Detects the operating system and in relation to that returns the path of the dictionary  '''
     return self.termux_dict_path if self.is_termux == True else self.linux_dict_path
 
 
@@ -181,9 +173,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   def crunch(self):
-     '''
-        Generate custom dictionaries
-     '''
+     '''  Generate custom dictionaries '''
      confirmation = input("You want to use the existing dictionary (y/n): ").strip().lower()
      if confirmation == "n":
            remove(self.directory_path())
@@ -202,10 +192,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       return
 
   def approximate_duration(self):
-     '''
-        Method that calculates the approximate duration of the crack based on the size of the dictionary
-     '''
-
+     '''  Method that calculates the approximate duration of the crack based on the size of the dictionary '''
      #Note: calculations may not be as accurate
      #Rather, what is calculated is the approximate time. 
      sizes_mb = path.getsize(self.directory_path()) / (1024 ** 2)
@@ -226,10 +213,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   def get_cracking_parameters(self):
-      '''
-      Asks the user if he wants to apply a combo attack or
-      if he wants to execute the fast cracking mode
-      '''
+      '''  Asks the user if he wants to apply a combo attack or
+      if he wants to execute the fast cracking mode  '''
       #Note: not all possible combinations are tested to avoid blocking the script or extending the 
       #timeout too much, as there would be many millions of possible combinations.
       print("You want to do a combo attack: \"mixing the keys\" (y/n): ",end="")
@@ -240,17 +225,13 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     
 
   def faster(self,is_fast_mode,crackTimeEstimate,password):
-      '''
-      Function that will not print attempts if the user wants a quick crack
-      '''
+      '''  Function that will not print attempts if the user wants a quick crack '''
       if is_fast_mode != "y":
           print(f"[{crackTimeEstimate}] Trying password:- {password}")
 
 
   def auxiliary_crack(self,password,wpa_psk,ssid):
-    '''
-     Helper function that will show the correct key
-    '''    
+    ''' Helper function that will show the correct key '''    
    print("\n{***********************SUCCESS***********************}")
    if wpa_psk:
      print(f"[✓] SSID: {ssid}")
@@ -259,18 +240,14 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
   
   def validation(self,many_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate):
-       '''
-          Validates if the hash is equal to the encrypted password
-       '''
+       '''Validates if the hash is equal to the password'''
        if many_hash.lower() == hash_input.lower():
             self.auxiliary_crack(password,wpa_psk,ssid)
        else:
             self.faster(is_fast_mode,crackTimeEstimate,password)
 
   def validation_combined(self,password,data,keyclean,keyBin,wpa_psk):
-      '''
-       Function that combines keys if the value of the variable combined is "y"
-      '''
+      '''Function that combines keys if the value of the variable combined is "y"'''
       if wpa_psk:
          if self.attempt_count % 2 == 0:
             password += self.previous_password        
@@ -294,9 +271,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
         
 
   def validate_and_transform_entry(self,password_list):
-     '''
-       Validates if the input is a string. If it is, transforms the value to "1"
-     '''
+     ''' Validates if the input is a string and not a list. If it is, transforms the value to "1"'''
      validation_str = type(password_list) is str
      if validation_str:
             password_list = "1"
@@ -304,9 +279,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
   
   def hash_cracking_worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
-      '''
-        Processes an input and validates passwords against various hash algorithms.
-      '''
+      '''  Processes an input and validates passwords against various hash algorithms. '''
       backup_password_list = password_list
       validation_str,password_list = self.validate_and_transform_entry(password_list)
       for keywords in password_list:
@@ -389,9 +362,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   def crack(self,hash_input,select,is_fast_mode,combined,wait_time):
-     '''
-        Encode each word in the dictionary, to verify with the hash of the key
-     '''
+     ''' Encode each word in the dictionary, to verify with the hash of the key '''
      crackTimeEstimate = self.approximate_duration() if is_fast_mode != "y" else ''
      if combined == "y" or wait_time == "y":
         crackTimeEstimate = "time unknown"
@@ -416,19 +387,15 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   def display_cracking_message(self,is_fast_mode):
-     '''
-     prints a message that the cracking process has already started
-     '''
+     '''  prints a message that the cracking process has already started '''
      if is_fast_mode == "y":
          print("\nCRACKED............\n")
      return
 
   def process_wpa_passwords(self,password_list,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
-    '''
-    passwords using the PBKDF2-HMAC-SHA1 algorithm.
+    '''passwords using the PBKDF2-HMAC-SHA1 algorithm.
     This method processes a list of potential passwords (`entry`), validates password combinations,
-    and generates a WPA-PSK hash to compare it with the given hash (`hash_input`)
-    '''
+    and generates a WPA-PSK hash to compare it with the given hash (`hash_input`) '''
     backup_password_list = password_list
     validation_str,password_list = self.validate_and_transform_entry(password_list)
     for keyword in password_list:
@@ -451,9 +418,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   def crack_wpa_psk(self, hash_input, ssid):
-    '''
-    Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.
-    '''
+    '''Crack a WPA-PSK hash using PBKDF2-HMAC-SHA1.'''
     wpa_psk = True
     data = b''
     keyBin = b''
@@ -483,11 +448,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
   
   def show_help(self):
-             '''
-                Method that displays a help menu
-             '''
-             print("Hasher 1.0. Tool for cracking multiple hashes.")
-             print("""
+       '''   Method that displays a help menu  '''
+       print("Hasher 1.0. Tool for cracking multiple hashes.")
+       print("""
 Usage:
      python3 Hasher.py
      python3 Hasher.py -sk   parameter to enter the shake-128 hash
@@ -519,13 +482,11 @@ Help Menu:
 |wpa-psk    |
 |NTLM       |
  ----------
-                    """)
+             """)
 
 
   def cracking_selection(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
-     '''
-        Allows the user to choose which hash to crack
-     '''
+     ''' Allows the user to choose which hash to crack '''
      valid_hashes = {
      "shake-128": "shake-128",
      "shake-256": "shake-256",
@@ -555,9 +516,7 @@ Wait, this may take a while
      return
 
   def process_secure_hash(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
-       '''
-       reports that a secure hash is being cracked
-       '''
+       ''' reports that a secure hash is being cracked '''
        print(f"Type hash: {hash}")
        print(f"{hash.capitalize()}: Use small dictionaries for secure hashing")
        sleep(4)
@@ -566,9 +525,7 @@ Wait, this may take a while
 
 
   def auxiliary_main(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
-     '''
-     Helper function to validation shake hash
-     '''
+     ''' Helper function to validation shake hash '''
      if hash_input:
        if len(hash_input) >= 1 and len(hash_input) <= 4090:
          self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
@@ -583,9 +540,7 @@ Wait, this may take a while
        
 
   def parse_auxiliary_arguments(self,hash,hash_algorithm_map):
-     '''
-      Helper function that handles input arguments "-h,--help,-sk,-sk2,-wpk"
-     '''
+     ''' Helper function that handles input arguments "-h,--help,-sk,-sk2,-wpk" '''
      if "-h" in argv or "--help" in argv:
                self.show_help()
                exit(2)
@@ -628,9 +583,7 @@ Wait, this may take a while
 
 
   def main(self):
-   '''
-      Performs tasks based on what the user selects
-   '''
+   ''' Performs tasks based on what the user selects  '''
    try:
     hash_algorithm_map = None
     hash = ''   
