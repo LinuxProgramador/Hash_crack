@@ -383,9 +383,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      return
 
   def process_wpa_passwords(self,password_list,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
-    '''passwords using the PBKDF2-HMAC-SHA1 algorithm.
-    This method processes a list of potential passwords (`entry`), validates password combinations,
-    and generates a WPA-PSK hash to compare it with the given hash (`hash_input`) '''
+    ''' This method processes a list of passwords, converts them into hashes, and compares them with the hash to be decrypted '''
     backup_password_list = password_list
     validation_str,password_list = self.validate_and_transform_entry(password_list)
     for keyword in password_list:
