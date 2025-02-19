@@ -238,7 +238,7 @@ def main(hashes, count):
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha256']:
             print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n4)- wpa-psk\n5)- shake-128\n6)- shake-256")
-            hash_algorithm_map = {"1": "sha256", "2": "sha3_256", "3": "blake2s", "4": "wpa-psk", "5": "shake-128", "6": "shake-256"}
+            hash_algorithm_map = {"1": "sha256", "2": "sha3_256", "3": "blake2s", "4": "", "5": "shake-128", "6": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha512']:
             print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n4)- shake-128\n5)- shake-256")
