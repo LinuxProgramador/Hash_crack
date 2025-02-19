@@ -394,7 +394,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             keyclean = keyword
          password = keyclean
          if combined == "y":
-            password = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
+            password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
          # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
          derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
