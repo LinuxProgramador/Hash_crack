@@ -231,7 +231,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
 
   def auxiliary_crack(self,password,wpa_psk,ssid):
-    ''' Helper function that will show the correct key '''    
+   ''' Helper function that will show the correct key '''    
    print("\n{***********************SUCCESS***********************}")
    if wpa_psk:
      print(f"[✓] SSID: {ssid}")
