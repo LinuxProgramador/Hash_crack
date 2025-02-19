@@ -189,7 +189,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
            else:
                  print("Invalid option!")
                  exit(2)
-      return
+     return
 
   def approximate_duration(self):
      '''  Method that calculates the approximate duration of the crack based on the size of the dictionary '''
