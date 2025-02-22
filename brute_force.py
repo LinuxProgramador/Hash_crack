@@ -209,7 +209,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
             print("You did not enter the requested data!")
             exit(2)
 
-def main(hashes, count):
+def main(count):
     """Identifies the hash type based on length and format, then attempts to crack it."""
     global is_fast_mode
 
@@ -271,6 +271,6 @@ def main(hashes, count):
         print(f"Type error: {e}")
 
 if __name__ == "__main__":
-    main(hashes, 0)
+    main(0)
 
 __status__ = "Finish"
