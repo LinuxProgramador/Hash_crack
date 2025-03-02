@@ -33,6 +33,8 @@ RARNinja: https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility
 
 Rockyou Dictionary 2023 download link: https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt&ved=2ahUKEwjL6oTfvdKKAxUdSDABHe3UMvwQFnoECBoQAQ&usg=AOvVaw3snAERl1mU6Ccr4WFEazBd 
 
+Link to the most commonly used dictionaries: https://github.com/kkrypt0nn/wordlists
+
 Installation:
 
     cd ~
