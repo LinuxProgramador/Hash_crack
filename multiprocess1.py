@@ -42,7 +42,11 @@ def get_encoder():
 def crack(target_hash, word, select, event, queue):
     data = word.encode()
 
-    if select == "ntlm":
+    if select == "MySQL 8.0":
+       password_bytes = word.encode(encoder)
+       hash_bytes = sha256(password_bytes).digest()
+       generated_hash = "*" + hash_bytes.hex().upper()
+    elif select == "ntlm":
         password_utf16 = word.encode('utf-16le')
         hash_obj = MD4.new()
         hash_obj.update(password_utf16)
