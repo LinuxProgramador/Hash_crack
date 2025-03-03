@@ -196,7 +196,8 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
     valid_hashes = {
         "sha256crypt": "sha256crypt",
         "sha512crypt": "sha512crypt",
-        "bcrypt": "bcrypt"
+        "bcrypt": "bcrypt",
+        "MySQL 8.0":"MySQL 8.0"
     }
     select = valid_hashes.get(hash, None)
 
