@@ -476,6 +476,7 @@ Help Menu:
 |shake-256  |
 |wpa-psk    |
 |NTLM       |
+|MySQL 8.0  |
  ----------
              """)
 
@@ -487,7 +488,8 @@ Help Menu:
      "shake-256": "shake-256",
      "sha256crypt": "sha256crypt",
      "sha512crypt": "sha512crypt",
-     "bcrypt": "bcrypt"
+     "bcrypt": "bcrypt",
+     "MySQL 8.0":"MySQL 8.0"
      }
      select = valid_hashes.get(hash, None)
      if not select:
