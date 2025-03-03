@@ -254,6 +254,8 @@ def main(count):
             cracking_selection(count, hash_input, "sha256crypt", wait_time, "")
         elif "$6" in hash_input[0:2]:
             cracking_selection(count, hash_input, "sha512crypt", wait_time, "")
+        elif "*" in hash_input[0]:
+             cracking_selection(count, hash_input, "MySQL 8.0", wait_time, "")
         else:
             if hash_input:
                 consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
