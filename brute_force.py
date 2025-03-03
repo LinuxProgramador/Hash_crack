@@ -119,8 +119,12 @@ def crack(count, hash_input, select, wait_time):
         if count == 300000 and wait_time == "y":
             count = 0
             sleep(15)
-
-        if select == "NTLM":
+            
+        if select == "MySQL 8.0":
+            password_bytes = password.encode('utf-8')
+            hash_bytes = sha256(password_bytes).digest()
+            validation("*" + hash_bytes.hex().upper(), hash_input, password, wpa_psk, ssid)
+        elif select == "NTLM":
             password_utf16 = password.encode('utf-16le')
             hash = MD4.new()
             hash.update(password_utf16)
