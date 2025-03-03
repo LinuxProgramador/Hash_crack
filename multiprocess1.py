@@ -140,7 +140,7 @@ def get_hash_algorithm(target_hash):
         return get_hash_selection(["sha256", "sha3_256", "blake2s", "shake-128", "shake-256"])
     elif hash_length == HASH_ALGORITHMS['length_sha512']:
         return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256"])
-    elif "*" in target_hash[0]:
+    elif "*" in target_hash[0:1]:
         return "MySQL 8.0"
     else:
         consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
