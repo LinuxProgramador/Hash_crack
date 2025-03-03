@@ -287,8 +287,16 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           if combined == "y":
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
+
+          #MySQL 8.0 hash check
+          if select == "MySQL 8.0":
+            password_bytes = password.encode(self.encoder)
+            hash_bytes = sha256(password_bytes).digest()
+            self.validation("*" + hash_bytes.hex().upper(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+
+        
           #NTLM hash check
-          if select == "NTLM":
+          elif select == "NTLM":
               password_utf16 = password.encode('utf-16le')
               hash = MD4.new()
               hash.update(password_utf16)
