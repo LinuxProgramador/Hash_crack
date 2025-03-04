@@ -42,7 +42,7 @@ def get_encoder():
 def crack(target_hash, word, select, event, queue):
     data = word.encode()
 
-    if select == "MySQL 8.0":
+    if select == "MySQL 5.X":
        password_bytes = word.encode(encoder)
        hash_bytes = sha256(password_bytes).digest()
        generated_hash = "*" + hash_bytes.hex().upper()
@@ -141,7 +141,7 @@ def get_hash_algorithm(target_hash):
     elif hash_length == HASH_ALGORITHMS['length_sha512']:
         return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256"])
     elif "*" in target_hash[0:1]:
-        return "MySQL 8.0"
+        return "MySQL 5.X"
     else:
         consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
         if consultation == "y":
