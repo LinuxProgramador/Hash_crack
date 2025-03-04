@@ -93,7 +93,7 @@ Supported Hashes:
 
     NTLM 
 
-    MySQL 8.0
+    MySQL 5.X
 
 
 Important Notes: 
