@@ -101,7 +101,7 @@ split -b 100M rockyou.txt
 
 Options:
 1) Use this option for fast hashes such as MySQL 5.X, MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
-2) Use this option for slow hashes such as bcrypt, shaCrypt, or WPA-PSK.
+2) Use this option for slow hashes such as bcrypt, md5crypt, shaCrypt, or WPA-PSK.
 
 WARNING: On 4-core only systems, may slow down your computer 
 Additional INFO: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
@@ -488,6 +488,7 @@ Help Menu:
 |wpa-psk    |
 |NTLM       |
 |MySQL 5.X  |
+|md5crypt   |
  ----------
              """)
 
@@ -499,6 +500,7 @@ Help Menu:
      "shake-256": "shake-256",
      "sha256crypt": "sha256crypt",
      "sha512crypt": "sha512crypt",
+     "md5crypt":"md5crypt",
      "bcrypt": "bcrypt",
      "MySQL 5.X":"MySQL 5.X"
      }
