@@ -24,6 +24,7 @@ hashes = {
     'blake2s': blake2s,
     'sha256crypt': sha256_crypt,
     'sha512crypt': sha512_crypt,
+    'md5crypt': md5_crypt,
     'length_bcrypt': 60,
     'length_md5': 32,
     'length_sha1': 40,
@@ -141,16 +142,11 @@ def crack(count, hash_input, select, wait_time):
             shake.update(data)
             calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
             validation(calculated_hash, hash_input, password, wpa_psk, ssid)
-        elif select in ["sha256crypt", "sha512crypt"]:
+        elif select in ["sha256crypt", "sha512crypt","md5crypt"]:
             if hashes[select].verify(password, hash_input):
                 auxiliary_crack(password, wpa_psk, ssid)
             elif is_fast_mode != "y":
                 print(f"[*] Trying password: {password}")
-        elif select == "md5crypt":
-              if md5_crypt.verify(password, hash_input):
-                 auxiliary_crack(password, wpa_psk, ssid)
-              elif is_fast_mode != "y":
-                 print(f"[*] Trying password: {password}")
         elif select == "bcrypt":
             if checkpw(data, bytes(hash_input, encoding="utf-8")):
                 auxiliary_crack(password, wpa_psk, ssid)
