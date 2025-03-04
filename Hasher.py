@@ -100,7 +100,7 @@ INFO: Use the following command to split a large dictionary into 100 MB chunks o
 split -b 100M rockyou.txt
 
 Options:
-1) Use this option for fast hashes such as MySQL 8.0, MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
+1) Use this option for fast hashes such as MySQL 5.X, MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
 2) Use this option for slow hashes such as bcrypt, shaCrypt, or WPA-PSK.
 
 WARNING: On 4-core only systems, may slow down your computer 
@@ -288,8 +288,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
 
-          #MySQL 8.0 hash check
-          if select == "MySQL 8.0":
+          #MySQL 5.X hash check
+          if select == "MySQL 5.X":
             password_bytes = password.encode(self.encoder)
             hash_bytes = sha256(password_bytes).digest()
             self.validation("*" + hash_bytes.hex().upper(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
@@ -476,7 +476,7 @@ Help Menu:
 |shake-256  |
 |wpa-psk    |
 |NTLM       |
-|MySQL 8.0  |
+|MySQL 5.X  |
  ----------
              """)
 
@@ -489,7 +489,7 @@ Help Menu:
      "sha256crypt": "sha256crypt",
      "sha512crypt": "sha512crypt",
      "bcrypt": "bcrypt",
-     "MySQL 8.0":"MySQL 8.0"
+     "MySQL 5.X":"MySQL 5.X"
      }
      select = valid_hashes.get(hash, None)
      if not select:
@@ -628,7 +628,7 @@ lengths and combinations with option 2\"
              hash = "sha512crypt"
              self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "*" in hash_input[0:1]:
-             hash = "MySQL 8.0"
+             hash = "MySQL 5.X"
              print(f"Type hash: {hash}")
              sleep(2)
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
