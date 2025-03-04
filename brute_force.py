@@ -261,6 +261,8 @@ def main(count):
             cracking_selection(count, hash_input, "sha256crypt", wait_time, "")
         elif "$6" in hash_input[0:2]:
             cracking_selection(count, hash_input, "sha512crypt", wait_time, "")
+        elif "$1" in hash_input[0:2]:
+             cracking_selection(count, hash_input, "md5crypt", wait_time, "")
         elif "*" in hash_input[0:1]:
              cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "")
         else:
