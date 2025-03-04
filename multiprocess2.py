@@ -84,6 +84,8 @@ def main():
             select = "sha256crypt"
         elif target_hash.startswith("$6"):
             select = "sha512crypt"
+        elif target_hash.startswith("$1"):
+             select = "md5crypt"
         elif len(target_hash) == 64:
             select = "wpa-psk"
         else:
