@@ -44,8 +44,9 @@ def crack(target_hash, word, select, event, queue):
 
     if select == "MySQL 5.X":
        password_bytes = word.encode(encoder)
-       hash_bytes = sha256(password_bytes).digest()
-       generated_hash = "*" + hash_bytes.hex().upper()
+       hash_bytes = sha1(password_bytes).digest()
+       second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
+       generated_hash =  "*" + second_hash_encoding
     elif select == "ntlm":
         password_utf16 = word.encode('utf-16le')
         hash_obj = MD4.new()
