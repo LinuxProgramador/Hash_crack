@@ -41,6 +41,7 @@ class Hash_crack:
     'blake2s':blake2s,
     'sha256crypt':sha256_crypt,
     'sha512crypt':sha512_crypt,
+    'md5crypt':md5_crypt,
     'length_bcrypt':60,
     'length_md5':32,
     'length_sha1':40,
@@ -320,22 +321,13 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
              self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
-          #checking shacrypt hashes
+          #checking shacrypt and md5crypt hashes
           #It's a slow hash
-          elif select in ["sha256crypt","sha512crypt"]:
+          elif select in ["sha256crypt","sha512crypt","md5crypt"]:
              crackTimeEstimate = 'time unknown'
              if self.hash[select].verify(password, hash_input):
                 self.auxiliary_crack(password,wpa_psk,ssid)
              else:
-                self.faster(is_fast_mode,crackTimeEstimate,password)
-
-
-          #checking md5crypt hash
-          #It's a slow hash
-          elif select == "md5crypt":
-              if md5_crypt.verify(password, hash_input):
-                 self.auxiliary_crack(password,wpa_psk,ssid)
-              else:
                 self.faster(is_fast_mode,crackTimeEstimate,password)
 
 
