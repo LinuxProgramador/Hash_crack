@@ -120,7 +120,7 @@ def crack(count, hash_input, select, wait_time):
             count = 0
             sleep(15)
             
-        if select == "MySQL 8.0":
+        if select == "MySQL 5.X":
             password_bytes = password.encode('utf-8')
             hash_bytes = sha256(password_bytes).digest()
             validation("*" + hash_bytes.hex().upper(), hash_input, password, wpa_psk, ssid)
@@ -197,7 +197,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
         "sha256crypt": "sha256crypt",
         "sha512crypt": "sha512crypt",
         "bcrypt": "bcrypt",
-        "MySQL 8.0":"MySQL 8.0"
+        "MySQL 5.X":"MySQL 5.X"
     }
     select = valid_hashes.get(hash, None)
 
@@ -255,7 +255,7 @@ def main(count):
         elif "$6" in hash_input[0:2]:
             cracking_selection(count, hash_input, "sha512crypt", wait_time, "")
         elif "*" in hash_input[0:1]:
-             cracking_selection(count, hash_input, "MySQL 8.0", wait_time, "")
+             cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "")
         else:
             if hash_input:
                 consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
