@@ -95,6 +95,8 @@ Supported Hashes:
 
     MySQL 5.X
 
+    MD5CRYPT
+
 
 Important Notes: 
 
