@@ -10,7 +10,8 @@ from time import sleep
 
 hashes = {
     'sha256crypt': sha256_crypt,
-    'sha512crypt': sha512_crypt
+    'sha512crypt': sha512_crypt,
+    'md5crypt': md5_crypt
 }
 
 def get_encoder():
