@@ -31,7 +31,8 @@ def crack(target_hash, word, select, ssid, found, queue, encoder):
             queue.put(f"Key found: {word}")
             found.set()
     elif select in hashes:
-        sleep(0.4)
+        if select == 'sha512crypt':
+           sleep(0.4)
         if hashes[select].verify(word, target_hash):
             queue.put(f"Key found: {word}")
             found.set()
