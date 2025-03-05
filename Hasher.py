@@ -482,6 +482,7 @@ Help Menu:
 |NTLM       |
 |MySQL 5.X  |
 |md5crypt   |
+|apr1       |
  ----------
              """)
 
