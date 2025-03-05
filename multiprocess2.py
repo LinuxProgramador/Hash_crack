@@ -3,7 +3,7 @@
 import multiprocessing
 from hashlib import pbkdf2_hmac
 from sys import exit, argv
-from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt
+from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt
 from os import path, system
 from bcrypt import checkpw
 from time import sleep
