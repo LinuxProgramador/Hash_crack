@@ -638,6 +638,9 @@ lengths and combinations with option 2\"
     elif "$1" in hash_input[0:2]:
              hash = "md5crypt"
              self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
+    elif "$apr1" in hash_input[0:5]:
+            hash = "apr1"
+            self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "*" in hash_input[0:1]:
              hash = "MySQL 5.X"
              print(f"Type hash: {hash}")
