@@ -495,6 +495,7 @@ Help Menu:
      "sha256crypt": "sha256crypt",
      "sha512crypt": "sha512crypt",
      "md5crypt":"md5crypt",
+     "apr1":"apr1",
      "bcrypt": "bcrypt",
      "MySQL 5.X":"MySQL 5.X"
      }
