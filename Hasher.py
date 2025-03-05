@@ -9,7 +9,7 @@ from sys import argv,exit
 from os import system,path,remove
 from time import sleep
 from getpass import getuser
-from passlib.hash import sha256_crypt,sha512_crypt,md5_crypt
+from passlib.hash import sha256_crypt,sha512_crypt,md5_crypt,apr_md5_crypt
 from bcrypt import checkpw
 
 class Hash_crack:
