@@ -511,7 +511,7 @@ Help Menu:
 Wait, this may take a while
 *****************************
                    """)
-     if select in ["md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
+     if select in ["apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
      self.display_cracking_message(is_fast_mode)
      sleep(2)
