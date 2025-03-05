@@ -42,6 +42,7 @@ class Hash_crack:
     'sha256crypt':sha256_crypt,
     'sha512crypt':sha512_crypt,
     'md5crypt':md5_crypt,
+    'apr1':apr_md5_crypt,
     'length_bcrypt':60,
     'length_md5':32,
     'length_sha1':40,
