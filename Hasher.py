@@ -322,7 +322,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
              self.validation(calculated_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
-          #checking shacrypt and md5crypt hashes
+          #checking shacrypt,md5crypt and apr1 hashes
           #It's a slow hash
           elif select in ["sha256crypt","sha512crypt","md5crypt"]:
              crackTimeEstimate = 'time unknown'
