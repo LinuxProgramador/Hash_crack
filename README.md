@@ -97,6 +97,8 @@ Supported Hashes:
 
     MD5CRYPT
 
+    APR1
+
 
 Important Notes: 
 
