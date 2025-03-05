@@ -89,7 +89,7 @@ def main():
             select = "sha512crypt"
         elif target_hash.startswith("$1"):
              select = "md5crypt"
-        elif "$apr1" in hash_input[0:5]:
+        elif target_hash.startswith("$apr1"):
             select = "apr1"
         elif len(target_hash) == 64:
             select = "wpa-psk"
