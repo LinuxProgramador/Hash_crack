@@ -557,6 +557,7 @@ Wait, this may take a while
            offset = int(encrypted[:2])
         except ValueError:
            raise ValueError("Invalid encryption format. The first two characters must be a number")
+           exit(2)
         decrypted = ""
         for i in range(2, len(encrypted), 2):
            byte = int(encrypted[i:i+2], 16)
