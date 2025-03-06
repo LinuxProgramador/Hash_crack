@@ -521,7 +521,7 @@ Help Menu:
        if select == "NTLMv2":
            global username, domain
            username = input("Enter username: ")
-           domain = input("Enter the domain")
+           domain = input("Enter the domain: ")
      sleep(1)
      system("clear")
      print("""
