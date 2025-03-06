@@ -551,7 +551,7 @@ Wait, this may take a while
                exit(2)
        
      elif "-ct7" in argv:
-        print("The key must be in this format and include two numbers at the beginning")
+        print("The key must be in this hexadecimal format and include two numbers at the beginning")
         print("Example: \"0709285E4B1E18091B5C0814\"")
         encrypted = input("Enter the encrypted key: ").strip()
         key = "dsfd;kfoA,.iyewrkldJKD"
