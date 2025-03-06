@@ -559,7 +559,7 @@ Wait, this may take a while
            byte = int(encrypted[i:i+2], 16)
            key_index = (offset + (i - 2) // 2) % len(key)
            decrypted += chr(byte ^ ord(key[key_index]))
-        print(decrypted)
+        print(f"Password Found => {decrypted}")
         exit(2)
        
      elif "-sk" in argv:
