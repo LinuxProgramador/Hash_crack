@@ -496,6 +496,7 @@ Help Menu:
 |md5crypt   |
 |apr1       |
 |CiscoType7 |
+|NTLMv2     |
  ----------
              """)
 
