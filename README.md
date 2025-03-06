@@ -99,6 +99,8 @@ Supported Hashes:
 
     APR1
 
+    CISCO TYPE 7 
+
 
 Important Notes: 
 
