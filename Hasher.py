@@ -548,6 +548,22 @@ Wait, this may take a while
      if any( help in argv for help in ["-h","--help"]):
                self.show_help()
                exit(2)
+       
+     elif "-ct7" in argv:
+        encrypted = input("Enter the encrypted key: ").strip()
+        key = "dsfd;kfoA,.iyewrkldJKD"
+        try:
+           offset = int(encrypted[:2])
+        except ValueError:
+           raise ValueError("Invalid encryption format. The first two characters must be a number")
+        decrypted = ""
+        for i in range(2, len(encrypted), 2):
+           byte = int(encrypted[i:i+2], 16)
+           key_index = (offset + (i - 2) // 2) % len(key)
+           decrypted += chr(byte ^ ord(key[key_index]))
+        print(decrypted)
+        exit(2)
+       
      elif "-sk" in argv:
          combined,is_fast_mode,wait_time = self.get_cracking_parameters()
          hash_input=input("Enter the hash shake-128: ").strip()
