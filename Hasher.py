@@ -305,6 +305,16 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               hash = MD4.new()
               hash.update(password_utf16)
               self.validation(hash.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            
+
+          #NTLMv2 hash check
+          elif select == "NTLMv2":
+             password_bytes = password.encode('utf-16le')
+             hash = MD4.new()
+             hash.update(password_bytes)
+             identity = (username.upper() + domain.upper()).encode('utf-16le')
+             ntlmv2_hash = new(hash.digest(), identity, md5).digest()
+             self.validation(ntlmv2_hash.hex(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
         
           #md5 hash check
