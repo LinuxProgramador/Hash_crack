@@ -49,7 +49,7 @@ Installation:
 
 To access the help menu and option parameters:
 
-python3 Hasher.py [-h,--help,-sk,-sk2,-wpk] 
+python3 Hasher.py [-h,--help,-sk,-sk2,-wpk,-ct7] 
 
 Supported Hashes:
 
