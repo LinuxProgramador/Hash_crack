@@ -483,6 +483,7 @@ Help Menu:
 |MySQL 5.X  |
 |md5crypt   |
 |apr1       |
+|CiscoType7 |
  ----------
              """)
 
