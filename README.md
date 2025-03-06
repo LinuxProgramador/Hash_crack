@@ -101,6 +101,8 @@ Supported Hashes:
 
     CISCO TYPE 7 
 
+    NTLMV2 
+
 
 Important Notes: 
 
