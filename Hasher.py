@@ -17,7 +17,7 @@ class Hash_crack:
 
   def __init__(self):
     try:
-     if not any( help in argv for help in ["-h","--help"]):
+     if not any( help in argv for help in ["-h","--help"]) or not "-ct7" in argv:
       print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
       print("1) latin-1\n2) utf-8")
       encoder_text = input("option: ").strip()
@@ -553,11 +553,7 @@ Wait, this may take a while
      elif "-ct7" in argv:
         encrypted = input("Enter the encrypted key: ").strip()
         key = "dsfd;kfoA,.iyewrkldJKD"
-        try:
-           offset = int(encrypted[:2])
-        except ValueError:
-           raise ValueError("Invalid encryption format. The first two characters must be a number")
-           exit(2)
+        offset = int(encrypted[:2])
         decrypted = ""
         for i in range(2, len(encrypted), 2):
            byte = int(encrypted[i:i+2], 16)
