@@ -520,8 +520,8 @@ Help Menu:
            select = hash_algorithm_map.get(select, None)
        if select == "NTLMv2":
            global username, domain
-           username = input("Enter username: ")
-           domain = input("Enter the domain: ")
+           username = input("Enter username: ").strip()
+           domain = input("Enter the domain: ").strip()
      sleep(1)
      system("clear")
      print("""
