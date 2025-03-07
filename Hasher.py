@@ -64,10 +64,10 @@ class Hash_crack:
       print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
       print("1) latin-1\n2) utf-8")
       encoder_text = input("option: ").strip()
-      self.encoder = "latin-1" if encoder_text == "1" else "utf-8"
+      encoder = "latin-1" if encoder_text == "1" else "utf-8"
       sleep(1)
       system("clear")
-      
+    return encoder
 
   def banner(self):
         '''  Method where the baneer is established '''
@@ -627,7 +627,7 @@ Wait, this may take a while
   def main(self):
    ''' Performs tasks based on what the user selects  '''
    try:
-    self.get_encoder()
+    self.encoder = self.get_encoder()
     hash_algorithm_map = None
     hash = ''   
     self.parse_auxiliary_arguments(hash,hash_algorithm_map)
