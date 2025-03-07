@@ -103,6 +103,7 @@ Supported Hashes:
 
     NTLMV2 
 
+    DCC2
 
 Important Notes: 
 
