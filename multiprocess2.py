@@ -12,6 +12,7 @@ hashes = {
     'sha256crypt': sha256_crypt,
     'sha512crypt': sha512_crypt,
     'md5crypt': md5_crypt,
+    'DCC2': msdcc2,
     'apr1':apr_md5_crypt
 }
 
