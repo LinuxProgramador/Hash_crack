@@ -17,17 +17,6 @@ class Hash_crack:
   '''  Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects '''
 
   def __init__(self):
-    try:
-     if not any( help in argv for help in ["-h","--help","-ct7"]):
-      print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
-      print("1) latin-1\n2) utf-8")
-      encoder_text = input("option: ").strip()
-      self.encoder = "latin-1" if encoder_text == "1" else "utf-8"
-      sleep(1)
-      system("clear")
-    except KeyboardInterrupt:
-         print("BYE!!")   
-         exit(2)
     self.hash = {
     'sha1':sha1,
     'sha224':sha224,
@@ -67,6 +56,18 @@ class Hash_crack:
     self.previous_password = ''
     self.previous_password_bin = b''
     self.attempt_count = 0
+    
+
+  def get_encoder(self):
+    ''' The user is asked to choose a text encoder '''
+    if not any( help in argv for help in ["-h","--help","-ct7"]):
+      print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
+      print("1) latin-1\n2) utf-8")
+      encoder_text = input("option: ").strip()
+      self.encoder = "latin-1" if encoder_text == "1" else "utf-8"
+      sleep(1)
+      system("clear")
+      
 
   def banner(self):
         '''  Method where the baneer is established '''
@@ -626,6 +627,7 @@ Wait, this may take a while
   def main(self):
    ''' Performs tasks based on what the user selects  '''
    try:
+    self.get_encoder()
     hash_algorithm_map = None
     hash = ''   
     self.parse_auxiliary_arguments(hash,hash_algorithm_map)
