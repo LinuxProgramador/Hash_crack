@@ -60,6 +60,7 @@ class Hash_crack:
 
   def get_encoder(self):
     ''' The user is asked to choose a text encoder '''
+    encoder = ''
     if not any( help in argv for help in ["-h","--help","-ct7"]):
       print("INFO: For compatibility reasons with certain symbols, Do you choose encoder:")
       print("1) latin-1\n2) utf-8")
