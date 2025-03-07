@@ -345,7 +345,15 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              else:
                 self.faster(is_fast_mode,crackTimeEstimate,password)
 
+          #DCC2 hash check
+          elif select == "DCC2":
+              crackTimeEstimate = 'time unknown'
+              if self.hash[select].verify(password, hash_input, user):
+                 self.auxiliary_crack(password,wpa_psk,ssid)
+              else:
+                 self.faster(is_fast_mode,crackTimeEstimate,password)
 
+        
           #bcrypt hash check
           #It's a slow hash
           elif select == "bcrypt":
