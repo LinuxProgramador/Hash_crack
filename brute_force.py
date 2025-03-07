@@ -243,7 +243,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
                 user = input("Enter username: ").strip()
                 if user:
                    break
-                if not user:
+              if not user:
                    exit(2)
             crack(count, hash_input, select, wait_time)
         else:
