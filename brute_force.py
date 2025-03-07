@@ -9,6 +9,7 @@ from hashlib import md5, sha1, sha224, sha384, sha256, sha512, sha3_256, sha3_22
 from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt
 from bcrypt import checkpw
 from hashlib import pbkdf2_hmac
+from hmac import new
 
 hashes = {
     'sha1': sha1,
