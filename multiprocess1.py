@@ -53,6 +53,13 @@ def crack(target_hash, word, select, event, queue):
         hash_obj = MD4.new()
         hash_obj.update(password_utf16)
         generated_hash = hash_obj.hexdigest()
+    elif select == "ntlmv2":
+        password_bytes = word.encode('utf-16le')
+        hash = MD4.new()
+        hash.update(password_bytes)
+        identity = (username.upper() + domain.upper()).encode('utf-16le')
+        ntlmv2_hash = new(hash.digest(), identity, md5).digest()
+        generated_hash = ntlmv2_hash.hex()
     elif select == "md5":
         generated_hash = md5(data).hexdigest()
     elif select in HASH_ALGORITHMS:
