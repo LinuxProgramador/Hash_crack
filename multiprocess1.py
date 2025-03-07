@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import multiprocessing
+from multiprocessing import Process,Queue,Event
 from Crypto.Hash import RIPEMD160, MD4
 from hashlib import md5, sha1, sha224, sha384, sha256, sha512, sha3_256, sha3_224, sha3_384, sha3_512, blake2s, blake2b, shake_128, shake_256
 from sys import exit, argv
@@ -33,13 +33,9 @@ def get_encoder():
     print("INFO: For compatibility reasons with certain symbols, choose your encoder:")
     print("1) latin-1\n2) utf-8")
     encoder_text = input("option: ")
-    if encoder_text == "1":
-        return "latin-1"
-    elif encoder_text == "2":
-        return "utf-8"
-    else:
-        return "latin-1"
-
+    select_encoder = "latin-1" if encoder_text == "1" else "utf-8"
+    return select_encoder
+    
 def crack(target_hash, word, select, event, queue):
     data = word.encode()
 
@@ -104,13 +100,13 @@ def check_hash(file_path, target_hash, select, event, queue, wait_time, chunk_si
         print(f"Processing error {file_path}: {e}")
 
 def process_files(file_paths, target_hash, select, wait_time):
-    event = multiprocessing.Event()
-    queue = multiprocessing.Queue()
+    event = Event()
+    queue = Queue()
 
     print("Starting parallel checking...")
 
     processes = [
-        multiprocessing.Process(target=check_hash, args=(file_path, target_hash, select, event, queue, wait_time))
+        Process(target=check_hash, args=(file_path, target_hash, select, event, queue, wait_time))
         for file_path in file_paths
     ]
 
