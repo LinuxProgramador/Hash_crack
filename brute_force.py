@@ -157,6 +157,12 @@ def crack(count, hash_input, select, wait_time):
                 auxiliary_crack(password, wpa_psk, ssid)
             elif is_fast_mode != "y":
                 print(f"[*] Trying password: {password}")
+        elif select == "DCC2":
+              crackTimeEstimate = 'time unknown'
+              if self.hash[select].verify(password, hash_input, user):
+                 self.auxiliary_crack(password,wpa_psk,ssid)
+              else:
+                 self.faster(is_fast_mode,crackTimeEstimate,password)
         elif select == "bcrypt":
             if checkpw(data, bytes(hash_input, encoding="utf-8")):
                 auxiliary_crack(password, wpa_psk, ssid)
