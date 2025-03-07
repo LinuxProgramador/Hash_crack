@@ -539,6 +539,14 @@ Help Menu:
                 break
            if not username and not domain:
               exit(2)
+       elif select == "DCC2":
+           global user
+           for _ in range(2):
+              user = input("Enter username: ").strip()
+              if user:
+                break
+           if not user:
+              exit(2)
      sleep(1)
      system("clear")
      print("""
@@ -546,7 +554,7 @@ Help Menu:
 Wait, this may take a while
 *****************************
                    """)
-     if select in ["NTLMv2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
+     if select in ["DCC2","NTLMv2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
      self.display_cracking_message(is_fast_mode)
      sleep(2)
