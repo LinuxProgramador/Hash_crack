@@ -222,6 +222,15 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
             crack_wpa_psk(count, hash_input, wait_time)
         elif select in hash_algorithm_map:
             select = hash_algorithm_map.get(select, None)
+            if select == "NTLMv2":
+                global username, domain
+                for _ in range(2):
+                   username = input("Enter username: ").strip()
+                   domain = input("Enter the domain: ").strip()
+                   if username and domain:
+                      break
+                if not username and not domain:
+                   exit(2)
             crack(count, hash_input, select, wait_time)
         else:
             print("You did not enter the requested data!")
@@ -232,7 +241,7 @@ def main(count):
     global is_fast_mode
 
     try:
-        print("INFO: \"bcrypt/shacrypt/md5crypt/apr1/wpa-psk/ripemd-160/ntlm\" hashes tend to take longer to decrypt.")
+        print("INFO: \"bcrypt/shacrypt/md5crypt/apr1/wpa-psk/ripemd-160/ntlm/ntlmv2\" hashes tend to take longer to decrypt.")
         is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
         hash_input = input("Enter the hash to decrypt: ").strip()
