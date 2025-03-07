@@ -138,7 +138,17 @@ def process_files(file_paths, target_hash, select, wait_time):
 def get_hash_algorithm(target_hash):
     hash_length = len(target_hash)
     if hash_length == HASH_ALGORITHMS['length_md5']:
-        return get_hash_selection(["md5", "ntlm", "shake-128", "shake-256", "ntlmv2"])
+        select = get_hash_selection(["md5", "ntlm", "shake-128", "shake-256", "ntlmv2"])
+        if select == "ntlmv2":
+          global username, domain
+          for _ in range(2):
+            username = input("Enter username: ").strip()
+            domain = input("Enter the domain: ").strip()
+            if username and domain:
+               break
+          if not username and not domain:
+               exit(0)
+        return select
     elif hash_length == HASH_ALGORITHMS['length_sha1']:
         return get_hash_selection(["sha1", "ripemd-160", "shake-128", "shake-256"])
     elif hash_length == HASH_ALGORITHMS['length_sha224']:
@@ -164,15 +174,6 @@ def get_hash_selection(options):
     for i, option in enumerate(options, 1):
         print(f"{i}) {option}")
     select = input("option: ").strip()
-    if select == "ntlmv2":
-       global username, domain
-       for _ in range(2):
-          username = input("Enter username: ").strip()
-          domain = input("Enter the domain: ").strip()
-          if username and domain:
-             break
-       if not username and not domain:
-             exit(0)
     try:
         return options[int(select) - 1]
     except (IndexError, ValueError):
