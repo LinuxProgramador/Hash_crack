@@ -158,7 +158,7 @@ def crack(count, hash_input, select, wait_time):
             elif is_fast_mode != "y":
                 print(f"[*] Trying password: {password}")
         elif select == "DCC2":
-            if self.hash[select].verify(password, hash_input, user):
+            if hashes[select].verify(password, hash_input, user):
                 auxiliary_crack(password, wpa_psk, ssid)
             elif is_fast_mode != "y":
                 print(f"[*] Trying password: {password}")
