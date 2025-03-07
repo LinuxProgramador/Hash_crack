@@ -133,6 +133,13 @@ def crack(count, hash_input, select, wait_time):
             hash = MD4.new()
             hash.update(password_utf16)
             validation(hash.hexdigest(), hash_input, password, wpa_psk, ssid)
+        elif select == "NTLMv2":
+             password_bytes = password.encode('utf-16le')
+             hash = MD4.new()
+             hash.update(password_bytes)
+             identity = (username.upper() + domain.upper()).encode('utf-16le')
+             ntlmv2_hash = new(hash.digest(), identity, md5).digest()
+             validation(ntlmv2_hash.hex(), hash_input, password, wpa_psk, ssid)
         elif select == "md5":
             encryption = md5(password.encode("utf-8")).hexdigest()
             validation(encryption, hash_input, password, wpa_psk, ssid)
