@@ -662,7 +662,7 @@ lengths and combinations with option 2\"
     combined,is_fast_mode,wait_time = self.get_cracking_parameters()
     hash_input=input("Enter the hash to decrypt: ").strip()
     if len(hash_input) == self.hash['length_md5']:
-             print("Type hash:\n1)- md5\n2)- NTLM\n3)- NTLMv2")
+             print("Type hash:\n1)- md5\n2)- NTLM\n3)- NTLMv2\n4)- DCC2")
              hash_algorithm_map ={"1":"md5","2":"NTLM","3":"NTLMv2"}
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha1']:
