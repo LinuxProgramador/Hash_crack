@@ -262,7 +262,7 @@ def main(count):
         hash_input = input("Enter the hash to decrypt: ").strip()
 
         if len(hash_input) == hashes['length_md5']:
-            print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256\n5)- NTLMv2")
+            print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256\n5)- NTLMv2\n6)- DCC2")
             hash_algorithm_map = {"1": "md5", "2": "NTLM", "3": "shake-128", "4": "shake-256", "5": "NTLMv2"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha1']:
