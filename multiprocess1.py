@@ -164,6 +164,15 @@ def get_hash_selection(options):
     for i, option in enumerate(options, 1):
         print(f"{i}) {option}")
     select = input("option: ").strip()
+    if select == "ntlmv2":
+       global username, domain
+       for _ in range(2):
+          username = input("Enter username: ").strip()
+          domain = input("Enter the domain: ").strip()
+          if username and domain:
+             break
+       if not username and not domain:
+             exit(0)
     try:
         return options[int(select) - 1]
     except (IndexError, ValueError):
