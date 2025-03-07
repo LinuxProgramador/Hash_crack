@@ -6,6 +6,7 @@ from hashlib import md5, sha1, sha224, sha384, sha256, sha512, sha3_256, sha3_22
 from sys import exit, argv
 from time import sleep
 from os import system
+from hmac import new
 
 
 HASH_ALGORITHMS = {
