@@ -176,7 +176,7 @@ if __name__ == "__main__":
         target_hash = input("Enter the hash to be decrypted: ").strip()
         select = get_hash_algorithm(target_hash)
 
-        if select in ["ripemd-160", "ntlm"]:
+        if select in ["ripemd-160", "ntlm", "ntlmv2"]:
             print(f"{select} tends to take a little longer")
 
     except KeyboardInterrupt:
