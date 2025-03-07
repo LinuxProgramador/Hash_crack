@@ -7,12 +7,8 @@ def get_encoder():
     print("INFO: For compatibility reasons with certain symbols, choose your encoder:")
     print("1) latin-1\n2) utf-8")
     encoder_text = input("option: ")
-    if encoder_text == "1":
-        return "latin-1"
-    elif encoder_text == "2":
-        return "utf-8"
-    else:
-        return "latin-1"
+    select_encoder = "latin-1" if encoder_text == "1" else "utf-8"
+    return select_encoder
 def header():
     ascii_banner = pyfiglet.figlet_format("{ZIP CRACKER}").upper()
     print(colored(ascii_banner.rstrip("\n"), 'cyan', attrs=['bold']))
