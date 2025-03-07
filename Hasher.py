@@ -508,6 +508,7 @@ Help Menu:
 |apr1       |
 |CiscoType7 |
 |NTLMv2     |
+|DCC2       |
  ----------
              """)
 
