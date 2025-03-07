@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import multiprocessing
+from multiprocessing import Process,Queue,Event
 from hashlib import pbkdf2_hmac
 from sys import exit, argv
 from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt
@@ -106,13 +106,13 @@ def main():
         print()
         exit(0)
 
-    found = multiprocessing.Event()
-    queue = multiprocessing.Queue()
+    found = Event()
+    queue = Queue()
 
     print("Starting parallel checking..")
 
     processes = [
-        multiprocessing.Process(target=check_hash, args=(rute, target_hash, select, ssid, found, queue, wait_time, encoder))
+        Process(target=check_hash, args=(rute, target_hash, select, ssid, found, queue, wait_time, encoder))
         for rute in [rute1, rute2, rute3, rute4]
     ]
 
