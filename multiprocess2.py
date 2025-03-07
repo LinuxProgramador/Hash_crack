@@ -94,6 +94,8 @@ def main():
             select = "apr1"
         elif len(target_hash) == 64:
             select = "wpa-psk"
+        elif len(target_hash) == 32:
+            select = "DCC2"
         else:
             print("You did not enter a valid hash!")
             exit(0)
