@@ -56,6 +56,15 @@ def crack(target_hash, word, select, event, queue):
         identity = (username.upper() + domain.upper()).encode('utf-16le')
         ntlmv2_hash = new(hash.digest(), identity, md5).digest()
         generated_hash = ntlmv2_hash.hex()
+    elif select == "SSHA":
+            b64_data = target_hash[6:]
+            decoded = b64decode(b64_data)
+            digest = decoded[:20]
+            salt = decoded[20:]
+            hash_obj = sha1(word.encode(encoder))
+            hash_obj.update(salt)
+            generated_hash =  hash_obj.digest()
+            target_hash = digest
     elif select == "md5":
         generated_hash = md5(data).hexdigest()
     elif select in HASH_ALGORITHMS:
