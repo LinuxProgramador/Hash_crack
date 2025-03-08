@@ -101,13 +101,14 @@ class Hash_crack:
     elif option_chosen == "3":
       for _ in range(2):
        print("""
+INFO: DCC2 is not supported for the multiprocessing option
 INFO: This method is ideal for very large dictionaries or testing four dictionaries simultaneously, as it increases the probability of successfully decrypting a hash.
 INFO: Use the following command to split a large dictionary into 100 MB chunks on Linux or Termux:
 split -b 100M rockyou.txt
 
 Options:
 1) Use this option for fast hashes such as NTLMv2, MySQL 5.X, MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
-2) Use this option for slow hashes such as bcrypt, DCC2, apr1, md5crypt, shaCrypt, or WPA-PSK.
+2) Use this option for slow hashes such as bcrypt, apr1, md5crypt, shaCrypt, or WPA-PSK.
 
 WARNING: On 4-core only systems, may slow down your computer 
 Additional INFO: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
