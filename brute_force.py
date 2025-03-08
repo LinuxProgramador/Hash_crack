@@ -10,6 +10,7 @@ from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt, m
 from bcrypt import checkpw
 from hashlib import pbkdf2_hmac
 from hmac import new
+from base64 import b64decode
 
 hashes = {
     'sha1': sha1,
