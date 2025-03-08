@@ -3,7 +3,7 @@
 from multiprocessing import Process,Queue,Event
 from hashlib import pbkdf2_hmac
 from sys import exit, argv
-from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt, msdcc2
+from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt
 from os import path, system
 from bcrypt import checkpw
 from time import sleep
@@ -12,7 +12,6 @@ hashes = {
     'sha256crypt': sha256_crypt,
     'sha512crypt': sha512_crypt,
     'md5crypt': md5_crypt,
-    'DCC2': msdcc2,
     'apr1':apr_md5_crypt
 }
 
@@ -34,10 +33,6 @@ def crack(target_hash, word, select, ssid, found, queue, encoder):
         if hashes[select].verify(word, target_hash):
             queue.put(f"Key found: {word}")
             found.set()
-    elif select == "DCC2":
-        if hashes[select].verify(word, target_hash, user):
-           queue.put(f"Key found: {word}")
-           found.set()
     elif select == "wpa-psk":
         if 8 <= len(word) <= 63:
             derived_key = pbkdf2_hmac('sha1', word.encode(), ssid.encode(), 4096, 32)
@@ -94,8 +89,6 @@ def main():
             select = "apr1"
         elif len(target_hash) == 64:
             select = "wpa-psk"
-        elif len(target_hash) == 32:
-            select = "DCC2"
         else:
             print("You did not enter a valid hash!")
             exit(0)
