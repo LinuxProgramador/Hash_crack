@@ -525,6 +525,7 @@ Help Menu:
 |CiscoType7 |
 |NTLMv2     |
 |DCC2       |
+|SSHA       |
  ----------
              """)
 
