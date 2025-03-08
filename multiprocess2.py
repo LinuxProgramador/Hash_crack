@@ -27,6 +27,11 @@ def crack(target_hash, word, select, ssid, found, queue, encoder):
         if checkpw(word.encode(), bytes(target_hash, encoding=encoder)):
             queue.put(f"Key found: {word}")
             found.set()
+    elif select == "DCC2":
+       sleep(0.1)
+       if msdcc2.verify(word, target_hash, user):
+            queue.put(f"Key found: {word}")
+            found.set()
     elif select in hashes:
         if select == 'sha512crypt':
            sleep(0.4)
