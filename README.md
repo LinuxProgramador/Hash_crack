@@ -105,6 +105,8 @@ Supported Hashes:
 
     DCC2
 
+    SSHA
+
 Important Notes: 
 
 1- If you want to use your own dictionary, you should name it wordlist.txt and place it in the Hash_crack directory.
