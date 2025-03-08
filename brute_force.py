@@ -147,7 +147,7 @@ def crack(count, hash_input, select, wait_time):
             decoded = b64decode(b64_data)
             digest = decoded[:20]
             salt = decoded[20:]
-            hash_obj = sha1(password.encode(self.encoder))
+            hash_obj = sha1(password.encode('utf-8'))
             hash_obj.update(salt)
             if digest == hash_obj.digest():
                 auxiliary_crack(password, wpa_psk, ssid)
