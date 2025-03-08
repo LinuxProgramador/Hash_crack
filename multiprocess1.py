@@ -7,7 +7,7 @@ from sys import exit, argv
 from time import sleep
 from os import system
 from hmac import new
-
+from base64 import b64decode
 
 HASH_ALGORITHMS = {
     'sha1': sha1,
