@@ -12,6 +12,7 @@ from getpass import getuser
 from passlib.hash import sha256_crypt,sha512_crypt,md5_crypt,apr_md5_crypt,msdcc2
 from bcrypt import checkpw
 from hmac import new
+from base64 import b64decode
 
 class Hash_crack:
   '''  Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects '''
