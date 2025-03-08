@@ -142,6 +142,17 @@ def crack(count, hash_input, select, wait_time):
              identity = (username.upper() + domain.upper()).encode('utf-16le')
              ntlmv2_hash = new(hash.digest(), identity, md5).digest()
              validation(ntlmv2_hash.hex(), hash_input, password, wpa_psk, ssid)
+        elif select == "SSHA":
+            b64_data = hash_input[6:]
+            decoded = b64decode(b64_data)
+            digest = decoded[:20]
+            salt = decoded[20:]
+            hash_obj = sha1(password.encode(self.encoder))
+            hash_obj.update(salt)
+            if digest == hash_obj.digest():
+                auxiliary_crack(password, wpa_psk, ssid)
+            elif is_fast_mode != "y":
+                print(f"[*] Trying password: {password}")
         elif select == "md5":
             encryption = md5(password.encode("utf-8")).hexdigest()
             validation(encryption, hash_input, password, wpa_psk, ssid)
