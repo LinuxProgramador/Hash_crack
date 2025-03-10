@@ -568,10 +568,10 @@ Help Menu:
      if not select:
        select = input("option: ").strip()
        if select in hash_algorithm_map:
+           select = hash_algorithm_map.get(select, None)
            if not select == "NTLMV2" and len(hash_input) == self.hash['length_ntlmv2']:
              print(f"Enter a hash in \"{select}\" format")
-             exit(2)
-           select = hash_algorithm_map.get(select, None)
+             exit(2)  
        if select == "NTLMv2":
            if not len(hash_input) == self.hash['length_ntlmv2']:
              print("Enter a hash in \"NTLMV2\" format")
