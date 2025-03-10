@@ -329,7 +329,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              salt = decoded[20:]
              hash_obj = sha1(password.encode(self.encoder))
              hash_obj.update(salt)
-             if digest == hash_obj.digest():
+             if digest.lower() == hash_obj.digest().lower():
                  self.auxiliary_crack(password,wpa_psk,ssid)
              else:
                  self.faster(is_fast_mode,crackTimeEstimate,password)
