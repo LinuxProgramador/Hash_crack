@@ -43,6 +43,7 @@ class Hash_crack:
     'length_sha224':56,
     'length_sha256':64,
     'length_sha384':96,
+    'length_ntlmv2':88,
     'length_sha512':128,
     }
     self.modules_names = {
@@ -567,9 +568,16 @@ Help Menu:
      if not select:
        select = input("option: ").strip()
        if select in hash_algorithm_map:
+           if not select == "NTLMV2" and len(hash_input) == self.hash['length_ntlmv2']:
+             print(f"Enter a hash in \"{select}\" format")
+             exit(2)
            select = hash_algorithm_map.get(select, None)
        if select == "NTLMv2":
+           if not len(hash_input) == self.hash['length_ntlmv2']:
+             print("Enter a hash in \"NTLMV2\" format")
+             exit(2)
            global username, domain
+           hash_input = hash_input[:32]
            for _ in range(2):
              username = input("Enter username: ").strip()
              domain = input("Enter the domain: ").strip()
@@ -703,7 +711,7 @@ lengths and combinations with option 2\"
     self.call_modules()
     combined,is_fast_mode,wait_time = self.get_cracking_parameters()
     hash_input=input("Enter the hash to decrypt: ").strip()
-    if len(hash_input) == self.hash['length_md5']:
+    if len(hash_input) == self.hash['length_md5','length_ntlmv2']:
              print("Type hash:\n1)- md5\n2)- NTLM\n3)- NTLMv2\n4)- DCC2")
              hash_algorithm_map ={"1":"md5","2":"NTLM","3":"NTLMv2","4":"DCC2"}
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
