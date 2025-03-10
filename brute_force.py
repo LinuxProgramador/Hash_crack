@@ -244,6 +244,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
             select = hash_algorithm_map.get(select, None)
             if select == "NTLMv2":
                 global username, domain
+                hash_input = hash_input[:32]
                 for _ in range(2):
                    username = input("Enter username: ").strip()
                    domain = input("Enter the domain: ").strip()
