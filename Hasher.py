@@ -574,6 +574,9 @@ Wait, this may take a while
                    """)
      if select in ["DCC2","NTLMv2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
+     elif select == "DCC2":
+        print("INFO: DCC2 is a slow hash")
+        sleep(2)
      self.display_cracking_message(is_fast_mode)
      sleep(2)
      self.crack(hash_input,select,is_fast_mode,combined,wait_time)
