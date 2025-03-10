@@ -530,6 +530,24 @@ Help Menu:
 |SSHA       |
  ----------
              """)
+    
+
+  def local_db(self,select,hash_input):
+     ''' Reads a database to check if the hash given by the user is already there '''
+     """Only applies to hashes that do not have a salt and take longer to decrypt"""
+     print("Searching in database.......")
+     if select in ["NTLM","ripemd-160"]:
+       with open('db.txt','r') as db_read:
+         db = db_read.read()
+         dic_db = loads(db)
+         for hash in dic_db:
+           if hash_input.lower() == hash.lower():
+               print("\n{***********************SUCCESS***********************}")
+               print(f"[✓] Password Found:- {dic_db[hash]}")
+               exit(2)
+     sleep(1)
+     print()
+     return
 
 
   def cracking_selection(self,hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map):
