@@ -94,15 +94,12 @@ def main():
             select = "apr1"
         elif len(target_hash) == 64:
             select = "wpa-psk"
-        elif len(target_hash) == 32:
+        elif target_hash.count(':') == 1:
              select = "DCC2"
              global user
-             for _ in range(2):
-               user = input("Enter username: ").strip()
-               if user:
-                 break
-             if not user:
-                exit(2)
+             dcc2_hash = target_hash.split(':')
+             target_hash = dcc2_hash[1]
+             user = dcc2_hash[0]
         else:
             print("You did not enter a valid hash!")
             exit(0)
