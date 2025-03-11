@@ -11,7 +11,6 @@ from time import sleep
 from getpass import getuser
 from passlib.hash import sha256_crypt,sha512_crypt,md5_crypt,apr_md5_crypt,msdcc2
 from bcrypt import checkpw
-from hmac import new
 from base64 import b64decode
 from json import loads
 
@@ -313,16 +312,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               self.validation(hash.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
             
 
-          #NTLMv2 hash check
-          elif select == "NTLMv2":
-             password_bytes = password.encode('utf-16le')
-             hash = MD4.new()
-             hash.update(password_bytes)
-             identity = (username.upper() + domain.upper()).encode('utf-16le')
-             ntlmv2_hash = new(hash.digest(), identity, md5).digest()
-             self.validation(ntlmv2_hash.hex(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
-            
-
           #SSHA hash check
           elif select == "SSHA":
              b64_data = hash_input[6:]
@@ -525,7 +514,6 @@ Help Menu:
 |md5crypt   |
 |apr1       |
 |CiscoType7 |
-|NTLMv2     |
 |DCC2       |
 |SSHA       |
  ----------
@@ -559,20 +547,13 @@ Help Menu:
      "sha512crypt": "sha512crypt",
      "md5crypt":"md5crypt",
      "SSHA":"SSHA",
-     "NTLMv2":"NTLMv2",
      "DCC2":"DCC2",
      "apr1":"apr1",
      "bcrypt": "bcrypt",
      "MySQL 5.X":"MySQL 5.X"
      }
      select = valid_hashes.get(hash, None)
-     if select == "NTLMv2":
-           global username, domain
-           ntlmv2_hash = hash_input.split(':')
-           hash_input = ntlmv2_hash[4]
-           username = ntlmv2_hash[0]
-           domain = ntlmv2_hash[2]
-     elif select == "DCC2":
+     if select == "DCC2":
            global user
            dcc2_hash = hash_input.split(':')
            hash_input = dcc2_hash[1]
@@ -589,7 +570,7 @@ Wait, this may take a while
 *****************************
                    """)
      self.local_db(select,hash_input)
-     if select in ["DCC2","NTLMv2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
+     if select in ["DCC2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
      self.display_cracking_message(is_fast_mode)
      sleep(2)
@@ -737,11 +718,6 @@ lengths and combinations with option 2\"
              self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "{SSHA}" in hash_input[0:7]:
              hash = "SSHA"
-             print(f"Type hash: {hash}")
-             sleep(2)
-             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
-    elif hash_input.count(':') == 5:
-             hash = "NTLMv2"
              print(f"Type hash: {hash}")
              sleep(2)
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
