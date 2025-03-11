@@ -142,27 +142,27 @@ def process_files(file_paths, target_hash, select, wait_time):
 
 def get_hash_algorithm(target_hash):
     hash_length = len(target_hash)
-    if hash_length == HASH_ALGORITHMS['length_md5']:
+    if hash_length == HASH_ALGORITHMS['length_md5'] and not verify_ntlmv2:
         select = get_hash_selection(["md5", "ntlm", "shake-128", "shake-256"])
         return select
-    elif hash_length == HASH_ALGORITHMS['length_sha1']:
+    elif hash_length == HASH_ALGORITHMS['length_sha1'] and not verify_ntlmv2:
         return get_hash_selection(["sha1", "ripemd-160", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha224']:
+    elif hash_length == HASH_ALGORITHMS['length_sha224'] and not verify_ntlmv2:
         return get_hash_selection(["sha224", "sha3_224", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha384']:
+    elif hash_length == HASH_ALGORITHMS['length_sha384'] and not verify_ntlmv2:
         return get_hash_selection(["sha384", "sha3_384", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha256']:
+    elif hash_length == HASH_ALGORITHMS['length_sha256'] and not verify_ntlmv2:
         return get_hash_selection(["sha256", "sha3_256", "blake2s", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha512']:
+    elif hash_length == HASH_ALGORITHMS['length_sha512'] and not verify_ntlmv2:
         return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256"])
-    elif "{SSHA}" in target_hash[0:7]:
+    elif "{SSHA}" in target_hash[0:7] and not verify_ntlmv2:
         return "SSHA"
     elif verify_ntlmv2:
          global username, domain
          username = ntlmv2_hash[0]
          domain = ntlmv2_hash[2]
          return "ntlmv2"
-    elif "*" in target_hash[0:1]:
+    elif "*" in target_hash[0:1] and not verify_ntlmv2:
         return "MySQL 5.X"
     else:
         consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
