@@ -114,7 +114,7 @@ Important Notes:
 3- In "DCC2/WPA-PSK" hashes enter the user and domain along with the hash:
 For example: 
 
-    WPA-PSK: MyNetwork:
+    WPA-PSK: MyNetwork:c5846b79d776cf7c0973edf6e8bb0778da330b1a92d18f6664557b1d9b7498dd
 
     DCC2: root:e7f9a1ba77b1d0406ab52783b2b9636a
 
