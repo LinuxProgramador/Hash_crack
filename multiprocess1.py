@@ -196,7 +196,7 @@ if __name__ == "__main__":
         ]
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         target_hash = input("Enter the hash to be decrypted: ").strip()
-        if target_hash.count(':') = 5:
+        if target_hash.count(':') == 5:
             ntlmv2_hash = target_hash.split(':')
             target_hash = ntlmv2_hash[4]
             verify_ntlmv2 = True
