@@ -111,7 +111,7 @@ Important Notes:
 
 2- Success in cracking passwords from ZIP and RAR files depends heavily on the program used to compress them. Decryption is more likely to work if they were compressed using console tools such as zip or rar.
 
-3- In "DCC2/WPA-PSK" hashes enter the user and domain or SSID along with the hash:
+3- In "DCC2/WPA-PSK" hashes enter the user or SSID along with the hash:
 For example: 
 
     WPA-PSK: MyNetwork:c5846b79d776cf7c0973edf6e8bb0778da330b1a92d18f6664557b1d9b7498dd
