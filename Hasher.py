@@ -644,8 +644,10 @@ Wait, this may take a while
           print("INFO: It is recommended to use small dictionaries")
           print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
           hash_input = input("Enter the WPA hash: ").strip()
-          ssid = input("Enter the SSID: ").strip()
-          if hash_input and ssid:
+          if hash_input:
+            hash_wpa_psk = hash_input.split(':')
+            hash_input = hash_wpa_psk[1]
+            ssid = hash_wpa_psk[0]
             if len(hash_input) == 64:
                 self.crack_wpa_psk(hash_input, ssid)
             else:
@@ -745,6 +747,8 @@ lengths and combinations with option 2\"
         print(f"Wordlist.txt does not exist in the path => {e}")
    except ValueError as F:
        print(f"Type error: {F}")
+   except IndexError as i:
+        print(f"Type error: {i}")
 
 
 if __name__ == "__main__":
