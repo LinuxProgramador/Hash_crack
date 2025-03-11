@@ -25,7 +25,6 @@ HASH_ALGORITHMS = {
     'length_sha1': 40,
     'length_sha224': 56,
     'length_sha256': 64,
-    'length_ntlmv2': 88,
     'length_sha384': 96,
     'length_sha512': 128
 }
@@ -143,11 +142,12 @@ def process_files(file_paths, target_hash, select, wait_time):
 
 def get_hash_algorithm(target_hash):
     hash_length = len(target_hash)
-    if hash_length == HASH_ALGORITHMS['length_md5','length_ntlmv2']:
+    if hash_length == HASH_ALGORITHMS['length_md5'] or target_hash.count(':') == 3:
         select = get_hash_selection(["md5", "ntlm", "shake-128", "shake-256", "ntlmv2"])
         if select == "ntlmv2":
           global username, domain
-          target_hash = target_hash[:32]
+          ntlmv2_hash = target_hash.split(':')
+          target_hash = ntlmv2_hash[2]
           for _ in range(2):
             username = input("Enter username: ").strip()
             domain = input("Enter the domain: ").strip()
