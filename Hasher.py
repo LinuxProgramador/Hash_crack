@@ -560,6 +560,7 @@ Help Menu:
      "md5crypt":"md5crypt",
      "SSHA":"SSHA",
      "NTLMv2":"NTLMv2",
+     "DCC2":"DCC2",
      "apr1":"apr1",
      "bcrypt": "bcrypt",
      "MySQL 5.X":"MySQL 5.X"
@@ -571,18 +572,15 @@ Help Menu:
            hash_input = ntlmv2_hash[4]
            username = ntlmv2_hash[0]
            domain = ntlmv2_hash[2]
+     elif select == "DCC2":
+           global user
+           dcc2_hash = hash_input.split(':')
+           hash_input = dcc2_hash[1]
+           user = dcc2_hash[0]
      if not select:
        select = input("option: ").strip()
        if select in hash_algorithm_map:
-           select = hash_algorithm_map.get(select, None)
-       elif select == "DCC2":
-           global user
-           for _ in range(2):
-              user = input("Enter username: ").strip()
-              if user:
-                break
-           if not user:
-              exit(2)
+           select = hash_algorithm_map.get(select, None)     
      sleep(1)
      system("clear")
      print("""
@@ -593,9 +591,6 @@ Wait, this may take a while
      self.local_db(select,hash_input)
      if select in ["DCC2","NTLMv2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
-     elif select == "DCC2":
-        print("INFO: DCC2 is a slow hash")
-        sleep(2)
      self.display_cracking_message(is_fast_mode)
      sleep(2)
      self.crack(hash_input,select,is_fast_mode,combined,wait_time)
@@ -750,11 +745,9 @@ lengths and combinations with option 2\"
              print(f"Type hash: {hash}")
              sleep(2)
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
-    elif hash_input.count(':') == 1 and len(hash_input) == 32:
+    elif hash_input.count(':') == 1:
              hash = "DCC2"
-             print(f"Type hash: {hash}")
-             sleep(2)
-             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "*" in hash_input[0:1]:
              hash = "MySQL 5.X"
              print(f"Type hash: {hash}")
