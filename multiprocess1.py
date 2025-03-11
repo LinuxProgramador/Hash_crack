@@ -6,7 +6,6 @@ from hashlib import md5, sha1, sha224, sha384, sha256, sha512, sha3_256, sha3_22
 from sys import exit, argv
 from time import sleep
 from os import system
-from hmac import new
 from base64 import b64decode
 
 HASH_ALGORITHMS = {
@@ -49,13 +48,6 @@ def crack(target_hash, word, select, event, queue):
         hash_obj = MD4.new()
         hash_obj.update(password_utf16)
         generated_hash = hash_obj.hexdigest()
-    elif select == "ntlmv2":
-        password_bytes = word.encode('utf-16le')
-        hash = MD4.new()
-        hash.update(password_bytes)
-        identity = (username.upper() + domain.upper()).encode('utf-16le')
-        ntlmv2_hash = new(hash.digest(), identity, md5).digest()
-        generated_hash = ntlmv2_hash.hex()
     elif select == "SSHA":
             b64_data = target_hash[6:]
             decoded = b64decode(b64_data)
@@ -142,26 +134,21 @@ def process_files(file_paths, target_hash, select, wait_time):
 
 def get_hash_algorithm(target_hash):
     hash_length = len(target_hash)
-    if hash_length == HASH_ALGORITHMS['length_md5'] and not verify_ntlmv2:
+    if hash_length == HASH_ALGORITHMS['length_md5']:
         return get_hash_selection(["md5", "ntlm", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha1'] and not verify_ntlmv2:
+    elif hash_length == HASH_ALGORITHMS['length_sha1']:
         return get_hash_selection(["sha1", "ripemd-160", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha224'] and not verify_ntlmv2:
+    elif hash_length == HASH_ALGORITHMS['length_sha224']:
         return get_hash_selection(["sha224", "sha3_224", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha384'] and not verify_ntlmv2:
+    elif hash_length == HASH_ALGORITHMS['length_sha384']:
         return get_hash_selection(["sha384", "sha3_384", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha256'] and not verify_ntlmv2:
+    elif hash_length == HASH_ALGORITHMS['length_sha256']:
         return get_hash_selection(["sha256", "sha3_256", "blake2s", "shake-128", "shake-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha512'] and not verify_ntlmv2:
+    elif hash_length == HASH_ALGORITHMS['length_sha512']:
         return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256"])
-    elif "{SSHA}" in target_hash[0:7] and not verify_ntlmv2:
+    elif "{SSHA}" in target_hash[0:7]:
         return "SSHA"
-    elif verify_ntlmv2:
-         global username, domain
-         username = ntlmv2_hash[0]
-         domain = ntlmv2_hash[2]
-         return "ntlmv2"
-    elif "*" in target_hash[0:1] and not verify_ntlmv2:
+    elif "*" in target_hash[0:1]:
         return "MySQL 5.X"
     else:
         consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
@@ -187,7 +174,6 @@ if __name__ == "__main__":
         encoder = get_encoder()
         sleep(1)
         system("clear")
-        verify_ntlmv2 = False
 
         file_paths = [
             input(f"Enter the path of dictionary -{i + 1}: ").strip()
@@ -195,13 +181,9 @@ if __name__ == "__main__":
         ]
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         target_hash = input("Enter the hash to be decrypted: ").strip()
-        if target_hash.count(':') == 5:
-            ntlmv2_hash = target_hash.split(':')
-            target_hash = ntlmv2_hash[4]
-            verify_ntlmv2 = True
         select = get_hash_algorithm(target_hash)
 
-        if select in ["ripemd-160", "ntlm", "ntlmv2"]:
+        if select in ["ripemd-160", "ntlm"]:
             print(f"{select} tends to take a little longer")
 
     except KeyboardInterrupt:
