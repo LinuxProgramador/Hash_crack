@@ -9,7 +9,6 @@ from hashlib import md5, sha1, sha224, sha384, sha256, sha512, sha3_256, sha3_22
 from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt, msdcc2
 from bcrypt import checkpw
 from hashlib import pbkdf2_hmac
-from hmac import new
 from base64 import b64decode
 
 hashes = {
@@ -135,13 +134,6 @@ def crack(count, hash_input, select, wait_time):
             hash = MD4.new()
             hash.update(password_utf16)
             validation(hash.hexdigest(), hash_input, password, wpa_psk, ssid)
-        elif select == "NTLMv2":
-             password_bytes = password.encode('utf-16le')
-             hash = MD4.new()
-             hash.update(password_bytes)
-             identity = (username.upper() + domain.upper()).encode('utf-16le')
-             ntlmv2_hash = new(hash.digest(), identity, md5).digest()
-             validation(ntlmv2_hash.hex(), hash_input, password, wpa_psk, ssid)
         elif select == "SSHA":
             b64_data = hash_input[6:]
             decoded = b64decode(b64_data)
@@ -226,8 +218,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
         "sha256crypt": "sha256crypt",
         "sha512crypt": "sha512crypt",
         "md5crypt":"md5crypt",
-        "SSHA":"SSHA",
-        "NTLMv2":"NTLMv2",
+        "SSHA":"SSHA",     
         "DCC2":"DCC2",
         "apr1":"apr1",
         "bcrypt": "bcrypt",
@@ -236,13 +227,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
     select = valid_hashes.get(hash, None)
 
     if select:
-        if select == "NTLMv2":
-           global username, domain
-           ntlmv2_hash = hash_input.split(':')
-           hash_input = ntlmv2_hash[4]
-           username = ntlmv2_hash[0]
-           domain = ntlmv2_hash[2]
-        elif select == "DCC2":    
+        if select == "DCC2":    
            global user
            dcc2_hash = hash_input.split(':')
            hash_input = dcc2_hash[1]
@@ -264,7 +249,7 @@ def main(count):
     global is_fast_mode
 
     try:
-        print("INFO: \"dcc2/bcrypt/shacrypt/md5crypt/apr1/wpa-psk/ripemd-160/ntlm/ntlmv2\" hashes tend to take longer to decrypt.")
+        print("INFO: \"dcc2/bcrypt/shacrypt/md5crypt/apr1/wpa-psk/ripemd-160/ntlm/\" hashes tend to take longer to decrypt.")
         is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
         hash_input = input("Enter the hash to decrypt: ").strip()
@@ -307,8 +292,6 @@ def main(count):
              cracking_selection(count, hash_input, "SSHA", wait_time, "")
         elif hash_input.count(':') == 1:
             cracking_selection(count, hash_input, "DCC2", wait_time, "")
-        elif hash_input.count(':') == 5:
-            cracking_selection(count, hash_input, "NTLMv2", wait_time, "")
         elif "*" in hash_input[0:1]:
              cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "")
         else:
