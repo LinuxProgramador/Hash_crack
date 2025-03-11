@@ -142,19 +142,8 @@ def process_files(file_paths, target_hash, select, wait_time):
 
 def get_hash_algorithm(target_hash):
     hash_length = len(target_hash)
-    if hash_length == HASH_ALGORITHMS['length_md5'] or target_hash.count(':') == 3:
-        select = get_hash_selection(["md5", "ntlm", "shake-128", "shake-256", "ntlmv2"])
-        if select == "ntlmv2":
-          global username, domain
-          ntlmv2_hash = target_hash.split(':')
-          target_hash = ntlmv2_hash[2]
-          for _ in range(2):
-            username = input("Enter username: ").strip()
-            domain = input("Enter the domain: ").strip()
-            if username and domain:
-               break
-          if not username and not domain:
-               exit(0)
+    if hash_length == HASH_ALGORITHMS['length_md5']:
+        select = get_hash_selection(["md5", "ntlm", "shake-128", "shake-256"])
         return select
     elif hash_length == HASH_ALGORITHMS['length_sha1']:
         return get_hash_selection(["sha1", "ripemd-160", "shake-128", "shake-256"])
@@ -168,6 +157,13 @@ def get_hash_algorithm(target_hash):
         return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256"])
     elif "{SSHA}" in target_hash[0:7]:
         return "SSHA"
+    elif target_hash.count(':') == 5:
+         global username, domain
+         ntlmv2_hash = target_hash.split(':')
+         target_hash = ntlmv2_hash[4]
+         username = ntlmv2_hash[0]
+         domain = ntlmv2_hash[2]
+         return "ntlmv2"
     elif "*" in target_hash[0:1]:
         return "MySQL 5.X"
     else:
