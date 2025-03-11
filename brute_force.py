@@ -235,6 +235,12 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
     select = valid_hashes.get(hash, None)
 
     if select:
+        if select == "NTLMv2":
+           global username, domain
+           ntlmv2_hash = hash_input.split(':')
+           hash_input = ntlmv2_hash[4]
+           username = ntlmv2_hash[0]
+           domain = ntlmv2_hash[2]
         crack(count, hash_input, select, wait_time)
     else:
         select = input("option: ").strip()
@@ -242,18 +248,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
             crack_wpa_psk(count, hash_input, wait_time)
         elif select in hash_algorithm_map:
             select = hash_algorithm_map.get(select, None)
-            if select == "NTLMv2":
-                global username, domain
-                ntlmv2_hash = hash_input.split(':')
-                hash_input = ntlmv2_hash[2]
-                for _ in range(2):
-                   username = input("Enter username: ").strip()
-                   domain = input("Enter the domain: ").strip()
-                   if username and domain:
-                      break
-                if not username and not domain:
-                   exit(2)
-            elif select == "DCC2":    
+            if select == "DCC2":    
               global user
               for _ in range(2):
                 user = input("Enter username: ").strip()
