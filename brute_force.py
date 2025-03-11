@@ -227,6 +227,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
         "sha512crypt": "sha512crypt",
         "md5crypt":"md5crypt",
         "SSHA":"SSHA",
+        "NTLMv2":"NTLMv2",
         "apr1":"apr1",
         "bcrypt": "bcrypt",
         "MySQL 5.X":"MySQL 5.X"
@@ -275,9 +276,9 @@ def main(count):
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
         hash_input = input("Enter the hash to decrypt: ").strip()
 
-        if len(hash_input) == hashes['length_md5'] or hash_input.count(':') == 3:
-            print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256\n5)- NTLMv2\n6)- DCC2")
-            hash_algorithm_map = {"1": "md5", "2": "NTLM", "3": "shake-128", "4": "shake-256", "5": "NTLMv2", "6": "DCC2"}
+        if len(hash_input) == hashes['length_md5']:
+            print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256\n5)- DCC2")
+            hash_algorithm_map = {"1": "md5", "2": "NTLM", "3": "shake-128", "4": "shake-256", "5": "DCC2"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha1']:
             print("Type hash:\n1)- sha1\n2)- ripemd-160\n3)- shake-128\n4)- shake-256")
@@ -311,6 +312,8 @@ def main(count):
              cracking_selection(count, hash_input, "apr1", wait_time, "")
         elif "{SSHA}" in hash_input[0:7]:
              cracking_selection(count, hash_input, "SSHA", wait_time, "")
+        elif hash_input.count(':') == 5:
+            cracking_selection(count, hash_input, "NTLMv2", wait_time, "")
         elif "*" in hash_input[0:1]:
              cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "")
         else:
