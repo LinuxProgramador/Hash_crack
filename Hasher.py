@@ -568,9 +568,9 @@ Help Menu:
      if select == "NTLMv2":
            global username, domain
            ntlmv2_hash = hash_input.split(':')
-           hash_input = ntlmv2_hash[2]
-           username =
-           domain = 
+           hash_input = 
+           username = ntlmv2_hash[0]
+           domain = ntlmv2_hash[2]
      if not select:
        select = input("option: ").strip()
        if select in hash_algorithm_map:
