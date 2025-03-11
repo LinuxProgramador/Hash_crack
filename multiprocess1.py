@@ -157,7 +157,7 @@ def get_hash_algorithm(target_hash):
         return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256"])
     elif "{SSHA}" in target_hash[0:7]:
         return "SSHA"
-    elif target_hash.count(':') == 5:
+    elif verify_ntlmv2:
          global username, domain
          username = ntlmv2_hash[0]
          domain = ntlmv2_hash[2]
@@ -188,6 +188,7 @@ if __name__ == "__main__":
         encoder = get_encoder()
         sleep(1)
         system("clear")
+        verify_ntlmv2 = False
 
         file_paths = [
             input(f"Enter the path of dictionary -{i + 1}: ").strip()
@@ -198,6 +199,7 @@ if __name__ == "__main__":
         if target_hash.count(':') = 5:
             ntlmv2_hash = target_hash.split(':')
             target_hash = ntlmv2_hash[4]
+            verify_ntlmv2 = True
         select = get_hash_algorithm(target_hash)
 
         if select in ["ripemd-160", "ntlm", "ntlmv2"]:
