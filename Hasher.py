@@ -559,26 +559,22 @@ Help Menu:
      "sha512crypt": "sha512crypt",
      "md5crypt":"md5crypt",
      "SSHA":"SSHA",
+     "NTLMv2":"NTLMv2",
      "apr1":"apr1",
      "bcrypt": "bcrypt",
      "MySQL 5.X":"MySQL 5.X"
      }
      select = valid_hashes.get(hash, None)
+     if select == "NTLMv2":
+           global username, domain
+           ntlmv2_hash = hash_input.split(':')
+           hash_input = ntlmv2_hash[2]
+           username =
+           domain = 
      if not select:
        select = input("option: ").strip()
        if select in hash_algorithm_map:
            select = hash_algorithm_map.get(select, None)
-       if select == "NTLMv2":
-           global username, domain
-           ntlmv2_hash = hash_input.split(':')
-           hash_input = ntlmv2_hash[2]
-           for _ in range(2):
-             username = input("Enter username: ").strip()
-             domain = input("Enter the domain: ").strip()
-             if username and domain:
-                break
-           if not username and not domain:
-              exit(2)
        elif select == "DCC2":
            global user
            for _ in range(2):
@@ -705,9 +701,9 @@ lengths and combinations with option 2\"
     self.call_modules()
     combined,is_fast_mode,wait_time = self.get_cracking_parameters()
     hash_input=input("Enter the hash to decrypt: ").strip()
-    if len(hash_input) == self.hash['length_md5'] or hash_input.count(':') == 3:
-             print("Type hash:\n1)- md5\n2)- NTLM\n3)- NTLMv2\n4)- DCC2")
-             hash_algorithm_map ={"1":"md5","2":"NTLM","3":"NTLMv2","4":"DCC2"}
+    if len(hash_input) == self.hash['length_md5']:
+             print("Type hash:\n1)- md5\n2)- NTLM\n3)- DCC2")
+             hash_algorithm_map ={"1":"md5","2":"NTLM","3":"DCC2"}
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha1']:
              print("Type hash:\n1)- sha1\n2)- ripemd-160")
@@ -746,6 +742,11 @@ lengths and combinations with option 2\"
              self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "{SSHA}" in hash_input[0:7]:
              hash = "SSHA"
+             print(f"Type hash: {hash}")
+             sleep(2)
+             self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
+    elif hash_input.count(':') == 5:
+             hash = "NTLMv2"
              print(f"Type hash: {hash}")
              sleep(2)
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
