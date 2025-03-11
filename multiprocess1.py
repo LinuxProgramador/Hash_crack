@@ -159,8 +159,6 @@ def get_hash_algorithm(target_hash):
         return "SSHA"
     elif target_hash.count(':') == 5:
          global username, domain
-         ntlmv2_hash = target_hash.split(':')
-         target_hash = ntlmv2_hash[4]
          username = ntlmv2_hash[0]
          domain = ntlmv2_hash[2]
          return "ntlmv2"
@@ -197,6 +195,9 @@ if __name__ == "__main__":
         ]
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         target_hash = input("Enter the hash to be decrypted: ").strip()
+        if target_hash.count(':') = 5:
+            ntlmv2_hash = target_hash.split(':')
+            target_hash = ntlmv2_hash[4]
         select = get_hash_algorithm(target_hash)
 
         if select in ["ripemd-160", "ntlm", "ntlmv2"]:
