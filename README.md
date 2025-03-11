@@ -113,6 +113,9 @@ Important Notes:
 
 2- Success in cracking passwords from ZIP and RAR files depends heavily on the program used to compress them. Decryption is more likely to work if they were compressed using console tools such as zip or rar.
 
+3- En hashes "DCC2/NTLMV2" ingresar el usuario y dominio junto al  hash:
+For example: 
+
 Quit the program:
 
 Press CTRL + C
