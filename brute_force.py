@@ -228,6 +228,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
         "md5crypt":"md5crypt",
         "SSHA":"SSHA",
         "NTLMv2":"NTLMv2",
+        "DCC2":"DCC2",
         "apr1":"apr1",
         "bcrypt": "bcrypt",
         "MySQL 5.X":"MySQL 5.X"
@@ -241,21 +242,18 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
            hash_input = ntlmv2_hash[4]
            username = ntlmv2_hash[0]
            domain = ntlmv2_hash[2]
+        elif select == "DCC2":    
+           global user
+           dcc2_hash = hash_input.split(':')
+           hash_input = dcc2_hash[1]
+           user = dcc2_hash[0]
         crack(count, hash_input, select, wait_time)
     else:
         select = input("option: ").strip()
         if select in hash_algorithm_map and "wpa-psk" == hash_algorithm_map[select]:
             crack_wpa_psk(count, hash_input, wait_time)
         elif select in hash_algorithm_map:
-            select = hash_algorithm_map.get(select, None)
-            if select == "DCC2":    
-              global user
-              for _ in range(2):
-                user = input("Enter username: ").strip()
-                if user:
-                   break
-              if not user:
-                   exit(2)
+            select = hash_algorithm_map.get(select, None)   
             crack(count, hash_input, select, wait_time)
         else:
             print("You did not enter the requested data!")
@@ -272,8 +270,8 @@ def main(count):
         hash_input = input("Enter the hash to decrypt: ").strip()
 
         if len(hash_input) == hashes['length_md5']:
-            print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256\n5)- DCC2")
-            hash_algorithm_map = {"1": "md5", "2": "NTLM", "3": "shake-128", "4": "shake-256", "5": "DCC2"}
+            print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256")
+            hash_algorithm_map = {"1": "md5", "2": "NTLM", "3": "shake-128", "4": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
         elif len(hash_input) == hashes['length_sha1']:
             print("Type hash:\n1)- sha1\n2)- ripemd-160\n3)- shake-128\n4)- shake-256")
@@ -307,6 +305,8 @@ def main(count):
              cracking_selection(count, hash_input, "apr1", wait_time, "")
         elif "{SSHA}" in hash_input[0:7]:
              cracking_selection(count, hash_input, "SSHA", wait_time, "")
+        elif hash_input.count(':') == 1:
+            cracking_selection(count, hash_input, "DCC2", wait_time, "")
         elif hash_input.count(':') == 5:
             cracking_selection(count, hash_input, "NTLMv2", wait_time, "")
         elif "*" in hash_input[0:1]:
