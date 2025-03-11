@@ -143,8 +143,7 @@ def process_files(file_paths, target_hash, select, wait_time):
 def get_hash_algorithm(target_hash):
     hash_length = len(target_hash)
     if hash_length == HASH_ALGORITHMS['length_md5'] and not verify_ntlmv2:
-        select = get_hash_selection(["md5", "ntlm", "shake-128", "shake-256"])
-        return select
+        return get_hash_selection(["md5", "ntlm", "shake-128", "shake-256"])
     elif hash_length == HASH_ALGORITHMS['length_sha1'] and not verify_ntlmv2:
         return get_hash_selection(["sha1", "ripemd-160", "shake-128", "shake-256"])
     elif hash_length == HASH_ALGORITHMS['length_sha224'] and not verify_ntlmv2:
