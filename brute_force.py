@@ -184,10 +184,10 @@ def crack(count, hash_input, select, wait_time):
     print("[X] Password not found!")
     exit(2)
 
-def crack_wpa_psk(count, hash_input, wait_time,validation_hash_wpa):
+def crack_wpa_psk(count, hash_input, wait_time,validation_hash_wpa_dcc2):
     """Performs a brute-force attack on a WPA-PSK hash using PBKDF2-HMAC-SHA1."""
-    hash_input = validation_hash_wpa[1]
-    ssid = validation_hash_wpa[0]
+    hash_input = validation_hash_wpa_dcc2[1]
+    ssid = validation_hash_wpa_dcc2[0]
     if not ssid:
         print("You did not enter the SSID name!")
         exit(2)
@@ -213,7 +213,7 @@ def crack_wpa_psk(count, hash_input, wait_time,validation_hash_wpa):
     print("[X] Password not found!")
     exit(2)
 
-def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map,validation_hash_wpa):
+def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map,validation_hash_wpa_dcc2):
     """Allows the user to choose which hash to crack."""
     valid_hashes = {
         "sha256crypt": "sha256crypt",
@@ -230,12 +230,11 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map,va
 
     if select:
         if select == "wpa-psk":
-            crack_wpa_psk(count, hash_input, wait_time,validation_hash_wpa)
+            crack_wpa_psk(count, hash_input, wait_time,validation_hash_wpa_dcc2)
         elif select == "DCC2":    
            global user
-           dcc2_hash = hash_input.split(':')
-           hash_input = dcc2_hash[1]
-           user = dcc2_hash[0]
+           hash_input = validation_hash_wpa_dcc2[1]
+           user = validation_hash_wpa_dcc2[0]
            if not user:
                 print("You did not enter the username")
                 exit(0)
@@ -296,10 +295,10 @@ def main(count):
              cracking_selection(count, hash_input, "apr1", wait_time, "","")
         elif "{SSHA}" in hash_input[0:7]:
              cracking_selection(count, hash_input, "SSHA", wait_time, "","")
-        elif len(validation_hash_wpa[1]) == 32:
-            cracking_selection(count, hash_input, "DCC2", wait_time, "","")
-        elif  len(validation_hash_wpa[1]) == 64:  
-            cracking_selection(count, hash_input, "wpa-psk", wait_time, "",validation_hash_wpa)
+        elif len(validation_hash_wpa_dcc2[1]) == 32:
+            cracking_selection(count, hash_input, "DCC2", wait_time, "",validation_hash_wpa_dcc2)
+        elif  len(validation_hash_wpa_dcc2[1]) == 64:  
+            cracking_selection(count, hash_input, "wpa-psk", wait_time, "",validation_hash_wpa_dcc2)
         elif "*" in hash_input[0:1]:
              cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "","")
         else:
