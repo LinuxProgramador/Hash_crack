@@ -117,8 +117,8 @@ def main():
     except KeyboardInterrupt:
         print()
         exit(0)
-    except IndexError as i:
-        print(f"Type error: {i}")
+    except IndexError:
+        print("Enter the \"DCC2/WPA-PSK\" hash with the user or SSID")
         exit(0)
 
     found = Event()
