@@ -184,9 +184,10 @@ def crack(count, hash_input, select, wait_time):
     print("[X] Password not found!")
     exit(2)
 
-def crack_wpa_psk(count, hash_input, wait_time):
+def crack_wpa_psk(count, hash_input, wait_time,validation_hash_wpa):
     """Performs a brute-force attack on a WPA-PSK hash using PBKDF2-HMAC-SHA1."""
-    ssid = input("Enter the SSID: ").strip()
+    hash_input = validation_hash_wpa[1]
+    ssid = validation_hash_wpa[0]
     if not ssid:
         print("You did not enter the SSID name!")
         exit(2)
@@ -212,7 +213,7 @@ def crack_wpa_psk(count, hash_input, wait_time):
     print("[X] Password not found!")
     exit(2)
 
-def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
+def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map,validation_hash_wpa):
     """Allows the user to choose which hash to crack."""
     valid_hashes = {
         "sha256crypt": "sha256crypt",
@@ -221,13 +222,16 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
         "SSHA":"SSHA",     
         "DCC2":"DCC2",
         "apr1":"apr1",
+        "wpa-psk":"wpa-psk",
         "bcrypt": "bcrypt",
         "MySQL 5.X":"MySQL 5.X"
     }
     select = valid_hashes.get(hash, None)
 
     if select:
-        if select == "DCC2":    
+        if select == "wpa-psk":
+            crack_wpa_psk(count, hash_input, wait_time,validation_hash_wpa)
+        elif select == "DCC2":    
            global user
            dcc2_hash = hash_input.split(':')
            hash_input = dcc2_hash[1]
@@ -235,9 +239,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map):
         crack(count, hash_input, select, wait_time)
     else:
         select = input("option: ").strip()
-        if select in hash_algorithm_map and "wpa-psk" == hash_algorithm_map[select]:
-            crack_wpa_psk(count, hash_input, wait_time)
-        elif select in hash_algorithm_map:
+        if select in hash_algorithm_map:
             select = hash_algorithm_map.get(select, None)   
             crack(count, hash_input, select, wait_time)
         else:
@@ -253,54 +255,57 @@ def main(count):
         is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
         hash_input = input("Enter the hash to decrypt: ").strip()
+        validation_hash_wpa = hash_input.split(':') if hash_input.count(':') == 1 else ''
 
         if len(hash_input) == hashes['length_md5']:
             print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256")
             hash_algorithm_map = {"1": "md5", "2": "NTLM", "3": "shake-128", "4": "shake-256"}
-            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
+            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
         elif len(hash_input) == hashes['length_sha1']:
             print("Type hash:\n1)- sha1\n2)- ripemd-160\n3)- shake-128\n4)- shake-256")
             hash_algorithm_map = {"1": "sha1", "2": "ripemd-160", "3": "shake-128", "4": "shake-256"}
-            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
+            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
         elif len(hash_input) == hashes['length_sha224']:
             print("Type hash:\n1)- sha224\n2)- sha3_224\n3)- shake-128\n4)- shake-256")
             hash_algorithm_map = {"1": "sha224", "2": "sha3_224", "3": "shake-128", "4": "shake-256"}
-            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
+            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
         elif len(hash_input) == hashes['length_sha384']:
             print("Type hash:\n1)- sha384\n2)- sha3_384\n3)- shake-128\n4)- shake-256")
             hash_algorithm_map = {"1": "sha384", "2": "sha3_384", "3": "shake-128", "4": "shake-256"}
-            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
+            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
         elif len(hash_input) == hashes['length_sha256']:
-            print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n4)- wpa-psk\n5)- shake-128\n6)- shake-256")
-            hash_algorithm_map = {"1": "sha256", "2": "sha3_256", "3": "blake2s", "4": "wpa-psk", "5": "shake-128", "6": "shake-256"}
-            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
+            print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n4)- shake-128\n5)- shake-256")
+            hash_algorithm_map = {"1": "sha256", "2": "sha3_256", "3": "blake2s", "4": "shake-128", "5": "shake-256"}
+            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
         elif len(hash_input) == hashes['length_sha512']:
             print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n4)- shake-128\n5)- shake-256")
             hash_algorithm_map = {"1": "sha512", "2": "sha3_512", "3": "blake2b", "4": "shake-128", "5": "shake-256"}
-            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
+            cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
         elif len(hash_input) == hashes['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
-            cracking_selection(count, hash_input, "bcrypt", wait_time, "")
+            cracking_selection(count, hash_input, "bcrypt", wait_time, "","")
         elif "$5" in hash_input[0:2]:
-            cracking_selection(count, hash_input, "sha256crypt", wait_time, "")
+            cracking_selection(count, hash_input, "sha256crypt", wait_time, "","")
         elif "$6" in hash_input[0:2]:
-            cracking_selection(count, hash_input, "sha512crypt", wait_time, "")
+            cracking_selection(count, hash_input, "sha512crypt", wait_time, "","")
         elif "$1" in hash_input[0:2]:
-             cracking_selection(count, hash_input, "md5crypt", wait_time, "")
+             cracking_selection(count, hash_input, "md5crypt", wait_time, "","")
         elif "$apr1" in hash_input[0:5]:
-             cracking_selection(count, hash_input, "apr1", wait_time, "")
+             cracking_selection(count, hash_input, "apr1", wait_time, "","")
         elif "{SSHA}" in hash_input[0:7]:
-             cracking_selection(count, hash_input, "SSHA", wait_time, "")
-        elif hash_input.count(':') == 1:
-            cracking_selection(count, hash_input, "DCC2", wait_time, "")
+             cracking_selection(count, hash_input, "SSHA", wait_time, "","")
+        elif hash_input.count(':') == 1 and validation_hash_wpa[1] != 64:
+            cracking_selection(count, hash_input, "DCC2", wait_time, "","")
+        elif hash_input.count(':') == 1 and validation_hash_wpa[1] == 64:    
+            cracking_selection(count, hash_input, "wpa-psk", wait_time, "",validation_hash_wpa)
         elif "*" in hash_input[0:1]:
-             cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "")
+             cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "","")
         else:
             if hash_input:
                 consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
                 if consultation == "y":
                     print("Type hash:\n1)- shake-128\n2)- shake-256")
                     hash_algorithm_map = {"1": "shake-128", "2": "shake-256"}
-                    cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map)
+                    cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
                 else:
                     print("""\n
  \"The hash entered is of incorrect length or does not comply
@@ -314,6 +319,8 @@ def main(count):
         print("BYE!!")
     except ValueError as e:
         print(f"Type error: {e}")
+    except IndexError as i:
+        print(f"Type error: {i}")
 
 if __name__ == "__main__":
     main(0)
