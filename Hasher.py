@@ -558,6 +558,9 @@ Help Menu:
            dcc2_hash = hash_input.split(':')
            hash_input = dcc2_hash[1]
            user = dcc2_hash[0]
+           if not user:
+                print("You did not enter the username")
+                exit(0)
      if not select:
        select = input("option: ").strip()
        if select in hash_algorithm_map:
