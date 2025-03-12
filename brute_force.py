@@ -237,7 +237,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map,va
            user = validation_hash_wpa_dcc2[0]
            if not user:
                 print("You did not enter the username")
-                exit(0)
+                exit(2)
         crack(count, hash_input, select, wait_time)
     else:
         select = input("option: ").strip()
