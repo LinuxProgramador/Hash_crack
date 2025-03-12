@@ -648,7 +648,7 @@ Wait, this may take a while
             hash_wpa_psk = hash_input.split(':')
             hash_input = hash_wpa_psk[1]
             ssid = hash_wpa_psk[0]
-            if len(hash_input) == 64:
+            if len(hash_input) == 64 and ssid:
                 self.crack_wpa_psk(hash_input, ssid)
             else:
                 print("You did not enter a valid hash!")
