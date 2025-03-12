@@ -293,9 +293,9 @@ def main(count):
              cracking_selection(count, hash_input, "apr1", wait_time, "","")
         elif "{SSHA}" in hash_input[0:7]:
              cracking_selection(count, hash_input, "SSHA", wait_time, "","")
-        elif hash_input.count(':') == 1 and validation_hash_wpa[1] != 64:
+        elif len(validation_hash_wpa[1]) == 32:
             cracking_selection(count, hash_input, "DCC2", wait_time, "","")
-        elif hash_input.count(':') == 1 and validation_hash_wpa[1] == 64:    
+        elif  len(validation_hash_wpa[1]) == 64:  
             cracking_selection(count, hash_input, "wpa-psk", wait_time, "",validation_hash_wpa)
         elif "*" in hash_input[0:1]:
              cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "","")
