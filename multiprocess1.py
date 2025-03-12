@@ -180,7 +180,7 @@ if __name__ == "__main__":
             for i in range(4)
         ]
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
-        target_hash = input("Enter the hash to be decrypted: ").strip()
+        target_hash = input("Enter the hash: ").strip()
         select = get_hash_algorithm(target_hash)
 
         if select in ["ripemd-160", "ntlm"]:
