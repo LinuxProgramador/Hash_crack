@@ -81,7 +81,7 @@ def main():
         rute3 = input("Enter the path of dictionary -3: ").strip()
         rute4 = input("Enter the path of dictionary -4: ").strip()
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
-        target_hash = input("Enter the hash to be decrypted: ").strip()
+        target_hash = input("Enter the hash: ").strip()
         validation_hash_wpa_dcc2 = target_hash.split(':') if target_hash.count(':') == 1 else list('00')
         
         if any(v in target_hash[0:5] for v in ["2a$", "2b$", "2y$"]):
