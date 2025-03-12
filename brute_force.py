@@ -256,7 +256,7 @@ def main(count):
         print("INFO: \"dcc2/bcrypt/shacrypt/md5crypt/apr1/wpa-psk/ripemd-160/ntlm/\" hashes tend to take longer to decrypt.")
         is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
-        hash_input = input("Enter the hash to decrypt: ").strip()
+        hash_input = input("Enter the hash: ").strip()
         validation_hash_wpa_dcc2 = hash_input.split(':') if hash_input.count(':') == 1 else list('00')
 
         if len(hash_input) == hashes['length_md5']:
