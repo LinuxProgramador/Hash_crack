@@ -255,7 +255,7 @@ def main(count):
         is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
         hash_input = input("Enter the hash to decrypt: ").strip()
-        validation_hash_wpa = hash_input.split(':') if hash_input.count(':') == 1 else '',''
+        validation_hash_wpa = hash_input.split(':') if hash_input.count(':') == 1 else list('00')
 
         if len(hash_input) == hashes['length_md5']:
             print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256")
