@@ -321,8 +321,8 @@ def main(count):
         print("BYE!!")
     except ValueError as e:
         print(f"Type error: {e}")
-    except IndexError as i:
-        print(f"Type error: {i}")
+    except IndexError:
+        print("Enter the \"DCC2/WPA-PSK\" hash with the user or SSID")
 
 if __name__ == "__main__":
     main(0)
