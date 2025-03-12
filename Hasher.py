@@ -655,7 +655,7 @@ Wait, this may take a while
                 self.crack_wpa_psk(hash_input, ssid)
             else:
                 print("You did not enter a valid hash!")
-                print("Enter a hash in \"WPA-PSK\" format")
+                print("Enter the network SSID and hash in wpa-psk format")
                 exit(2)
           else:
             print()
@@ -747,11 +747,12 @@ lengths and combinations with option 2\"
    except KeyboardInterrupt:
         print("BYE!!")
    except FileNotFoundError as e:
-        print(f"Wordlist.txt does not exist in the path => {e}")
+        print(f"File not found => {e}")
    except ValueError as F:
        print(f"Type error: {F}")
-   except IndexError as i:
-        print(f"Type error: {i}")
+   except IndexError:
+        print("Enter the \"DCC2/WPA-PSK" hash with the user or SSID\"")
+       
 
 
 if __name__ == "__main__":
