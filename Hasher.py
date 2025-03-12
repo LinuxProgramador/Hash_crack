@@ -751,7 +751,7 @@ lengths and combinations with option 2\"
    except ValueError as F:
        print(f"Type error: {F}")
    except IndexError:
-        print("Enter the \"DCC2/WPA-PSK" hash with the user or SSID\"")
+        print("Enter the \"DCC2/WPA-PSK\" hash with the user or SSID")
        
 
 
