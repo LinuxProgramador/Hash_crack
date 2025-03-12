@@ -236,6 +236,9 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map,va
            dcc2_hash = hash_input.split(':')
            hash_input = dcc2_hash[1]
            user = dcc2_hash[0]
+           if not user:
+                print("You did not enter the username")
+                exit(0)
         crack(count, hash_input, select, wait_time)
     else:
         select = input("option: ").strip()
@@ -255,7 +258,7 @@ def main(count):
         is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
         hash_input = input("Enter the hash to decrypt: ").strip()
-        validation_hash_wpa = hash_input.split(':') if hash_input.count(':') == 1 else list('00')
+        validation_hash_wpa_dcc2 = hash_input.split(':') if hash_input.count(':') == 1 else list('00')
 
         if len(hash_input) == hashes['length_md5']:
             print("Type hash:\n1)- md5\n2)- NTLM\n3)- shake-128\n4)- shake-256")
