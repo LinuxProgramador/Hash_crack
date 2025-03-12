@@ -96,7 +96,6 @@ def main():
             select = "apr1"
         elif len(validation_hash_wpa[1]) == 64:
             print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
-            sleep(4)
             select = "wpa-psk"
             target_hash = validation_hash_wpa[1]
             ssid = validation_hash_wpa[0]
