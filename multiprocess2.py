@@ -108,6 +108,9 @@ def main():
              dcc2_hash = target_hash.split(':')
              target_hash = dcc2_hash[1]
              user = dcc2_hash[0]
+             if not user:
+                print("You did not enter the username")
+                exit(0)
         else:
             print("You did not enter a valid hash!")
             exit(0)
