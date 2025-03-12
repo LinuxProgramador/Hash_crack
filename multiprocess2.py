@@ -74,14 +74,16 @@ def main():
         encoder = get_encoder()
         sleep(1)
         system("clear")
-
+        ssid = None
+        
         rute1 = input("Enter the path of dictionary -1: ").strip()
         rute2 = input("Enter the path of dictionary -2: ").strip()
         rute3 = input("Enter the path of dictionary -3: ").strip()
         rute4 = input("Enter the path of dictionary -4: ").strip()
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         target_hash = input("Enter the hash to be decrypted: ").strip()
-
+        validation_hash_wpa = target_hash.split(':') if target_hash.count(':') == 1 else ''
+        
         if any(v in target_hash[0:5] for v in ["2a$", "2b$", "2y$"]):
             select = "bcrypt"
         elif target_hash.startswith("$5"):
@@ -92,9 +94,14 @@ def main():
              select = "md5crypt"
         elif target_hash.startswith("$apr1"):
             select = "apr1"
-        elif len(target_hash) == 64:
+        elif len(validation_hash_wpa) == 64:
             select = "wpa-psk"
-        elif target_hash.count(':') == 1:
+            target_hash = validation_hash_wpa[1]
+            ssid = validation_hash_wpa[0]
+            if not ssid:
+                print("You did not enter the SSID name")
+                exit(0)
+        elif len(validation_hash_wpa) == 32:
              select = "DCC2"
              global user
              dcc2_hash = target_hash.split(':')
@@ -104,17 +111,11 @@ def main():
             print("You did not enter a valid hash!")
             exit(0)
 
-        if select == "wpa-psk":
-            print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
-            ssid = input("Enter the SSID (if WPA-PSK): ").strip()
-            if not ssid:
-                print("You did not enter the SSID name")
-                exit(0)
-        else:
-            ssid = None
-
     except KeyboardInterrupt:
         print()
+        exit(0)
+    except IndexError as i:
+        print(f"Type error: {i}")
         exit(0)
 
     found = Event()
