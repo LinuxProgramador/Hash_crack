@@ -82,7 +82,7 @@ def main():
         rute4 = input("Enter the path of dictionary -4: ").strip()
         wait_time = input("You want to avoid overheating the processor (y/n): ").strip().lower()
         target_hash = input("Enter the hash to be decrypted: ").strip()
-        validation_hash_wpa = target_hash.split(':') if target_hash.count(':') == 1 else list('00')
+        validation_hash_wpa_dcc2 = target_hash.split(':') if target_hash.count(':') == 1 else list('00')
         
         if any(v in target_hash[0:5] for v in ["2a$", "2b$", "2y$"]):
             select = "bcrypt"
@@ -94,20 +94,19 @@ def main():
              select = "md5crypt"
         elif target_hash.startswith("$apr1"):
             select = "apr1"
-        elif len(validation_hash_wpa[1]) == 64:
+        elif len(validation_hash_wpa_dcc2[1]) == 64:
             print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
             select = "wpa-psk"
-            target_hash = validation_hash_wpa[1]
-            ssid = validation_hash_wpa[0]
+            target_hash = validation_hash_wpa_dcc2[1]
+            ssid = validation_hash_wpa_dcc2[0]
             if not ssid:
                 print("You did not enter the SSID name")
                 exit(0)
-        elif len(validation_hash_wpa[1]) == 32:
+        elif len(validation_hash_wpa_dcc2[1]) == 32:
              select = "DCC2"
              global user
-             dcc2_hash = target_hash.split(':')
-             target_hash = dcc2_hash[1]
-             user = dcc2_hash[0]
+             target_hash = validation_hash_wpa_dcc2[1]
+             user = validation_hash_wpa_dcc2[0]
              if not user:
                 print("You did not enter the username")
                 exit(0)
