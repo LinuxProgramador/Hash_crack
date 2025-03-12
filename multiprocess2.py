@@ -94,7 +94,7 @@ def main():
              select = "md5crypt"
         elif target_hash.startswith("$apr1"):
             select = "apr1"
-        elif len(validation_hash_wpa) == 64:
+        elif len(validation_hash_wpa[1]) == 64:
             print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
             sleep(4)
             select = "wpa-psk"
@@ -103,7 +103,7 @@ def main():
             if not ssid:
                 print("You did not enter the SSID name")
                 exit(0)
-        elif len(validation_hash_wpa) == 32:
+        elif len(validation_hash_wpa[1]) == 32:
              select = "DCC2"
              global user
              dcc2_hash = target_hash.split(':')
