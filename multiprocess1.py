@@ -157,7 +157,7 @@ def get_hash_algorithm(target_hash):
     elif hash_length == HASH_ALGORITHMS['length_sha384']:
         return get_hash_selection(["sha384", "sha3_384", "shake-128", "shake-256"])
     elif hash_length == HASH_ALGORITHMS['length_sha256']:
-        return get_hash_selection(["sha256", "sha3_256", "blake2s", "shake-128", "shake-256"])
+        return get_hash_selection(["sha256", "sha3_256", "blake2s", "shake-128", "shake-256","sm3"])
     elif hash_length == HASH_ALGORITHMS['length_sha512']:
         return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256"])
     elif "{SSHA}" in target_hash[0:7]:
@@ -197,7 +197,7 @@ if __name__ == "__main__":
         target_hash = input("Enter the hash: ").strip()
         select = get_hash_algorithm(target_hash)
 
-        if select in ["ripemd-160", "ntlm"]:
+        if select in ["ripemd-160", "ntlm","sm3"]:
             print(f"{select} tends to take a little longer")
 
     except KeyboardInterrupt:
