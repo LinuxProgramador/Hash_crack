@@ -178,11 +178,10 @@ def crack(count, hash_input, select, wait_time):
             supported_hash = [x for x in algorithms_available if x == 'ripemd160']
             if supported_hash:
                RIPEMD = new("ripemd160", data)
-               validation(RIPEMD.hexdigest(), hash_input, password, wpa_psk, ssid)
             else:
                RIPEMD = RIPEMD160.new()
                RIPEMD.update(data)
-               validation(RIPEMD.hexdigest(), hash_input, password, wpa_psk, ssid)
+            validation(RIPEMD.hexdigest(), hash_input, password, wpa_psk, ssid)
 
         count += 1
 
