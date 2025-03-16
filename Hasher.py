@@ -13,7 +13,7 @@ from passlib.hash import sha256_crypt,sha512_crypt,md5_crypt,apr_md5_crypt,msdcc
 from bcrypt import checkpw
 from base64 import b64decode
 from json import loads
-
+from gmssl import sm3,func
 
 class Hash_crack:
   '''  Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects '''
@@ -595,7 +595,7 @@ Wait, this may take a while
 *****************************
                    """)
      self.local_db(select,hash_input)
-     if select in ["DCC2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
+     if select in ["sm3","DCC2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
      self.display_cracking_message(is_fast_mode)
      sleep(2)
