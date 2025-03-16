@@ -108,7 +108,7 @@ INFO: Use the following command to split a large dictionary into 100 MB chunks o
 split -b 100M rockyou.txt
 
 Options:
-1) Use this option for fast hashes such as SSHA, MySQL 5.X, MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
+1) Use this option for fast hashes such as sm3, SSHA, MySQL 5.X, MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
 2) Use this option for slow hashes such as bcrypt, DCC2, apr1, md5crypt, shaCrypt, or WPA-PSK.
 
 WARNING: On 4-core only systems, may slow down your computer 
@@ -719,7 +719,7 @@ lengths and combinations with option 2\"
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha256']:
              print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n4)- sm3")
-             hash_algorithm_map ={"1":"sha256","2":"sha3_256","3":"blake2s"}
+             hash_algorithm_map ={"1":"sha256","2":"sha3_256","3":"blake2s","4":"sm3"}
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha512']:
              print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b")
