@@ -109,6 +109,8 @@ Supported Hashes:
 
 Important Notes: 
 
+INFO: This tool was designed mostly for the Termux environment, since tools like John the Ripper or Hashcat are not compatible with Termux.
+
 1- If you want to use your own dictionary, you should name it wordlist.txt and place it in the Hash_crack directory.
 
 2- Success in cracking passwords from ZIP and RAR files depends heavily on the program used to compress them. Decryption is more likely to work if they were compressed using console tools such as zip or rar.
