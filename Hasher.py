@@ -534,6 +534,7 @@ Help Menu:
 |CiscoType7 |
 |DCC2       |
 |SSHA       |
+|sm3        |
  ----------
              """)
     
