@@ -384,9 +384,14 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #ripemd-160 hash check
           #It is slow due to its anti-collision implementation.
           elif select == "ripemd-160":
-            RIPEMD = RIPEMD160.new()
-            RIPEMD.update(data)
-            self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            supported_hash = [x for x in algorithms_available if x == 'ripemd160']
+            if supported_hash:
+               RIPEMD = new("ripemd160", data)
+               self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            else:
+               RIPEMD = RIPEMD160.new()
+               RIPEMD.update(data)
+               self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #Checking blake2 hashes
           elif select in self.hash:
