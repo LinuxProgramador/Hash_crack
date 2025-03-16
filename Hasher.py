@@ -387,11 +387,10 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             supported_hash = [x for x in algorithms_available if x == 'ripemd160']
             if supported_hash:
                RIPEMD = new("ripemd160", data)
-               self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
             else:
                RIPEMD = RIPEMD160.new()
                RIPEMD.update(data)
-               self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            self.validation(RIPEMD.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #Checking blake2 hashes
           elif select in self.hash:
