@@ -68,8 +68,12 @@ def crack(target_hash, word, select, event, queue):
         shake.update(data)
         generated_hash = shake.digest(len(bytes.fromhex(target_hash))).hex()
     elif select == "ripemd-160":
-        RIPEMD = RIPEMD160.new()
-        RIPEMD.update(data)
+        supported_hash = [x for x in algorithms_available if x == 'ripemd160']                             
+        if supported_hash:
+          RIPEMD = new("ripemd160", data)
+        else:
+          RIPEMD = RIPEMD160.new()
+          RIPEMD.update(data)
         generated_hash = RIPEMD.hexdigest()
 
     if generated_hash.lower() == target_hash.lower():
