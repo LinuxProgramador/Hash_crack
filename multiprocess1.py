@@ -44,6 +44,15 @@ def crack(target_hash, word, select, event, queue):
        hash_bytes = sha1(password_bytes).digest()
        second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
        generated_hash =  "*" + second_hash_encoding
+    elif select == "sm3":
+          supported_hash = [x for x in algorithms_available if x == 'sm3']
+          if supported_hash:
+             sm3_hash = new('sm3')
+             sm3_hash.update(data)
+             generated_hash = sm3_hash.hexdigest()
+          else:
+             hash_hex = sm3.sm3_hash(func.bytes_to_list(data))
+             generated_hash = hash_hex
     elif select == "ntlm":
         password_utf16 = word.encode('utf-16le')
         hash_obj = MD4.new()
