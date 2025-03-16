@@ -546,7 +546,7 @@ Help Menu:
      ''' Reads a database to check if the hash given by the user is already there '''
      """Only applies to hashes that do not have a salt and take longer to decrypt"""
      print("Searching in database.......")
-     if select in ["NTLM","ripemd-160"]:
+     if select in ["NTLM","ripemd-160","sm3"]:
        with open('db.txt','r') as db_read:
          db = db_read.read()
          dic_db = loads(db)
