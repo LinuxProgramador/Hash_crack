@@ -318,9 +318,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                 sm3_hash.update(data)
                 self.validation(sm3_hash.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
               else:
-                print("Hash algorithm \"sm3\" not supported in the current version of hashlib")
-                exit(2)
-            
+                hash_hex = sm3.sm3_hash(func.bytes_to_list(data))
+                self.validation(hash_hex,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+                
           #NTLM hash check
           elif select == "NTLM":
               password_utf16 = password.encode('utf-16le')
