@@ -137,8 +137,8 @@ def crack(count, hash_input, select, wait_time):
                 sm3_hash.update(data)
                 validation(sm3_hash.hexdigest(), hash_input, password, wpa_psk, ssid)
               else:
-                print("Hash algorithm \"sm3\" not supported in the current version of hashlib")
-                exit(2)
+                hash_hex = sm3.sm3_hash(func.bytes_to_list(data))
+                validation(hash_hex, hash_input, password, wpa_psk, ssid)
         elif select == "NTLM":
             password_utf16 = password.encode('utf-16le')
             hash = MD4.new()
@@ -267,7 +267,7 @@ def main(count):
     global is_fast_mode
 
     try:
-        print("INFO: \"dcc2/bcrypt/shacrypt/md5crypt/apr1/wpa-psk/ripemd-160/ntlm/\" hashes tend to take longer to decrypt.")
+        print("INFO: \"dcc2/bcrypt/shacrypt/md5crypt/apr1/wpa-psk/ripemd-160/ntlm/sm3\" hashes tend to take longer to decrypt.")
         is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
         wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
         hash_input = input("Enter the hash: ").strip()
