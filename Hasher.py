@@ -718,7 +718,7 @@ lengths and combinations with option 2\"
              hash_algorithm_map ={"1":"sha384","2":"sha3_384"}
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha256']:
-             print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s")
+             print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n4)- sm3")
              hash_algorithm_map ={"1":"sha256","2":"sha3_256","3":"blake2s"}
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha512']:
