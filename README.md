@@ -109,6 +109,9 @@ Supported Hashes:
 
     SM3
 
+    SHA512-256
+    
+
 Important Notes: 
 
 INFO: This tool was designed mostly for the Termux environment, since tools like John the Ripper or Hashcat are not compatible with Termux.
