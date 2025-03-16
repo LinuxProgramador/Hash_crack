@@ -308,8 +308,16 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             hash_bytes = sha1(password_bytes).digest()
             second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
             self.validation("*" + second_hash_encoding ,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            
 
-        
+          #sm3 hash check
+          elif select == "sm3":
+              supported_hash = [x for x in algorithms_available if x == 'sm3']
+              sm3_hash = new('sm3')
+              sm3_hash.update(data)
+              self.validation(sm3_hash.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            
+            
           #NTLM hash check
           elif select == "NTLM":
               password_utf16 = password.encode('utf-16le')
