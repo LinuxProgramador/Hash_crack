@@ -107,6 +107,8 @@ Supported Hashes:
 
     SSHA
 
+    SM3
+
 Important Notes: 
 
 INFO: This tool was designed mostly for the Termux environment, since tools like John the Ripper or Hashcat are not compatible with Termux.
