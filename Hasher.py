@@ -126,12 +126,8 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
          system(f"python3 ~/Hash_crack/{self.modules_multiprocess[option_chosen_2]}")
          exit(2)
     elif option_chosen == "4":
-         print("""
-Recommendation: Split the brute force module into
-two sections to optimize hash cracking efficiency
-(it is recommended to limit it to two sections).
-               """)
-         sleep(4)
+         print("Recommendation: Split the brute force module into two sections to optimize hash cracking efficiency (it is recommended to limit it to two sections).")
+         sleep(6)
          system("clear")
          system(f"python3 ~/Hash_crack/brute_force.py")
          exit(2)
