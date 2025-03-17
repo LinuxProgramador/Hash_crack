@@ -131,14 +131,14 @@ def crack(count, hash_input, select, wait_time):
             second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
             validation("*" + second_hash_encoding, hash_input, password, wpa_psk, ssid)
         elif select == "sm3":
-              supported_hash = [x for x in algorithms_available if x == 'sm3']
-              if supported_hash:
-                sm3_hash = new('sm3')
-                sm3_hash.update(data)
-                validation(sm3_hash.hexdigest(), hash_input, password, wpa_psk, ssid)
-              else:
-                hash_hex = sm3.sm3_hash(func.bytes_to_list(data))
-                validation(hash_hex, hash_input, password, wpa_psk, ssid)
+            supported_hash = [x for x in algorithms_available if x == 'sm3']
+            if supported_hash:
+               sm3_hash = new('sm3')
+               sm3_hash.update(data)
+               validation(sm3_hash.hexdigest(), hash_input, password, wpa_psk, ssid)
+            else:
+               hash_hex = sm3.sm3_hash(func.bytes_to_list(data))
+               validation(hash_hex, hash_input, password, wpa_psk, ssid)
         elif select == "NTLM":
             password_utf16 = password.encode('utf-16le')
             hash = MD4.new()
@@ -190,10 +190,10 @@ def crack(count, hash_input, select, wait_time):
         elif select == "ripemd-160":
             supported_hash = [x for x in algorithms_available if x == 'ripemd160']
             if supported_hash:
-               RIPEMD = new("ripemd160", data)
+                RIPEMD = new("ripemd160", data)
             else:
-               RIPEMD = RIPEMD160.new()
-               RIPEMD.update(data)
+                RIPEMD = RIPEMD160.new()
+                RIPEMD.update(data)
             validation(RIPEMD.hexdigest(), hash_input, password, wpa_psk, ssid)
 
         count += 1
