@@ -45,28 +45,31 @@ def crack(target_hash, word, select, event, queue):
        second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
        generated_hash =  "*" + second_hash_encoding
     elif select == "sm3":
-          supported_hash = [x for x in algorithms_available if x == 'sm3']
-          if supported_hash:
-             sm3_hash = new('sm3')
-             sm3_hash.update(data)
-             generated_hash = sm3_hash.hexdigest()
-          else:
-             hash_hex = sm3.sm3_hash(func.bytes_to_list(data))
-             generated_hash = hash_hex
+       supported_hash = [x for x in algorithms_available if x == 'sm3']
+       if supported_hash:
+          sm3_hash = new('sm3')
+          sm3_hash.update(data)
+          generated_hash = sm3_hash.hexdigest()
+       else:
+          hash_hex = sm3.sm3_hash(func.bytes_to_list(data))
+          generated_hash = hash_hex
     elif select == "ntlm":
         password_utf16 = word.encode('utf-16le')
         hash_obj = MD4.new()
         hash_obj.update(password_utf16)
         generated_hash = hash_obj.hexdigest()
+    elif select == "sha512-256":
+        hash_obj = new("sha512_256", data)
+        generated_hash = hash_obj.hexdigest()
     elif select == "SSHA":
-            b64_data = target_hash[6:]
-            decoded = b64decode(b64_data)
-            digest = decoded[:20]
-            salt = decoded[20:]
-            hash_obj = sha1(word.encode(encoder))
-            hash_obj.update(salt)
-            generated_hash =  hash_obj.digest()
-            target_hash = digest
+        b64_data = target_hash[6:]
+        decoded = b64decode(b64_data)
+        digest = decoded[:20]
+        salt = decoded[20:]
+        hash_obj = sha1(word.encode(encoder))
+        hash_obj.update(salt)
+        generated_hash =  hash_obj.digest()
+        target_hash = digest
     elif select == "md5":
         generated_hash = md5(data).hexdigest()
     elif select in HASH_ALGORITHMS:
