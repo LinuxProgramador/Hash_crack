@@ -24,7 +24,7 @@ def get_encoder():
 
 def crack(target_hash, word, select, ssid, found, queue, encoder):
     if select == "bcrypt":
-        if checkpw(word.encode(), bytes(target_hash, encoding=encoder)):
+        if checkpw(word.encode(encoder), bytes(target_hash, encoding=encoder)):
             queue.put(f"Key found: {word}")
             found.set()
     elif select == "DCC2":
@@ -40,7 +40,7 @@ def crack(target_hash, word, select, ssid, found, queue, encoder):
             found.set()
     elif select == "wpa-psk":
         if 8 <= len(word) <= 63:
-            derived_key = pbkdf2_hmac('sha1', word.encode(), ssid.encode(), 4096, 32)
+            derived_key = pbkdf2_hmac('sha1', word.encode(encoder), ssid.encode(encoder), 4096, 32)
             if derived_key.hex().lower() == target_hash.lower():
                 queue.put(f"SSID: {ssid}\nKey found: {word}")
                 found.set()
