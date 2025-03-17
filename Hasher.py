@@ -322,6 +322,13 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                 hash_hex = sm3.sm3_hash(func.bytes_to_list(data))
                 self.validation(hash_hex,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
                 
+                
+          #sha512-256 hash check
+          elif select == "sha512-256":
+              hash_obj = new("sha512_256", data)
+              self.validation(hash_obj.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            
+            
           #NTLM hash check
           elif select == "NTLM":
               password_utf16 = password.encode('utf-16le')
