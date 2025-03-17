@@ -37,7 +37,7 @@ def get_encoder():
     return select_encoder
     
 def crack(target_hash, word, select, event, queue):
-    data = word.encode()
+    data = word.encode(encoder)
 
     if select == "MySQL 5.X":
        password_bytes = word.encode(encoder)
