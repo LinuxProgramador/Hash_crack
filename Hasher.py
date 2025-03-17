@@ -291,7 +291,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           else:
               keyclean = keywords
           password = keyclean
-          keyBin = password.encode()
+          keyBin = password.encode(self.encoder)
           data = keyBin
 
           if combined == "y":
@@ -463,7 +463,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
          # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
-         derived_key = pbkdf2_hmac('sha1', password.encode(), ssid.encode(), 4096, 32)
+         derived_key = pbkdf2_hmac('sha1', password.encode(self.encoder), ssid.encode(self.encoder), 4096, 32)
          if derived_key.hex().lower() == hash_input.lower():
             self.auxiliary_crack(password,wpa_psk,ssid)
          else:
