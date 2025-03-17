@@ -144,6 +144,9 @@ def crack(count, hash_input, select, wait_time):
             hash = MD4.new()
             hash.update(password_utf16)
             validation(hash.hexdigest(), hash_input, password, wpa_psk, ssid)
+        elif select == "sha512-256":
+            hash_obj = new("sha512_256", data)             
+            validation(hash_obj.hexdigest(), hash_input, password, wpa_psk, ssid)
         elif select == "SSHA":
             b64_data = hash_input[6:]
             decoded = b64decode(b64_data)
