@@ -11,6 +11,7 @@ from time import sleep
 hashes = {
     'sha256crypt': sha256_crypt,
     'sha512crypt': sha512_crypt,
+    'phpass':phpass,
     'md5crypt': md5_crypt,
     'apr1':apr_md5_crypt
 }
