@@ -320,6 +320,8 @@ def main(count):
             cracking_selection(count, hash_input, "wpa-psk", wait_time, "",validation_hash_wpa_dcc2)
         elif "*" in hash_input[0:1]:
              cracking_selection(count, hash_input, "MySQL 5.X", wait_time, "","")
+        elif "$P$" in hash_input[0:3]:
+             cracking_selection(count, hash_input, "phpass", wait_time, "","")
         else:
             if hash_input:
                 consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
