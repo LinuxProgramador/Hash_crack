@@ -110,6 +110,8 @@ Supported Hashes:
     SM3
 
     SHA512-256
+
+    PHPASS
     
 
 Important Notes: 
