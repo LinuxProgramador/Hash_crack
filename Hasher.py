@@ -113,6 +113,7 @@ Options:
 2) Use this option for slow hashes such as phpass, bcrypt, DCC2, apr1, md5crypt, shaCrypt, or WPA-PSK.
 
 WARNING: On 4-core only systems, may slow down your computer 
+INFO: To optimize decryption speed, split multiprocessing into two sections. Note: This only applies to systems with eight or more cores; enabling the CPU thermal throttling lock is recommended.
 Additional INFO: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
 """)
        option_chosen_2 = input("option: ").strip()
