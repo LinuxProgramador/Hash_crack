@@ -6,7 +6,7 @@ from itertools import product
 from sys import exit
 from Crypto.Hash import RIPEMD160, MD4
 from hashlib import md5, sha1, sha224, sha384, sha256, sha512, sha3_256, sha3_224, sha3_384, sha3_512, blake2s, blake2b, shake_128, shake_256
-from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt, msdcc2
+from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt, msdcc2, phpass
 from bcrypt import checkpw
 from hashlib import pbkdf2_hmac,algorithms_available,new
 from base64 import b64decode
