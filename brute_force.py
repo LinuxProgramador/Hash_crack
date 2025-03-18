@@ -29,6 +29,7 @@ hashes = {
     'md5crypt': md5_crypt,
     'apr1': apr_md5_crypt,
     'DCC2': msdcc2,
+    'phpass':phpass,
     'length_bcrypt': 60,
     'length_md5': 32,
     'length_sha1': 40,
