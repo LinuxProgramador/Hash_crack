@@ -576,6 +576,7 @@ Help Menu:
      "sha512crypt": "sha512crypt",
      "md5crypt":"md5crypt",
      "SSHA":"SSHA",
+     "phpass":"phpass",
      "DCC2":"DCC2",
      "apr1":"apr1",
      "bcrypt": "bcrypt",
