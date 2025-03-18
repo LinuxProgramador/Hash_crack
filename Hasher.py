@@ -110,7 +110,7 @@ split -b 100M rockyou.txt
 
 Options:
 1) Use this option for fast hashes such as sha512-256, sm3, SSHA, MySQL 5.X, MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
-2) Use this option for slow hashes such as bcrypt, DCC2, apr1, md5crypt, shaCrypt, or WPA-PSK.
+2) Use this option for slow hashes such as phpass, bcrypt, DCC2, apr1, md5crypt, shaCrypt, or WPA-PSK.
 
 WARNING: On 4-core only systems, may slow down your computer 
 Additional INFO: Method 2 may take significantly longer due to the security measures of these hashing algorithms.
