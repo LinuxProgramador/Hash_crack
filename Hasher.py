@@ -544,6 +544,7 @@ Help Menu:
 |SSHA       |
 |sm3        |
 |sha512-256 |
+|phpass     |
  ----------
              """)
     
