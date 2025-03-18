@@ -764,6 +764,9 @@ lengths and combinations with option 2\"
              print(f"Type hash: {hash}")
              sleep(2)
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
+    elif "$P$" in hash_input[0:3]:
+             hash = "phpass"
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     else:
         if hash_input:
           print("""\n
