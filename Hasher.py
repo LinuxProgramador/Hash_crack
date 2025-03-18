@@ -366,7 +366,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #checking shacrypt,md5crypt,phpass and apr1 hashes
           #It's a slow hash
-          elif select in ["sha256crypt","sha512crypt","md5crypt","apr1"]:
+          elif select in ["sha256crypt","sha512crypt","md5crypt","apr1","phpass"]:
              crackTimeEstimate = 'time unknown'
              if self.hash[select].verify(password, hash_input):
                 self.auxiliary_crack(password,wpa_psk,ssid)
