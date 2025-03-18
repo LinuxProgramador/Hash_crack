@@ -170,7 +170,7 @@ def crack(count, hash_input, select, wait_time):
             shake.update(data)
             calculated_hash = shake.digest(len(bytes.fromhex(hash_input))).hex()
             validation(calculated_hash, hash_input, password, wpa_psk, ssid)
-        elif select in ["sha256crypt", "sha512crypt","md5crypt","apr1"]:
+        elif select in ["sha256crypt", "sha512crypt","md5crypt","apr1","phpass"]:
             if hashes[select].verify(password, hash_input):
                 auxiliary_crack(password, wpa_psk, ssid)
             elif is_fast_mode != "y":
