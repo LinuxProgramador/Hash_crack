@@ -494,6 +494,18 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          if combined == "y":
             password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
+         if chosen_rules and combined != "y":
+            if '1' in chosen_rules:
+                 password += choice(numbers)
+            elif '4' in chosen_rules:
+                 password += choice(symbols)
+            elif '3' in chosen_rules:
+                 password = password.lower()
+            elif '2' in chosen_rules:
+                 password = password.upper()
+            elif '5' in chosen_rules:
+                 password = password.capitalize()
+                            
          # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
          derived_key = pbkdf2_hmac('sha1', password.encode(self.encoder), ssid.encode(self.encoder), 4096, 32)
          if derived_key.hex().lower() == hash_input.lower():
