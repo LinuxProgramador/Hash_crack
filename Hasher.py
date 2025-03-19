@@ -309,7 +309,24 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           if combined == "y":
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
+          if chosen_rules and combined != "y":
+            if '1' in chosen_rules:
+                 password += choice(numbers)
+                 data += bytes(choice(numbers), encoding=self.encoder)
+            elif '4' in chosen_rules:
+                 password += choice(symbols)
+                 data += bytes(choice(symbols), encoding=self.encoder)
+            elif '3' in chosen_rules:
+                 password = password.lower()
+                 data = data.lower()
+            elif '2' in chosen_rules:
+                 password = password.upper()
+                 data = data.upper()
+            elif '5' in chosen_rules:
+                 password = password.capitalize()
+                 data = data.capitalize()
 
+        
           #MySQL 5.X hash check
           if select == "MySQL 5.X":
             password_bytes = password.encode(self.encoder)
