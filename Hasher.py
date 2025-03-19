@@ -234,6 +234,11 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       combined = input().strip().lower()
       is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
       wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
+      #Basic rules such as uppercase and lowercase are applied to increase the probability of finding the correct password.
+      #Note: Only one option is accepted and is only enabled if the key-hashing setting is disabled.
+      print("Rules:\n1) Use numbers\n2) Use uppercase letters\n3) Use lowercase letters\n4) Use symbols\n5) Use capital letters only on the first letter\n6) for \"none\"")
+      rules = list(input("option: ").strip().replace(" ", ""))
+      self.rules = rules[0]
       return combined,is_fast_mode,wait_time
     
 
