@@ -291,6 +291,10 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   
   def hash_cracking_worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
       '''  Processes an input and validates passwords against various hash algorithms. '''
+      # Lists of symbols and number sequences most commonly used in passwords, can be expanded to the user's liking
+      numbers = ["1234","123456789","12345","123456","12345678"]
+      symbols = ["#","!","$","%","@","&"]
+      chosen_rules = [x for x in self.rules if x in ['1','2','3','4','5']]
       backup_password_list = password_list if type(password_list) is str else ''
       validation_str,password_list = self.validate_and_transform_entry(password_list)
       for keywords in password_list:
