@@ -479,6 +479,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
   def process_wpa_passwords(self,password_list,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
     ''' This method processes a list of passwords, converts them into hashes, and compares them with the hash to be decrypted '''
+    numbers = ["1234","123456789","12345","123456","12345678"]
+    symbols = ["#","!","$","%","@","&"]
+    chosen_rules = [x for x in self.rules if x in ['1','2','3','4','5']]
     backup_password_list = password_list if type(password_list) is str else ''
     validation_str,password_list = self.validate_and_transform_entry(password_list)
     for keyword in password_list:
