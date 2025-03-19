@@ -785,8 +785,8 @@ lengths and combinations with option 2\"
         print(f"File not found => {e}")
    except ValueError as F:
        print(f"Type error: {F}")
-   except IndexError:
-        print("Enter the \"DCC2/WPA-PSK\" hash with the user or SSID")
+   except IndexError as i:
+        print(f"Type error: {i}")
        
 
 
