@@ -597,7 +597,7 @@ Help Menu:
      """Only applies to hashes that do not have a salt and take longer to decrypt"""
      print("Searching in database.......")
      if select in ["NTLM","ripemd-160","sm3"]:
-       with open('db.txt','r') as db_read:
+       with open('db.json','r') as db_read:
          db = db_read.read()
          dic_db = loads(db)
          for hash in dic_db:
