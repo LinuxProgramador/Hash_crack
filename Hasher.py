@@ -247,33 +247,33 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     symbols = ["#","!","$","%","@","&"]
     chosen_rules = self.rules if self.rules in ['1','2','3','4','5','12','13','15','21','31','51','42','24','34','43','54','45'] else ''
     if chosen_rules:
-       if chosen_rules in ['1']:
+        if chosen_rules in ['1']:
               password += choice(numbers)
               if not wpa_psk:
                  data += bytes(choice(numbers), encoding=self.encoder)
-       elif chosen_rules in ['4']:
+        elif chosen_rules in ['4']:
               password += choice(symbols)
               if not wpa_psk:
                  data += bytes(choice(symbols), encoding=self.encoder)
-       elif chosen_rules in ['3']:
+        elif chosen_rules in ['3']:
               password = password.lower()
               if not wpa_psk:
                  data = data.lower()
-       elif chosen_rules in ['2']:
+        elif chosen_rules in ['2']:
               password = password.upper()
               if not wpa_psk:
                  data = data.upper()
-       elif chosen_rules in ['5']:
+        elif chosen_rules in ['5']:
               password = password.capitalize()
               if not wpa_psk:
                  data = data.capitalize()
-       elif chosen_rules in ['12','21']:
+        elif chosen_rules in ['12','21']:
               password += choice(numbers)
               password = password.upper()
               if not wpa_psk:
                  data += bytes(choice(numbers), encoding=self.encoder)
                  data = data.upper()
-       elif chosen_rules in ['13','31']:
+        elif chosen_rules in ['13','31']:
               password += choice(numbers)
               password = password.lower()
               if not wpa_psk:
