@@ -240,6 +240,72 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       return combined,is_fast_mode,wait_time
     
 
+
+  def rules_parameters(self,wpa_psk,password,data):
+    ''' Changes passwords by adding a random number or symbol and changing case according to self.rules, unless the hash key setting is enabled '''
+    numbers = ["1234","123456789","12345","123456","12345678"]
+    symbols = ["#","!","$","%","@","&"]
+    chosen_rules = self.rules if self.rules in ['1','2','3','4','5','12','13','15','21','31','51','42','24','34','43','54','45'] else ''
+    if chosen_rules:
+       if chosen_rules in ['1']:
+              password += choice(numbers)
+              if not wpa_psk:
+                 data += bytes(choice(numbers), encoding=self.encoder)
+       elif chosen_rules in ['4']:
+              password += choice(symbols)
+              if not wpa_psk:
+                 data += bytes(choice(symbols), encoding=self.encoder)
+       elif chosen_rules in ['3']:
+              password = password.lower()
+              if not wpa_psk:
+                 data = data.lower()
+       elif chosen_rules in ['2']:
+              password = password.upper()
+              if not wpa_psk:
+                 data = data.upper()
+       elif chosen_rules in ['5']:
+              password = password.capitalize()
+              if not wpa_psk:
+                 data = data.capitalize()
+       elif chosen_rules in ['12','21']:
+              password += choice(numbers)
+              password = password.upper()
+              if not wpa_psk:
+                 data += bytes(choice(numbers), encoding=self.encoder)
+                 data = data.upper()
+       elif chosen_rules in ['13','31']:
+              password += choice(numbers)
+              password = password.lower()
+              if not wpa_psk:
+                 data += bytes(choice(numbers), encoding=self.encoder)
+                 data = data.lower()
+        elif chosen_rules in ['15','51']:
+              password += choice(numbers)
+              password = password.capitalize()
+              if not wpa_psk:
+                 data += bytes(choice(numbers), encoding=self.encoder)
+                 data = data.capitalize()
+        elif chosen_rules in ['42','24']:
+              password += choice(symbols)
+              password = password.upper()
+              if not wpa_psk:
+                 data += bytes(choice(symbols), encoding=self.encoder)
+                 data = data.upper()
+        elif chosen_rules in ['34','43']:
+              password += choice(symbols)
+              password = password.lower()
+              if not wpa_psk:
+                 data += bytes(choice(symbols), encoding=self.encoder)
+                 data = data.lower()
+        elif chosen_rules in ['54','45']:
+              password += choice(symbols)
+              password = password.capitalize()
+              if not wpa_psk:
+                 data += bytes(choice(symbols), encoding=self.encoder)
+                 data = data.capitalize()
+        return password,data
+      
+      
   def faster(self,is_fast_mode,crackTimeEstimate,password):
       '''  Function that will not print attempts if the user wants a quick crack '''
       if is_fast_mode != "y":
