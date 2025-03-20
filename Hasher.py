@@ -369,7 +369,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           if combined == "y":
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
-        
+          if combined != "y":
+             password,data = self.rules_parameters(wpa_psk,password,data)
+            
           #MySQL 5.X hash check
           if select == "MySQL 5.X":
             password_bytes = password.encode(self.encoder)
@@ -533,7 +535,10 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          password = keyclean
          if combined == "y":
             password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
-                            
+           
+         if combined != "y":
+             password,data = self.rules_parameters(wpa_psk,password,data)
+           
          # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
          derived_key = pbkdf2_hmac('sha1', password.encode(self.encoder), ssid.encode(self.encoder), 4096, 32)
          if derived_key.hex().lower() == hash_input.lower():
