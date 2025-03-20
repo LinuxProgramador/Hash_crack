@@ -665,7 +665,7 @@ Help Menu:
            if not user:
                 print("You did not enter the username")
                 exit(0)
-     if not select:
+     elif not select:
        select = input("option: ").strip()
        if select in hash_algorithm_map:
            select = hash_algorithm_map.get(select, None)     
