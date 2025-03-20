@@ -630,8 +630,7 @@ Help Menu:
      print("Searching in database.......")
      if select in ["NTLM","ripemd-160","sm3"]:
        with open('db.json','r') as db_read:
-         db = db_read.read()
-         dic_db = loads(db)
+         dic_db = loads(db_read.read())
          for hash in dic_db:
            if hash_input.lower() == hash.lower():
                print("\n{***********************SUCCESS***********************}")
