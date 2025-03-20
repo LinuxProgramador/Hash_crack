@@ -235,10 +235,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       is_fast_mode = input("Do you want to use the fast crack version (y/n): ").strip().lower()
       wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
       #Basic rules such as uppercase and lowercase are applied to increase the probability of finding the correct password.
-      #Note: Only one option is accepted and is only enabled if the key-hashing setting is disabled.
       print("Rules:\n1) Use numbers\n2) Use uppercase letters\n3) Use lowercase letters\n4) Use symbols\n5) Use capital letters only on the first letter\n6) for \"none\"")
-      rules = list(input("option: ").strip().replace(" ", ""))
-      self.rules = rules[0]
+      self.rules = input("option: ").strip().replace(" ", "")
       return combined,is_fast_mode,wait_time
     
 
@@ -291,10 +289,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   
   def hash_cracking_worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
       '''  Processes an input and validates passwords against various hash algorithms. '''
-      # Lists of symbols and number sequences most commonly used in passwords, can be expanded to the user's liking
-      numbers = ["1234","123456789","12345","123456","12345678"]
-      symbols = ["#","!","$","%","@","&"]
-      chosen_rules = [x for x in self.rules if x in ['1','2','3','4','5']]
       backup_password_list = password_list if type(password_list) is str else ''
       validation_str,password_list = self.validate_and_transform_entry(password_list)
       for keywords in password_list:
@@ -308,23 +302,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           if combined == "y":
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
-
-          if chosen_rules and combined != "y":
-            if '1' in chosen_rules:
-                 password += choice(numbers)
-                 data += bytes(choice(numbers), encoding=self.encoder)
-            elif '4' in chosen_rules:
-                 password += choice(symbols)
-                 data += bytes(choice(symbols), encoding=self.encoder)
-            elif '3' in chosen_rules:
-                 password = password.lower()
-                 data = data.lower()
-            elif '2' in chosen_rules:
-                 password = password.upper()
-                 data = data.upper()
-            elif '5' in chosen_rules:
-                 password = password.capitalize()
-                 data = data.capitalize()
 
         
           #MySQL 5.X hash check
@@ -479,9 +456,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
   def process_wpa_passwords(self,password_list,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input):
     ''' This method processes a list of passwords, converts them into hashes, and compares them with the hash to be decrypted '''
-    numbers = ["1234","123456789","12345","123456","12345678"]
-    symbols = ["#","!","$","%","@","&"]
-    chosen_rules = [x for x in self.rules if x in ['1','2','3','4','5']]
     backup_password_list = password_list if type(password_list) is str else ''
     validation_str,password_list = self.validate_and_transform_entry(password_list)
     for keyword in password_list:
@@ -493,18 +467,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          password = keyclean
          if combined == "y":
             password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
-
-         if chosen_rules and combined != "y":
-            if '1' in chosen_rules:
-                 password += choice(numbers)
-            elif '4' in chosen_rules:
-                 password += choice(symbols)
-            elif '3' in chosen_rules:
-                 password = password.lower()
-            elif '2' in chosen_rules:
-                 password = password.upper()
-            elif '5' in chosen_rules:
-                 password = password.capitalize()
                             
          # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
          derived_key = pbkdf2_hmac('sha1', password.encode(self.encoder), ssid.encode(self.encoder), 4096, 32)
