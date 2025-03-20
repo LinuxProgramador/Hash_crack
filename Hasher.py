@@ -442,7 +442,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #checking shacrypt,md5crypt,phpass and apr1 hashes
           #It's a slow hash
           elif select in ["sha256crypt","sha512crypt","md5crypt","apr1","phpass"]:
-             crackTimeEstimate = 'time unknown'
              if self.hash[select].verify(password, hash_input):
                 self.auxiliary_crack(password,wpa_psk,ssid)
              else:
@@ -451,7 +450,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #DCC2 hash check
           #It's a slow hash
           elif select == "DCC2":
-              crackTimeEstimate = 'time unknown'
               if self.hash[select].verify(password, hash_input, user):
                  self.auxiliary_crack(password,wpa_psk,ssid)
               else:
@@ -461,7 +459,6 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #bcrypt hash check
           #It's a slow hash
           elif select == "bcrypt":
-             crackTimeEstimate = 'time unknown'
              if checkpw(data, bytes(hash_input,encoding=self.encoder)):
                 self.auxiliary_crack(password,wpa_psk,ssid)
              else:
@@ -496,7 +493,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   def crack(self,hash_input,select,is_fast_mode,combined,wait_time):
      ''' The crack function attempts to decrypt a hash by comparing it with a dictionary of words '''
      crackTimeEstimate = self.approximate_duration() if is_fast_mode != "y" else ''
-     if combined == "y" or wait_time == "y" and is_fast_mode != "y":
+     if combined == "y" or select in ["bcrypt","DCC2","sha256crypt","sha512crypt","md5crypt","apr1","phpass"] or wait_time == "y" and is_fast_mode != "y":
         crackTimeEstimate = "time unknown"
      ssid = ''
      wpa_psk = False
