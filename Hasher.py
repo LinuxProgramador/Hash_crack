@@ -236,17 +236,19 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
       #Basic rules such as uppercase and lowercase are applied to increase the probability of finding the correct password.
       print("Rules:\n1) Use numbers\n2) Use uppercase letters\n3) Use lowercase letters\n4) Use symbols\n5) Use capital letters only on the first letter\n6) for \"none\"")
+      print("Unsupported combinations (14/23/35/25/)")
       self.rules = input("option: ").strip().replace(" ", "")
       return combined,is_fast_mode,wait_time
     
 
 
-  def rules_parameters(self,wpa_psk,password,data):
+  def rules_parameters(self,wpa_psk,password,data,crackTimeEstimate):
     ''' Changes passwords by adding a random number or symbol and changing case according to self.rules, unless the hash key setting is enabled '''
     numbers = ["1234","123456789","12345","123456","12345678"]
     symbols = ["#","!","$","%","@","&"]
     chosen_rules = self.rules if self.rules in ['1','2','3','4','5','12','13','15','21','31','51','42','24','34','43','54','45'] else ''
     if chosen_rules:
+        crackTimeEstimate = 'time unknown'
         if chosen_rules in ['1']:
               password += choice(numbers)
               if not wpa_psk:
@@ -303,7 +305,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               if not wpa_psk:
                  data += bytes(choice(symbols), encoding=self.encoder)
                  data = data.capitalize()
-    return password,data
+    return password,data,crackTimeEstimate
       
       
   def faster(self,is_fast_mode,crackTimeEstimate,password):
@@ -370,7 +372,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
           if combined != "y":
-             password,data = self.rules_parameters(wpa_psk,password,data)
+             password,data,crackTimeEstimate = self.rules_parameters(wpa_psk,password,data,crackTimeEstimate)
             
           #MySQL 5.X hash check
           if select == "MySQL 5.X":
@@ -537,7 +539,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
            
          if combined != "y":
-             password,data = self.rules_parameters(wpa_psk,password,data)
+             password,data,crackTimeEstimate = self.rules_parameters(wpa_psk,password,data,crackTimeEstimate)
            
          # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
          derived_key = pbkdf2_hmac('sha1', password.encode(self.encoder), ssid.encode(self.encoder), 4096, 32)
