@@ -303,7 +303,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               if not wpa_psk:
                  data += bytes(choice(symbols), encoding=self.encoder)
                  data = data.capitalize()
-        return password,data
+    return password,data
       
       
   def faster(self,is_fast_mode,crackTimeEstimate,password):
