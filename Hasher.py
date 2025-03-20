@@ -371,7 +371,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           if combined == "y":
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
 
-          if combined != "y":
+          else:
              password,data,crackTimeEstimate = self.rules_parameters(wpa_psk,password,data,crackTimeEstimate)
             
           #MySQL 5.X hash check
@@ -538,7 +538,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          if combined == "y":
             password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
            
-         if combined != "y":
+         else:
              password,data,crackTimeEstimate = self.rules_parameters(wpa_psk,password,data,crackTimeEstimate)
            
          # Generate WPA-PSK hash using PBKDF2-HMAC-SHA1
