@@ -384,7 +384,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #sm3 hash check
           elif select == "sm3":
-              supported_hash = [x for x in algorithms_available if x == 'sm3']
+              supported_hash =  'sm3' if 'sm3' in algorithms_available else ''
               if supported_hash:
                 sm3_hash = new('sm3')
                 sm3_hash.update(data)
@@ -472,7 +472,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #ripemd-160 hash check
           #It is slow due to its anti-collision implementation.
           elif select == "ripemd-160":
-            supported_hash = [x for x in algorithms_available if x == 'ripemd160']
+            supported_hash = 'ripemd160' if 'ripemd160' in algorithms_available else ''
             if supported_hash:
                RIPEMD = new("ripemd160", data)
             else:
