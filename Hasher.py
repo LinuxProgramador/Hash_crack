@@ -15,7 +15,7 @@ from base64 import b64decode
 from json import loads
 from gmssl import sm3,func
 from random import choice
-from whirlpool import new
+import whirlpool
 
 class Hash_crack:
   '''  Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects '''
@@ -385,7 +385,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #whirlpool hash check
           elif select == "whirlpool":
-            wp = new(bytes(password,encoding=self.encoder))
+            wp = whirlpool.new(bytes(password,encoding=self.encoder))
             self.validation(wp.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
             
             
