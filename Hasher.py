@@ -271,6 +271,35 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               password = password.capitalize()
               if not wpa_psk:
                  data = data.capitalize()
+        elif chosen_rules in ['6']:
+               for char in character_substitution:
+                  password = password.replace(char,character_substitution[char])
+                  if not wpa_psk:
+                     data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
+        elif chosen_rules in ['64','46']:
+               for char in character_substitution:
+                  password = password.replace(char,character_substitution[char])
+                  if not wpa_psk:
+                     data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
+               password += choice(symbols)
+               if not wpa_psk:
+                 data += bytes(choice(symbols), encoding=self.encoder)
+        elif chosen_rules in ['61','16']:
+               for char in character_substitution:
+                  password = password.replace(char,character_substitution[char])
+                  if not wpa_psk:
+                     data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
+               password += choice(numbers)
+               if not wpa_psk:
+                 data += bytes(choice(numbers), encoding=self.encoder)
+        elif chosen_rules in ['56','65']:
+               for char in character_substitution:
+                  password = password.replace(char,character_substitution[char])
+                  if not wpa_psk:
+                     data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
+               password = password.capitalize()
+               if not wpa_psk:
+                 data = data.capitalize()
         elif chosen_rules in ['12','21']:
               password += choice(numbers)
               password = password.upper()
