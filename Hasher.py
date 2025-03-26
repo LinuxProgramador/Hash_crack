@@ -381,8 +381,14 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             hash_bytes = sha1(password_bytes).digest()
             second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
             self.validation("*" + second_hash_encoding ,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            
 
-
+          #whirlpool hash check
+          elif select == "whirlpool":
+            wp = new(bytes(password,encoding=self.encoder))
+            self.validation(wp.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+            
+            
           #sm3 hash check
           elif select == "sm3":
               supported_hash =  'sm3' if 'sm3' in algorithms_available else ''
