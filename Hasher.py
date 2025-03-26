@@ -247,6 +247,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     ''' Changes passwords by adding a random number or symbol and changing case according to self.rules, unless the hash key setting is enabled '''
     numbers = ["1234","123456789","12345","123456","12345678"]
     symbols = ["#","!","$","%","@","&"]
+    character_substitution = {"a":"@","A":"4","e":"3","E":"3","i":"1","I":"1","o":"0","O":"0","s":"$","S":" 5","t":"7","T":"7"}
     chosen_rules = self.rules if self.rules in ['1','2','3','4','5','12','13','15','21','31','51','42','24','34','43','54','45'] else ''
     if chosen_rules:
         crackTimeEstimate = 'time unknown'
