@@ -303,8 +303,8 @@ def main(count):
             hash_algorithm_map = {"1": "sha256", "2": "sha3_256", "3": "blake2s", "4": "shake-128", "5": "shake-256", "6": "sm3", "7": "sha512-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
         elif len(hash_input) == hashes['length_sha512']:
-            print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n4)- shake-128\n5)- shake-256\n4)- whirlpool")
-            hash_algorithm_map = {"1": "sha512", "2": "sha3_512", "3": "blake2b", "4": "shake-128", "5": "shake-256"}
+            print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n4)- shake-128\n5)- shake-256\n6)- whirlpool")
+            hash_algorithm_map = {"1": "sha512", "2": "sha3_512", "3": "blake2b", "4": "shake-128", "5": "shake-256", "6": "whirlpool"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
         elif len(hash_input) == hashes['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
             cracking_selection(count, hash_input, "bcrypt", wait_time, "","")
