@@ -45,6 +45,9 @@ def crack(target_hash, word, select, event, queue):
        hash_bytes = sha1(password_bytes).digest()
        second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
        generated_hash =  "*" + second_hash_encoding
+    elif select == "whirlpool":
+       wp = new(bytes(password,encoding=encoder))
+       generated_hash = wp.hexdigest()
     elif select == "sm3":
        supported_hash = [x for x in algorithms_available if x == 'sm3']
        if supported_hash:
