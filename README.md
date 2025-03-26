@@ -27,6 +27,8 @@ Features:
 
 Included third-party projects:
 
+whirlpool module: https://github.com/oohlaf/python-whirlpool.git
+
 zipcrack: https://github.com/machine1337/zipcrack 
 
 RARNinja: https://github.com/SHUR1K-N/RARNinja-RAR-Password-Cracking-Utility 
@@ -112,6 +114,8 @@ Supported Hashes:
     SHA512-256
 
     PHPASS
+
+    WHIRLPOOL 
     
 
 Important Notes: 
