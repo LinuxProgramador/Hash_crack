@@ -623,6 +623,7 @@ Help Menu:
 |sm3        |
 |sha512-256 |
 |phpass     |
+|whirlpool  |
  ----------
              """)
 
