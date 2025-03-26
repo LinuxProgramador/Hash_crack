@@ -8,6 +8,7 @@ from time import sleep
 from os import system
 from base64 import b64decode
 from gmssl import sm3, func
+from whirlpool import new
 
 HASH_ALGORITHMS = {
     'sha1': sha1,
