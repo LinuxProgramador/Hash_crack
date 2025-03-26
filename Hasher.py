@@ -237,7 +237,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
       wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
       #Basic rules such as uppercase and lowercase are applied to increase the probability of finding the correct password.
       print("Rules:\n1) Use numbers\n2) Use uppercase letters\n3) Use lowercase letters\n4) Use symbols\n5) Use capital letters only on the first letter\n6) Use character substitution: example (S -> $)\n7) for \"none\"")
-      print("INFO: unsupported combinations (14/23/35/25)")
+      print("INFO: unsupported combinations (14/23/35/25/62/26/63/36)")
       self.rules = input("option: ").strip().replace(" ", "")
       return combined,is_fast_mode,wait_time
 
