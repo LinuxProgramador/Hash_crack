@@ -166,7 +166,7 @@ def get_hash_algorithm(target_hash):
     elif hash_length == HASH_ALGORITHMS['length_sha256']:
         return get_hash_selection(["sha256", "sha3_256", "blake2s", "shake-128", "shake-256","sm3","sha512-256"])
     elif hash_length == HASH_ALGORITHMS['length_sha512']:
-        return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256"])
+        return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256", "whirlpool"])
     elif "{SSHA}" in target_hash[0:7]:
         return "SSHA"
     elif "*" in target_hash[0:1]:
