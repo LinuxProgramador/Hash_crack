@@ -14,6 +14,9 @@ function main {
        sudo apt install python3 python3-pip -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl
     fi
+    git clone https://github.com/oohlaf/python-whirlpool.git
+    cd python-whirlpool
+    pip install -e .
     if [ "$os" = 'Android' ] ; then
        if [ "$arch" = 'aarch64' ] ; then
            cp -f ~/Hash_crack/crunch  $PATH/
