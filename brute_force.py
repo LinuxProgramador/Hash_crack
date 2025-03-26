@@ -11,6 +11,7 @@ from bcrypt import checkpw
 from hashlib import pbkdf2_hmac,algorithms_available,new
 from base64 import b64decode
 from gmssl import sm3,func
+from whirlpool import new
 
 hashes = {
     'sha1': sha1,
