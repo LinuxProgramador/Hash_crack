@@ -276,11 +276,15 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
                   if not wpa_psk:
+                     char = normalize('NFC', char)
+                     character_substitution[char] = normalize('NFC', character_substitution[char])
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
         elif chosen_rules in ['64','46']:
                for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
                   if not wpa_psk:
+                     char = normalize('NFC', char)
+                     character_substitution[char] = normalize('NFC', character_substitution[char])
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
                password += choice(symbols)
                if not wpa_psk:
@@ -289,6 +293,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
                   if not wpa_psk:
+                     char = normalize('NFC', char)
+                     character_substitution[char] = normalize('NFC', character_substitution[char])
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
                password += choice(numbers)
                if not wpa_psk:
@@ -297,6 +303,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
                   if not wpa_psk:
+                     char = normalize('NFC', char)
+                     character_substitution[char] = normalize('NFC', character_substitution[char])
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
                password = password.capitalize()
                if not wpa_psk:
@@ -305,6 +313,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
                   if not wpa_psk:
+                     char = normalize('NFC', char)
+                     character_substitution[char] = normalize('NFC', character_substitution[char])
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
               password = password.upper()
               if not wpa_psk:
@@ -313,6 +323,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
                   if not wpa_psk:
+                     char = normalize('NFC', char)
+                     character_substitution[char] = normalize('NFC', character_substitution[char])
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
               password = password.lower()
               if not wpa_psk:
@@ -413,7 +425,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           else:
               keyclean = keywords
           password = keyclean
-          keyBin = password.encode(self.encoder)
+          password_normalized = normalize('NFC', password)
+          keyBin = password_normalized.encode(self.encoder)
           data = keyBin
 
           if combined == "y":
