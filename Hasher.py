@@ -15,8 +15,8 @@ from base64 import b64decode
 from json import loads
 from gmssl import sm3,func
 from random import choice
-import whirlpool
 from unicodedata import normalize
+import whirlpool
 
 class Hash_crack:
   '''  Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects '''
@@ -425,8 +425,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           else:
               keyclean = keywords
           password = keyclean
-          password_normalized = normalize('NFC', password)
-          keyBin = password_normalized.encode(self.encoder)
+          keyBin = password.encode(self.encoder)
           data = keyBin
 
           if combined == "y":
