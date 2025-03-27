@@ -431,7 +431,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #whirlpool hash check
           elif select == "whirlpool":
-            wp = whirlpool.new(bytes(password,encoding=self.encoder))
+            wp = whirlpool.new(data)
             self.validation(wp.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
             
             
