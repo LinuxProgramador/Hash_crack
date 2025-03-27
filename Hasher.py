@@ -300,6 +300,22 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                password = password.capitalize()
                if not wpa_psk:
                  data = data.capitalize()
+        elif chosen_rules in ['26','62']:
+              for char in character_substitution:
+                  password = password.replace(char,character_substitution[char])
+                  if not wpa_psk:
+                     data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
+              password = password.upper()
+              if not wpa_psk:
+                 data = data.upper()
+        elif chosen_rules in ['36','63']:
+              for char in character_substitution:
+                  password = password.replace(char,character_substitution[char])
+                  if not wpa_psk:
+                     data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
+              password = password.lower()
+              if not wpa_psk:
+                 data = data.lower()
         elif chosen_rules in ['12','21']:
               password += choice(numbers)
               password = password.upper()
