@@ -163,7 +163,7 @@ def crack(count, hash_input, select, wait_time):
             elif is_fast_mode != "y":
                 print(f"[*] Trying password: {password}")
         elif select == "md5":
-            encryption = md5(password.encode("utf-8")).hexdigest()
+            encryption = md5(data).hexdigest()
             validation(encryption, hash_input, password, wpa_psk, ssid)
         elif select == "shake-256":
             hash1 = shake_256(data).hexdigest(int(len(hash_input) / 2))
@@ -189,7 +189,7 @@ def crack(count, hash_input, select, wait_time):
             elif is_fast_mode != "y":
                 print(f"[*] Trying password: {password}")
         elif select in hashes:
-            encryption = hashes[select](password.encode("utf-8")).hexdigest()
+            encryption = hashes[select](data).hexdigest()
             validation(encryption, hash_input, password, wpa_psk, ssid)
         elif select == "ripemd-160":
             supported_hash = [x for x in algorithms_available if x == 'ripemd160']
