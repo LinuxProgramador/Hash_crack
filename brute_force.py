@@ -192,7 +192,7 @@ def crack(count, hash_input, select, wait_time):
             encryption = hashes[select](data).hexdigest()
             validation(encryption, hash_input, password, wpa_psk, ssid)
         elif select == "ripemd-160":
-            supported_hash = [x for x in algorithms_available if x == 'ripemd160']
+            supported_hash = 'ripemd160' if 'ripemd160' in algorithms_available else ''
             if supported_hash:
                 RIPEMD = new("ripemd160", data)
             else:
