@@ -477,7 +477,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #md5 hash check
           elif select == "md5":
-             encryption = md5(password.encode(self.encoder)).hexdigest()
+             encryption = md5(data).hexdigest()
              self.validation(encryption,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #Checking hash shakes
@@ -518,7 +518,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #checking  sha1, sha2, sha3 hashes
           elif select in self.hash:
-            encryption = self.hash[select](password.encode(self.encoder)).hexdigest()
+            encryption = self.hash[select](data).hexdigest()
             self.validation(encryption,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
           #ripemd-160 hash check
