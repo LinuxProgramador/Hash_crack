@@ -48,7 +48,7 @@ def crack(target_hash, word, select, event, queue):
        wp = wpl(data)
        generated_hash = wp.hexdigest()
     elif select == "sm3":
-       supported_hash = [x for x in algorithms_available if x == 'sm3']
+       supported_hash =  'sm3' if 'sm3' in algorithms_available else ''
        if supported_hash:
           sm3_hash = new('sm3')
           sm3_hash.update(data)
@@ -84,7 +84,7 @@ def crack(target_hash, word, select, event, queue):
         shake.update(data)
         generated_hash = shake.digest(len(bytes.fromhex(target_hash))).hex()
     elif select == "ripemd-160":
-        supported_hash = [x for x in algorithms_available if x == 'ripemd160']                             
+        supported_hash = 'ripemd160' if 'ripemd160' in algorithms_available else ''                           
         if supported_hash:
           RIPEMD = new("ripemd160", data)
         else:
