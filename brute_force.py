@@ -135,7 +135,7 @@ def crack(count, hash_input, select, wait_time):
             wp = wpl(data)
             validation(wp.hexdigest(), hash_input, password, wpa_psk, ssid)
         elif select == "sm3":
-            supported_hash = [x for x in algorithms_available if x == 'sm3']
+            supported_hash =  'sm3' if 'sm3' in algorithms_available else ''
             if supported_hash:
                sm3_hash = new('sm3')
                sm3_hash.update(data)
