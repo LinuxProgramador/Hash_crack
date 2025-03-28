@@ -423,8 +423,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #MySQL 5.X hash check
           if select == "MySQL 5.X":
-            password_bytes = password.encode(self.encoder)
-            hash_bytes = sha1(password_bytes).digest()
+            hash_bytes = sha1(data).digest()
             second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
             self.validation("*" + second_hash_encoding ,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
             
