@@ -8,7 +8,7 @@ from time import sleep
 from os import system
 from base64 import b64decode
 from gmssl import sm3, func
-import whirlpool
+from whirlpool import new as wpl
 
 HASH_ALGORITHMS = {
     'sha1': sha1,
@@ -45,7 +45,7 @@ def crack(target_hash, word, select, event, queue):
        second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
        generated_hash =  "*" + second_hash_encoding
     elif select == "whirlpool":
-       wp = whirlpool.new(data)
+       wp = wpl(data)
        generated_hash = wp.hexdigest()
     elif select == "sm3":
        supported_hash = [x for x in algorithms_available if x == 'sm3']
