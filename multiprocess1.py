@@ -69,7 +69,7 @@ def crack(target_hash, word, select, event, queue):
         decoded = b64decode(b64_data)
         digest = decoded[:20]
         salt = decoded[20:]
-        hash_obj = sha1(word.encode(encoder))
+        hash_obj = sha1(data)
         hash_obj.update(salt)
         generated_hash =  hash_obj.digest()
         target_hash = digest
