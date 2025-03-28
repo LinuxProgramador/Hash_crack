@@ -128,8 +128,7 @@ def crack(count, hash_input, select, wait_time):
             sleep(15)
             
         if select == "MySQL 5.X":
-            password_bytes = password.encode('utf-8')
-            hash_bytes = sha1(password_bytes).digest()
+            hash_bytes = sha1(data).digest()
             second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
             validation("*" + second_hash_encoding, hash_input, password, wpa_psk, ssid)
         elif select == "whirlpool":
