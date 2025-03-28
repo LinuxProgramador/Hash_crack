@@ -11,7 +11,7 @@ from bcrypt import checkpw
 from hashlib import pbkdf2_hmac,algorithms_available,new
 from base64 import b64decode
 from gmssl import sm3,func
-import whirlpool
+from whirlpool import new as wpl
 
 hashes = {
     'sha1': sha1,
@@ -132,7 +132,7 @@ def crack(count, hash_input, select, wait_time):
             second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
             validation("*" + second_hash_encoding, hash_input, password, wpa_psk, ssid)
         elif select == "whirlpool":
-            wp = whirlpool.new(data)
+            wp = wpl(data)
             validation(wp.hexdigest(), hash_input, password, wpa_psk, ssid)
         elif select == "sm3":
             supported_hash = [x for x in algorithms_available if x == 'sm3']
