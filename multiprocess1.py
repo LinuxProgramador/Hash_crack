@@ -41,8 +41,7 @@ def crack(target_hash, word, select, event, queue):
     data = word.encode(encoder)
 
     if select == "MySQL 5.X":
-       password_bytes = word.encode(encoder)
-       hash_bytes = sha1(password_bytes).digest()
+       hash_bytes = sha1(data).digest()
        second_hash_encoding = sha1(hash_bytes).hexdigest().upper()
        generated_hash =  "*" + second_hash_encoding
     elif select == "whirlpool":
