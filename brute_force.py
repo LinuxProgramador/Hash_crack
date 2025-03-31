@@ -105,7 +105,7 @@ def auxiliary_crack(password, wpa_psk, ssid):
     print("\n{***********************SUCCESS***********************}")
     if wpa_psk:
         print(f"[✓] SSID: {ssid}")
-    print(f"[✓] Password Found: {password}")
+    print(f"[✓] Password Found: {password.strip()}")
     exit(2)
 
 def validation(many_hash, hash_input, password, wpa_psk, ssid):
@@ -114,7 +114,7 @@ def validation(many_hash, hash_input, password, wpa_psk, ssid):
         auxiliary_crack(password, wpa_psk, ssid)
     else:
         if is_fast_mode != "y":
-            print(f"[*] Trying password: {password}")
+            print(f"[*] Trying password: {password.strip()}")
 
 def crack(count, hash_input, select, wait_time):
     """Attempts to crack a given hash by brute force using various hashing algorithms."""
