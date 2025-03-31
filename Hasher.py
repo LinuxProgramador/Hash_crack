@@ -683,6 +683,8 @@ Help Menu:
 |sha512-256 |
 |phpass     |
 |whirlpool  |
+|sha512sum  |
+|sha256sum  |
  ----------
              """)
 
