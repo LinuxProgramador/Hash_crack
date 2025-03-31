@@ -172,7 +172,7 @@ def get_hash_algorithm(target_hash):
         return get_hash_selection(["sha384", "sha3_384", "shake-128", "shake-256"])
     elif hash_length == HASH_ALGORITHMS['length_sha256'] or target_hash.endswith('-') and len(target_hash) == 67:
         return get_hash_selection(["sha256", "sha3_256", "blake2s", "shake-128", "shake-256","sm3","sha512-256"])
-    elif hash_length == HASH_ALGORITHMS['length_sha512']:
+    elif hash_length == HASH_ALGORITHMS['length_sha512'] or target_hash.endswith('-') and len(target_hash) == 131:
         return get_hash_selection(["sha512", "sha3_512", "blake2b", "shake-128", "shake-256", "whirlpool"])
     elif "{SSHA}" in target_hash[0:7]:
         return "SSHA"
