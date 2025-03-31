@@ -47,6 +47,14 @@ def crack(target_hash, word, select, event, queue):
     elif select == "whirlpool":
        wp = wpl(data)
        generated_hash = wp.hexdigest()
+    elif select == "sha256sum":
+        word = word + "\n"
+        sha256sum_hash = sha256(word.encode(encoder)).hexdigest()
+        generated_hash =  sha256sum_hash
+    elif select == "sha512sum":
+        word = word + "\n"
+        sha512sum_hash = sha512(word.encode(encoder)).hexdigest()
+        generated_hash = sha512sum_hash
     elif select == "sm3":
        supported_hash =  'sm3' if 'sm3' in algorithms_available else ''
        if supported_hash:
@@ -94,7 +102,7 @@ def crack(target_hash, word, select, event, queue):
 
     if generated_hash.lower() == target_hash.lower():
         event.set()
-        queue.put(word)
+        queue.put(word.strip())
 
 def check_hash(file_path, target_hash, select, event, queue, wait_time, chunk_size=512 * 1024):
     try:
