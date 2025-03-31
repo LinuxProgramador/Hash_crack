@@ -873,7 +873,7 @@ lengths and combinations with option 2\"
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_sha512'] or hash_input.endswith('-') and len(hash_input) == 131:
              print("Type hash:\n1)- sha512\n2)- sha3_512\n3)- blake2b\n4)- whirlpool\n5)- sha512sum")
-             hash_algorithm_map ={"1":"sha512","2":"sha3_512","3":"blake2b","4":"whirlpool"}
+             hash_algorithm_map ={"1":"sha512","2":"sha3_512","3":"blake2b","4":"whirlpool","5":"sha512sum"}
              self.cracking_selection(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif len(hash_input) == self.hash['length_bcrypt'] and any(v in hash_input[0:5] for v in ["2a$", "2b$", "2y$"]):
              hash = "bcrypt"
