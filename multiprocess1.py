@@ -49,12 +49,12 @@ def crack(target_hash, word, select, event, queue):
        generated_hash = wp.hexdigest()
     elif select == "sha256sum":
         word = word + "\n"
-        target_hash = target_hash.replace('-','').replace(' ','')
+        target_hash = target_hash.replace('  -','')
         sha256sum_hash = sha256(word.encode(encoder)).hexdigest()
         generated_hash =  sha256sum_hash
     elif select == "sha512sum":
         word = word + "\n"
-        target_hash = target_hash.replace('-','').replace(' ','')
+        target_hash = target_hash.replace('  -','')
         sha512sum_hash = sha512(word.encode(encoder)).hexdigest()
         generated_hash = sha512sum_hash
     elif select == "sm3":
