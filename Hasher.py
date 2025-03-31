@@ -437,7 +437,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #checksum sha256 hash check
           elif select == "sha256sum":
             password = password + "\n"
-            hash_input = hash_input.replace('-','')
+            hash_input = hash_input.replace(' -','')
             sha256sum_hash = sha256(password.encode(self.encoder)).hexdigest()
             self.validation(sha256sum_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
 
@@ -445,7 +445,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           #checksum sha512 hash check
           elif select == "sha512sum":
             password = password + "\n"
-            hash_input = hash_input.replace('-','')
+            hash_input = hash_input.replace(' -','')
             sha512sum_hash = sha512(password.encode(self.encoder)).hexdigest()
             self.validation(sha512sum_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate) 
 
