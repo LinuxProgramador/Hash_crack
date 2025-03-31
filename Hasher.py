@@ -111,8 +111,8 @@ INFO: Use the following command to split a large dictionary into 100 MB chunks o
 split -b 100M rockyou.txt
 
 Options:
-1) Use this option for fast hashes such as sha512sum sha256sum whirlpool sha512-256, sm3, SSHA, MySQL 5.X, MD5, NTLM, SHA1, SHA2, SHA3, Blake2, SHAKE, or RIPEMD-160.
-2) Use this option for slow hashes such as phpass, bcrypt, DCC2, apr1, md5crypt, shaCrypt, or WPA-PSK.
+1) Use this option for fast hashes such as sha512sum, sha256sum, whirlpool, sha512-256, sm3, ssha, mysql 5.X, md5, NTLM, sha1, sha2, sha3, blake2, shake or ripemd-160.
+2) Use this option for slow hashes such as phpass, bcrypt, DCC2, apr1, md5crypt, shacrypt or wpa-psk.
 
 WARNING: On 4-core only systems, may slow down your computer
 INFO: To optimize decryption speed, split multiprocessing into two sections. This only applies to systems with eight or more cores; enabling the CPU thermal throttling lock is recommended.
