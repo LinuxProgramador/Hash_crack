@@ -116,6 +116,10 @@ Supported Hashes:
     PHPASS
 
     WHIRLPOOL 
+
+    SHA256SUM
+
+    SHA512SUM
     
 
 Important Notes: 
