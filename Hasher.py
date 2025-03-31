@@ -434,6 +434,20 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             self.validation(wp.hexdigest(),hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
             
             
+          #checksum sha256 hash check
+          elif select == "sha256sum":
+            password = password + "\n"
+            sha256sum_hash = sha256(password.encode(self.encoder)).hexdigest()
+            self.validation(sha256sum_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+
+
+          #checksum sha512 hash check
+          elif select == "sha512sum":
+            password = password + "\n"
+            sha512sum_hash = sha512(password.encode(self.encoder)).hexdigest()
+            self.validation(sha512sum_hash,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate) 
+
+        
           #sm3 hash check
           elif select == "sm3":
               supported_hash =  'sm3' if 'sm3' in algorithms_available else ''
