@@ -136,12 +136,12 @@ def crack(count, hash_input, select, wait_time):
             validation(wp.hexdigest(), hash_input, password, wpa_psk, ssid)
         elif select == "sha256sum":
             password = password + "\n"
-            hash_input = hash_input.replace('-','').replace(' ','')
+            hash_input = hash_input.replace('  -','')
             sha256sum_hash = sha256(password.encode('utf-8')).hexdigest()
             validation(sha256sum_hash, hash_input, password, wpa_psk, ssid)
         elif select == "sha512sum":
             password = password + "\n"
-            hash_input = hash_input.replace('-','').replace(' ','')
+            hash_input = hash_input.replace('  -','')
             sha512sum_hash = sha512(password.encode('utf-8')).hexdigest()
             validation(sha512sum_hash, hash_input, password, wpa_psk, ssid)
         elif select == "sm3":
