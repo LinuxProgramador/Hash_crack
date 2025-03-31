@@ -305,7 +305,7 @@ def main(count):
             print("Type hash:\n1)- sha384\n2)- sha3_384\n3)- shake-128\n4)- shake-256")
             hash_algorithm_map = {"1": "sha384", "2": "sha3_384", "3": "shake-128", "4": "shake-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
-        elif len(hash_input) == hashes['length_sha256']:
+        elif len(hash_input) == hashes['length_sha256'] or hash_input.endswith('-') and len(hash_input) == 67:
             print("Type hash:\n1)- sha256\n2)- sha3_256\n3)- blake2s\n4)- shake-128\n5)- shake-256\n6)- sm3\n7)- sha512-256")
             hash_algorithm_map = {"1": "sha256", "2": "sha3_256", "3": "blake2s", "4": "shake-128", "5": "shake-256", "6": "sm3", "7": "sha512-256"}
             cracking_selection(count, hash_input, "", wait_time, hash_algorithm_map,"")
