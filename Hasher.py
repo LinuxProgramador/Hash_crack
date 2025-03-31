@@ -358,7 +358,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   def faster(self,is_fast_mode,crackTimeEstimate,password):
       '''  Function that will not print attempts if the user wants a quick crack '''
       if is_fast_mode != "y":
-          print(f"[{crackTimeEstimate}] Trying password:- {password}")
+          print(f"[{crackTimeEstimate}] Trying password:- {password.strip()}")
 
 
   def auxiliary_crack(self,password,wpa_psk,ssid):
@@ -366,7 +366,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
    print("\n{***********************SUCCESS***********************}")
    if wpa_psk:
      print(f"[✓] SSID: {ssid}")
-   print(f"[✓] Password Found:- {password}")
+   print(f"[✓] Password Found:- {password.strip()}")
    exit(2)
 
 
