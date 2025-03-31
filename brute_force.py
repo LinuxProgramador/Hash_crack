@@ -134,6 +134,14 @@ def crack(count, hash_input, select, wait_time):
         elif select == "whirlpool":
             wp = wpl(data)
             validation(wp.hexdigest(), hash_input, password, wpa_psk, ssid)
+        elif select == "sha256sum":
+            password = password + "\n"
+            sha256sum_hash = sha256(password.encode('utf-8')).hexdigest()
+            validation(sha256sum_hash, hash_input, password, wpa_psk, ssid)
+        elif select == "sha512sum":
+            password = password + "\n"
+            sha512sum_hash = sha512(password.encode('utf-8')).hexdigest()
+            validation(sha512sum_hash, hash_input, password, wpa_psk, ssid)
         elif select == "sm3":
             supported_hash =  'sm3' if 'sm3' in algorithms_available else ''
             if supported_hash:
