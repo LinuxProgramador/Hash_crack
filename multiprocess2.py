@@ -2,7 +2,7 @@
 
 from multiprocessing import Process,Queue,Event
 from hashlib import pbkdf2_hmac
-from sys import exit, argv
+from sys import exit
 from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt, msdcc2, phpass
 from os import path, system
 from bcrypt import checkpw
