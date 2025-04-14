@@ -11,8 +11,8 @@ function main {
        apt install python3 python-pip rust -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl
     else
-       sudo apt install python3 python3-pip -y
-       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl
+       sudo apt install python3 python3-pip tor proxychains4 -y
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl paramiko
     fi
     git clone https://github.com/oohlaf/python-whirlpool.git
     cd python-whirlpool
