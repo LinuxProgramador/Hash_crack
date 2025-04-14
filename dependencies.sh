@@ -13,7 +13,7 @@ function main {
     else
        sudo apt install python3 python3-pip tor proxychains4 -y
        python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl paramiko
-       cp -f ~/Hash_crack/proxychains4.conf /etc/
+       cp -f ~/Hash_crack/proxychains4.conf /etc/proxychains4.conf
     fi
     git clone https://github.com/oohlaf/python-whirlpool.git
     cd python-whirlpool
