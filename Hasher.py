@@ -135,6 +135,12 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
          system("clear")
          system("python3 ~/Hash_crack/brute_force.py")
          exit(2)
+    elif option_chosen == "5":
+         system("clear")
+         system("bash ~/start_tor.sh")
+         sleep(1)
+         system("python3 ~/Hash_crack/ssh_service_attack.py")
+         exit(2)
     return
 
 
