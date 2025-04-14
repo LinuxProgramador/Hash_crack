@@ -24,6 +24,8 @@ Features:
 
     9- Dictionary or brute force hash decryption
 
+    10- Dictionary attack on exposed SSH services
+
 
 Included third-party projects:
 
