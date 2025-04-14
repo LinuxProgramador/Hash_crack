@@ -133,7 +133,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
          print("Recommendation: Split the brute force module into two sections to optimize hash cracking efficiency (it is recommended to limit it to two sections).")
          sleep(6)
          system("clear")
-         system(f"python3 ~/Hash_crack/brute_force.py")
+         system("python3 ~/Hash_crack/brute_force.py")
          exit(2)
     return
 
