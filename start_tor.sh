@@ -1,0 +1,2 @@
+tor &>/dev/null &
+echo
