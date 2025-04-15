@@ -45,8 +45,19 @@ def read_dic(dic_path, port, hostname, username, encoder):
     client = SSHClient()
     client.set_missing_host_key_policy(AutoAddPolicy())
     with open(dic_path, 'r', encoding=encoder) as file_read:
-            lines = file_read.read().splitlines()
-            ssh(client, lines, hostname, username, port)
+        chunk_size = 512 * 1024
+       buffer = ""
+       while True:
+         chunk = file_read.read(chunk_size)
+         if not chunk:
+            break
+         buffer += chunk
+         lines = buffer.splitlines()
+         buffer = lines.pop() if not chunk.endswith('\n') else ""
+         ssh(client, lines, hostname, username, port)
+       if buffer:
+         ssh(client, buffer.strip(), hostname, username, port)
+           
 
 def main():
     try:
