@@ -136,12 +136,16 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
          system("python3 ~/Hash_crack/brute_force.py")
          exit(2)
     elif option_chosen == "5":
-         system("clear")
-         system("bash ~/Hash_crack/start_tor.sh")
-         sleep(1)
-         system("proxychains4 python3 ~/Hash_crack/ssh_service_attack.py")
-         system("pkill tor")
-         exit(2)
+         if not is_termux:
+           system("clear")
+           system("bash ~/Hash_crack/start_tor.sh")
+           sleep(1)
+           system("proxychains4 python3 ~/Hash_crack/ssh_service_attack.py")
+           system("pkill tor")
+           exit(2)
+         else:
+           print("Not supported on Termux")
+           exit(2)
     return
 
 
