@@ -3,11 +3,9 @@
 from paramiko import SSHClient, AutoAddPolicy, AuthenticationException
 from time import sleep
 from sys import exit
-from os import system, path
+from os import system
 
 # Due to the robust security protocols integrated within SSH, parallel attacks are considerably less effective. Consequently, I opted to employ a single attack connection
-
-is_termux = path.exists("/data/data/com.termux/files/")
 
 def get_encoder():
     print("\nINFO: Only valid for SSH services exposed on the Internet (Not Locally)")
