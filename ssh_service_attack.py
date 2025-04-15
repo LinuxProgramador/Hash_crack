@@ -20,6 +20,8 @@ def ssh(client, passwords, hostname, username, port):
     if backup_str:
        passwords = "1"
     for pwd in passwords:
+        if backup_str:
+            pwd = backup_str
         try:
             client.connect(hostname, port=port, username=username, password=pwd, timeout=3)
             stdin, stdout, stderr = client.exec_command('echo "Ready"')
