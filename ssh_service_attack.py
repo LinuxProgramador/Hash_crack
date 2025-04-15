@@ -45,7 +45,7 @@ def read_dic(dic_path, port, hostname, username, encoder):
     client = SSHClient()
     client.set_missing_host_key_policy(AutoAddPolicy())
     with open(dic_path, 'r', encoding=encoder) as file_read:
-        chunk_size = 512 * 1024
+       chunk_size = 512 * 1024
        buffer = ""
        while True:
          chunk = file_read.read(chunk_size)
