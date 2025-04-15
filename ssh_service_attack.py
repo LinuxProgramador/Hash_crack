@@ -16,6 +16,9 @@ def get_encoder():
     return select_encoder
 
 def ssh(client, passwords, hostname, username, port):
+    backup_str = passwords if type(passwords) is str else ""
+    if backup_str:
+       passwords = "1"
     for pwd in passwords:
         try:
             client.connect(hostname, port=port, username=username, password=pwd, timeout=3)
