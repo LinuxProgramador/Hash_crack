@@ -63,10 +63,6 @@ def main():
         exit(0)
 
 if __name__ == '__main__':
-    if not is_termux:
-        main()
-    else:
-        print("Not supported on Termux")
-
-
+     main()
+ 
 __status__="Finish"
