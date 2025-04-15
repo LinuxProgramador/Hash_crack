@@ -75,7 +75,10 @@ def main():
     except FileNotFoundError as f:
         print(f"File not found: {f}")
         exit(0)
-
+    except IsADirectoryError as d:
+        print(f"Error; it is a directory: {d}")
+        exit(0)
+        
 if __name__ == '__main__':
      main()
  
