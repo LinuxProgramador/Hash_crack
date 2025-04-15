@@ -136,7 +136,7 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
          system("python3 ~/Hash_crack/brute_force.py")
          exit(2)
     elif option_chosen == "5":
-         if not is_termux:
+         if not self.is_termux:
            system("clear")
            system("bash ~/Hash_crack/start_tor.sh")
            sleep(1)
