@@ -11,7 +11,7 @@ def get_encoder():
     print("\nINFO: Only valid for SSH services exposed on the Internet (Not Locally)")
     print("INFO: For compatibility with certain symbols, choose an encoding:")
     print("1) latin-1\n2) utf-8")
-    encoder_text = input("Option: ")
+    encoder_text = input("option: ").strip()
     select_encoder = "latin-1" if encoder_text == "1" else "utf-8"
     return select_encoder
 
