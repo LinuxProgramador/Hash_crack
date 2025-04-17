@@ -95,7 +95,7 @@ class Hash_crack:
   def call_modules(self):
     '''  Call for third-party projects included to extend the program's functionality '''
     print("You want to use:")
-    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) bruteforce: Brute force attack without dictionary.\n5) ssh: Brute force to SSH service\n6) for \"none\"")
+    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) bruteforce: Brute force attack without dictionary.\n5) ssh: Dictionary attack on exposed SSH services\n6) for \"none\"")
     option_chosen = input("option: ").strip()
     if option_chosen in self.modules_names:
       print("INFO:This process may take time!")
