@@ -39,7 +39,6 @@ def ssh(client, passwords, hostname, username, port):
             print(f"Error with password {pwd}: {e}")
         finally:
             client.close()
-            sleep(0.01)
 
 def read_dic(dic_path, port, hostname, username, encoder):
     client = SSHClient()
