@@ -66,7 +66,7 @@ def main():
         system("clear")
         dic_path = input("Enter the dictionary path: ").strip()
         hostname = input("Enter SSH server IP: ").strip()
-        port = input("Enter the port: ").strip()
+        port = int(input("Enter the port: ").strip())
         username = input("Enter SSH username: ").strip()
         read_dic(dic_path, port, hostname, username, encoder)
     except KeyboardInterrupt:
