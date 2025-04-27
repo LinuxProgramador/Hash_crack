@@ -261,6 +261,9 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     character_substitution = {"a":"@","A":"4","e":"3","E":"3","i":"1","I":"1","o":"0","O":"0","s":"$","S":"5","t":"7","T":"7","ó":"0","Ó":"0","á":"@","Á":"4","é":"3","É":"3","í":"1","Í":"1"}
     chosen_rules = self.rules if self.rules in ['1','2','3','4','5','12','13','15','21','31','51','42','24','34','43','54','45','6','64','46','61','16','56','65','26','62','36','63'] else ''
     if chosen_rules:
+        u = password.upper()
+        l = password.lower()
+        c = password.capitalize()
         crackTimeEstimate = 'time unknown'
         if chosen_rules in ['1']:
               password += choice(numbers)
@@ -273,15 +276,15 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
         elif chosen_rules in ['3']:
               password = password.lower()
               if not wpa_psk:
-                 data = data.lower()
+                 data = l.encode(self.encoder)
         elif chosen_rules in ['2']:
               password = password.upper()
               if not wpa_psk:
-                 data = data.upper()
+                 data = u.encode(self.encoder)
         elif chosen_rules in ['5']:
               password = password.capitalize()
               if not wpa_psk:
-                 data = data.capitalize()
+                 data = c.encode(self.encoder)
         elif chosen_rules in ['6']:
                for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
@@ -310,7 +313,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
                password = password.capitalize()
                if not wpa_psk:
-                 data = data.capitalize()
+                 data = c.encode(self.encoder)
         elif chosen_rules in ['26','62']:
               for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
@@ -318,7 +321,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
               password = password.upper()
               if not wpa_psk:
-                 data = data.upper()
+                 data = u.encode(self.encoder)
         elif chosen_rules in ['36','63']:
               for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
@@ -326,43 +329,43 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                      data = data.replace(bytes(char,encoding=self.encoder),bytes(character_substitution[char],encoding=self.encoder))
               password = password.lower()
               if not wpa_psk:
-                 data = data.lower()
+                 data = l.encode(self.encoder)
         elif chosen_rules in ['12','21']:
               password += choice(numbers)
               password = password.upper()
               if not wpa_psk:
                  data += bytes(choice(numbers), encoding=self.encoder)
-                 data = data.upper()
+                 data = u.encode(self.encoder)
         elif chosen_rules in ['13','31']:
               password += choice(numbers)
               password = password.lower()
               if not wpa_psk:
                  data += bytes(choice(numbers), encoding=self.encoder)
-                 data = data.lower()
+                 data = l.encode(self.encoder)
         elif chosen_rules in ['15','51']:
               password += choice(numbers)
               password = password.capitalize()
               if not wpa_psk:
                  data += bytes(choice(numbers), encoding=self.encoder)
-                 data = data.capitalize()
+                 data = c.encode(self.encoder)
         elif chosen_rules in ['42','24']:
               password += choice(symbols)
               password = password.upper()
               if not wpa_psk:
                  data += bytes(choice(symbols), encoding=self.encoder)
-                 data = data.upper()
+                 data = u.encode(self.encoder)
         elif chosen_rules in ['34','43']:
               password += choice(symbols)
               password = password.lower()
               if not wpa_psk:
                  data += bytes(choice(symbols), encoding=self.encoder)
-                 data = data.lower()
+                 data = l.encode(self.encoder)
         elif chosen_rules in ['54','45']:
               password += choice(symbols)
               password = password.capitalize()
               if not wpa_psk:
                  data += bytes(choice(symbols), encoding=self.encoder)
-                 data = data.capitalize()
+                 data = c.encode(self.encoder)
     return password,data,crackTimeEstimate
 
 
