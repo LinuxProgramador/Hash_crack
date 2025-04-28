@@ -361,7 +361,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                  data += bytes(n, encoding=self.encoder)
                  data = l.encode(self.encoder)
         elif chosen_rules in ['15','51']:
-              choice(numbers)
+              n = choice(numbers)
               password += n
               password = password.capitalize()
               if not wpa_psk:
