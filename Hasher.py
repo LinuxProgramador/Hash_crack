@@ -289,51 +289,37 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
                   data = password.encode(self.encoder)
         elif chosen_rules in ['7']:
               password = password.capitalize()
-              if not wpa_psk:
-                 data = password.encode(self.encoder)
               password += choice(numbers)
-              if not wpa_psk:
-                 data = password.encode(self.encoder)
               password += choice(symbols)
               if not wpa_psk:
                  data =  password.encode(self.encoder)        
         elif chosen_rules in ['64','46']:
                for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
-               if not wpa_psk:
-                  data = password.encode(self.encoder)
                password += choice(symbols)
                if not wpa_psk:
                  data = password.encode(self.encoder)
         elif chosen_rules in ['61','16']:
                for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
-               if not wpa_psk:
-                  data = password.encode(self.encoder)
                password += choice(numbers)
                if not wpa_psk:
                  data = password.encode(self.encoder)
         elif chosen_rules in ['56','65']:
                for char in character_substitution:
-                  password = password.replace(char,character_substitution[char])
-               if not wpa_psk:
-                  data = password.encode(self.encoder)
+                  password = password.replace(char,character_substitution[char])        
                password = password.capitalize()
                if not wpa_psk:
                  data = password.encode(self.encoder)
         elif chosen_rules in ['26','62']:
               for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
-              if not wpa_psk:
-                  data = password.encode(self.encoder)
               password = password.upper()
               if not wpa_psk:
                  data = password.encode(self.encoder)
         elif chosen_rules in ['36','63']:
               for char in character_substitution:
                   password = password.replace(char,character_substitution[char])
-              if not wpa_psk:
-                  data = password.encode(self.encoder)
               password = password.lower()
               if not wpa_psk:
                  data = password.encode(self.encoder)
