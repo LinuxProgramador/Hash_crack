@@ -259,7 +259,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
     #It can be modified as desired, adding or removing values 
     numbers = ["123","1","2"]
     symbols = ["#","!","$","@"]
-    character_substitution = {"a":"@","A":"4","e":"3","E":"3","i":"1","I":"1","o":"0","O":"0","s":"$","S":"5","t":"7","T":"7","ó":"0","Ó":"0","á":"@","Á":"4","é":"3","É":"3","í":"1","Í":"1"}
+    character_substitution = {"a":"@","A":"4","e":"3","E":"3","i":"1","I":"1","o":"0","O":"0","s":"$","S":"5","t":"7","T":"7","ó":"0","Ó":"0","á":"@","Á":"4","é":"3","É":"3","í":"1","Í":"1","à":"@","À":"4","è":"3","È":"3","ò":"0","Ò":"0","ì":"1","Ì":"1"}
     chosen_rules = self.rules if self.rules in ['1','2','3','4','5','12','13','15','21','31','51','42','24','34','43','54','45','6','64','46','61','16','56','65','26','62','36','63','7'] else ''
     if chosen_rules:
         crackTimeEstimate = 'time unknown'
