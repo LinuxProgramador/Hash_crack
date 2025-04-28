@@ -256,7 +256,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
   def rules_parameters(self,wpa_psk,password,data,crackTimeEstimate):
     ''' Changes passwords by adding a random number or symbol and changing case according to self.rules, unless the hash key setting is enabled '''
-    numbers = ["123456789","123456","12345678"]
+    #It can be modified as desired, adding or removing values 
+    numbers = ["123","1","12","2","3"]
     symbols = ["#","!","$","@"]
     character_substitution = {"a":"@","A":"4","e":"3","E":"3","i":"1","I":"1","o":"0","O":"0","s":"$","S":"5","t":"7","T":"7","ó":"0","Ó":"0","á":"@","Á":"4","é":"3","É":"3","í":"1","Í":"1"}
     chosen_rules = self.rules if self.rules in ['1','2','3','4','5','12','13','15','21','31','51','42','24','34','43','54','45','6','64','46','61','16','56','65','26','62','36','63','7'] else ''
