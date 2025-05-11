@@ -65,7 +65,7 @@ def word_generator(config):
             yield word
 
 
-def hash_worker(config, target_hash, hash_type, stop_event, result_queue):
+def hash_worker(config, target_hash, hash_type, stop_event, result_queue, wait_time):
     for word in word_generator(config):
         word = word.strip()
         data = word.encode()
@@ -74,6 +74,9 @@ def hash_worker(config, target_hash, hash_type, stop_event, result_queue):
             break
 
         computed_hash = ''
+        
+        if wait_time == "y":
+             sleep(15)
 
         try:
             if hash_type == "mysql5.X":
@@ -183,14 +186,15 @@ def main():
 | whirlpool  | sha512sum    |
 | sha256sum  | sha3-224     |
 | sha3-384   | sha3-256     |
-| sha3-512   |  sha256      |
-| sha224     |  sha384      |
+| sha3-512   | sha256       |
+| sha224     | sha384       |
 | sha512     |              |
  ---------------------------
 ''')
 
     target_hash = input("Enter the target hash: ").strip()
-    hash_type = input("Enter the hash type: ").strip()
+    hash_type = input("Enter the hash type: ").strip().lower()
+    wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
     if hash_type not in hash_algorithms and hash_type not in ["ripemd-160","shake-128","shake-256","md5", "dcc2", "mysql5.X", "whirlpool", "sha256sum", "sha512sum", "sm3", "ntlm", "sha512-256", "ssha", "bcrypt", "wpa"]:
        print("Wrong option!")
        exit(0)
@@ -239,7 +243,7 @@ def main():
 
     try:
         processes = [
-            Process(target=hash_worker, args=(config, target_hash, hash_type, stop_event, result_queue))
+            Process(target=hash_worker, args=(config, target_hash, hash_type, stop_event, result_queue, wait_time))
             for config in config_list
         ]
 
