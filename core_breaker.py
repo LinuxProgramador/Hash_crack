@@ -169,7 +169,6 @@ def hash_worker(config, target_hash, hash_type, stop_event, result_queue, wait_t
 
 
 def main():
-  try:
     print('''
  -----------------------------
 |     Supported Hash Types    |
@@ -239,10 +238,6 @@ def main():
 
         config_list.append([characters, min_len, max_len])
         
-  except KeyboardInterrupt:
-    print("\n[!] Interrupted. Terminating processes...")
-    exit(0)
-
     stop_event = Event()
     result_queue = Queue()
 
