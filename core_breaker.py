@@ -139,12 +139,13 @@ def hash_worker(config, target_hash, hash_type, stop_event, result_queue, wait_t
             elif hash_type in hash_algorithms:
                 if hash_type in ['sha512crypt']:
                     sleep(0.02)
-                if hash_algorithms[hash_type].verify(word, target_hash):
-                    stop_event.set()
-                    result_queue.put(word)
-                    break
-                else:
-                    computed_hash = hash_algorithms[hash_type](data).hexdigest()
+                  if hash_type in ['sha256crypt', 'sha512crypt', 'md5crypt', 'apr1', 'phpass']:
+                     if hash_algorithms[hash_type].verify(word, target_hash):
+                        stop_event.set()
+                        result_queue.put(word)
+                        break
+                  else:
+                     computed_hash = hash_algorithms[hash_type](data).hexdigest()
             elif hash_type == "dcc2":
                 sleep(0.02)
                 if msdcc2.verify(word, target_hash, user=user):
