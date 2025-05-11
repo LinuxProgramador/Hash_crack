@@ -191,7 +191,7 @@ def main():
 | sha512     |              |
  ---------------------------
 ''')
-
+    print("INFO: ONLY RECOMMENDED ON SYSTEMS WITH MORE THAN 4 CORES!!!!!!!\n")
     target_hash = input("Enter the target hash: ").strip()
     hash_type = input("Enter the hash type: ").strip().lower()
     wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
