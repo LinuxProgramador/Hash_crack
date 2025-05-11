@@ -221,7 +221,7 @@ def main():
     for _ in range(4):
         print("\nChoose character sets to use:")
         print("1) Numbers\n2) Uppercase Letters\n3) Lowercase Letters\n4) Symbols")
-        selected = input("Option(s): ").strip()
+        selected = input("Option(s): ").strip().replace(" ","")
         sets = {
             "1": digits,
             "2": ascii_uppercase,
