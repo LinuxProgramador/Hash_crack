@@ -76,7 +76,7 @@ def hash_worker(config, target_hash, hash_type, stop_event, result_queue, wait_t
         computed_hash = ''
         
         if wait_time == "y":
-             sleep(15)
+             sleep(0.20)
 
         try:
             if hash_type == "mysql5.X":
