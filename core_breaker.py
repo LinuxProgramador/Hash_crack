@@ -189,7 +189,7 @@ def main():
 
     target_hash = input("Enter the target hash: ").strip()
     hash_type = input("Enter the hash type: ").strip()
-    if hash_type not in hash_algorithms and hash_type not in ["md5", "dcc2", "mysql5.X", "whirlpool", "sha256sum", "sha512sum", "sm3", "ntlm", "sha512-256", "ssha", "bcrypt", "wpa"]:
+    if hash_type not in hash_algorithms and hash_type not in ["shake-128","shake-256","md5", "dcc2", "mysql5.X", "whirlpool", "sha256sum", "sha512sum", "sm3", "ntlm", "sha512-256", "ssha", "bcrypt", "wpa"]:
        print("Wrong option!")
        exit(0)
 
