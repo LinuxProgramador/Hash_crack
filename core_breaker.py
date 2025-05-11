@@ -79,7 +79,7 @@ def hash_worker(config, target_hash, hash_type, stop_event, result_queue, wait_t
              sleep(0.20)
 
         try:
-            if hash_type == "mysql5.X":
+            if hash_type == "mysql5.x":
                 computed_hash = "*" + sha1(sha1(data).digest()).hexdigest().upper()
             elif hash_type == "whirlpool":
                 computed_hash = wpl(data).hexdigest()
@@ -180,7 +180,7 @@ def main():
 | sha256crypt| sha512crypt  |
 | shake-128  | shake-256    |
 | wpa        | ntlm         |
-| mysql5.X   | md5crypt     |
+| mysql5.x   | md5crypt     |
 | apr1       | dcc2         |
 | ssha       | sm3          |
 | sha512-256 | phpass       |
@@ -196,7 +196,7 @@ def main():
     target_hash = input("Enter the target hash: ").strip()
     hash_type = input("Enter the hash type: ").strip().lower()
     wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
-    if hash_type not in hash_algorithms and hash_type not in ["ripemd-160","shake-128","shake-256","md5", "dcc2", "mysql5.X", "whirlpool", "sha256sum", "sha512sum", "sm3", "ntlm", "sha512-256", "ssha", "bcrypt", "wpa"]:
+    if hash_type not in hash_algorithms and hash_type not in ["ripemd-160","shake-128","shake-256","md5", "dcc2", "mysql5.x", "whirlpool", "sha256sum", "sha512sum", "sm3", "ntlm", "sha512-256", "ssha", "bcrypt", "wpa"]:
        print("Wrong option!")
        exit(0)
 
