@@ -199,11 +199,21 @@ def main():
        print("Wrong option!")
        exit(0)
 
+    if not target_hash:
+        print("You did not enter the requested hash!")
+        exit(0)
+        
     global ssid, user
     if hash_type == "wpa":
         ssid = input("Enter the SSID: ").strip()
+        if not ssid:
+            print("You did not enter the SSID!")
+            exit(0)
     elif hash_type == "dcc2":
         user = input("Enter the username: ").strip()
+        if not user:
+            print("You did not enter the username!")
+            exit(0)
 
     print("INFO: \"Enter the four configuration parameters that will be requested to proceed to decrypt the hash\"")
     config_list = []
