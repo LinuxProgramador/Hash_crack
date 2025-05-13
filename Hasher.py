@@ -94,7 +94,7 @@ class Hash_crack:
   def call_modules(self):
     '''  Call for third-party projects included to extend the program's functionality '''
     print("You want to use:")
-    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) bruteforce: Brute force attack without dictionary.\n5) ssh: Dictionary attack on exposed SSH services\n6) for \"none\"")
+    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) bruteforce: Brute force attack without dictionary.\n5) ssh: Dictionary attack on exposed SSH services\n6) brute-force-aggressive-mode: A brute force attack is performed with four different parameters to increase the probability of cracking a hash\n7) for \"none\"")
     option_chosen = input("option: ").strip()
     if option_chosen in self.modules_names:
       print("INFO:This process may take time!")
@@ -129,8 +129,6 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
          system(f"python3 ~/Hash_crack/{self.modules_multiprocess[option_chosen_2]}")
          exit(2)
     elif option_chosen == "4":
-         print("Recommendation: Split the brute force module into two sections to optimize hash cracking efficiency (it is recommended to limit it to two sections).")
-         sleep(6)
          system("clear")
          system("python3 ~/Hash_crack/brute_force.py")
          exit(2)
@@ -145,6 +143,10 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
          else:
            print("Not supported on Termux")
            exit(2)
+    elif option_chosen == "6":
+         system("clear")
+         system("python3 ~/Hash_crack/core_breaker.py")
+         exit(0)
     return
 
 
