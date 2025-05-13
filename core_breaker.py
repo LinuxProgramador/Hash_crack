@@ -192,6 +192,7 @@ def main():
 | sha512     |              |
  ---------------------------
 ''')
+    print("INFO: When entering the hash type, just copy and paste the hash from the supported hash table")
     print("INFO: ONLY RECOMMENDED ON SYSTEMS WITH MORE THAN 4 CORES!!!!!!!\n")
     target_hash = input("Enter the target hash: ").strip()
     hash_type = input("Enter the hash type: ").strip().lower()
