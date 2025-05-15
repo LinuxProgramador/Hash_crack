@@ -16,6 +16,7 @@ else:
     dic_temp = f"/home/{user}/Hash_crack/temp.txt"
 
 def create_key_combination():
+  try:
     print("This will take time.......")
     global previous_password, stored
     with open(dic_path, 'r') as read_file:
@@ -33,5 +34,8 @@ def create_key_combination():
     copy(dic_temp,dic_path)
     remove(dic_temp)
     print("Done!! Now run the main module \"Hasher.py\" again")
-    
+  except KeyboardInterrupt:
+      print("BYE!!")
+      exit(0)
+      
 create_key_combination()
