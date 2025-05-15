@@ -3,7 +3,7 @@
 os=$(uname -o | cut -f1)
 
 function main {
-    chmod u+x  ~/Hash_crack/core_breaker.py  ~/Hash_crack/ssh_service_attack.py  ~/Hash_crack/start_tor.sh  ~/Hash_crack/UnRAR.exe  ~/Hash_crack/RARNinja.py  ~/Hash_crack/zcrack.py  ~/Hash_crack/crunch.sh  ~/Hash_crack/dependencies.sh  ~/Hash_crack/Hasher.py  ~/Hash_crack/multiprocess2.py  ~/Hash_crack/multiprocess1.py  ~/Hash_crack/brute_force.py  
+    chmod u+x ~/Hash_crack/mix_combo.py ~/Hash_crack/core_breaker.py  ~/Hash_crack/ssh_service_attack.py  ~/Hash_crack/start_tor.sh  ~/Hash_crack/UnRAR.exe  ~/Hash_crack/RARNinja.py  ~/Hash_crack/zcrack.py  ~/Hash_crack/crunch.sh  ~/Hash_crack/dependencies.sh  ~/Hash_crack/Hasher.py  ~/Hash_crack/multiprocess2.py  ~/Hash_crack/multiprocess1.py  ~/Hash_crack/brute_force.py  
     echo "Installing dependencies"
     sleep 2
     if [ "$os" = 'Android' ] ; then
