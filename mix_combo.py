@@ -32,6 +32,6 @@ def create_key_combination():
 
     copy(dic_temp,dic_path)
     remove(dic_temp)
-    print("Work completed")
-
+    print("Done!! Now run the main module \"Hasher.py\" again")
+    
 create_key_combination()
