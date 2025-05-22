@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 from getpass import getuser
-from os import path, remove
+from os import path, remove, system
 from shutil import copy
+from time import sleep
 
 previous_password = ''
 stored = []
@@ -15,11 +16,21 @@ else:
     dic_path = f"/home/{user}/Hash_crack/wordlist.txt"
     dic_temp = f"/home/{user}/Hash_crack/temp.txt"
 
+def get_encoder():
+    print("INFO: For compatibility reasons with certain symbols, choose your encoder:")
+    print("1) latin-1\n2) utf-8")
+    encoder_text = input("option: ")
+    select_encoder = "latin-1" if encoder_text == "1" else "utf-8"
+    return select_encoder
+
 def create_key_combination():
   try:
+    encoder = get_encoder()
+    sleep(1)
+    system("clear")
     print("This will take time.......")
     global previous_password, stored
-    with open(dic_path, 'r') as read_file:
+    with open(dic_path, 'r', encoding=encoder) as read_file:
         for password in read_file:
             keyclean = password.strip()
             if previous_password:
