@@ -40,6 +40,7 @@ hashes = {
     'length_sha384': 96,
     'length_sha512': 128,
 }
+validation_argon = False
 
 def generate_combinations(characters, min_length, max_length):
     """Generates and yields buffered combinations of characters within the specified length range."""
