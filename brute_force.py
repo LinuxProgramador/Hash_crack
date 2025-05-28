@@ -12,6 +12,7 @@ from hashlib import pbkdf2_hmac,algorithms_available,new
 from base64 import b64decode
 from gmssl import sm3,func
 from whirlpool import new as wpl
+from argon2 import PasswordHasher
 
 hashes = {
     'sha1': sha1,
