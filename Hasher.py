@@ -15,6 +15,7 @@ from base64 import b64decode
 from json import loads
 from gmssl import sm3,func
 from whirlpool import new as wpl
+from argon2 import PasswordHasher
 
 class Hash_crack:
   '''  Class called Hash_crack, which verifies that the type of hash entered is supported and proceeds to its decryption, in addition to calling the include third-party projects '''
