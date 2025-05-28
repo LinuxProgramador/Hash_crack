@@ -125,7 +125,7 @@ def crack(count, hash_input, select, wait_time):
     for password in brute_force():
         data = password.encode()
 
-        if count == 300000 and wait_time == "y":
+        if count == 200000 and wait_time == "y":
             count = 0
             sleep(15)
             
@@ -211,7 +211,23 @@ def crack(count, hash_input, select, wait_time):
                 RIPEMD = RIPEMD160.new()
                 RIPEMD.update(data)
             validation(RIPEMD.hexdigest(), hash_input, password, wpa_psk, ssid)
-
+        elif select in 'argon2id':
+              global validation_argon
+              ph = PasswordHasher()
+              try:
+                 ph.verify(hash_input, password)
+                 validation_argon = True
+                 auxiliary_crack(password, wpa_psk, ssid)
+              except KeyboardInterrupt:
+                 print("BYE!!")
+                 exit(0)
+              except:
+                 if not validation_argon:
+                     if is_fast_mode != "y":
+                        print(f"[*] Trying password: {password}")
+              finally:
+                 if validation_argon:
+                    exit(0)
         count += 1
 
     print("[X] Password not found!")
