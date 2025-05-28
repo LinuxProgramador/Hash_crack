@@ -540,7 +540,24 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
           elif select in self.hash:
              blas2=self.hash[select](data).hexdigest()
              self.validation(blas2,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
-
+     
+          #It's a slow hash
+          elif select in 'argon2id':
+              ph = PasswordHasher()
+              try:
+                 ph.verify(hash_input, password)
+                 self.validation_argon = True
+                 self.auxiliary_crack(password,wpa_psk,ssid)
+              except KeyboardInterrupt:
+                 print("BYE!!")
+                 exit(0)
+              except:
+                 if not self.validation_argon:
+                    self.faster(is_fast_mode,crackTimeEstimate,password)
+              finally:
+                 if self.validation_argon:
+                    exit(0)
+                                    
           else:
             print("Wrong option!")
             exit(2)
