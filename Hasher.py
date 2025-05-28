@@ -63,6 +63,7 @@ class Hash_crack:
     self.previous_password_bin = b''
     self.attempt_count = 0
     self.stored = []
+    self.validation_argon = False
 
   def get_encoder(self):
     ''' The user is asked to choose a text encoder '''
