@@ -122,11 +122,15 @@ Supported Hashes:
     SHA256SUM
 
     SHA512SUM
+
+    ARGON2ID
     
 
 Important Notes: 
 
 INFO: This tool was designed mostly for the Termux environment, since tools like John the Ripper or Hashcat are not compatible with Termux.
+
+INFO: Argon2id is only available in single-core modules, for example (Hasher / Brute_force)
 
 1- If you want to use your own dictionary, you should name it wordlist.txt and place it in the Hash_crack directory.
 
