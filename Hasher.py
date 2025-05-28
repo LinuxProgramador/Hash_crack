@@ -953,6 +953,9 @@ lengths and combinations with option 2\"
     elif "$P$" in hash_input[0:3]:
              hash = "phpass"
              self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
+    elif "$argon2id$" in hash_input[0:11]:
+             hash = "argon2id"
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)      
     else:
         if hash_input:
           print("""\n
