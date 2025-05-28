@@ -125,7 +125,10 @@ def crack(count, hash_input, select, wait_time):
     for password in brute_force():
         data = password.encode()
 
-        if count == 200000 and wait_time == "y":
+        if select == "argon2id" and count == 4 and wait_time == "y":
+            count = 0
+            sleep(1)
+        elif count == 300000 and wait_time == "y":
             count = 0
             sleep(15)
             
