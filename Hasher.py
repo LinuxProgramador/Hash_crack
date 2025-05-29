@@ -543,6 +543,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      
           #It's a slow hash
           elif select in 'argon2id':
+              if wait_time == "y":
+                 sleep(0.08)
               ph = PasswordHasher()
               try:
                  ph.verify(hash_input, password)
@@ -634,7 +636,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
        buffer = ""
        while True:
          chunk = keywords_read.read(chunk_size)
-         if wait_time == "y":
+         if select != "argon2id" and wait_time == "y":
              sleep(8)
          if not chunk:
             break
