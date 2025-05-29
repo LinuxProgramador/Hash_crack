@@ -406,7 +406,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
      return validation_str,password_list
 
 
-  def auxiliary_hash_cracking_worker(self,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,data,select):
+  def auxiliary_hash_cracking_worker(self,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,data,select,wait_time):
           ''' Performs hash-based password validation against a target hash using multiple supported algorithms, executing appropriate cracking or fallback actions based on the selected hash type '''
 
           #MySQL 5.X hash check
@@ -576,7 +576,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
             self.faster(is_fast_mode,crackTimeEstimate,password)
 
 
-  def hash_cracking_worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined):
+  def hash_cracking_worker(self,password_list,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined,wait_time):
       '''  Processes an input and validates passwords against various hash algorithms. '''
       backup_password_list = password_list if type(password_list) is str else ''
       validation_str,password_list = self.validate_and_transform_entry(password_list)
@@ -592,14 +592,14 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           if combined == "y":
              password,data = self.validation_combined(password,data,keyclean,keyBin,wpa_psk)
-             self.auxiliary_hash_cracking_worker(hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,data,select)
+             self.auxiliary_hash_cracking_worker(hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,data,select,wait_time)
 
           else:
              crackTimeEstimate = self.rules_parameters(password,crackTimeEstimate)
              for password_rule in self.stored:
                 password = password_rule.strip()
                 data = password.encode(self.encoder)
-                self.auxiliary_hash_cracking_worker(hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,data,select)
+                self.auxiliary_hash_cracking_worker(hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,data,select,wait_time)
              self.stored.clear()
 
 
@@ -644,12 +644,12 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
          lines = buffer.splitlines()
          buffer = lines.pop() if not chunk.endswith('\n') else ""
          if not wpa_psk:
-            self.hash_cracking_worker(lines,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined)
+            self.hash_cracking_worker(lines,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined,wait_time)
          else:
             self.process_wpa_passwords(lines,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input)
        if buffer:
          if not wpa_psk:
-            self.hash_cracking_worker(buffer,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined)
+            self.hash_cracking_worker(buffer,crackTimeEstimate,is_fast_mode,ssid,wpa_psk,hash_input,select,combined,wait_time)
          else:
             self.process_wpa_passwords(buffer,combined,data,keyBin,wpa_psk,ssid,is_fast_mode,crackTimeEstimate,hash_input)
        print("[X] The password does not exist in the dictionary!")
