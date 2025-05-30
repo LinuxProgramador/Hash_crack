@@ -748,6 +748,7 @@ Help Menu:
 |sha512sum  |
 |sha256sum  |
 |argon2id   |
+|scrypt     |
  ----------
              """)
 
