@@ -562,6 +562,8 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
 
           #It's a slow hash
           elif select in 'scrypt':
+               if wait_time == "y":
+                  sleep(0.08)
                x = hash_input.split('$')
                params = x[2].split(',')
                salt = b64decode(x[3])
@@ -651,7 +653,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
        buffer = ""
        while True:
          chunk = keywords_read.read(chunk_size)
-         if select != "argon2id" and wait_time == "y":
+         if not select in ["argon2id","scrypt"] and wait_time == "y":
              sleep(8)
          if not chunk:
             break
@@ -974,7 +976,11 @@ lengths and combinations with option 2\"
              self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "$argon2id$" in hash_input[0:11]:
              hash = "argon2id"
-             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)      
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)  
+    
+    elif "$scrypt$" in hash_input[0:9]:
+             hash = "scrypt"
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)     
     else:
         if hash_input:
           print("""\n
