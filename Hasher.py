@@ -559,7 +559,22 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
               finally:
                  if self.validation_argon:
                     exit(0)
-                                    
+
+          #It's a slow hash
+          elif select in 'scrypt':
+               x = hash_input.split('$')
+               params = x[2].split(',')
+               salt = b64decode(x[3])
+               n = int(params[0].split('=')[1])
+               r = int(params[1].split('=')[1])
+               p = int(params[2].split('=')[1])
+               dklen = len(b64decode(x[4]))
+               derived_key = scrypt(data, salt=salt, n=n, r=r, p=p, dklen=dklen)
+               salt_b64 = b64encode(salt).decode()
+               key_b64 = b64encode(derived_key).decode()
+               hash_str = f"$scrypt$n={n},r={r},p={p}${salt_b64}${key_b64}"
+               self.validation(hash_str,hash_input,password,wpa_psk,ssid,is_fast_mode,crackTimeEstimate)
+                                 
           else:
             print("Wrong option!")
             exit(2)
