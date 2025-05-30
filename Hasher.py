@@ -780,6 +780,7 @@ Help Menu:
      "md5crypt":"md5crypt",
      "SSHA":"SSHA",
      "phpass":"phpass",
+     'scrypt':'scrypt',
      "argon2id":"argon2id",
      "DCC2":"DCC2",
      "apr1":"apr1",
