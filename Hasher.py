@@ -674,7 +674,7 @@ WARNING:BE CAREFUL WITH THE NUMBER OF PASSWORDS YOU USE. CAN BE GENERATED, IT CA
   def crack(self,hash_input,select,is_fast_mode,combined,wait_time):
      ''' The crack function attempts to decrypt a hash by comparing it with a dictionary of words '''
      crackTimeEstimate = self.approximate_duration() if is_fast_mode != "y" else ''
-     if combined == "y" or select in ["argon2id","bcrypt","DCC2","sha256crypt","sha512crypt","md5crypt","apr1","phpass"] or wait_time == "y" and is_fast_mode != "y":
+     if combined == "y" or select in ['scrypt',"argon2id","bcrypt","DCC2","sha256crypt","sha512crypt","md5crypt","apr1","phpass"] or wait_time == "y" and is_fast_mode != "y":
         crackTimeEstimate = "time unknown"
      wpa_psk = False
      self.dictCrack(hash_input,select,is_fast_mode,combined,wait_time,'',crackTimeEstimate,wpa_psk,b'',b'')
