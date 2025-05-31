@@ -288,6 +288,7 @@ def cracking_selection(count, hash_input, hash, wait_time, hash_algorithm_map,va
         "DCC2":"DCC2",
         "apr1":"apr1",
         "phpass":"phpass",
+        'scrypt':'scrypt',
         "argon2id":"argon2id",
         "wpa-psk":"wpa-psk",
         "bcrypt": "bcrypt",
