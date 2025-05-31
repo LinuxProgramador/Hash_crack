@@ -373,6 +373,8 @@ def main(count):
              cracking_selection(count, hash_input, "phpass", wait_time, "","")
         elif "$argon2id$" in hash_input[0:11]:
              cracking_selection(count, hash_input, "argon2id", wait_time, "","")
+        elif "$scrypt$" in hash_input[0:9]:
+             cracking_selection(count, hash_input, "scrypt", wait_time, "","")     
         else:
             if hash_input:
                 consultation = input("The entered hash can be \"shake-128 - shake-256\" (y/n): ").strip().lower()
