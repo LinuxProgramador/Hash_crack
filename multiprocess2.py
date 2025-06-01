@@ -45,7 +45,24 @@ def crack(target_hash, word, select, ssid, found, queue, encoder):
             derived_key = pbkdf2_hmac('sha1', word.encode(encoder), ssid.encode(encoder), 4096, 32)
             if derived_key.hex().lower() == target_hash.lower():
                 queue.put(f"SSID: {ssid}\nKey found: {word}")
-                found.set()
+                found.set()    
+    elif select == "pbkdf2_sha256":
+               x = target_hash.split('$')
+               dklen = len(b64decode(x[3]))
+               iterations = int(x[1])
+               salt = b64decode(x[2])
+               key = pbkdf2_hmac(
+                 'sha256',
+                 word.encode(encoder),
+                 salt,
+                 iterations,
+                 dklen
+               )
+               hash_pbkdf2 = f"pbkdf2_sha256${iterations}${b64encode(salt).decode()}${b64encode(key).decode()}"
+               if hash_pbkdf2.lower() == target_hash.lower():
+                    queue.put(f"Key found: {word}")
+                    found.set()
+
 
 def check_hash(rute, target_hash, select, ssid, found, queue, wait_time, encoder, chunk_size=512 * 1024):
     try:
