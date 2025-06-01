@@ -244,6 +244,20 @@ def crack(count, hash_input, select, wait_time):
                key_b64 = b64encode(derived_key).decode()
                hash_str = f"$scrypt$n={n},r={r},p={p}${salt_b64}${key_b64}"
                validation(hash_str, hash_input, password, wpa_psk, ssid)
+        elif select in "pbkdf2_sha256":
+               x = hash_input.split('$')
+               dklen = len(b64decode(x[3]))
+               iterations = int(x[1])
+               salt = b64decode(x[2])
+               key = pbkdf2_hmac(
+                 'sha256',
+                 data,
+                 salt,
+                 iterations,
+                 dklen
+               )
+               hash_pbkdf2 = f"pbkdf2_sha256${iterations}${b64encode(salt).decode()}${b64encode(key).decode()}"
+               validation(hash_pbkdf2, hash_input, password, wpa_psk, ssid)
         count += 1
 
     print("[X] Password not found!")
