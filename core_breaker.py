@@ -212,7 +212,7 @@ def main():
     target_hash = input("Enter the target hash: ").strip()
     hash_type = input("Enter the hash type: ").strip().lower()
     wait_time = input("Do you want to prevent overheating the processor? (y/n): ").strip().lower()
-    if hash_type not in hash_algorithms and hash_type not in ["ripemd-160","shake-128","shake-256","md5", "dcc2", "mysql5.x", "whirlpool", "sha256sum", "sha512sum", "sm3", "ntlm", "sha512-256", "ssha", "bcrypt", "wpa"]:
+    if hash_type not in hash_algorithms and hash_type not in ["pbkdf2_sha256","ripemd-160","shake-128","shake-256","md5", "dcc2", "mysql5.x", "whirlpool", "sha256sum", "sha512sum", "sm3", "ntlm", "sha512-256", "ssha", "bcrypt", "wpa"]:
        print("Wrong option!")
        exit(0)
 
