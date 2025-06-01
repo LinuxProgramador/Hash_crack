@@ -995,11 +995,13 @@ lengths and combinations with option 2\"
              self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)
     elif "$argon2id$" in hash_input[0:11]:
              hash = "argon2id"
-             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)  
-    
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)      
     elif "$scrypt$" in hash_input[0:9]:
              hash = "scrypt"
-             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)     
+             self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)         
+    elif "pbkdf2_sha256$" in hash_input[0:15]:
+            hash = "pbkdf2_sha256"
+            self.process_secure_hash(hash_input,hash,is_fast_mode,combined,wait_time,hash_algorithm_map)      
     else:
         if hash_input:
           print("""\n
