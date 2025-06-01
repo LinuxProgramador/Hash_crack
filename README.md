@@ -126,7 +126,8 @@ Supported Hashes:
     ARGON2ID
 
     SCRYPT
-    
+
+    PBKDF2_SHA256
 
 Important Notes: 
 
