@@ -14,7 +14,7 @@ from hashlib import (
 )
 from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt, msdcc2, phpass
 from bcrypt import checkpw
-from base64 import b64decode
+from base64 import b64encode, b64decode
 from gmssl import sm3, func
 from whirlpool import new as wpl
 
