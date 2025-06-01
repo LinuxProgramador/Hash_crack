@@ -202,7 +202,7 @@ def main():
 | sha3-384   | sha3-256     |
 | sha3-512   | sha256       |
 | sha224     | sha384       |
-| sha512     |              |
+| sha512     | pbkdf2_sha256|
  ---------------------------
 ''')
     print("INFO: Except for Hasher.py and the other modules, here you enter the hash first and then the SSID or USER if you entered a wpa or dcc2 type hash")
