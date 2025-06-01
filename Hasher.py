@@ -801,6 +801,7 @@ Help Menu:
      "SSHA":"SSHA",
      "phpass":"phpass",
      'scrypt':'scrypt',
+     "pbkdf2_sha256":"pbkdf2_sha256",
      "argon2id":"argon2id",
      "DCC2":"DCC2",
      "apr1":"apr1",
