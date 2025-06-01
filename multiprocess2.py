@@ -7,6 +7,7 @@ from passlib.hash import sha256_crypt, sha512_crypt, md5_crypt, apr_md5_crypt, m
 from os import path, system
 from bcrypt import checkpw
 from time import sleep
+from base64 import b64encode,b64decode
 
 hashes = {
     'sha256crypt': sha256_crypt,
