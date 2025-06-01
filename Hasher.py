@@ -768,6 +768,7 @@ Help Menu:
 |sha256sum  |
 |argon2id   |
 |scrypt     |
+|pbk2sha256 |
  ----------
              """)
 
