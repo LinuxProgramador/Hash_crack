@@ -214,7 +214,7 @@ def crack(count, hash_input, select, wait_time):
                 RIPEMD = RIPEMD160.new()
                 RIPEMD.update(data)
             validation(RIPEMD.hexdigest(), hash_input, password, wpa_psk, ssid)
-        elif select in 'argon2id':
+        elif select == 'argon2id':
               global validation_argon
               ph = PasswordHasher()
               try:
@@ -231,7 +231,7 @@ def crack(count, hash_input, select, wait_time):
               finally:
                  if validation_argon:
                     exit(0)       
-        elif select in 'scrypt':
+        elif select == 'scrypt':
                x = hash_input.split('$')
                params = x[2].split(',')
                salt = b64decode(x[3])
@@ -244,7 +244,7 @@ def crack(count, hash_input, select, wait_time):
                key_b64 = b64encode(derived_key).decode()
                hash_str = f"$scrypt$n={n},r={r},p={p}${salt_b64}${key_b64}"
                validation(hash_str, hash_input, password, wpa_psk, ssid)
-        elif select in "pbkdf2_sha256":
+        elif select == "pbkdf2_sha256":
                x = hash_input.split('$')
                dklen = len(b64decode(x[3]))
                iterations = int(x[1])
