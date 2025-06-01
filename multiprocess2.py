@@ -115,6 +115,8 @@ def main():
             select = "apr1"
         elif target_hash.startswith("$P$"):
             select = "phpass"
+        elif target_hash.startswith("pbkdf2_sha256$"):
+            select = "pbkdf2_sha256"
         elif len(validation_hash_wpa_dcc2[1]) == 64:
             print("INFO: Make sure the keys within the dictionary are approximately 8-63 in length")
             select = "wpa-psk"
