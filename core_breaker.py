@@ -159,6 +159,19 @@ def hash_worker(config, target_hash, hash_type, stop_event, result_queue, wait_t
                         stop_event.set()
                         result_queue.put(word)
                         break
+            elif hash_type == "pbkdf2_sha256":
+               x = target_hash.split('$')
+               dklen = len(b64decode(x[3]))
+               iterations = int(x[1])
+               salt = b64decode(x[2])
+               key = pbkdf2_hmac(
+                 'sha256',
+                 data,
+                 salt,
+                 iterations,
+                 dklen
+               )
+               computed_hash = f"pbkdf2_sha256${iterations}${b64encode(salt).decode()}${b64encode(key).decode()}"
 
             if computed_hash.lower() == target_hash.lower():
                 stop_event.set()
