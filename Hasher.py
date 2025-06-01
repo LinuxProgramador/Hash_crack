@@ -829,7 +829,7 @@ Wait, this may take a while
 *****************************
                    """)
      self.local_db(select,hash_input)
-     if select in ['scrypt',"argon2id","phpass","sm3","DCC2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
+     if select in ["pbkdf2_sha256",'scrypt',"argon2id","phpass","sm3","DCC2","apr1","md5crypt","ripemd-160","NTLM","sha256crypt","sha512crypt","bcrypt"]  and is_fast_mode == "y":
         print("INFO: The process may take time due to slow hashing")
      self.display_cracking_message(is_fast_mode)
      sleep(2)
