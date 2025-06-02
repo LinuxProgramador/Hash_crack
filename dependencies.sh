@@ -8,10 +8,10 @@ function main {
     sleep 2
     if [ "$os" = 'Android' ] ; then
        apt install python3 python-pip rust crunch -y
-       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl argon2-cffi
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl argon2-cffi tqdm
     else
        sudo apt install python3 python3-pip tor proxychains4 crunch -y
-       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl paramiko argon2-cffi
+       python3 -m pip install pyfiglet requests termcolor rarfile colorama pycryptodome bcrypt passlib gmssl paramiko argon2-cffi tqdm
        sudo cp -f ~/Hash_crack/proxychains4.conf /etc/proxychains4.conf
     fi
     git clone https://github.com/oohlaf/python-whirlpool.git
