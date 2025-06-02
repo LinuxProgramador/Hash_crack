@@ -16,7 +16,7 @@ def get_encoder():
 
 def check_bcrypt_segment(wordlist, target_hash, encoder, found, queue, progress_queue, wait_time):
     if wait_time == "y":
-        sleep(0.15)
+        sleep(0.80)
     for word in wordlist:
         if found.is_set():
             return
