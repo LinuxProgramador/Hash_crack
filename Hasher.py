@@ -96,7 +96,7 @@ class Hash_crack:
   def call_modules(self):
     '''  Call for third-party projects included to extend the program's functionality '''
     print("You want to use:")
-    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) bruteforce: Brute force attack without dictionary.\n5) ssh: Dictionary attack on exposed SSH services\n6) brute-force-aggressive-mode: A brute force attack is performed with four different parameters to increase the probability of cracking a hash\n7) full-combo-attack: Unlike the attack combo parameter, this one generates all possible combinations (only it consumes more system resources)\n8) for \"none\"")
+    print("1) zcrack: Crack the password of a ZIP file.\n2) rarninja: Crack the password of a RAR file.\n3) multiprocess: Parallel decryption of a hash using four dictionaries.\n4) bruteforce: Brute force attack without dictionary.\n5) ssh: Dictionary attack on exposed SSH services\n6) brute-force-aggressive-mode: A brute force attack is performed with four different parameters to increase the probability of cracking a hash\n7) full-combo-attack: Unlike the attack combo parameter, this one generates all possible combinations (only it consumes more system resources)\n8) break-bcrypt: Performs an optimized dictionary attack using all available cores of the system\n9) for \"none\"")
     option_chosen = input("option: ").strip()
     if option_chosen in self.modules_names:
       print("INFO:This process may take time!")
@@ -159,6 +159,10 @@ Additional INFO: Method 2 may take significantly longer due to the security meas
            exit(0)
          else:
            exit(0)
+    elif option_chosen == "8":
+         system("clear")
+         system("python3 ~/Hash_crack/break_bcrypt.py")
+         exit(0)
     return
 
 
